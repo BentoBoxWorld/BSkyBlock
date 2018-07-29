@@ -19,7 +19,7 @@
 		<resources>
 			<resource>
 				<targetPath>.</targetPath>
-				<filtering>true</filtering>
+				<filtering>false</filtering>
 				<directory>${basedir}</directory>
 				<includes>
 					<include>*.yml</include>
@@ -147,9 +147,15 @@
 		<dependency>
 			<groupId>org.spigotmc</groupId>
 			<artifactId>spigot-api</artifactId>
-			<version>1.12.2-R0.1-SNAPSHOT</version>
-			<scope>provided</scope>
-		</dependency>
+            <version>1.13-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>world.bentobox</groupId>
+            <artifactId>bentobox</artifactId>
+            <version>LATEST</version>
+        </dependency>
+		
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>
