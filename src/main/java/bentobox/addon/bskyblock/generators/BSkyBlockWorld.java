@@ -33,7 +33,7 @@ public class BSkyBlockWorld {
         // Create the world if it does not exist
         islandWorld = WorldCreator.name(worldName).type(WorldType.FLAT).environment(World.Environment.NORMAL).generator(new ChunkGeneratorWorld(addon))
                 .createWorld();
-        addon.getBSkyBlock().registerWorld(islandWorld, addon.getSettings());
+        addon.getPlugin().registerWorld(islandWorld, addon.getSettings());
 
         // Make the nether if it does not exist
         if (addon.getSettings().isNetherGenerate()) {
@@ -61,7 +61,7 @@ public class BSkyBlockWorld {
         }
 
         // Load schematics
-        addon.getBSkyBlock().getSchemsManager().loadIslands(islandWorld);
+        addon.getPlugin().getSchemsManager().loadIslands(islandWorld);
 
     }
 
