@@ -3,25 +3,25 @@ package bentobox.addon.bskyblock.commands;
 import java.util.List;
 
 import bentobox.addon.bskyblock.BSkyBlock;
-import world.bentobox.bbox.api.commands.CompositeCommand;
-import world.bentobox.bbox.api.localization.TextVariables;
-import world.bentobox.bbox.api.user.User;
-import world.bentobox.bbox.commands.admin.AdminClearResetsAllCommand;
-import world.bentobox.bbox.commands.admin.AdminClearResetsCommand;
-import world.bentobox.bbox.commands.admin.AdminGetRankCommand;
-import world.bentobox.bbox.commands.admin.AdminInfoCommand;
-import world.bentobox.bbox.commands.admin.AdminRegisterCommand;
-import world.bentobox.bbox.commands.admin.AdminReloadCommand;
-import world.bentobox.bbox.commands.admin.AdminSchemCommand;
-import world.bentobox.bbox.commands.admin.AdminSetRankCommand;
-import world.bentobox.bbox.commands.admin.AdminTeleportCommand;
-import world.bentobox.bbox.commands.admin.AdminUnregisterCommand;
-import world.bentobox.bbox.commands.admin.AdminVersionCommand;
-import world.bentobox.bbox.commands.admin.range.AdminRangeCommand;
-import world.bentobox.bbox.commands.admin.team.AdminTeamAddCommand;
-import world.bentobox.bbox.commands.admin.team.AdminTeamDisbandCommand;
-import world.bentobox.bbox.commands.admin.team.AdminTeamKickCommand;
-import world.bentobox.bbox.commands.admin.team.AdminTeamMakeLeaderCommand;
+import world.bentobox.bentobox.api.commands.CompositeCommand;
+import world.bentobox.bentobox.api.localization.TextVariables;
+import world.bentobox.bentobox.api.user.User;
+import world.bentobox.bentobox.commands.admin.AdminClearResetsAllCommand;
+import world.bentobox.bentobox.commands.admin.AdminClearResetsCommand;
+import world.bentobox.bentobox.commands.admin.AdminGetRankCommand;
+import world.bentobox.bentobox.commands.admin.AdminInfoCommand;
+import world.bentobox.bentobox.commands.admin.AdminRegisterCommand;
+import world.bentobox.bentobox.commands.admin.AdminReloadCommand;
+import world.bentobox.bentobox.commands.admin.AdminSchemCommand;
+import world.bentobox.bentobox.commands.admin.AdminSetRankCommand;
+import world.bentobox.bentobox.commands.admin.AdminTeleportCommand;
+import world.bentobox.bentobox.commands.admin.AdminUnregisterCommand;
+import world.bentobox.bentobox.commands.admin.AdminVersionCommand;
+import world.bentobox.bentobox.commands.admin.range.AdminRangeCommand;
+import world.bentobox.bentobox.commands.admin.team.AdminTeamAddCommand;
+import world.bentobox.bentobox.commands.admin.team.AdminTeamDisbandCommand;
+import world.bentobox.bentobox.commands.admin.team.AdminTeamKickCommand;
+import world.bentobox.bentobox.commands.admin.team.AdminTeamMakeLeaderCommand;
 
 public class AdminCommand extends CompositeCommand {
 

@@ -6,7 +6,7 @@ import org.bukkit.WorldCreator;
 import org.bukkit.WorldType;
 
 import bentobox.addon.bskyblock.BSkyBlock;
-import world.bentobox.bbox.util.Util;
+import world.bentobox.bentobox.util.Util;
 
 /**
  * Creates the worlds and registers them with BentoBox

@@ -5,8 +5,8 @@ import org.bukkit.World;
 import bentobox.addon.bskyblock.commands.AdminCommand;
 import bentobox.addon.bskyblock.commands.IslandCommand;
 import bentobox.addon.bskyblock.generators.BSkyBlockWorld;
-import world.bentobox.bbox.api.addons.Addon;
-import world.bentobox.bbox.api.configuration.BSBConfig;
+import world.bentobox.bentobox.api.addons.Addon;
+import world.bentobox.bentobox.api.configuration.BSBConfig;
 
 /**
  * Main BSkyBlock class - provides an island minigame in the sky
