@@ -5,21 +5,21 @@ import java.util.List;
 
 import bentobox.addon.bskyblock.BSkyBlock;
 import world.bentobox.bentobox.api.commands.CompositeCommand;
+import world.bentobox.bentobox.api.commands.island.IslandAboutCommand;
+import world.bentobox.bentobox.api.commands.island.IslandBanCommand;
+import world.bentobox.bentobox.api.commands.island.IslandBanlistCommand;
+import world.bentobox.bentobox.api.commands.island.IslandCreateCommand;
+import world.bentobox.bentobox.api.commands.island.IslandGoCommand;
+import world.bentobox.bentobox.api.commands.island.IslandLanguageCommand;
+import world.bentobox.bentobox.api.commands.island.IslandResetCommand;
+import world.bentobox.bentobox.api.commands.island.IslandResetnameCommand;
+import world.bentobox.bentobox.api.commands.island.IslandSethomeCommand;
+import world.bentobox.bentobox.api.commands.island.IslandSetnameCommand;
+import world.bentobox.bentobox.api.commands.island.IslandSettingsCommand;
+import world.bentobox.bentobox.api.commands.island.IslandUnbanCommand;
+import world.bentobox.bentobox.api.commands.island.team.IslandTeamCommand;
 import world.bentobox.bentobox.api.localization.TextVariables;
 import world.bentobox.bentobox.api.user.User;
-import world.bentobox.bentobox.commands.island.IslandAboutCommand;
-import world.bentobox.bentobox.commands.island.IslandBanCommand;
-import world.bentobox.bentobox.commands.island.IslandBanlistCommand;
-import world.bentobox.bentobox.commands.island.IslandCreateCommand;
-import world.bentobox.bentobox.commands.island.IslandGoCommand;
-import world.bentobox.bentobox.commands.island.IslandLanguageCommand;
-import world.bentobox.bentobox.commands.island.IslandResetCommand;
-import world.bentobox.bentobox.commands.island.IslandResetnameCommand;
-import world.bentobox.bentobox.commands.island.IslandSethomeCommand;
-import world.bentobox.bentobox.commands.island.IslandSetnameCommand;
-import world.bentobox.bentobox.commands.island.IslandSettingsCommand;
-import world.bentobox.bentobox.commands.island.IslandUnbanCommand;
-import world.bentobox.bentobox.commands.island.team.IslandTeamCommand;
 
 public class IslandCommand extends CompositeCommand {
 
