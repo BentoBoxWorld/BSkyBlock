@@ -28,7 +28,7 @@ import world.bentobox.bentobox.database.objects.adapters.FlagSerializer2;
  * All the plugin settings are here
  * @author Tastybento
  */
-@StoreAt(filename="config.yml") // Explicitly call out what name this should have.
+@StoreAt(filename="config.yml", path="addons/BentoBox-BSkyBlock") // Explicitly call out what name this should have.
 @ConfigComment("BSkyBlock Configuration [version]")
 @ConfigComment("This config file is dynamic and saved when the server is shutdown.")
 @ConfigComment("You cannot edit it while the server is running because changes will")
@@ -61,12 +61,12 @@ public class Settings implements DataObject, WorldSettings {
 
     /*      WORLD       */
     @ConfigComment("Friendly name for this world. Used in admin commands. Must be a single word")
-    @ConfigEntry(path = "world.friendly-name", needsReset = true)
+    @ConfigEntry(path = "world.friendly-name")
     private String friendlyName = "BSkyBlock";
 
     @ConfigComment("Name of the world - if it does not exist then it will be generated.")
     @ConfigComment("It acts like a prefix for nether and end (e.g. BSkyBlock, BSkyBlock_nether, BSkyBlock_end)")
-    @ConfigEntry(path = "world.world-name", needsReset = true)
+    @ConfigEntry(path = "world.world-name")
     private String worldName = "BSkyBlock-world";
 
     @ConfigComment("World difficulty setting - PEACEFUL, EASY, NORMAL, HARD")
