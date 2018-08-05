@@ -62,6 +62,9 @@ permissions:
   bskyblock.mod.tp:
     description: Allows teleport to an island
     default: op
+  bskyblock.mod.bypasscooldowns:
+    description: Allow moderator to bypass cooldowns
+    default: op
   bskyblock.mod.bypassprotect:
     description: Allow moderator to bypass island protection
     default: op

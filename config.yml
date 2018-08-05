@@ -228,10 +228,6 @@ island:
     # These set the minimum and maximum size of a name.
     min-length: 0
     max-length: 20
-  # How long a player must wait until they can rejoin a team island after being
-  # kicked in minutes. This slows the effectiveness of players repeating challenges
-  # by repetitively being invited to a team island.
-  invite-wait: 60
   reset:
     # How many resets a player is allowed (override with /asadmin clearreset <player>)
     # Value of -1 means unlimited, 0 means hardcore - no resets.
