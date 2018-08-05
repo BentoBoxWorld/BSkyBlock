@@ -5,7 +5,6 @@ import java.util.List;
 
 import bentobox.addon.bskyblock.BSkyBlock;
 import world.bentobox.bentobox.api.commands.CompositeCommand;
-import world.bentobox.bentobox.api.commands.island.IslandAboutCommand;
 import world.bentobox.bentobox.api.commands.island.IslandBanCommand;
 import world.bentobox.bentobox.api.commands.island.IslandBanlistCommand;
 import world.bentobox.bentobox.api.commands.island.IslandCreateCommand;
