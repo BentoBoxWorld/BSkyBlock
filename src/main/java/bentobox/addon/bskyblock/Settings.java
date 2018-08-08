@@ -11,6 +11,7 @@ import java.util.Set;
 
 import org.bukkit.Difficulty;
 import org.bukkit.GameMode;
+import org.bukkit.block.Biome;
 import org.bukkit.entity.EntityType;
 
 import world.bentobox.bentobox.api.addons.Addon;
@@ -129,6 +130,10 @@ public class Settings implements DataObject, WorldSettings {
     @ConfigComment("a new island for example. Options are SURVIVAL, CREATIVE, ADVENTURE, SPECTATOR")
     @ConfigEntry(path = "world.default-game-mode")
     private GameMode defaultGameMode = GameMode.SURVIVAL;
+    
+    @ConfigComment("The default biome for the overworld")
+    @ConfigEntry(path = "world.default-biome")
+    private Biome defaultBiome = Biome.PLAINS;
 
     // Nether
     @ConfigComment("Generate Nether - if this is false, the nether world will not be made and access to")
@@ -1165,6 +1170,20 @@ public class Settings implements DataObject, WorldSettings {
     @Override
     public boolean isWaterUnsafe() {
         return false;
+    }
+
+    /**
+     * @return default biome
+     */
+    public Biome getDefaultBiome() {
+        return defaultBiome;
+    }
+
+    /**
+     * @param defaultBiome the defaultBiome to set
+     */
+    public void setDefaultBiome(Biome defaultBiome) {
+        this.defaultBiome = defaultBiome;
     }
 
 

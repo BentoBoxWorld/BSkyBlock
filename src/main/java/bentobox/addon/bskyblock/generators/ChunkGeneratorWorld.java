@@ -24,11 +24,11 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
     PerlinOctaveGenerator gen;
 
     /**
-     * @param plugin - BSkyBlock plugin object
+     * @param addon - BSkyBlock object
      */
-    public ChunkGeneratorWorld(BSkyBlock plugin) {
+    public ChunkGeneratorWorld(BSkyBlock addon) {
         super();
-        this.plugin = plugin;
+        this.plugin = addon;
     }
 
     @Override
@@ -40,8 +40,12 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
         if (plugin.getSettings().getSeaHeight() != 0) {
             for (int x = 0; x < 16; x++) {
                 for (int z = 0; z < 16; z++) {
+                    if (world.getEnvironment().equals(Environment.NORMAL)) {
+                        biomeGrid.setBiome(x, z, plugin.getSettings().getDefaultBiome());
+                    }
                     for (int y = 0; y < plugin.getSettings().getSeaHeight(); y++) {
                         result.setBlock(x, y, z, Material.WATER);
+
                     }
                 }
             }
@@ -50,8 +54,6 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
         return result;
     }
 
-    // This needs to be set to return true to override minecraft's default
-    // behavior
     @Override
     public boolean canSpawn(World world, int x, int z) {
         return true;

@@ -153,7 +153,7 @@
         <dependency>
             <groupId>world.bentobox</groupId>
             <artifactId>bentobox</artifactId>
-            <version>FC-0.81</version>
+            <version>FC-0.9</version>
         </dependency>
 		
 		<dependency>
