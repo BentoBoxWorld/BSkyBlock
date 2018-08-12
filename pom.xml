@@ -80,12 +80,23 @@
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
-                <filtering>true</filtering>
+                <filtering>false</filtering>
             </resource>
             <resource>
                 <directory>src/main/resources/locales</directory>
                 <targetPath>./locales</targetPath>
                 <filtering>false</filtering>
+                <includes>
+					<include>*.yml</include>
+				</includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources/schems</directory>
+                <targetPath>./schems</targetPath>
+                <filtering>false</filtering>
+                <includes>
+					<include>*.schems</include>
+				</includes>
             </resource>
         </resources>
         <plugins>

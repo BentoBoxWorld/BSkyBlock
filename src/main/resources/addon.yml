@@ -1,4 +1,4 @@
-name: BentoBox-BSkyBlock
+name: BSkyBlock
 main: bentobox.addon.bskyblock.BSkyBlock
 version: 0.1
 
