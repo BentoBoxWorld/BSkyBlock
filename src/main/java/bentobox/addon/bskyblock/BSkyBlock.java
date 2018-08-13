@@ -63,4 +63,5 @@ public class BSkyBlock extends Addon {
     public static Addon getInstance() {
         return addon;
     }
+    
 }
