@@ -29,7 +29,7 @@ import world.bentobox.bentobox.database.objects.adapters.FlagSerializer2;
  * All the plugin settings are here
  * @author Tastybento
  */
-@StoreAt(filename="config.yml", path="addons/BentoBox-BSkyBlock") // Explicitly call out what name this should have.
+@StoreAt(filename="config.yml", path="addons/BSkyBlock") // Explicitly call out what name this should have.
 @ConfigComment("BSkyBlock Configuration [version]")
 @ConfigComment("This config file is dynamic and saved when the server is shutdown.")
 @ConfigComment("You cannot edit it while the server is running because changes will")
