@@ -1,7 +1,6 @@
 package bentobox.addon.bskyblock;
 
 import java.util.ArrayList;
-import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -36,29 +35,6 @@ import world.bentobox.bentobox.database.objects.adapters.FlagSerializer2;
 @ConfigComment("be lost! Use in-game settings GUI or edit when server is offline.")
 @ConfigComment("")
 public class Settings implements DataObject, WorldSettings {
-
-    @ConfigComment("Use economy or not. If true, an economy plugin is required. If false, no money is used or give.")
-    @ConfigComment("If there is no economy plugin present anyway, money will be automatically disabled.")
-    @ConfigEntry(path = "general.use-economy")
-    private boolean useEconomy = true;
-
-    @ConfigComment("Starting money - this is how much money new players will have as their")
-    @ConfigComment("balance at the start of an island.")
-    @ConfigEntry(path = "general.starting-money")
-    private double startingMoney = 10.0;
-
-    @ConfigComment("Allow obsidian to be scooped up with an empty bucket back into lava")
-    @ConfigComment("This only works if there is a single block of obsidian (no obsidian within 10 blocks)")
-    @ConfigComment("Recommendation is to keep this true so that newbies don't bother you or reset their")
-    @ConfigComment("island unnecessarily.")
-    @ConfigEntry(path = "general.allow-obsidian-scooping")
-    private boolean allowObsidianScooping = true;
-
-    @ConfigComment("Time in seconds that players have to confirm sensitive commands, e.g. island reset")
-    @ConfigEntry(path = "general.confirmation-time")
-    private int confirmationTime = 20;
-
-    // ---------------------------------------------
 
     /*      WORLD       */
     @ConfigComment("Friendly name for this world. Used in admin commands. Must be a single word")
@@ -130,7 +106,7 @@ public class Settings implements DataObject, WorldSettings {
     @ConfigComment("a new island for example. Options are SURVIVAL, CREATIVE, ADVENTURE, SPECTATOR")
     @ConfigEntry(path = "world.default-game-mode")
     private GameMode defaultGameMode = GameMode.SURVIVAL;
-    
+
     @ConfigComment("The default biome for the overworld")
     @ConfigEntry(path = "world.default-biome")
     private Biome defaultBiome = Biome.PLAINS;
@@ -196,7 +172,7 @@ public class Settings implements DataObject, WorldSettings {
     @Adapter(FlagSerializer2.class)
     private Map<Flag, Integer> defaultIslandSettings = new HashMap<>();
 
-    @ConfigComment("These are the settings visible to users.")
+    @ConfigComment("These are the settings visible to users. (Not implemented yet)")
     @ConfigEntry(path = "world.visible-settings")
     private List<String> visibleSettings = new ArrayList<>();
 
@@ -207,12 +183,6 @@ public class Settings implements DataObject, WorldSettings {
     // ---------------------------------------------
 
     /*      ISLAND      */
-    // Entities
-    @ConfigEntry(path = "island.limits.entities")
-    private Map<EntityType, Integer> entityLimits = new EnumMap<>(EntityType.class);
-    @ConfigEntry(path = "island.limits.tile-entities")
-    private Map<String, Integer> tileEntityLimits = new HashMap<>();
-
     @ConfigComment("Default max team size")
     @ConfigComment("Use this permission to set for specific user groups: askyblock.team.maxsize.<number>")
     @ConfigComment("Permission size cannot be less than the default below. ")
@@ -299,7 +269,6 @@ public class Settings implements DataObject, WorldSettings {
     private boolean teamJoinDeathReset = true;
 
     // ---------------------------------------------
-
     /*      PROTECTION      */
     private int togglePvPCooldown;
 
@@ -325,34 +294,6 @@ public class Settings implements DataObject, WorldSettings {
     private long resetEpoch = 0;
 
     private String uniqueId = "config";
-
-    /**
-     * @return the useEconomy
-     */
-    public boolean isUseEconomy() {
-        return useEconomy;
-    }
-
-    /**
-     * @return the startingMoney
-     */
-    public double getStartingMoney() {
-        return startingMoney;
-    }
-
-    /**
-     * @return the allowObsidianScooping
-     */
-    public boolean isAllowObsidianScooping() {
-        return allowObsidianScooping;
-    }
-
-    /**
-     * @return the confirmationTime
-     */
-    public int getConfirmationTime() {
-        return confirmationTime;
-    }
 
     /**
      * @return the friendlyName
@@ -578,22 +519,6 @@ public class Settings implements DataObject, WorldSettings {
     }
 
     /**
-     * @return the entityLimits
-     */
-    @Override
-    public Map<EntityType, Integer> getEntityLimits() {
-        return entityLimits;
-    }
-
-    /**
-     * @return the tileEntityLimits
-     */
-    @Override
-    public Map<String, Integer> getTileEntityLimits() {
-        return tileEntityLimits;
-    }
-
-    /**
      * @return the maxTeamSize
      */
     @Override
@@ -760,34 +685,6 @@ public class Settings implements DataObject, WorldSettings {
     @Override
     public String getUniqueId() {
         return uniqueId;
-    }
-
-    /**
-     * @param useEconomy the useEconomy to set
-     */
-    public void setUseEconomy(boolean useEconomy) {
-        this.useEconomy = useEconomy;
-    }
-
-    /**
-     * @param startingMoney the startingMoney to set
-     */
-    public void setStartingMoney(double startingMoney) {
-        this.startingMoney = startingMoney;
-    }
-
-    /**
-     * @param allowObsidianScooping the allowObsidianScooping to set
-     */
-    public void setAllowObsidianScooping(boolean allowObsidianScooping) {
-        this.allowObsidianScooping = allowObsidianScooping;
-    }
-
-    /**
-     * @param confirmationTime the confirmationTime to set
-     */
-    public void setConfirmationTime(int confirmationTime) {
-        this.confirmationTime = confirmationTime;
     }
 
     /**
@@ -985,20 +882,6 @@ public class Settings implements DataObject, WorldSettings {
      */
     public void setVisitorBannedCommands(List<String> visitorBannedCommands) {
         this.visitorBannedCommands = visitorBannedCommands;
-    }
-
-    /**
-     * @param entityLimits the entityLimits to set
-     */
-    public void setEntityLimits(Map<EntityType, Integer> entityLimits) {
-        this.entityLimits = entityLimits;
-    }
-
-    /**
-     * @param tileEntityLimits the tileEntityLimits to set
-     */
-    public void setTileEntityLimits(Map<String, Integer> tileEntityLimits) {
-        this.tileEntityLimits = tileEntityLimits;
     }
 
     /**

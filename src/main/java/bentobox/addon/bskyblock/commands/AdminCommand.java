@@ -6,6 +6,7 @@ import bentobox.addon.bskyblock.BSkyBlock;
 import world.bentobox.bentobox.api.commands.CompositeCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminClearResetsAllCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminClearResetsCommand;
+import world.bentobox.bentobox.api.commands.admin.AdminDeleteCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminGetRankCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminInfoCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminRegisterCommand;
@@ -58,6 +59,8 @@ public class AdminCommand extends CompositeCommand {
         // Resets
         new AdminClearResetsCommand(this);
         new AdminClearResetsAllCommand(this);
+        // Delete
+        new AdminDeleteCommand(this);
     }
 
     @Override
