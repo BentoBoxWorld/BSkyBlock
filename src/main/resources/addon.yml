@@ -50,6 +50,9 @@ permissions:
   bskyblock.island.team:
     description: Let a player use team commands
     default: true
+  bskyblock.settings.*:
+    description: Allow use of settings on island
+    default: true
   bskyblock.mod.info:
     description: Let a moderator see info on a player
     default: op
