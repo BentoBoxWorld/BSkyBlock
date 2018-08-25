@@ -83,7 +83,7 @@ world:
   # World flags. These are boolean settings for various flags for this world
   flags:
     CREEPER_DAMAGE: true
-    PISTON_PUSH: true
+    PISTON_PUSH: false
     ISLAND_RESPAWN: true
     CREEPER_GRIEFING: false
     ENDERMAN_GRIEFING: true
@@ -97,53 +97,53 @@ world:
     ITEM_FRAME_DAMAGE: false
   # These are the default protection settings for new islands.
   # The value is the minimum island rank required allowed to do the action
-  # Ranks are: Visitor = 0, Member = 900, Owner = 1000
+  # Ranks are: Visitor = 0, Member = 500, Owner = 1000
   default-island-flags:
-    HURT_ANIMALS: 900
-    COLLECT_WATER: 900
-    REDSTONE: 900
-    BUTTON: 900
-    BUCKET: 900
+    HURT_ANIMALS: 500
+    COLLECT_WATER: 500
+    REDSTONE: 500
+    BUTTON: 500
+    BUCKET: 500
     LOCK: 0
-    FIRE_EXTINGUISH: 900
-    ENDER_PEARL: 900
-    DOOR: 900
-    BEACON: 900
-    TRAPDOOR: 900
-    PRESSURE_PLATE: 900
-    FURNACE: 900
-    PLACE_BLOCKS: 900
-    ANVIL: 900
-    FIRE: 900
-    CRAFTING: 900
-    BREEDING: 900
-    TNT: 900
-    ENCHANTING: 900
-    SHEARING: 900
-    HURT_VILLAGERS: 900
-    BED: 900
-    SPAWN_EGGS: 900
-    COLLECT_LAVA: 900
-    MILKING: 900
-    LEVER: 900
-    RIDING: 900
-    HURT_MONSTERS: 900
-    ARMOR_STAND: 900
-    GATE: 900
-    TRADING: 900
-    EGGS: 900
-    PORTAL: 900
-    ITEM_DROP: 900
-    CHEST: 900
-    NOTE_BLOCK: 900
-    LEASH: 900
-    BREAK_BLOCKS: 900
-    MOUNT_INVENTORY: 900
-    CHORUS_FRUIT: 900
-    CROP_TRAMPLE: 900
-    JUKEBOX: 900
-    ITEM_PICKUP: 900
-    BREWING: 900
+    FIRE_EXTINGUISH: 500
+    ENDER_PEARL: 500
+    DOOR: 500
+    BEACON: 500
+    TRAPDOOR: 500
+    PRESSURE_PLATE: 0
+    FURNACE: 500
+    PLACE_BLOCKS: 500
+    ANVIL: 500
+    FIRE: 500
+    CRAFTING: 0
+    BREEDING: 500
+    TNT: 500
+    ENCHANTING: 0
+    SHEARING: 500
+    HURT_VILLAGERS: 500
+    BED: 500
+    SPAWN_EGGS: 500
+    COLLECT_LAVA: 500
+    MILKING: 0
+    LEVER: 500
+    RIDING: 500
+    HURT_MONSTERS: 0
+    ARMOR_STAND: 500
+    GATE: 0
+    TRADING: 0
+    EGGS: 500
+    PORTAL: 0
+    ITEM_DROP: 0
+    CHEST: 500
+    NOTE_BLOCK: 0
+    LEASH: 500
+    BREAK_BLOCKS: 500
+    MOUNT_INVENTORY: 500
+    CHORUS_FRUIT: 500
+    CROP_TRAMPLE: 500
+    JUKEBOX: 500
+    ITEM_PICKUP: 0
+    BREWING: 500
   # These are the default settings for new islands
   default-island-settings:
     PVP_END: false
