@@ -19,7 +19,7 @@ import bentobox.addon.bskyblock.BSkyBlock;
  */
 public class ChunkGeneratorWorld extends ChunkGenerator {
 
-    BSkyBlock plugin;
+    BSkyBlock addon;
     Random rand = new Random();
     PerlinOctaveGenerator gen;
 
@@ -28,7 +28,7 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
      */
     public ChunkGeneratorWorld(BSkyBlock addon) {
         super();
-        this.plugin = addon;
+        this.addon = addon;
     }
 
     @Override
@@ -37,13 +37,13 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
             return generateNetherChunks(world, random, chunkX, chunkZ, biomeGrid);
         }
         ChunkData result = createChunkData(world);
-        if (plugin.getSettings().getSeaHeight() != 0) {
+        if (addon.getSettings().getSeaHeight() != 0) {
             for (int x = 0; x < 16; x++) {
                 for (int z = 0; z < 16; z++) {
                     if (world.getEnvironment().equals(Environment.NORMAL)) {
-                        biomeGrid.setBiome(x, z, plugin.getSettings().getDefaultBiome());
+                        biomeGrid.setBiome(x, z, addon.getSettings().getDefaultBiome());
                     }
-                    for (int y = 0; y < plugin.getSettings().getSeaHeight(); y++) {
+                    for (int y = 0; y < addon.getSettings().getSeaHeight(); y++) {
                         result.setBlock(x, y, z, Material.WATER);
 
                     }
@@ -75,7 +75,7 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
         if (!world.getEnvironment().equals(Environment.NETHER)) {
             return result;
         }
-        if (plugin.getSettings().isNetherRoof()) {
+        if (addon.getSettings().isNetherRoof()) {
             // Make the roof - common across the world
             for (int x = 0; x < 16; x++) {
                 for (int z = 0; z < 16; z++) {
