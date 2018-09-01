@@ -50,6 +50,12 @@ permissions:
   bskyblock.island.team:
     description: Let a player use team commands
     default: true
+  bskyblock.island.team.trust:
+    description: Let a player use team trust commands
+    default: true
+  bskyblock.island.team.coop:
+    description: Let a player use team coop commands
+    default: true
   bskyblock.settings.*:
     description: Allow use of settings on island
     default: true
