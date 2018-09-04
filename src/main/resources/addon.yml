@@ -1,6 +1,6 @@
 name: BSkyBlock
 main: bentobox.addon.bskyblock.BSkyBlock
-version: 0.1
+version: ${version}
 
 authors: tastybento
 
