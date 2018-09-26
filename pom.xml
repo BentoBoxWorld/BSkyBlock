@@ -100,7 +100,7 @@
 				<targetPath>./schems</targetPath>
 				<filtering>false</filtering>
 				<includes>
-					<include>*.schems</include>
+					<include>*.schem</include>
 				</includes>
 			</resource>
 		</resources>
