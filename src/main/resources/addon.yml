@@ -35,7 +35,7 @@ permissions:
   bskyblock.island.settings:
     description: Player can see server settings
     default: true
-  bskyblock.island.lang:
+  bskyblock.island.language:
     description: Player can select a language
     default: true
   bskyblock.island.name:
