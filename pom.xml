@@ -19,10 +19,26 @@
 		<url>https://github.com/BentoBoxWorld/addon-bskyblock</url>
 	</scm>
 
+	<ciManagement>
+		<system>jenkins</system>
+		<url>http://ci.codemc.org/job/BentoBoxWorld/job/bentobox</url>
+	</ciManagement>
+
 	<issueManagement>
 		<system>GitHub</system>
 		<url>https://github.com/BentoBoxWorld/addon-bskyblock/issues</url>
 	</issueManagement>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>codemc-snapshots</id>
+			<url>https://repo.codemc.org/repository/maven-snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>codemc-releases</id>
+			<url>https://repo.codemc.org/repository/maven-releases</url>
+		</repository>
+	</distributionManagement>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
