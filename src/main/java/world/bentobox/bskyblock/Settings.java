@@ -1,4 +1,4 @@
-package bentobox.addon.bskyblock;
+package world.bentobox.bskyblock;
 
 import java.util.ArrayList;
 import java.util.HashMap;

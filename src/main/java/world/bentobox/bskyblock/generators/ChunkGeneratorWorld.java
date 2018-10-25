@@ -1,4 +1,4 @@
-package bentobox.addon.bskyblock.generators;
+package world.bentobox.bskyblock.generators;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,7 +11,7 @@ import org.bukkit.generator.BlockPopulator;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.util.noise.PerlinOctaveGenerator;
 
-import bentobox.addon.bskyblock.BSkyBlock;
+import world.bentobox.bskyblock.BSkyBlock;
 
 /**
  * @author tastybento

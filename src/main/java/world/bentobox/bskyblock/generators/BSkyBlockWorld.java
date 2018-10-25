@@ -1,11 +1,11 @@
-package bentobox.addon.bskyblock.generators;
+package world.bentobox.bskyblock.generators;
 
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
 import org.bukkit.WorldType;
 
-import bentobox.addon.bskyblock.BSkyBlock;
+import world.bentobox.bskyblock.BSkyBlock;
 import world.bentobox.bentobox.util.Util;
 
 /**

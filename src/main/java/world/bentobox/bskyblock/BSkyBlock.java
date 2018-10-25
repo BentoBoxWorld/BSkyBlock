@@ -1,10 +1,10 @@
-package bentobox.addon.bskyblock;
+package world.bentobox.bskyblock;
 
 import org.bukkit.World;
 
-import bentobox.addon.bskyblock.commands.AdminCommand;
-import bentobox.addon.bskyblock.commands.IslandCommand;
-import bentobox.addon.bskyblock.generators.BSkyBlockWorld;
+import world.bentobox.bskyblock.commands.AdminCommand;
+import world.bentobox.bskyblock.commands.IslandCommand;
+import world.bentobox.bskyblock.generators.BSkyBlockWorld;
 import world.bentobox.bentobox.api.addons.Addon;
 import world.bentobox.bentobox.api.configuration.Config;
 

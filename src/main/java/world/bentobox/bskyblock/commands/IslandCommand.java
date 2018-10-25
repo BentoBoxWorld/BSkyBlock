@@ -1,9 +1,9 @@
-package bentobox.addon.bskyblock.commands;
+package world.bentobox.bskyblock.commands;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import bentobox.addon.bskyblock.BSkyBlock;
+import world.bentobox.bskyblock.BSkyBlock;
 import world.bentobox.bentobox.api.commands.CompositeCommand;
 import world.bentobox.bentobox.api.commands.island.IslandBanCommand;
 import world.bentobox.bentobox.api.commands.island.IslandBanlistCommand;

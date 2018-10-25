@@ -1,4 +1,4 @@
-package bentobox.addon.bskyblock.commands;
+package world.bentobox.bskyblock.commands;
 
 import java.util.List;
 
