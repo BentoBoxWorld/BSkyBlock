@@ -1,4 +1,4 @@
-# BSkyBlock Configuration FC-1
+# BSkyBlock Configuration 0.4.0-SNAPSHOT
 # This config file is dynamic and saved when the server is shutdown.
 # You cannot edit it while the server is running because changes will
 # be lost! Use in-game settings GUI or edit when server is offline.
@@ -76,10 +76,10 @@ world:
     dragon-spawn: false
   # Mob white list - these mobs will NOT be removed when logging in or doing /island
   remove-mobs-whitelist:
-  - PIG_ZOMBIE
   - ENDERMAN
-  - WITHER
   - ZOMBIE_VILLAGER
+  - WITHER
+  - PIG_ZOMBIE
   # World flags. These are boolean settings for various flags for this world
   flags:
     CREEPER_DAMAGE: true
@@ -97,15 +97,15 @@ world:
     ITEM_FRAME_DAMAGE: false
   # These are the default protection settings for new islands.
   # The value is the minimum island rank required allowed to do the action
-  # Ranks are: Visitor = 0, Member = 500, Owner = 1000
+  # Ranks are: Visitor = 0, Member = 900, Owner = 1000
   default-island-flags:
     HURT_ANIMALS: 500
     COLLECT_WATER: 500
     REDSTONE: 500
-    BUTTON: 500
     BUCKET: 500
-    LOCK: 0
+    BUTTON: 500
     FIRE_EXTINGUISH: 500
+    LOCK: 0
     ENDER_PEARL: 500
     DOOR: 500
     BEACON: 500
@@ -118,11 +118,11 @@ world:
     CRAFTING: 0
     BREEDING: 500
     TNT: 500
+    HURT_VILLAGERS: 500
     ENCHANTING: 0
     SHEARING: 500
-    HURT_VILLAGERS: 500
-    BED: 500
     SPAWN_EGGS: 500
+    BED: 500
     COLLECT_LAVA: 500
     MILKING: 0
     LEVER: 500
@@ -140,15 +140,15 @@ world:
     BREAK_BLOCKS: 500
     MOUNT_INVENTORY: 500
     CHORUS_FRUIT: 500
-    CROP_TRAMPLE: 500
     JUKEBOX: 500
     ITEM_PICKUP: 0
+    CROP_TRAMPLE: 500
     BREWING: 500
   # These are the default settings for new islands
   default-island-settings:
     PVP_END: false
-    ANIMAL_SPAWN: true
     PVP_NETHER: false
+    ANIMAL_SPAWN: true
     MONSTER_SPAWN: true
     FIRE_SPREAD: true
     PVP_OVERWORLD: false
@@ -210,7 +210,16 @@ island:
     reset: true
   # Have player's respawn on their island if they die
   respawn-on-island: false
+  sethome:
+    nether:
+      allow: true
+      require-confirmation: true
+    the-end:
+      allow: true
+      require-confirmation: true
   deaths:
+    # Whether deaths are counted or not.
+    counted: true
     # Maximum number of deaths to count. The death count can be used by add-ons.
     max: 10
     sum-team: false
