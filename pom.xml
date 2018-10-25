@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>us.tastybento</groupId>
+	<groupId>world.bentobox</groupId>
 	<artifactId>BSkyBlock</artifactId>
 	<version>0.3.1-SNAPSHOT</version>
 
