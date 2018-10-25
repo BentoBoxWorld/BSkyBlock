@@ -256,7 +256,24 @@ public class Settings implements DataObject, WorldSettings {
     @ConfigEntry(path = "island.respawn-on-island")
     private boolean respawnOnIsland = true;
 
+    // Sethome
+    @ConfigEntry(path = "island.sethome.nether.allow")
+    private boolean allowSetHomeInNether = true;
+
+    @ConfigEntry(path = "island.sethome.nether.require-confirmation")
+    private boolean requireConfirmationToSetHomeInNether = true;
+
+    @ConfigEntry(path = "island.sethome.the-end.allow")
+    private boolean allowSetHomeInTheEnd = true;
+
+    @ConfigEntry(path = "island.sethome.the-end.require-confirmation")
+    private boolean requireConfirmationToSetHomeInTheEnd = true;
+
     // Deaths
+    @ConfigComment("Whether deaths are counted or not.")
+    @ConfigEntry(path = "island.deaths.counted")
+    private boolean deathsCounted = true;
+
     @ConfigComment("Maximum number of deaths to count. The death count can be used by add-ons.")
     @ConfigEntry(path = "island.deaths.max")
     private int deathsMax = 10;
@@ -619,6 +636,46 @@ public class Settings implements DataObject, WorldSettings {
     }
 
     /**
+     * @return the isDeathsCounted
+     */
+    @Override
+    public boolean isDeathsCounted() {
+        return deathsCounted;
+    }
+
+    /**
+     * @return the allowSetHomeInNether
+     */
+    @Override
+    public boolean isAllowSetHomeInNether() {
+        return allowSetHomeInNether;
+    }
+
+    /**
+     * @return the allowSetHomeInTheEnd
+     */
+    @Override
+    public boolean isAllowSetHomeInTheEnd() {
+        return allowSetHomeInTheEnd;
+    }
+
+    /**
+     * @return the requireConfirmationToSetHomeInNether
+     */
+    @Override
+    public boolean isRequireConfirmationToSetHomeInNether() {
+        return requireConfirmationToSetHomeInNether;
+    }
+
+    /**
+     * @return the requireConfirmationToSetHomeInTheEnd
+     */
+    @Override
+    public boolean isRequireConfirmationToSetHomeInTheEnd() {
+        return requireConfirmationToSetHomeInTheEnd;
+    }
+
+    /**
      * @return the deathsMax
      */
     @Override
@@ -976,6 +1033,13 @@ public class Settings implements DataObject, WorldSettings {
     }
 
     /**
+     * @param deathsCounted the deathsCounted to set
+     */
+    public void setDeathsCounted(boolean deathsCounted) {
+        this.deathsCounted = deathsCounted;
+    }
+
+    /**
      * @param deathsMax the deathsMax to set
      */
     public void setDeathsMax(int deathsMax) {
@@ -1022,6 +1086,34 @@ public class Settings implements DataObject, WorldSettings {
      */
     public void setClosePanelOnClickOutside(boolean closePanelOnClickOutside) {
         this.closePanelOnClickOutside = closePanelOnClickOutside;
+    }
+
+    /**
+     * @param allowSetHomeInNether the allowSetHomeInNether to set
+     */
+    public void setAllowSetHomeInNether(boolean allowSetHomeInNether) {
+        this.allowSetHomeInNether = allowSetHomeInNether;
+    }
+
+    /**
+     * @param allowSetHomeInTheEnd the allowSetHomeInTheEnd to set
+     */
+    public void setAllowSetHomeInTheEnd(boolean allowSetHomeInTheEnd) {
+        this.allowSetHomeInTheEnd = allowSetHomeInTheEnd;
+    }
+
+    /**
+     * @param requireConfirmationToSetHomeInNether the requireConfirmationToSetHomeInNether to set
+     */
+    public void setRequireConfirmationToSetHomeInNether(boolean requireConfirmationToSetHomeInNether) {
+        this.requireConfirmationToSetHomeInNether = requireConfirmationToSetHomeInNether;
+    }
+
+    /**
+     * @param requireConfirmationToSetHomeInTheEnd the requireConfirmationToSetHomeInTheEnd to set
+     */
+    public void setRequireConfirmationToSetHomeInTheEnd(boolean requireConfirmationToSetHomeInTheEnd) {
+        this.requireConfirmationToSetHomeInTheEnd = requireConfirmationToSetHomeInTheEnd;
     }
 
     /**

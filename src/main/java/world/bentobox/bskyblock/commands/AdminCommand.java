@@ -2,6 +2,7 @@ package world.bentobox.bskyblock.commands;
 
 import java.util.List;
 
+import world.bentobox.bentobox.api.commands.admin.AdminWhyCommand;
 import world.bentobox.bskyblock.BSkyBlock;
 import world.bentobox.bentobox.api.commands.CompositeCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminClearResetsAllCommand;
@@ -61,6 +62,8 @@ public class AdminCommand extends CompositeCommand {
         new AdminClearResetsAllCommand(this);
         // Delete
         new AdminDeleteCommand(this);
+        // Why
+        new AdminWhyCommand(this);
     }
 
     @Override
