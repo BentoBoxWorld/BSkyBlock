@@ -32,7 +32,7 @@ public class BSkyBlock extends Addon {
     }
 
     @Override
-    public void onEnable(){
+    public void onEnable() {
         // Register commands
         new IslandCommand(this);
         new AdminCommand(this);

@@ -1,11 +1,15 @@
 package world.bentobox.bskyblock.generators;
 
+import java.io.File;
+
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
 import org.bukkit.WorldType;
 
 import world.bentobox.bskyblock.BSkyBlock;
+import world.bentobox.bentobox.BentoBox;
+import world.bentobox.bentobox.managers.SchemsManager;
 import world.bentobox.bentobox.util.Util;
 
 /**
@@ -59,9 +63,18 @@ public class BSkyBlockWorld {
                         .environment(World.Environment.THE_END).createWorld();
             }
         }
-
+        
+        // Load default schematics
+        addon.getPlugin().getSchematics().get(BentoBox.DefaultSchemsName).loadIslands(islandWorld, BentoBox.DefaultSchemsName);
         // Load schematics
-        addon.getPlugin().getSchemsManager().loadIslands(islandWorld);
+        File schems = new File(BentoBox.getInstance().getIWM().getDataFolder(islandWorld), "schems");
+        for(File subFolder : schems.listFiles()) {
+        	if(subFolder.isDirectory() && !subFolder.getName().equalsIgnoreCase(BentoBox.DefaultSchemsName)) {
+        		SchemsManager schemz = new SchemsManager(BentoBox.getInstance());
+        		schemz.loadIslands(islandWorld, subFolder.getName());
+        		addon.getPlugin().getSchematics().put(subFolder.getName(), schemz);
+        	}
+        }
 
     }
 
