@@ -1,4 +1,4 @@
-# BSkyBlock Configuration FC-1
+# BSkyBlock Configuration 0.5.0-SNAPSHOT
 # This config file is dynamic and saved when the server is shutdown.
 # You cannot edit it while the server is running because changes will
 # be lost! Use in-game settings GUI or edit when server is offline.
@@ -7,7 +7,7 @@ world:
   # Friendly name for this world. Used in admin commands. Must be a single word
   friendly-name: BSkyBlock
   # Name of the world - if it does not exist then it will be generated.
-  # It acts like a prefix for nether and end (e.g. BSkyBlock, BSkyBlock_nether, BSkyBlock_end)
+  # It acts like a prefix for nether and end (e.g. BSkyBlock-world, BSkyBlock-world_nether, BSkyBlock-world_end)
   world-name: BSkyBlock_world
   # World difficulty setting - PEACEFUL, EASY, NORMAL, HARD
   # Other plugins may override this setting
@@ -18,7 +18,7 @@ world:
   # This value cannot be changed mid-game and the plugin will not start if it is different.
   distance-between-islands: 64
   # Default protection range radius in blocks. Cannot be larger than distance.
-  # Admins can change protection sizes for players individually using /bsadmin setrange
+  # Admins can change protection sizes for players individually using /bsbadmin range set <player> <new range>
   # or set this permission: bskyblock.island.range.<number>
   protection-range: 50
   # Start islands at these coordinates. This is where new islands will start in the
@@ -31,17 +31,18 @@ world:
   offset-x: 0
   offset-z: 0
   # Island height - Lowest is 5.
-  # It is the y coordinate of the bedrock block in the schem
+  # It is the y coordinate of the bedrock block in the schem.
   island-height: 120
-  # Use your own world generator for this world. In this case, the plugin will not generate
-  # anything.
+  # Use your own world generator for this world.
+  # In this case, the plugin will not generate anything.
+  # /!\ This feature is experimental and might not work as expected or might not work at all.
   use-own-generator: false
   # Sea height (don't changes this mid-game unless you delete the world)
   # Minimum is 0, which means you are playing Skyblock!
   # If sea height is less than about 10, then players will drop right through it
   # if it exists. Makes for an interesting variation on skyblock.
   sea-height: 0
-  # Maximum number of islands in the world. Set to 0 for unlimited. 
+  # Maximum number of islands in the world. Set to -1 for unlimited.
   # If the number of islands is greater than this number, no new island will be created.
   max-islands: 0
   # The default game mode for this world. Players will be set to this mode when they create
@@ -52,7 +53,7 @@ world:
   nether:
     # Generate Nether - if this is false, the nether world will not be made and access to
     # the nether will not occur. Other plugins may still enable portal usage.
-    # Note: Some challenges will not be possible if there is no nether.
+    # Note: Some default challenges will not be possible if there is no nether.
     # Note that with a standard nether all players arrive at the same portal and entering a
     # portal will return them back to their islands.
     generate: true
@@ -73,13 +74,14 @@ world:
   end:
     generate: true
     islands: true
+    # /!\ This feature is experimental and might not work as expected or might not work at all.
     dragon-spawn: false
   # Mob white list - these mobs will NOT be removed when logging in or doing /island
   remove-mobs-whitelist:
   - PIG_ZOMBIE
-  - ENDERMAN
   - WITHER
   - ZOMBIE_VILLAGER
+  - ENDERMAN
   # World flags. These are boolean settings for various flags for this world
   flags:
     CREEPER_DAMAGE: true
@@ -97,32 +99,32 @@ world:
     ITEM_FRAME_DAMAGE: false
   # These are the default protection settings for new islands.
   # The value is the minimum island rank required allowed to do the action
-  # Ranks are: Visitor = 0, Member = 500, Owner = 1000
+  # Ranks are: Visitor = 0, Member = 900, Owner = 1000
   default-island-flags:
     HURT_ANIMALS: 500
     COLLECT_WATER: 500
     REDSTONE: 500
-    BUTTON: 500
     BUCKET: 500
-    LOCK: 0
+    BUTTON: 500
     FIRE_EXTINGUISH: 500
+    LOCK: 0
     ENDER_PEARL: 500
-    DOOR: 500
     BEACON: 500
+    DOOR: 500
     TRAPDOOR: 500
-    PRESSURE_PLATE: 0
     FURNACE: 500
+    PRESSURE_PLATE: 0
     PLACE_BLOCKS: 500
     ANVIL: 500
     FIRE: 500
     CRAFTING: 0
     BREEDING: 500
     TNT: 500
-    ENCHANTING: 0
-    SHEARING: 500
     HURT_VILLAGERS: 500
-    BED: 500
+    SHEARING: 500
+    ENCHANTING: 0
     SPAWN_EGGS: 500
+    BED: 500
     COLLECT_LAVA: 500
     MILKING: 0
     LEVER: 500
@@ -132,16 +134,16 @@ world:
     GATE: 0
     TRADING: 0
     EGGS: 500
-    PORTAL: 0
     ITEM_DROP: 0
+    PORTAL: 0
     CHEST: 500
     NOTE_BLOCK: 0
     LEASH: 500
     BREAK_BLOCKS: 500
     MOUNT_INVENTORY: 500
     CHORUS_FRUIT: 500
-    CROP_TRAMPLE: 500
     JUKEBOX: 500
+    CROP_TRAMPLE: 500
     ITEM_PICKUP: 0
     BREWING: 500
   # These are the default settings for new islands
@@ -153,6 +155,7 @@ world:
     FIRE_SPREAD: true
     PVP_OVERWORLD: false
   # These are the settings visible to users. (Not implemented yet)
+  # /!\ This feature is experimental and might not work as expected or might not work at all.
   visible-settings: []
   # Visitor banned commands - Visitors to islands cannot use these commands in this world
   visitor-banned-commands:
@@ -160,15 +163,13 @@ world:
   - spawnmob
 island:
   # Default max team size
-  # Use this permission to set for specific user groups: askyblock.team.maxsize.<number>
   # Permission size cannot be less than the default below. 
   max-team-size: 4
   # Default maximum number of homes a player can have. Min = 1
-  # Accessed via sethome <number> or go <number>
-  # Use this permission to set for specific user groups: askyblock.island.maxhomes.<number>
+  # Accessed via /is sethome <number> or /is go <number>
   max-homes: 1
   reset:
-    # How many resets a player is allowed (override with /asadmin clearreset <player>)
+    # How many resets a player is allowed (override with /bsbadmin clearresets <player>)
     # Value of -1 means unlimited, 0 means hardcore - no resets.
     # Example, 2 resets means they get 2 resets or 3 islands lifetime
     reset-limit: -1
@@ -210,13 +211,21 @@ island:
     reset: true
   # Have player's respawn on their island if they die
   respawn-on-island: false
+  sethome:
+    nether:
+      allow: true
+      require-confirmation: true
+    the-end:
+      allow: true
+      require-confirmation: true
   deaths:
+    # Whether deaths are counted or not.
+    counted: true
     # Maximum number of deaths to count. The death count can be used by add-ons.
     max: 10
     sum-team: false
     # When a player joins a team, reset their death count
     team-join-reset: true
-togglePvPCooldown: 0
 protection:
   # Geo restrict mobs.
   # Mobs that exit the island space where they were spawned will be removed.
@@ -252,6 +261,7 @@ protection:
   - CRAMMING
   - VOID
 panel:
+  # Whether GUIs should be closed when the player clicks outside.
   close-on-click-outside: true
 do-not-edit-these-settings:
   # These settings should not be edited

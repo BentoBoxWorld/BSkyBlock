@@ -42,7 +42,7 @@ public class Settings implements DataObject, WorldSettings {
     private String friendlyName = "BSkyBlock";
 
     @ConfigComment("Name of the world - if it does not exist then it will be generated.")
-    @ConfigComment("It acts like a prefix for nether and end (e.g. BSkyBlock, BSkyBlock_nether, BSkyBlock_end)")
+    @ConfigComment("It acts like a prefix for nether and end (e.g. BSkyBlock-world, BSkyBlock-world_nether, BSkyBlock-world_end)")
     @ConfigEntry(path = "world.world-name")
     private String worldName = "BSkyBlock-world";
 
@@ -55,11 +55,11 @@ public class Settings implements DataObject, WorldSettings {
     @ConfigComment("Will be rounded up to the nearest 16 blocks.")
     @ConfigComment("It is the same for every dimension : Overworld, Nether and End.")
     @ConfigComment("This value cannot be changed mid-game and the plugin will not start if it is different.")
-    @ConfigEntry(path = "world.distance-between-islands")
+    @ConfigEntry(path = "world.distance-between-islands", needsReset = true)
     private int islandDistance = 192;
 
     @ConfigComment("Default protection range radius in blocks. Cannot be larger than distance.")
-    @ConfigComment("Admins can change protection sizes for players individually using /bsadmin setrange")
+    @ConfigComment("Admins can change protection sizes for players individually using /bsbadmin range set <player> <new range>")
     @ConfigComment("or set this permission: bskyblock.island.range.<number>")
     @ConfigEntry(path = "world.protection-range")
     private int islandProtectionRange = 100;
@@ -81,23 +81,23 @@ public class Settings implements DataObject, WorldSettings {
     private int islandZOffset;
 
     @ConfigComment("Island height - Lowest is 5.")
-    @ConfigComment("It is the y coordinate of the bedrock block in the schem")
+    @ConfigComment("It is the y coordinate of the bedrock block in the schem.")
     @ConfigEntry(path = "world.island-height")
     private int islandHeight = 100;
 
-    @ConfigComment("Use your own world generator for this world. In this case, the plugin will not generate")
-    @ConfigComment("anything.")
-    @ConfigEntry(path = "world.use-own-generator")
+    @ConfigComment("Use your own world generator for this world.")
+    @ConfigComment("In this case, the plugin will not generate anything.")
+    @ConfigEntry(path = "world.use-own-generator", experimental = true)
     private boolean useOwnGenerator;
 
     @ConfigComment("Sea height (don't changes this mid-game unless you delete the world)")
     @ConfigComment("Minimum is 0, which means you are playing Skyblock!")
     @ConfigComment("If sea height is less than about 10, then players will drop right through it")
     @ConfigComment("if it exists. Makes for an interesting variation on skyblock.")
-    @ConfigEntry(path = "world.sea-height")
+    @ConfigEntry(path = "world.sea-height", needsReset = true)
     private int seaHeight = 0;
 
-    @ConfigComment("Maximum number of islands in the world. Set to 0 for unlimited. ")
+    @ConfigComment("Maximum number of islands in the world. Set to -1 for unlimited.")
     @ConfigComment("If the number of islands is greater than this number, no new island will be created.")
     @ConfigEntry(path = "world.max-islands")
     private int maxIslands = -1;
@@ -114,7 +114,7 @@ public class Settings implements DataObject, WorldSettings {
     // Nether
     @ConfigComment("Generate Nether - if this is false, the nether world will not be made and access to")
     @ConfigComment("the nether will not occur. Other plugins may still enable portal usage.")
-    @ConfigComment("Note: Some challenges will not be possible if there is no nether.")
+    @ConfigComment("Note: Some default challenges will not be possible if there is no nether.")
     @ConfigComment("Note that with a standard nether all players arrive at the same portal and entering a")
     @ConfigComment("portal will return them back to their islands.")
     @ConfigEntry(path = "world.nether.generate")
@@ -149,7 +149,7 @@ public class Settings implements DataObject, WorldSettings {
     @ConfigEntry(path = "world.end.islands", needsReset = true)
     private boolean endIslands = true;
 
-    @ConfigEntry(path = "world.end.dragon-spawn")
+    @ConfigEntry(path = "world.end.dragon-spawn", experimental = true)
     private boolean dragonSpawn = false;
 
     @ConfigComment("Mob white list - these mobs will NOT be removed when logging in or doing /island")
@@ -173,7 +173,7 @@ public class Settings implements DataObject, WorldSettings {
     private Map<Flag, Integer> defaultIslandSettings = new HashMap<>();
 
     @ConfigComment("These are the settings visible to users. (Not implemented yet)")
-    @ConfigEntry(path = "world.visible-settings")
+    @ConfigEntry(path = "world.visible-settings", experimental = true)
     private List<String> visibleSettings = new ArrayList<>();
 
     @ConfigComment("Visitor banned commands - Visitors to islands cannot use these commands in this world")
@@ -184,18 +184,17 @@ public class Settings implements DataObject, WorldSettings {
 
     /*      ISLAND      */
     @ConfigComment("Default max team size")
-    @ConfigComment("Use this permission to set for specific user groups: askyblock.team.maxsize.<number>")
     @ConfigComment("Permission size cannot be less than the default below. ")
     @ConfigEntry(path = "island.max-team-size")
     private int maxTeamSize = 4;
+
     @ConfigComment("Default maximum number of homes a player can have. Min = 1")
-    @ConfigComment("Accessed via sethome <number> or go <number>")
-    @ConfigComment("Use this permission to set for specific user groups: askyblock.island.maxhomes.<number>")
+    @ConfigComment("Accessed via /is sethome <number> or /is go <number>")
     @ConfigEntry(path = "island.max-homes")
     private int maxHomes = 5;
 
     // Reset
-    @ConfigComment("How many resets a player is allowed (override with /asadmin clearreset <player>)")
+    @ConfigComment("How many resets a player is allowed (override with /bsbadmin clearresets <player>)")
     @ConfigComment("Value of -1 means unlimited, 0 means hardcore - no resets.")
     @ConfigComment("Example, 2 resets means they get 2 resets or 3 islands lifetime")
     @ConfigEntry(path = "island.reset.reset-limit")
@@ -287,7 +286,6 @@ public class Settings implements DataObject, WorldSettings {
 
     // ---------------------------------------------
     /*      PROTECTION      */
-    private int togglePvPCooldown;
 
     @ConfigComment("Geo restrict mobs.")
     @ConfigComment("Mobs that exit the island space where they were spawned will be removed.")
@@ -302,6 +300,7 @@ public class Settings implements DataObject, WorldSettings {
 
     //---------------------------------------------------------------------------------------/
 
+    @ConfigComment("Whether GUIs should be closed when the player clicks outside.")
     @ConfigEntry(path = "panel.close-on-click-outside")
     private boolean closePanelOnClickOutside = true;
 
@@ -699,13 +698,6 @@ public class Settings implements DataObject, WorldSettings {
     }
 
     /**
-     * @return the togglePvPCooldown
-     */
-    public int getTogglePvPCooldown() {
-        return togglePvPCooldown;
-    }
-
-    /**
      * @return the geoLimitSettings
      */
     @Override
@@ -1061,13 +1053,6 @@ public class Settings implements DataObject, WorldSettings {
     }
 
     /**
-     * @param togglePvPCooldown the togglePvPCooldown to set
-     */
-    public void setTogglePvPCooldown(int togglePvPCooldown) {
-        this.togglePvPCooldown = togglePvPCooldown;
-    }
-
-    /**
      * @param geoLimitSettings the geoLimitSettings to set
      */
     public void setGeoLimitSettings(List<String> geoLimitSettings) {
@@ -1160,6 +1145,4 @@ public class Settings implements DataObject, WorldSettings {
     public void setDefaultBiome(Biome defaultBiome) {
         this.defaultBiome = defaultBiome;
     }
-
-
 }
