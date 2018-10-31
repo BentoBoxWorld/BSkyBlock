@@ -21,7 +21,7 @@
 
 	<ciManagement>
 		<system>jenkins</system>
-		<url>http://ci.codemc.org/job/BentoBoxWorld/job/bentobox</url>
+		<url>http://ci.codemc.org/job/BentoBoxWorld/job/addon-bskyblock</url>
 	</ciManagement>
 
 	<issueManagement>
