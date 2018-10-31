@@ -3,7 +3,6 @@ package world.bentobox.bskyblock.commands;
 import java.util.ArrayList;
 import java.util.List;
 
-import world.bentobox.bskyblock.BSkyBlock;
 import world.bentobox.bentobox.api.commands.CompositeCommand;
 import world.bentobox.bentobox.api.commands.island.IslandBanCommand;
 import world.bentobox.bentobox.api.commands.island.IslandBanlistCommand;
@@ -19,6 +18,7 @@ import world.bentobox.bentobox.api.commands.island.IslandUnbanCommand;
 import world.bentobox.bentobox.api.commands.island.team.IslandTeamCommand;
 import world.bentobox.bentobox.api.localization.TextVariables;
 import world.bentobox.bentobox.api.user.User;
+import world.bentobox.bskyblock.BSkyBlock;
 
 public class IslandCommand extends CompositeCommand {
 
@@ -34,7 +34,6 @@ public class IslandCommand extends CompositeCommand {
         setDescription("commands.island.help.description");
         setOnlyPlayer(true);
         // Permission
-        setPermissionPrefix("bskyblock");
         setPermission("island");
         setWorld(((BSkyBlock)getAddon()).getIslandWorld());
         // Set up subcommands
