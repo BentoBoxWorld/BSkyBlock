@@ -9,24 +9,24 @@
 	<version>0.5.1-SNAPSHOT</version>
 
 	<name>BSkyBlock</name>
-	<description>BSkyBlock is an add-on for BentoBox, an expandable Minecraft Bukkit plugin for island-type games like ASkyBlock or AcidIsland.</description>
-	<url>https://github.com/BentoBoxWorld/addon-bskyblock</url>
+	<description>BSkyBlock is an add-on for BentoBox, an expandable Minecraft Bukkit plugin for island-type games like SkyBlock or AcidIsland.</description>
+	<url>https://github.com/BentoBoxWorld/BSkyBlock</url>
 	<inceptionYear>2018</inceptionYear>
 
 	<scm>
-		<connection>scm:git:https://github.com/BentoBoxWorld/addon-bskyblock.git</connection>
-		<developerConnection>scm:git:git@github.com:BentoBoxWorld/addon-bskyblock.git</developerConnection>
-		<url>https://github.com/BentoBoxWorld/addon-bskyblock</url>
+		<connection>scm:git:https://github.com/BentoBoxWorld/BSkyBlock.git</connection>
+		<developerConnection>scm:git:git@github.com:BentoBoxWorld/BSkyBlock.git</developerConnection>
+		<url>https://github.com/BentoBoxWorld/BSkyBlock</url>
 	</scm>
 
 	<ciManagement>
 		<system>jenkins</system>
-		<url>http://ci.codemc.org/job/BentoBoxWorld/job/addon-bskyblock</url>
+		<url>http://ci.codemc.org/job/BentoBoxWorld/job/BSkyBlock</url>
 	</ciManagement>
 
 	<issueManagement>
 		<system>GitHub</system>
-		<url>https://github.com/BentoBoxWorld/addon-bskyblock/issues</url>
+		<url>https://github.com/BentoBoxWorld/BSkyBlock/issues</url>
 	</issueManagement>
 
 	<distributionManagement>
