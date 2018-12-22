@@ -97,8 +97,8 @@ public class Settings implements DataObject, WorldSettings {
     @ConfigEntry(path = "world.sea-height", needsReset = true)
     private int seaHeight = 0;
 
-    @ConfigComment("Maximum number of islands in the world. Set to -1 for unlimited.")
-    @ConfigComment("If the number of islands is greater than this number, no new island will be created.")
+    @ConfigComment("Maximum number of islands in the world. Set to -1 or 0 for unlimited.")
+    @ConfigComment("If the number of islands is greater than this number, it will stop players from creating islands.")
     @ConfigEntry(path = "world.max-islands")
     private int maxIslands = -1;
 
