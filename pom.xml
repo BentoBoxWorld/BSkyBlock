@@ -53,8 +53,8 @@
 			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots</url>
 		</repository>
 		<repository>
-			<id>codemc</id>
-			<url>https://repo.codemc.org/repository/maven-snapshots/</url>
+			<id>codemc-repo</id>
+			<url>https://repo.codemc.org/repository/maven-public/</url>
 		</repository>
 	</repositories>
 
