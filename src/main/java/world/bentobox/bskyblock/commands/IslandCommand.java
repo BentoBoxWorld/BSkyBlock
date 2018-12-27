@@ -8,6 +8,7 @@ import world.bentobox.bentobox.api.commands.island.IslandBanCommand;
 import world.bentobox.bentobox.api.commands.island.IslandBanlistCommand;
 import world.bentobox.bentobox.api.commands.island.IslandCreateCommand;
 import world.bentobox.bentobox.api.commands.island.IslandGoCommand;
+import world.bentobox.bentobox.api.commands.island.IslandInfoCommand;
 import world.bentobox.bentobox.api.commands.island.IslandLanguageCommand;
 import world.bentobox.bentobox.api.commands.island.IslandResetCommand;
 import world.bentobox.bentobox.api.commands.island.IslandResetnameCommand;
@@ -37,6 +38,7 @@ public class IslandCommand extends CompositeCommand {
         setPermission("island");
         // Set up subcommands
         new IslandAboutCommand(this);
+        new IslandInfoCommand(this);
         new IslandCreateCommand(this);
         new IslandGoCommand(this);
         new IslandResetCommand(this);

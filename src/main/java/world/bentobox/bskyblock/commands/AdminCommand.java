@@ -14,6 +14,7 @@ import world.bentobox.bentobox.api.commands.admin.AdminTeleportCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminUnregisterCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminVersionCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminWhyCommand;
+import world.bentobox.bentobox.api.commands.admin.deaths.AdminDeathsCommand;
 import world.bentobox.bentobox.api.commands.admin.range.AdminRangeCommand;
 import world.bentobox.bentobox.api.commands.admin.schem.AdminSchemCommand;
 import world.bentobox.bentobox.api.commands.admin.team.AdminTeamAddCommand;
@@ -62,6 +63,8 @@ public class AdminCommand extends CompositeCommand {
         new AdminDeleteCommand(this);
         // Why
         new AdminWhyCommand(this);
+
+        new AdminDeathsCommand(this);
     }
 
     @Override
