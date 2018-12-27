@@ -36,7 +36,6 @@ public class AdminCommand extends CompositeCommand {
         setOnlyPlayer(false);
         setParametersHelp("commands.admin.help.parameters");
         setDescription("commands.admin.help.description");
-        setWorld(((BSkyBlock)getAddon()).getIslandWorld());
         new AdminVersionCommand(this);
         new AdminTeleportCommand(this, "tp");
         new AdminTeleportCommand(this, "tpnether");

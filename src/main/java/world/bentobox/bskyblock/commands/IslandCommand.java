@@ -35,7 +35,6 @@ public class IslandCommand extends CompositeCommand {
         setOnlyPlayer(true);
         // Permission
         setPermission("island");
-        setWorld(((BSkyBlock)getAddon()).getIslandWorld());
         // Set up subcommands
         new IslandAboutCommand(this);
         new IslandCreateCommand(this);
