@@ -4,7 +4,6 @@ import org.bukkit.World;
 import org.bukkit.WorldCreator;
 import org.bukkit.WorldType;
 
-import world.bentobox.bentobox.api.addons.Addon;
 import world.bentobox.bentobox.api.addons.GameModeAddon;
 import world.bentobox.bentobox.api.configuration.Config;
 import world.bentobox.bentobox.api.configuration.WorldSettings;
@@ -22,13 +21,11 @@ public class BSkyBlock extends GameModeAddon {
     private static final String NETHER = "_nether";
     private static final String THE_END = "_the_end";
 
-    private static BSkyBlock addon;
     // Settings
     private Settings settings;
 
     @Override
     public void onLoad() {
-        addon = this;
         // Save the default config from config.yml
         saveDefaultConfig();
         // Load settings from config.yml. This will check if there are any issues with it too.
@@ -55,10 +52,6 @@ public class BSkyBlock extends GameModeAddon {
      */
     public Settings getSettings() {
         return settings;
-    }
-
-    public static Addon getInstance() {
-        return addon;
     }
 
     @Override

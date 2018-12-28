@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 
 import org.bukkit.Difficulty;
@@ -13,7 +12,6 @@ import org.bukkit.GameMode;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.EntityType;
 
-import world.bentobox.bentobox.api.addons.Addon;
 import world.bentobox.bentobox.api.configuration.ConfigComment;
 import world.bentobox.bentobox.api.configuration.ConfigEntry;
 import world.bentobox.bentobox.api.configuration.StoreAt;
@@ -1115,11 +1113,6 @@ public class Settings implements DataObject, WorldSettings {
     @Override
     public void setUniqueId(String uniqueId) {
         this.uniqueId = uniqueId;
-    }
-
-    @Override
-    public Optional<Addon> getAddon() {
-        return Optional.of(BSkyBlock.getInstance());
     }
 
     @Override
