@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>world.bentobox</groupId>
-	<artifactId>BSkyBlock</artifactId>
+	<artifactId>bskyblock</artifactId>
 	<version>0.6.3-SNAPSHOT</version>
 
 	<name>BSkyBlock</name>
