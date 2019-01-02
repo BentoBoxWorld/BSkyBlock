@@ -109,6 +109,12 @@ public class Settings implements DataObject, WorldSettings {
     @ConfigEntry(path = "world.default-biome")
     private Biome defaultBiome = Biome.PLAINS;
 
+    @ConfigComment("The maximum number of players a player can ban at any one time in this game mode.")
+    @ConfigComment("The permission acidisland.ban.maxlimit.X where X is a number can also be used per player")
+    @ConfigComment("-1 = unlimited")
+    @ConfigEntry(path = "world.ban-limit")
+    private int banLimit = -1;
+
     // Nether
     @ConfigComment("Generate Nether - if this is false, the nether world will not be made and access to")
     @ConfigComment("the nether will not occur. Other plugins may still enable portal usage.")
@@ -1137,5 +1143,20 @@ public class Settings implements DataObject, WorldSettings {
      */
     public void setDefaultBiome(Biome defaultBiome) {
         this.defaultBiome = defaultBiome;
+    }
+
+    /**
+     * @return the banLimit
+     */
+    @Override
+    public int getBanLimit() {
+        return banLimit;
+    }
+
+    /**
+     * @param banLimit the banLimit to set
+     */
+    public void setBanLimit(int banLimit) {
+        this.banLimit = banLimit;
     }
 }
