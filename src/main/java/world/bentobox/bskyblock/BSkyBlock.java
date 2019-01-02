@@ -29,7 +29,17 @@ public class BSkyBlock extends GameModeAddon {
         // Save the default config from config.yml
         saveDefaultConfig();
         // Load settings from config.yml. This will check if there are any issues with it too.
+        loadSettings();
+    }
+
+    private void loadSettings() {
         settings = new Config<>(this, Settings.class).loadConfigObject();
+        if (settings == null) {
+            // Disable
+            logError("BSkyBlock settings could not load! Addon disabled.");
+            setState(State.DISABLED);
+        }
+
     }
 
     @Override
@@ -45,6 +55,11 @@ public class BSkyBlock extends GameModeAddon {
         if (settings != null) {
             new Config<>(this, Settings.class).saveConfigObject(settings);
         }
+    }
+
+    @Override
+    public void onReload() {
+        loadSettings();
     }
 
     /**
