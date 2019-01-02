@@ -1,4 +1,4 @@
-# BSkyBlock Configuration 0.5.0-SNAPSHOT
+# BSkyBlock Configuration 0.6.3-SNAPSHOT
 # This config file is dynamic and saved when the server is shutdown.
 # You cannot edit it while the server is running because changes will
 # be lost! Use in-game settings GUI or edit when server is offline.
@@ -42,8 +42,8 @@ world:
   # If sea height is less than about 10, then players will drop right through it
   # if it exists. Makes for an interesting variation on skyblock.
   sea-height: 0
-  # Maximum number of islands in the world. Set to -1 for unlimited.
-  # If the number of islands is greater than this number, no new island will be created.
+  # Maximum number of islands in the world. Set to -1 or 0 for unlimited.
+  # If the number of islands is greater than this number, it will stop players from creating islands.
   max-islands: 0
   # The default game mode for this world. Players will be set to this mode when they create
   # a new island for example. Options are SURVIVAL, CREATIVE, ADVENTURE, SPECTATOR
@@ -78,10 +78,10 @@ world:
     dragon-spawn: false
   # Mob white list - these mobs will NOT be removed when logging in or doing /island
   remove-mobs-whitelist:
-  - PIG_ZOMBIE
   - WITHER
-  - ZOMBIE_VILLAGER
   - ENDERMAN
+  - PIG_ZOMBIE
+  - ZOMBIE_VILLAGER
   # World flags. These are boolean settings for various flags for this world
   flags:
     CREEPER_DAMAGE: true
@@ -91,6 +91,7 @@ world:
     ENDERMAN_GRIEFING: true
     CLEAN_SUPER_FLAT: false
     CHEST_DAMAGE: false
+    PREVENT_TELEPORT_WHEN_FALLING: false
     ENTER_EXIT_MESSAGES: true
     ENDERMAN_DEATH_DROP: true
     OFFLINE_REDSTONE: true
@@ -102,50 +103,59 @@ world:
   # Ranks are: Visitor = 0, Member = 900, Owner = 1000
   default-island-flags:
     HURT_ANIMALS: 500
-    COLLECT_WATER: 500
     REDSTONE: 500
     BUCKET: 500
-    BUTTON: 500
-    FIRE_EXTINGUISH: 500
     LOCK: 0
     ENDER_PEARL: 500
-    BEACON: 500
     DOOR: 500
-    TRAPDOOR: 500
     FURNACE: 500
-    PRESSURE_PLATE: 0
-    PLACE_BLOCKS: 500
     ANVIL: 500
+    FISH_SCOOPING: 500
     FIRE: 500
-    CRAFTING: 0
+    END_PORTAL: 500
     BREEDING: 500
     TNT: 500
     HURT_VILLAGERS: 500
-    SHEARING: 500
-    ENCHANTING: 0
-    SPAWN_EGGS: 500
-    BED: 500
+    FROST_WALKER: 500
+    TURTLE_EGGS: 500
     COLLECT_LAVA: 500
-    MILKING: 0
     LEVER: 500
     RIDING: 500
     HURT_MONSTERS: 0
     ARMOR_STAND: 500
-    GATE: 0
+    NAME_TAG: 500
     TRADING: 0
     EGGS: 500
     ITEM_DROP: 0
-    PORTAL: 0
-    CHEST: 500
     NOTE_BLOCK: 0
-    LEASH: 500
-    BREAK_BLOCKS: 500
-    MOUNT_INVENTORY: 500
-    CHORUS_FRUIT: 500
-    JUKEBOX: 500
+    NETHER_PORTAL: 500
     CROP_TRAMPLE: 500
     ITEM_PICKUP: 0
+    DROPPER: 500
     BREWING: 500
+    COLLECT_WATER: 500
+    BUTTON: 500
+    FIRE_EXTINGUISH: 500
+    BEACON: 500
+    TRAPDOOR: 500
+    PRESSURE_PLATE: 0
+    PLACE_BLOCKS: 500
+    CRAFTING: 0
+    SHEARING: 500
+    ENCHANTING: 0
+    SPAWN_EGGS: 500
+    BED: 500
+    MILKING: 0
+    DISPENSER: 500
+    GATE: 0
+    EXPERIENCE_PICKUP: 500
+    HOPPER: 500
+    LEASH: 500
+    MOUNT_INVENTORY: 500
+    BREAK_BLOCKS: 500
+    CHORUS_FRUIT: 500
+    CONTAINER: 500
+    JUKEBOX: 500
   # These are the default settings for new islands
   default-island-settings:
     PVP_END: false
