@@ -85,6 +85,7 @@ world:
   # World flags. These are boolean settings for various flags for this world
   flags:
     CREEPER_DAMAGE: true
+    OBSIDIAN_SCOOPING: true
     PISTON_PUSH: false
     ISLAND_RESPAWN: true
     CREEPER_GRIEFING: false
