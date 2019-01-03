@@ -3,8 +3,6 @@ package world.bentobox.bskyblock.commands;
 import java.util.List;
 
 import world.bentobox.bentobox.api.commands.CompositeCommand;
-import world.bentobox.bentobox.api.commands.admin.AdminClearresetsCommand;
-import world.bentobox.bentobox.api.commands.admin.AdminClearresetsallCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminDeleteCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminGetrankCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminInfoCommand;
@@ -17,6 +15,7 @@ import world.bentobox.bentobox.api.commands.admin.AdminVersionCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminWhyCommand;
 import world.bentobox.bentobox.api.commands.admin.deaths.AdminDeathsCommand;
 import world.bentobox.bentobox.api.commands.admin.range.AdminRangeCommand;
+import world.bentobox.bentobox.api.commands.admin.resets.AdminResetsResetCommand;
 import world.bentobox.bentobox.api.commands.admin.schem.AdminSchemCommand;
 import world.bentobox.bentobox.api.commands.admin.team.AdminTeamAddCommand;
 import world.bentobox.bentobox.api.commands.admin.team.AdminTeamDisbandCommand;
@@ -58,8 +57,8 @@ public class AdminCommand extends CompositeCommand {
         // Range
         new AdminRangeCommand(this);
         // Resets
-        new AdminClearresetsCommand(this);
-        new AdminClearresetsallCommand(this);
+        new AdminResetsResetCommand(this);
+        // TODO new AdminClearresetsallCommand(this);
         // Delete
         new AdminDeleteCommand(this);
         // Why
