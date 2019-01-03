@@ -1,8 +1,8 @@
-# BSkyBlock Configuration 0.6.3-SNAPSHOT
+# BSkyBlock Configuration 1.0
 # This config file is dynamic and saved when the server is shutdown.
 # You cannot edit it while the server is running because changes will
 # be lost! Use in-game settings GUI or edit when server is offline.
-# 
+#
 world:
   # Friendly name for this world. Used in admin commands. Must be a single word
   friendly-name: BSkyBlock
@@ -50,6 +50,10 @@ world:
   default-game-mode: SURVIVAL
   # The default biome for the overworld
   default-biome: PLAINS
+  # The maximum number of players a player can ban at any one time in this game mode.
+  # The permission acidisland.ban.maxlimit.X where X is a number can also be used per player
+  # -1 = unlimited
+  ban-limit: -1
   nether:
     # Generate Nether - if this is false, the nether world will not be made and access to
     # the nether will not occur. Other plugins may still enable portal usage.
@@ -78,10 +82,10 @@ world:
     dragon-spawn: false
   # Mob white list - these mobs will NOT be removed when logging in or doing /island
   remove-mobs-whitelist:
-  - WITHER
-  - ENDERMAN
-  - PIG_ZOMBIE
-  - ZOMBIE_VILLAGER
+    - ENDERMAN
+    - ZOMBIE_VILLAGER
+    - PIG_ZOMBIE
+    - WITHER
   # World flags. These are boolean settings for various flags for this world
   flags:
     CREEPER_DAMAGE: true
@@ -115,8 +119,8 @@ world:
     FIRE: 500
     END_PORTAL: 500
     BREEDING: 500
-    TNT: 500
     HURT_VILLAGERS: 500
+    TNT: 500
     FROST_WALKER: 500
     TURTLE_EGGS: 500
     COLLECT_LAVA: 500
@@ -140,10 +144,11 @@ world:
     BEACON: 500
     TRAPDOOR: 500
     PRESSURE_PLATE: 0
+    ITEM_FRAME: 500
     PLACE_BLOCKS: 500
     CRAFTING: 0
-    SHEARING: 500
     ENCHANTING: 0
+    SHEARING: 500
     SPAWN_EGGS: 500
     BED: 500
     MILKING: 0
@@ -152,8 +157,8 @@ world:
     EXPERIENCE_PICKUP: 500
     HOPPER: 500
     LEASH: 500
-    MOUNT_INVENTORY: 500
     BREAK_BLOCKS: 500
+    MOUNT_INVENTORY: 500
     CHORUS_FRUIT: 500
     CONTAINER: 500
     JUKEBOX: 500
@@ -170,8 +175,8 @@ world:
   visible-settings: []
   # Visitor banned commands - Visitors to islands cannot use these commands in this world
   visitor-banned-commands:
-  - spawner
-  - spawnmob
+    - spawner
+    - spawnmob
 island:
   # Default max team size
   # Permission size cannot be less than the default below. 
@@ -241,36 +246,36 @@ protection:
   # Geo restrict mobs.
   # Mobs that exit the island space where they were spawned will be removed.
   geo-limit-settings:
-  - GHAST
-  - BAT
-  - BLAZE
+    - GHAST
+    - BAT
+    - BLAZE
   # Invincible visitors. List of damages that will not affect visitors.
   # Make list blank if visitors should receive all damages
   invincible-visitors:
-  - BLOCK_EXPLOSION
-  - CONTACT
-  - CUSTOM
-  - DROWNING
-  - ENTITY_ATTACK
-  - ENTITY_EXPLOSION
-  - FALL
-  - FALLING_BLOCK
-  - FIRE
-  - FIRE_TICK
-  - LAVA
-  - LIGHTNING
-  - MAGIC
-  - POISON
-  - PROJECTILE
-  - STARVATION
-  - SUFFOCATION
-  - THORNS
-  - WITHER
-  - DRAGON_BREATH
-  - FLY_INTO_WALL
-  - HOT_FLOOR
-  - CRAMMING
-  - VOID
+    - BLOCK_EXPLOSION
+    - CONTACT
+    - CUSTOM
+    - DROWNING
+    - ENTITY_ATTACK
+    - ENTITY_EXPLOSION
+    - FALL
+    - FALLING_BLOCK
+    - FIRE
+    - FIRE_TICK
+    - LAVA
+    - LIGHTNING
+    - MAGIC
+    - POISON
+    - PROJECTILE
+    - STARVATION
+    - SUFFOCATION
+    - THORNS
+    - WITHER
+    - DRAGON_BREATH
+    - FLY_INTO_WALL
+    - HOT_FLOOR
+    - CRAMMING
+    - VOID
 panel:
   # Whether GUIs should be closed when the player clicks outside.
   close-on-click-outside: true
