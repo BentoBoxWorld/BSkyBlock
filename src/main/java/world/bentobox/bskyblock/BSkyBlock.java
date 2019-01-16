@@ -45,8 +45,8 @@ public class BSkyBlock extends GameModeAddon {
     @Override
     public void onEnable(){
         // Register commands
-        new IslandCommand(this);
-        new AdminCommand(this);
+        playerCommand = new IslandCommand(this);
+        adminCommand = new AdminCommand(this);
     }
 
     @Override
