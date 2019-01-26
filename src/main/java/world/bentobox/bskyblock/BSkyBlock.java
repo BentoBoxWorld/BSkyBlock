@@ -3,6 +3,8 @@ package world.bentobox.bskyblock;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
 import org.bukkit.WorldType;
+import org.bukkit.generator.ChunkGenerator;
+import org.eclipse.jdt.annotation.NonNull;
 
 import world.bentobox.bentobox.api.addons.GameModeAddon;
 import world.bentobox.bentobox.api.configuration.Config;
@@ -23,6 +25,7 @@ public class BSkyBlock extends GameModeAddon {
 
     // Settings
     private Settings settings;
+    private ChunkGeneratorWorld chunkGenerator;
 
     @Override
     public void onLoad() {
@@ -75,8 +78,9 @@ public class BSkyBlock extends GameModeAddon {
         if (getServer().getWorld(worldName) == null) {
             getLogger().info("Creating BSkyBlock world ...");
         }
+        chunkGenerator = new ChunkGeneratorWorld(this);
         // Create the world if it does not exist
-        islandWorld = WorldCreator.name(worldName).type(WorldType.FLAT).environment(World.Environment.NORMAL).generator(new ChunkGeneratorWorld(this))
+        islandWorld = WorldCreator.name(worldName).type(WorldType.FLAT).environment(World.Environment.NORMAL).generator(chunkGenerator)
                 .createWorld();
 
         // Make the nether if it does not exist
@@ -87,7 +91,7 @@ public class BSkyBlock extends GameModeAddon {
             if (!settings.isNetherIslands()) {
                 netherWorld = WorldCreator.name(worldName + NETHER).type(WorldType.NORMAL).environment(World.Environment.NETHER).createWorld();
             } else {
-                netherWorld = WorldCreator.name(worldName + NETHER).type(WorldType.FLAT).generator(new ChunkGeneratorWorld(this))
+                netherWorld = WorldCreator.name(worldName + NETHER).type(WorldType.FLAT).generator(chunkGenerator)
                         .environment(World.Environment.NETHER).createWorld();
             }
         }
@@ -99,7 +103,7 @@ public class BSkyBlock extends GameModeAddon {
             if (!settings.isEndIslands()) {
                 endWorld = WorldCreator.name(worldName + THE_END).type(WorldType.NORMAL).environment(World.Environment.THE_END).createWorld();
             } else {
-                endWorld = WorldCreator.name(worldName + THE_END).type(WorldType.FLAT).generator(new ChunkGeneratorWorld(this))
+                endWorld = WorldCreator.name(worldName + THE_END).type(WorldType.FLAT).generator(chunkGenerator)
                         .environment(World.Environment.THE_END).createWorld();
             }
         }
@@ -108,5 +112,10 @@ public class BSkyBlock extends GameModeAddon {
     @Override
     public WorldSettings getWorldSettings() {
         return settings;
+    }
+
+    @Override
+    public @NonNull ChunkGenerator getDefaultWorldGenerator(String worldName, String id) {
+        return chunkGenerator;
     }
 }
