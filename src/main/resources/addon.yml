@@ -1,6 +1,7 @@
 name: BSkyBlock
 main: world.bentobox.bskyblock.BSkyBlock
 version: ${version}
+metrics: true
 
 authors: tastybento
 
@@ -19,9 +20,6 @@ permissions:
     default: true
   bskyblock.island.info:
     description: Let the player check their island level
-    default: true
-  bskyblock.island.sethome:
-    description: Let the player set their island teleport point
     default: true
   bskyblock.island.lock:
     description: Allows island locking

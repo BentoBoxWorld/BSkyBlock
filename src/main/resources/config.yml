@@ -1,8 +1,7 @@
-# BSkyBlock Configuration 1.0
+# BSkyBlock Configuration 1.1
 # This config file is dynamic and saved when the server is shutdown.
 # You cannot edit it while the server is running because changes will
 # be lost! Use in-game settings GUI or edit when server is offline.
-#
 world:
   # Friendly name for this world. Used in admin commands. Must be a single word
   friendly-name: BSkyBlock
@@ -82,10 +81,10 @@ world:
     dragon-spawn: false
   # Mob white list - these mobs will NOT be removed when logging in or doing /island
   remove-mobs-whitelist:
+    - WITHER
+    - PIG_ZOMBIE
     - ENDERMAN
     - ZOMBIE_VILLAGER
-    - PIG_ZOMBIE
-    - WITHER
   # World flags. These are boolean settings for various flags for this world
   flags:
     CREEPER_DAMAGE: true
@@ -149,19 +148,20 @@ world:
     CRAFTING: 0
     ENCHANTING: 0
     SHEARING: 500
-    SPAWN_EGGS: 500
     BED: 500
+    SPAWN_EGGS: 500
     MILKING: 0
     DISPENSER: 500
     GATE: 0
     EXPERIENCE_PICKUP: 500
     HOPPER: 500
     LEASH: 500
-    BREAK_BLOCKS: 500
     MOUNT_INVENTORY: 500
+    BREAK_BLOCKS: 500
     CHORUS_FRUIT: 500
     CONTAINER: 500
     JUKEBOX: 500
+    POTION_THROWING: 500
   # These are the default settings for new islands
   default-island-settings:
     PVP_END: false
@@ -179,7 +179,7 @@ world:
     - spawnmob
 island:
   # Default max team size
-  # Permission size cannot be less than the default below. 
+  # Permission size cannot be less than the default below.
   max-team-size: 4
   # Default maximum number of homes a player can have. Min = 1
   # Accessed via /is sethome <number> or /is go <number>
