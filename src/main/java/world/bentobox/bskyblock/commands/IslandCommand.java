@@ -15,6 +15,7 @@ import world.bentobox.bentobox.api.commands.island.IslandResetnameCommand;
 import world.bentobox.bentobox.api.commands.island.IslandSethomeCommand;
 import world.bentobox.bentobox.api.commands.island.IslandSetnameCommand;
 import world.bentobox.bentobox.api.commands.island.IslandSettingsCommand;
+import world.bentobox.bentobox.api.commands.island.IslandSpawnCommand;
 import world.bentobox.bentobox.api.commands.island.IslandUnbanCommand;
 import world.bentobox.bentobox.api.commands.island.team.IslandTeamCommand;
 import world.bentobox.bentobox.api.localization.TextVariables;
@@ -41,6 +42,7 @@ public class IslandCommand extends CompositeCommand {
         new IslandInfoCommand(this);
         new IslandCreateCommand(this);
         new IslandGoCommand(this);
+        new IslandSpawnCommand(this);
         new IslandResetCommand(this);
         new IslandSetnameCommand(this);
         new IslandResetnameCommand(this);
@@ -72,7 +74,5 @@ public class IslandCommand extends CompositeCommand {
         }
         user.sendMessage("general.errors.unknown-command", TextVariables.LABEL, getTopLabel());
         return false;
-
     }
-
 }
