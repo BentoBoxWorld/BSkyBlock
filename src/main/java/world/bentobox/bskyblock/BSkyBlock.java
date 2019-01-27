@@ -42,7 +42,6 @@ public class BSkyBlock extends GameModeAddon {
             logError("BSkyBlock settings could not load! Addon disabled.");
             setState(State.DISABLED);
         }
-
     }
 
     @Override
