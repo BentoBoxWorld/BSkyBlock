@@ -51,8 +51,10 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
             }
 
         }
-        if (chunkX == 0 && chunkZ == 0) {
-            result.setBlock(0, 254, 0, Material.BEDROCK);
+        if (world.getEnvironment().equals(World.Environment.THE_END)
+                && chunkX == 0
+                && chunkZ == 0) {
+            result.setBlock(0, 255, 0, Material.BEDROCK);
         }
         return result;
     }
