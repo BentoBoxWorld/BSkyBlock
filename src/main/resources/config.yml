@@ -223,10 +223,6 @@ island:
       inventory: false
       # Reset Ender Chest - if true, the player's Ender Chest will be cleared.
       ender-chest: false
-  require-confirmation:
-    reset: true
-  # Have player's respawn on their island if they die
-  respawn-on-island: false
   sethome:
     nether:
       allow: true
@@ -276,9 +272,6 @@ protection:
     - HOT_FLOOR
     - CRAMMING
     - VOID
-panel:
-  # Whether GUIs should be closed when the player clicks outside.
-  close-on-click-outside: true
 do-not-edit-these-settings:
   # These settings should not be edited
   reset-epoch: 0

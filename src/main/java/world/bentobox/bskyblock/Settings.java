@@ -203,9 +203,6 @@ public class Settings implements DataObject, WorldSettings {
     @ConfigEntry(path = "island.reset.reset-limit")
     private int resetLimit = -1;
 
-    @ConfigEntry(path = "island.require-confirmation.reset")
-    private boolean resetConfirmation = true;
-
     @ConfigComment("Kicked or leaving players lose resets")
     @ConfigComment("Players who leave a team will lose an island reset chance")
     @ConfigComment("If a player has zero resets left and leaves a team, they cannot make a new")
@@ -254,10 +251,6 @@ public class Settings implements DataObject, WorldSettings {
     @ConfigEntry(path = "island.reset.on-leave.ender-chest")
     private boolean onLeaveResetEnderChest = false;
 
-    @ConfigComment("Have player's respawn on their island if they die")
-    @ConfigEntry(path = "island.respawn-on-island")
-    private boolean respawnOnIsland = true;
-
     // Sethome
     @ConfigEntry(path = "island.sethome.nether.allow")
     private boolean allowSetHomeInNether = true;
@@ -300,12 +293,6 @@ public class Settings implements DataObject, WorldSettings {
     @ConfigComment("Make list blank if visitors should receive all damages")
     @ConfigEntry(path = "protection.invincible-visitors")
     private List<String> ivSettings = new ArrayList<>();
-
-    //---------------------------------------------------------------------------------------/
-
-    @ConfigComment("Whether GUIs should be closed when the player clicks outside.")
-    @ConfigEntry(path = "panel.close-on-click-outside")
-    private boolean closePanelOnClickOutside = true;
 
     //---------------------------------------------------------------------------------------/
     @ConfigComment("These settings should not be edited")
@@ -562,13 +549,6 @@ public class Settings implements DataObject, WorldSettings {
     }
 
     /**
-     * @return the resetConfirmation
-     */
-    public boolean isResetConfirmation() {
-        return resetConfirmation;
-    }
-
-    /**
      * @return the leaversLoseReset
      */
     public boolean isLeaversLoseReset() {
@@ -628,13 +608,6 @@ public class Settings implements DataObject, WorldSettings {
     @Override
     public boolean isOnLeaveResetEnderChest() {
         return onLeaveResetEnderChest;
-    }
-
-    /**
-     * @return the respawnOnIsland
-     */
-    public boolean isRespawnOnIsland() {
-        return respawnOnIsland;
     }
 
     /**
@@ -714,13 +687,6 @@ public class Settings implements DataObject, WorldSettings {
     @Override
     public List<String> getIvSettings() {
         return ivSettings;
-    }
-
-    /**
-     * @return the closePanelOnClickOutside
-     */
-    public boolean isClosePanelOnClickOutside() {
-        return closePanelOnClickOutside;
     }
 
     /**
@@ -958,13 +924,6 @@ public class Settings implements DataObject, WorldSettings {
     }
 
     /**
-     * @param resetConfirmation the resetConfirmation to set
-     */
-    public void setResetConfirmation(boolean resetConfirmation) {
-        this.resetConfirmation = resetConfirmation;
-    }
-
-    /**
      * @param leaversLoseReset the leaversLoseReset to set
      */
     public void setLeaversLoseReset(boolean leaversLoseReset) {
@@ -1021,13 +980,6 @@ public class Settings implements DataObject, WorldSettings {
     }
 
     /**
-     * @param respawnOnIsland the respawnOnIsland to set
-     */
-    public void setRespawnOnIsland(boolean respawnOnIsland) {
-        this.respawnOnIsland = respawnOnIsland;
-    }
-
-    /**
      * @param deathsCounted the deathsCounted to set
      */
     public void setDeathsCounted(boolean deathsCounted) {
@@ -1067,13 +1019,6 @@ public class Settings implements DataObject, WorldSettings {
      */
     public void setIvSettings(List<String> ivSettings) {
         this.ivSettings = ivSettings;
-    }
-
-    /**
-     * @param closePanelOnClickOutside the closePanelOnClickOutside to set
-     */
-    public void setClosePanelOnClickOutside(boolean closePanelOnClickOutside) {
-        this.closePanelOnClickOutside = closePanelOnClickOutside;
     }
 
     /**
