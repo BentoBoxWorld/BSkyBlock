@@ -1,7 +1,4 @@
-# BSkyBlock Configuration 1.1
-# This config file is dynamic and saved when the server is shutdown.
-# You cannot edit it while the server is running because changes will
-# be lost! Use in-game settings GUI or edit when server is offline.
+# BSkyBlock Configuration ${version}
 world:
   # Friendly name for this world. Used in admin commands. Must be a single word
   friendly-name: BSkyBlock
