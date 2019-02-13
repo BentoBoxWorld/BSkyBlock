@@ -28,9 +28,6 @@ import world.bentobox.bentobox.database.objects.adapters.FlagSerializer2;
  */
 @StoreAt(filename="config.yml", path="addons/BSkyBlock") // Explicitly call out what name this should have.
 @ConfigComment("BSkyBlock Configuration [version]")
-@ConfigComment("This config file is dynamic and saved when the server is shutdown.")
-@ConfigComment("You cannot edit it while the server is running because changes will")
-@ConfigComment("be lost! Use in-game settings GUI or edit when server is offline.")
 public class Settings implements DataObject, WorldSettings {
 
     /*      WORLD       */
