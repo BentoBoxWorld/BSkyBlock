@@ -25,7 +25,9 @@ import world.bentobox.bskyblock.BSkyBlock;
 public class IslandCommand extends CompositeCommand {
 
     public IslandCommand(BSkyBlock addon) {
-        super(addon, "island", "is");
+        super(addon,
+            addon.getSettings().getIslandCommand().split(" ")[0],
+            addon.getSettings().getIslandCommand().split(" "));
     }
 
     /* (non-Javadoc)
