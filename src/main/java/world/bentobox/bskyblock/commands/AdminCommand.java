@@ -8,6 +8,7 @@ import world.bentobox.bentobox.api.commands.admin.AdminGetrankCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminInfoCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminRegisterCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminReloadCommand;
+import world.bentobox.bentobox.api.commands.admin.AdminResetFlagsCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminSetrankCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminSetspawnCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminTeleportCommand;
@@ -70,6 +71,8 @@ public class AdminCommand extends CompositeCommand {
         new AdminReloadCommand(this);
         // Spawn
         new AdminSetspawnCommand(this);
+        // Reset flags
+        new AdminResetFlagsCommand(this);
     }
 
     @Override
