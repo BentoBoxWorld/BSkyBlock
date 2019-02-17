@@ -66,9 +66,6 @@ permissions:
   bskyblock.mod.clearreset:
     description: Allow clearing of island reset limit
     default: false
-  bskyblock.mod.tp:
-    description: Allows teleport to an island
-    default: op
   bskyblock.mod.bypasscooldowns:
     description: Allow moderator to bypass cooldowns
     default: op
@@ -93,6 +90,9 @@ permissions:
   bskyblock.mod.resetname:
     description: Enables reset of player's island names
     default: false
+  bskyblock.admin.tp:
+    description: Allows teleport to an island
+    default: op    
   bskyblock.admin.clearresetall:
     description: Allow clearing of island reset limit of all players
     default: op
