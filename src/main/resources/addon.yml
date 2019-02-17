@@ -19,7 +19,7 @@ permissions:
     description: Let the player use the sethome command
     default: true
   bskyblock.island.info:
-    description: Let the player check their island level
+    description: Let the player check other players info
     default: true
   bskyblock.island.lock:
     description: Allows island locking
@@ -54,6 +54,9 @@ permissions:
   bskyblock.island.team.coop:
     description: Let a player use team coop commands
     default: true
+  bskyblock.island.team.promote:
+    description: Let a player use promote commands
+    default: true  
   bskyblock.settings.*:
     description: Allow use of settings on island
     default: true
@@ -66,9 +69,6 @@ permissions:
   bskyblock.mod.clearreset:
     description: Allow clearing of island reset limit
     default: false
-  bskyblock.mod.tp:
-    description: Allows teleport to an island
-    default: op
   bskyblock.mod.bypasscooldowns:
     description: Allow moderator to bypass cooldowns
     default: op
@@ -93,6 +93,9 @@ permissions:
   bskyblock.mod.resetname:
     description: Enables reset of player's island names
     default: false
+  bskyblock.admin.tp:
+    description: Allows teleport to an island
+    default: op    
   bskyblock.admin.clearresetall:
     description: Allow clearing of island reset limit of all players
     default: op

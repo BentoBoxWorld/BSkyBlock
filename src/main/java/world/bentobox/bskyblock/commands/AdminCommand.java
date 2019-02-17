@@ -30,7 +30,9 @@ import world.bentobox.bskyblock.BSkyBlock;
 public class AdminCommand extends CompositeCommand {
 
     public AdminCommand(BSkyBlock addon) {
-        super(addon, "bsbadmin", "bsb");
+        super(addon,
+            addon.getSettings().getAdminCommand().split(" ")[0],
+            addon.getSettings().getAdminCommand().split(" "));
     }
 
     @Override
