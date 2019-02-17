@@ -42,6 +42,7 @@ public class BSkyBlock extends GameModeAddon {
             logError("BSkyBlock settings could not load! Addon disabled.");
             setState(State.DISABLED);
         }
+        new Config<>(this, Settings.class).saveConfigObject(settings);
     }
 
     @Override
@@ -53,10 +54,6 @@ public class BSkyBlock extends GameModeAddon {
 
     @Override
     public void onDisable() {
-        // Save settings
-        if (settings != null) {
-            new Config<>(this, Settings.class).saveConfigObject(settings);
-        }
     }
 
     @Override
