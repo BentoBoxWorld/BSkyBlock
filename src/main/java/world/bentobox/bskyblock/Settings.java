@@ -28,10 +28,18 @@ import world.bentobox.bentobox.database.objects.adapters.FlagSerializer2;
  */
 @StoreAt(filename="config.yml", path="addons/BSkyBlock") // Explicitly call out what name this should have.
 @ConfigComment("BSkyBlock Configuration [version]")
-@ConfigComment("This config file is dynamic and saved when the server is shutdown.")
-@ConfigComment("You cannot edit it while the server is running because changes will")
-@ConfigComment("be lost! Use in-game settings GUI or edit when server is offline.")
 public class Settings implements DataObject, WorldSettings {
+
+    /* Commands */
+    @ConfigComment("Island Command. What command users will run to access their island.")
+    @ConfigComment("To define alias, just separate commands with white space.")
+    @ConfigEntry(path = "bskyblock.command.island")
+    private String islandCommand = "island is";
+
+    @ConfigComment("The island admin command.")
+    @ConfigComment("To define alias, just separate commands with white space.")
+    @ConfigEntry(path = "bskyblock.command.admin")
+    private String adminCommand = "bsbadmin bsb";
 
     /*      WORLD       */
     @ConfigComment("Friendly name for this world. Used in admin commands. Must be a single word")
@@ -203,9 +211,6 @@ public class Settings implements DataObject, WorldSettings {
     @ConfigEntry(path = "island.reset.reset-limit")
     private int resetLimit = -1;
 
-    @ConfigEntry(path = "island.require-confirmation.reset")
-    private boolean resetConfirmation = true;
-
     @ConfigComment("Kicked or leaving players lose resets")
     @ConfigComment("Players who leave a team will lose an island reset chance")
     @ConfigComment("If a player has zero resets left and leaves a team, they cannot make a new")
@@ -254,10 +259,6 @@ public class Settings implements DataObject, WorldSettings {
     @ConfigEntry(path = "island.reset.on-leave.ender-chest")
     private boolean onLeaveResetEnderChest = false;
 
-    @ConfigComment("Have player's respawn on their island if they die")
-    @ConfigEntry(path = "island.respawn-on-island")
-    private boolean respawnOnIsland = true;
-
     // Sethome
     @ConfigEntry(path = "island.sethome.nether.allow")
     private boolean allowSetHomeInNether = true;
@@ -300,12 +301,6 @@ public class Settings implements DataObject, WorldSettings {
     @ConfigComment("Make list blank if visitors should receive all damages")
     @ConfigEntry(path = "protection.invincible-visitors")
     private List<String> ivSettings = new ArrayList<>();
-
-    //---------------------------------------------------------------------------------------/
-
-    @ConfigComment("Whether GUIs should be closed when the player clicks outside.")
-    @ConfigEntry(path = "panel.close-on-click-outside")
-    private boolean closePanelOnClickOutside = true;
 
     //---------------------------------------------------------------------------------------/
     @ConfigComment("These settings should not be edited")
@@ -562,13 +557,6 @@ public class Settings implements DataObject, WorldSettings {
     }
 
     /**
-     * @return the resetConfirmation
-     */
-    public boolean isResetConfirmation() {
-        return resetConfirmation;
-    }
-
-    /**
      * @return the leaversLoseReset
      */
     public boolean isLeaversLoseReset() {
@@ -628,13 +616,6 @@ public class Settings implements DataObject, WorldSettings {
     @Override
     public boolean isOnLeaveResetEnderChest() {
         return onLeaveResetEnderChest;
-    }
-
-    /**
-     * @return the respawnOnIsland
-     */
-    public boolean isRespawnOnIsland() {
-        return respawnOnIsland;
     }
 
     /**
@@ -714,13 +695,6 @@ public class Settings implements DataObject, WorldSettings {
     @Override
     public List<String> getIvSettings() {
         return ivSettings;
-    }
-
-    /**
-     * @return the closePanelOnClickOutside
-     */
-    public boolean isClosePanelOnClickOutside() {
-        return closePanelOnClickOutside;
     }
 
     /**
@@ -958,13 +932,6 @@ public class Settings implements DataObject, WorldSettings {
     }
 
     /**
-     * @param resetConfirmation the resetConfirmation to set
-     */
-    public void setResetConfirmation(boolean resetConfirmation) {
-        this.resetConfirmation = resetConfirmation;
-    }
-
-    /**
      * @param leaversLoseReset the leaversLoseReset to set
      */
     public void setLeaversLoseReset(boolean leaversLoseReset) {
@@ -1021,13 +988,6 @@ public class Settings implements DataObject, WorldSettings {
     }
 
     /**
-     * @param respawnOnIsland the respawnOnIsland to set
-     */
-    public void setRespawnOnIsland(boolean respawnOnIsland) {
-        this.respawnOnIsland = respawnOnIsland;
-    }
-
-    /**
      * @param deathsCounted the deathsCounted to set
      */
     public void setDeathsCounted(boolean deathsCounted) {
@@ -1067,13 +1027,6 @@ public class Settings implements DataObject, WorldSettings {
      */
     public void setIvSettings(List<String> ivSettings) {
         this.ivSettings = ivSettings;
-    }
-
-    /**
-     * @param closePanelOnClickOutside the closePanelOnClickOutside to set
-     */
-    public void setClosePanelOnClickOutside(boolean closePanelOnClickOutside) {
-        this.closePanelOnClickOutside = closePanelOnClickOutside;
     }
 
     /**
@@ -1157,5 +1110,47 @@ public class Settings implements DataObject, WorldSettings {
      */
     public void setBanLimit(int banLimit) {
         this.banLimit = banLimit;
+    }
+
+
+    /**
+     * This method returns the islandCommand value.
+     * @return the value of islandCommand.
+     */
+    public String getIslandCommand()
+    {
+        return islandCommand;
+    }
+
+
+    /**
+     * This method sets the islandCommand value.
+     * @param islandCommand the islandCommand new value.
+     *
+     */
+    public void setIslandCommand(String islandCommand)
+    {
+        this.islandCommand = islandCommand;
+    }
+
+
+    /**
+     * This method returns the adminCommand value.
+     * @return the value of adminCommand.
+     */
+    public String getAdminCommand()
+    {
+        return adminCommand;
+    }
+
+
+    /**
+     * This method sets the adminCommand value.
+     * @param adminCommand the adminCommand new value.
+     *
+     */
+    public void setAdminCommand(String adminCommand)
+    {
+        this.adminCommand = adminCommand;
     }
 }

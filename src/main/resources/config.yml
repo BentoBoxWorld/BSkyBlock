@@ -1,7 +1,12 @@
-# BSkyBlock Configuration 1.1
-# This config file is dynamic and saved when the server is shutdown.
-# You cannot edit it while the server is running because changes will
-# be lost! Use in-game settings GUI or edit when server is offline.
+# BSkyBlock Configuration ${version}
+bskyblock:
+  command:
+    # Island Command. What command users will run to access their island.
+    # To define alias, just separate commands with white space.
+    island: island is
+    # The island admin command.
+    # To define alias, just separate commands with white space.
+    admin: bsbadmin bsb
 world:
   # Friendly name for this world. Used in admin commands. Must be a single word
   friendly-name: BSkyBlock
@@ -223,10 +228,6 @@ island:
       inventory: false
       # Reset Ender Chest - if true, the player's Ender Chest will be cleared.
       ender-chest: false
-  require-confirmation:
-    reset: true
-  # Have player's respawn on their island if they die
-  respawn-on-island: false
   sethome:
     nether:
       allow: true
@@ -276,9 +277,6 @@ protection:
     - HOT_FLOOR
     - CRAMMING
     - VOID
-panel:
-  # Whether GUIs should be closed when the player clicks outside.
-  close-on-click-outside: true
 do-not-edit-these-settings:
   # These settings should not be edited
   reset-epoch: 0

@@ -43,7 +43,7 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
                     if (world.getEnvironment().equals(Environment.NORMAL)) {
                         biomeGrid.setBiome(x, z, addon.getSettings().getDefaultBiome());
                     }
-                    for (int y = 0; y < addon.getSettings().getSeaHeight(); y++) {
+                    for (int y = 0; y <= addon.getSettings().getSeaHeight(); y++) {
                         result.setBlock(x, y, z, Material.WATER);
 
                     }
