@@ -84,6 +84,9 @@ permissions:
   bskyblock.mod.bypasslock:
     description: Bypasses an island lock
     default: op
+  bskyblock.mod.bypassban:
+    description: Bypasses island ban
+    default: op  
   bskyblock.mod.team:
     description: Enables modification of teams via kick and add commands
     default: false
