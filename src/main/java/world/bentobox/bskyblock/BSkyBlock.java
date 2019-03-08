@@ -54,6 +54,7 @@ public class BSkyBlock extends GameModeAddon {
 
     @Override
     public void onDisable() {
+        // Nothing to do here
     }
 
     @Override
@@ -107,7 +108,7 @@ public class BSkyBlock extends GameModeAddon {
 
     @Override
     public WorldSettings getWorldSettings() {
-        return settings;
+        return getSettings();
     }
 
     @Override

@@ -65,7 +65,6 @@ public class AdminCommand extends CompositeCommand {
         new AdminRangeCommand(this);
         // Resets
         new AdminResetsResetCommand(this);
-        // TODO new AdminClearresetsallCommand(this);
         // Delete
         new AdminDeleteCommand(this);
         // Why

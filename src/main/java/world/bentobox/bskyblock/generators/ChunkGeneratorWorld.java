@@ -1,6 +1,6 @@
 package world.bentobox.bskyblock.generators;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -34,7 +34,7 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
     @Override
     public ChunkData generateChunkData(World world, Random random, int chunkX, int chunkZ, ChunkGenerator.BiomeGrid biomeGrid) {
         if (world.getEnvironment().equals(World.Environment.NETHER)) {
-            return generateNetherChunks(world, random, chunkX, chunkZ, biomeGrid);
+            return generateNetherChunks(world, random);
         }
         ChunkData result = createChunkData(world);
         if (addon.getSettings().getSeaHeight() != 0) {
@@ -61,13 +61,13 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
 
     @Override
     public List<BlockPopulator> getDefaultPopulators(final World world) {
-        return Arrays.asList(new BlockPopulator[0]);
+        return Collections.emptyList();
     }
 
     /*
      * Nether Section
      */
-    private ChunkData generateNetherChunks(World world, Random random, int chunkX, int chunkZ, BiomeGrid biomeGrid) {
+    private ChunkData generateNetherChunks(World world, Random random) {
         ChunkData result = createChunkData(world);
         rand.setSeed(world.getSeed());
         gen = new PerlinOctaveGenerator((long) (random.nextLong() * random.nextGaussian()), 8);
@@ -99,47 +99,52 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
                         }
                     }
                     // Layer 8 may be glowstone
-                    double r = gen.noise(x, (double)maxHeight - 8, z, random.nextFloat(), random.nextFloat());
-                    if (r > 0.5D) {
-                        // Have blobs of glowstone
-                        switch (random.nextInt(4)) {
-                        case 1:
-                            // Single block
-                            result.setBlock(x, (maxHeight - 8), z, Material.GLOWSTONE);
-                            if (x < 14 && z < 14) {
-                                result.setBlock(x + 1, (maxHeight - 8), z + 1, Material.GLOWSTONE);
-                                result.setBlock(x + 2, (maxHeight - 8), z + 2, Material.GLOWSTONE);
-                                result.setBlock(x + 1, (maxHeight - 8), z + 2, Material.GLOWSTONE);
-                                result.setBlock(x + 1, (maxHeight - 8), z + 2, Material.GLOWSTONE);
-                            }
-                            break;
-                        case 2:
-                            // Stalatite
-                            for (int i = 0; i < random.nextInt(10); i++) {
-                                result.setBlock(x, (maxHeight - 8 - i), z, Material.GLOWSTONE);
-                            }
-                            break;
-                        case 3:
-                            result.setBlock(x, (maxHeight - 8), z, Material.GLOWSTONE);
-                            if (x > 3 && z > 3) {
-                                for (int xx = 0; xx < 3; xx++) {
-                                    for (int zz = 0; zz < 3; zz++) {
-                                        result.setBlock(x - xx, (maxHeight - 8 - random.nextInt(2)), z - xx, Material.GLOWSTONE);
-                                    }
-                                }
-                            }
-                            break;
-                        default:
-                            result.setBlock(x, (maxHeight - 8), z, Material.GLOWSTONE);
-                        }
-                        result.setBlock(x, (maxHeight - 8), z, Material.GLOWSTONE);
-                    } else {
-                        result.setBlock(x, (maxHeight - 8), z, Material.AIR);
-                    }
+                    doGlowStone(result, maxHeight, x, z, random);
                 }
             }
         }
         return result;
+
+    }
+
+    private void doGlowStone(ChunkData result, int maxHeight, int x, int z, Random random) {
+        double r = gen.noise(x, (double)maxHeight - 8, z, random.nextFloat(), random.nextFloat());
+        if (r > 0.5D) {
+            // Have blobs of glowstone
+            switch (random.nextInt(4)) {
+            case 1:
+                // Single block
+                result.setBlock(x, (maxHeight - 8), z, Material.GLOWSTONE);
+                if (x < 14 && z < 14) {
+                    result.setBlock(x + 1, (maxHeight - 8), z + 1, Material.GLOWSTONE);
+                    result.setBlock(x + 2, (maxHeight - 8), z + 2, Material.GLOWSTONE);
+                    result.setBlock(x + 1, (maxHeight - 8), z + 2, Material.GLOWSTONE);
+                    result.setBlock(x + 1, (maxHeight - 8), z + 2, Material.GLOWSTONE);
+                }
+                break;
+            case 2:
+                // Stalatite
+                for (int i = 0; i < random.nextInt(10); i++) {
+                    result.setBlock(x, (maxHeight - 8 - i), z, Material.GLOWSTONE);
+                }
+                break;
+            case 3:
+                result.setBlock(x, (maxHeight - 8), z, Material.GLOWSTONE);
+                if (x > 3 && z > 3) {
+                    for (int xx = 0; xx < 3; xx++) {
+                        for (int zz = 0; zz < 3; zz++) {
+                            result.setBlock(x - xx, (maxHeight - 8 - random.nextInt(2)), z - xx, Material.GLOWSTONE);
+                        }
+                    }
+                }
+                break;
+            default:
+                result.setBlock(x, (maxHeight - 8), z, Material.GLOWSTONE);
+            }
+            result.setBlock(x, (maxHeight - 8), z, Material.GLOWSTONE);
+        } else {
+            result.setBlock(x, (maxHeight - 8), z, Material.AIR);
+        }
 
     }
 }
