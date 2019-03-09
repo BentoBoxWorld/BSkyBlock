@@ -216,4 +216,15 @@ public class BSkyBlockTest {
         assertTrue(addon.getDefaultWorldGenerator("", "") instanceof ChunkGeneratorWorld);
     }
 
+    /**
+     * Test method for {@link world.bentobox.bskyblock.BSkyBlock#getDefaultWorldGenerator(java.lang.String, java.lang.String)}.
+     */
+    @Test
+    public void testGetDefaultWorldGeneratorStringStringUseOwnGenerator() {
+        addon.onLoad();
+        addon.getSettings().setUseOwnGenerator(true);
+        addon.createWorlds();
+        assertNull(addon.getDefaultWorldGenerator("", ""));
+    }
+
 }

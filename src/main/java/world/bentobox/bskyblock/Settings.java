@@ -92,7 +92,9 @@ public class Settings implements DataObject, WorldSettings {
 
     @ConfigComment("Use your own world generator for this world.")
     @ConfigComment("In this case, the plugin will not generate anything.")
-    @ConfigEntry(path = "world.use-own-generator", experimental = true)
+    @ConfigComment("If used, you must specify the world name and generator in the bukkit.yml file.")
+    @ConfigComment("See https://bukkit.gamepedia.com/Bukkit.yml#.2AOPTIONAL.2A_worlds")
+    @ConfigEntry(path = "world.use-own-generator")
     private boolean useOwnGenerator;
 
     @ConfigComment("Sea height (don't changes this mid-game unless you delete the world)")

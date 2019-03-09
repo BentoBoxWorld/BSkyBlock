@@ -39,7 +39,8 @@ world:
   island-height: 120
   # Use your own world generator for this world.
   # In this case, the plugin will not generate anything.
-  # /!\ This feature is experimental and might not work as expected or might not work at all.
+  # If used, you must specify the world name and generator in the bukkit.yml file.
+  # See https://bukkit.gamepedia.com/Bukkit.yml#.2AOPTIONAL.2A_worlds
   use-own-generator: false
   # Sea height (don't changes this mid-game unless you delete the world)
   # Minimum is 0, which means you are playing Skyblock!

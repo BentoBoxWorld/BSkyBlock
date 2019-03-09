@@ -1,6 +1,7 @@
 package world.bentobox.bskyblock;
 
 import org.bukkit.World;
+import org.bukkit.World.Environment;
 import org.bukkit.WorldCreator;
 import org.bukkit.WorldType;
 import org.bukkit.generator.ChunkGenerator;
@@ -77,35 +78,39 @@ public class BSkyBlock extends GameModeAddon {
         if (getServer().getWorld(worldName) == null) {
             log("Creating BSkyBlock world ...");
         }
-        chunkGenerator = new ChunkGeneratorWorld(this);
+        chunkGenerator = settings.isUseOwnGenerator() ? null : new ChunkGeneratorWorld(this);
         // Create the world if it does not exist
-        islandWorld = WorldCreator.name(worldName).type(WorldType.FLAT).environment(World.Environment.NORMAL).generator(chunkGenerator)
-                .createWorld();
+        islandWorld = getWorld(worldName, World.Environment.NORMAL, chunkGenerator);
 
         // Make the nether if it does not exist
         if (settings.isNetherGenerate()) {
             if (getServer().getWorld(worldName + NETHER) == null) {
                 log("Creating BSkyBlock's Nether...");
             }
-            if (!settings.isNetherIslands()) {
-                netherWorld = WorldCreator.name(worldName + NETHER).type(WorldType.NORMAL).environment(World.Environment.NETHER).createWorld();
-            } else {
-                netherWorld = WorldCreator.name(worldName + NETHER).type(WorldType.FLAT).generator(chunkGenerator)
-                        .environment(World.Environment.NETHER).createWorld();
-            }
+            netherWorld = settings.isNetherIslands() ? getWorld(worldName, World.Environment.NETHER, chunkGenerator) : getWorld(worldName, World.Environment.NETHER, null);
         }
         // Make the end if it does not exist
         if (settings.isEndGenerate()) {
             if (getServer().getWorld(worldName + THE_END) == null) {
                 log("Creating BSkyBlock's End World...");
             }
-            if (!settings.isEndIslands()) {
-                endWorld = WorldCreator.name(worldName + THE_END).type(WorldType.NORMAL).environment(World.Environment.THE_END).createWorld();
-            } else {
-                endWorld = WorldCreator.name(worldName + THE_END).type(WorldType.FLAT).generator(chunkGenerator)
-                        .environment(World.Environment.THE_END).createWorld();
-            }
+            endWorld = settings.isEndIslands() ? getWorld(worldName, World.Environment.THE_END, chunkGenerator) : getWorld(worldName, World.Environment.THE_END, null);
         }
+    }
+
+    /**
+     * Gets a world or generates a new world if it does not exist
+     * @param worldName - the overworld name
+     * @param env - the environment
+     * @param chunkGenerator2 - the chunk generator. If <tt>null</tt> then the generator will not be specified
+     * @return world loaded or generated
+     */
+    private World getWorld(String worldName, Environment env, ChunkGeneratorWorld chunkGenerator2) {
+        // Set world name
+        worldName = env.equals(World.Environment.NETHER) ? worldName + NETHER : worldName;
+        worldName = env.equals(World.Environment.THE_END) ? worldName + THE_END : worldName;
+        WorldCreator wc = WorldCreator.name(worldName).type(WorldType.FLAT).environment(env);
+        return settings.isUseOwnGenerator() ? wc.createWorld() : wc.generator(chunkGenerator2).createWorld();
     }
 
     @Override
