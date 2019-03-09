@@ -1,8 +1,17 @@
 BSkyBlock
 ==========
 [![Build Status](https://ci.codemc.org/buildStatus/icon?job=BentoBoxWorld/BSkyBlock)](https://ci.codemc.org/job/BentoBoxWorld/job/BSkyBlock/)
+[![Lines Of Code](https://sonarcloud.io/api/project_badges/measure?project=world.bentobox%3Abskyblock&metric=ncloc)](https://sonarcloud.io/component_measures?id=world.bentobox%3Abskyblock&metric=ncloc)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=world.bentobox%3Abskyblock&metric=sqale_rating)](https://sonarcloud.io/component_measures?id=world.bentobox%3Abskyblock&metric=Maintainability)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=world.bentobox%3Abskyblock&metric=reliability_rating)](https://sonarcloud.io/component_measures?id=world.bentobox%3Abskyblock&metric=Reliability)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=world.bentobox%3Abskyblock&metric=security_rating)](https://sonarcloud.io/component_measures?id=world.bentobox%3Abskyblock&metric=Security)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=world.bentobox%3Abskyblock&metric=bugs)](https://sonarcloud.io/project/issues?id=world.bentobox%3Abskyblock&resolved=false&types=BUG)
 
+# NOTE
 BSkyBlock is an addon for BentoBox, so to run BSkyBlock, you must have BentoBox installed. It is not a Bukkit plugin and trying to use it as one will not work.
+
+## About
+BSkyBlock provides a skyblock-type Minceaft game for players that supports a default set of 3 islands (overworld, nether and end), protection of islands, team and coop play and other features. Please see the config.yml for all the settings.
 
 ## Installation
 
@@ -17,7 +26,7 @@ BSkyBlock is an addon for BentoBox, so to run BSkyBlock, you must have BentoBox 
 
 ## Config.yml
 
-The config.yml is similar to ASkyBlock but *not the same*. Note that distance-between-islands and protection-range are radius values so the island size will be twice these values!
+The config.yml is similar to ASkyBlock but *not the same*. Note that distance between islands and protection range are **radius values** so the island size will be twice these values in blocks! Also, the distance between islands will be set automatically to a chunk boundary (a multiple of 16 blocks).
 
 
 ### Other Add-ons
