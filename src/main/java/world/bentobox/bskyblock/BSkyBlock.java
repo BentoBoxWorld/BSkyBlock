@@ -41,8 +41,10 @@ public class BSkyBlock extends GameModeAddon {
             // Disable
             logError("BSkyBlock settings could not load! Addon disabled.");
             setState(State.DISABLED);
+            return;
         }
         new Config<>(this, Settings.class).saveConfigObject(settings);
+
     }
 
     @Override
@@ -73,7 +75,7 @@ public class BSkyBlock extends GameModeAddon {
     public void createWorlds() {
         String worldName = settings.getWorldName();
         if (getServer().getWorld(worldName) == null) {
-            getLogger().info("Creating BSkyBlock world ...");
+            log("Creating BSkyBlock world ...");
         }
         chunkGenerator = new ChunkGeneratorWorld(this);
         // Create the world if it does not exist
