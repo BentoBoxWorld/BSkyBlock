@@ -1,0 +1,20 @@
+language: java
+sudo: false
+addons:
+    sonarcloud:
+        organization: "tastybento-github"
+        token:
+            secure: $SONAR_TOKEN
+        branches:
+            - develop
+            - master
+jdk:
+    - openjdk8
+    
+script:
+    - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package -P sonar sonar:sonar -B
+    - echo "${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH}"
+cache:
+    directories:
+        - '$HOME/.m2/repository'
+        - '$HOME/.sonar/cache'
