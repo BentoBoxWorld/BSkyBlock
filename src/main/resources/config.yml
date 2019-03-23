@@ -176,9 +176,9 @@ world:
     MONSTER_SPAWN: true
     FIRE_SPREAD: true
     PVP_OVERWORLD: false
-  # These are the settings visible to users. (Not implemented yet)
-  # /!\ This feature is experimental and might not work as expected or might not work at all.
-  visible-settings: []
+  # These settings/flags are hidden from users
+  # Ops can toggle hiding in-game using SHIFT-LEFT-CLICK on flags in settings
+  hidden-flags: []
   # Visitor banned commands - Visitors to islands cannot use these commands in this world
   visitor-banned-commands:
     - spawner
