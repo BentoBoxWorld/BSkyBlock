@@ -185,9 +185,10 @@ public class Settings implements DataObject, WorldSettings {
     @Adapter(FlagSerializer2.class)
     private Map<Flag, Integer> defaultIslandSettings = new HashMap<>();
 
-    @ConfigComment("These are the settings visible to users. (Not implemented yet)")
-    @ConfigEntry(path = "world.visible-settings", experimental = true)
-    private List<String> visibleSettings = new ArrayList<>();
+    @ConfigComment("These settings/flags are hidden from users")
+    @ConfigComment("Ops can toggle hiding in-game using SHIFT-LEFT-CLICK on flags in settings")
+    @ConfigEntry(path = "world.hidden-flags")
+    private List<String> hiddenFlags = new ArrayList<>();
 
     @ConfigComment("Visitor banned commands - Visitors to islands cannot use these commands in this world")
     @ConfigEntry(path = "world.visitor-banned-commands")
@@ -519,11 +520,11 @@ public class Settings implements DataObject, WorldSettings {
     }
 
     /**
-     * @return the visibleSettings
+     * @return the hidden flags
      */
     @Override
-    public List<String> getVisibleSettings() {
-        return visibleSettings;
+    public List<String> getHiddenFlags() {
+        return hiddenFlags;
     }
 
     /**
@@ -899,10 +900,10 @@ public class Settings implements DataObject, WorldSettings {
     }
 
     /**
-     * @param visibleSettings the visibleSettings to set
+     * @param set the hidden flags
      */
-    public void setVisibleSettings(List<String> visibleSettings) {
-        this.visibleSettings = visibleSettings;
+    public void setHiddenFlags(List<String> hiddenFlags) {
+        this.hiddenFlags = hiddenFlags;
     }
 
     /**

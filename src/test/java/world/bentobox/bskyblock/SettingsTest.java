@@ -254,13 +254,13 @@ public class SettingsTest {
     }
 
     /**
-     * Test method for {@link world.bentobox.bskyblock.Settings#setVisibleSettings(java.util.List)}.
+     * Test method for {@link world.bentobox.bskyblock.Settings#setHiddenFlags(java.util.List)}.
      */
     @Test
     public void testSetVisibleSettings() {
         List<String> visibleSettings = Collections.emptyList();
-        s.setVisibleSettings(visibleSettings);
-        assertEquals(visibleSettings, s.getVisibleSettings());
+        s.setHiddenFlags(visibleSettings);
+        assertEquals(visibleSettings, s.getHiddenFlags());
     }
 
     /**

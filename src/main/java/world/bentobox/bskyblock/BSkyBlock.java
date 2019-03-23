@@ -44,7 +44,7 @@ public class BSkyBlock extends GameModeAddon {
             setState(State.DISABLED);
             return;
         }
-        new Config<>(this, Settings.class).saveConfigObject(settings);
+        this.saveWorldSettings();
 
     }
 
@@ -121,5 +121,13 @@ public class BSkyBlock extends GameModeAddon {
     @Override
     public @NonNull ChunkGenerator getDefaultWorldGenerator(String worldName, String id) {
         return chunkGenerator;
+    }
+
+    @Override
+    public void saveWorldSettings() {
+        if (settings != null) {
+            new Config<>(this, Settings.class).saveConfigObject(settings);
+        }
+
     }
 }
