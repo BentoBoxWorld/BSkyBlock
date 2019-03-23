@@ -900,7 +900,7 @@ public class Settings implements DataObject, WorldSettings {
     }
 
     /**
-     * @param set the hidden flags
+     * @param hiddenFlags the hidden flags to set
      */
     public void setHiddenFlags(List<String> hiddenFlags) {
         this.hiddenFlags = hiddenFlags;
