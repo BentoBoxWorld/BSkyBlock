@@ -114,7 +114,7 @@ public class IslandCommandTest {
         assertEquals("commands.island.parameters", cmd.getParameters());
         assertEquals("commands.island.help.description", cmd.getDescription());
         // Number of commands = sub commands + help
-        assertEquals("Number of sub commands registered", 16, cmd.getSubCommands().values().size());
+        assertEquals("Number of sub commands registered", 17, cmd.getSubCommands().values().size());
 
     }
 
