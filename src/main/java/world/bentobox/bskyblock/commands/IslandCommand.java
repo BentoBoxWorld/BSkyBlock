@@ -7,6 +7,7 @@ import world.bentobox.bentobox.api.commands.CompositeCommand;
 import world.bentobox.bentobox.api.commands.island.IslandBanCommand;
 import world.bentobox.bentobox.api.commands.island.IslandBanlistCommand;
 import world.bentobox.bentobox.api.commands.island.IslandCreateCommand;
+import world.bentobox.bentobox.api.commands.island.IslandExpelCommand;
 import world.bentobox.bentobox.api.commands.island.IslandGoCommand;
 import world.bentobox.bentobox.api.commands.island.IslandInfoCommand;
 import world.bentobox.bentobox.api.commands.island.IslandLanguageCommand;
@@ -26,8 +27,8 @@ public class IslandCommand extends CompositeCommand {
 
     public IslandCommand(BSkyBlock addon) {
         super(addon,
-            addon.getSettings().getIslandCommand().split(" ")[0],
-            addon.getSettings().getIslandCommand().split(" "));
+                addon.getSettings().getIslandCommand().split(" ")[0],
+                addon.getSettings().getIslandCommand().split(" "));
     }
 
     /* (non-Javadoc)
@@ -54,6 +55,7 @@ public class IslandCommand extends CompositeCommand {
         new IslandBanCommand(this);
         new IslandUnbanCommand(this);
         new IslandBanlistCommand(this);
+        new IslandExpelCommand(this);
         // Team commands
         new IslandTeamCommand(this);
     }
