@@ -47,9 +47,9 @@ public class Settings implements DataObject, WorldSettings {
     private String friendlyName = "BSkyBlock";
 
     @ConfigComment("Name of the world - if it does not exist then it will be generated.")
-    @ConfigComment("It acts like a prefix for nether and end (e.g. BSkyBlock-world, BSkyBlock-world_nether, BSkyBlock-world_end)")
+    @ConfigComment("It acts like a prefix for nether and end (e.g. BSkyBlock_world, BSkyBlock_world_nether, BSkyBlock_world_end)")
     @ConfigEntry(path = "world.world-name")
-    private String worldName = "BSkyBlock-world";
+    private String worldName = "BSkyBlock_world";
 
     @ConfigComment("World difficulty setting - PEACEFUL, EASY, NORMAL, HARD")
     @ConfigComment("Other plugins may override this setting")
