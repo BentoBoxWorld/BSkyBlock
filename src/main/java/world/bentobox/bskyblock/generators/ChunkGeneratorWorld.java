@@ -36,12 +36,14 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
     @Override
     public ChunkData generateChunkData(World world, Random random, int chunkX, int chunkZ, ChunkGenerator.BiomeGrid biomeGrid) {
         this.rand = random;
-        if (world.getEnvironment().equals(World.Environment.NETHER)) {
-            Bukkit.getLogger().info("DEBUG: Nether " + world.getMaxHeight());
-        }
+        /*
+         * TODO: Put back in when nether height is fixed on server.
+         * https://hub.spigotmc.org/jira/browse/SPIGOT-4799
+         *
         if (world.getEnvironment().equals(World.Environment.NETHER) && addon.getSettings().isNetherRoof()) {
             return generateNetherRoofChunks(world, random);
         }
+         */
         ChunkData result = createChunkData(world);
         if (!world.getEnvironment().equals(Environment.NORMAL)) {
             return result;
@@ -82,7 +84,7 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
                 // Do the ceiling
-                makeCeiling(result, x, z, world.getMaxHeight());
+                makeCeiling(result, x, z, 255);
             }
         }
         return result;
