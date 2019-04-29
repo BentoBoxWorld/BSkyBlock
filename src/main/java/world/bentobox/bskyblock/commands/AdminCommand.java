@@ -81,6 +81,8 @@ public class AdminCommand extends CompositeCommand {
         new AdminTrashCommand(this);
         new AdminEmptyTrashCommand(this);
         new AdminSwitchtoCommand(this);
+        // Conversion
+        new AdminConvertCommand(this);
     }
 
     @Override

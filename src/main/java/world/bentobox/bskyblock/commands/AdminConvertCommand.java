@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,14 +24,18 @@ import world.bentobox.bentobox.database.objects.Names;
 import world.bentobox.bentobox.database.objects.Players;
 import world.bentobox.bentobox.lists.Flags;
 import world.bentobox.bentobox.managers.PlayersManager;
+import world.bentobox.bentobox.managers.RanksManager;
 import world.bentobox.bentobox.util.Util;
 import world.bentobox.bskyblock.BSkyBlock;
+import world.bentobox.bskyblock.Settings;
 import world.bentobox.bskyblock.generators.ChunkGeneratorWorld;
 
 public class AdminConvertCommand extends CompositeCommand {
 
     private Database<Players> handler;
     private Database<Names> names;
+
+    private BSkyBlock gm;
 
     // Owner, island
     Map<UUID, Island> islands = new HashMap<>();
@@ -42,18 +46,17 @@ public class AdminConvertCommand extends CompositeCommand {
     private int islandProtectionRange;
     private int islandXOffset;
     private int islandZOffset;
-    private long islandStartX;
-    private long islandStartZ;
+    private int islandStartX;
+    private int islandStartZ;
     private int islandHeight;
     private int seaHeight;
     private String worldName;
     private boolean createNether;
     private boolean newNether;
-    private Object islandWorld;
-    private Object netherWorld;
 
     public AdminConvertCommand(CompositeCommand parent) {
         super(parent, "convert");
+        this.gm = (BSkyBlock)getAddon();
     }
 
     @Override
@@ -70,7 +73,7 @@ public class AdminConvertCommand extends CompositeCommand {
 
     @Override
     public boolean canExecute(User user, String label, List<String> args) {
-        if (args.size() > 1 || (args.isEmpty() && !user.isPlayer())) {
+        if (!args.isEmpty()) {
             // Show help
             showHelp(this, user);
             return false;
@@ -93,14 +96,22 @@ public class AdminConvertCommand extends CompositeCommand {
     }
     @Override
     public boolean execute(User user, String label, List<String> args) {
+        user.sendRawMessage("Getting the worlds");
+        try {
+            getConfigs();
+        } catch (InvalidConfigurationException e) {
+            getAddon().logError("Config loading error: " + e.getMessage());
+            return false;
+        }
         try {
             getAskyBlockWorld();
         } catch (Exception e) {
             getAddon().logError("World loading error: " + e.getMessage());
             return false;
         }
+        user.sendRawMessage("Converting players");
         try {
-            convertplayers();
+            convertplayers(user);
         } catch (Exception e) {
             getAddon().logError("Player conversion error: " + e.getMessage());
             return false;
@@ -121,35 +132,39 @@ public class AdminConvertCommand extends CompositeCommand {
         newNether = nullCheck(config.getBoolean("general.newnether"));
         // Open up the world
         ChunkGeneratorWorld chunkGenerator = new ChunkGeneratorWorld((BSkyBlock)getAddon());
-        islandWorld = WorldCreator.name(worldName).type(WorldType.FLAT).environment(World.Environment.NORMAL).generator(chunkGenerator).createWorld();
+        WorldCreator.name(worldName).type(WorldType.FLAT).environment(World.Environment.NORMAL).generator(chunkGenerator).createWorld();
 
-        // Make the nether if it does not exist
+        // Get nether
         if (createNether && newNether) {
-            netherWorld = WorldCreator.name(worldName + "_nether").type(WorldType.FLAT).environment(World.Environment.NORMAL).generator(chunkGenerator).createWorld();
+            WorldCreator.name(worldName + "_nether").type(WorldType.FLAT).environment(World.Environment.NORMAL).generator(chunkGenerator).createWorld();
         }
 
     }
 
-    private void convertWorld() {
+    private void getConfigs() throws InvalidConfigurationException {
         // Get config items for world
-        try {
-            islandDistance = nullCheck(config.getInt("island.distance"));
-            islandProtectionRange = nullCheck(config.getInt("island.protectionRange"));
-            islandXOffset = nullCheck(config.getInt("island.xoffset"));
-            islandZOffset = nullCheck(config.getInt("island.zoffset"));
-            islandStartX = nullCheck(config.getLong("island.startx"));
-            islandStartZ = nullCheck(config.getLong("island.startz"));
-            islandHeight = nullCheck(config.getInt("island.islandlevel")) - 5;
-            seaHeight = nullCheck(config.getInt("island.sealevel"));
-        } catch (Exception e) {
-            getAddon().logError(e.getMessage());
-            return;
-        }
-
+        islandDistance = nullCheck(config.getInt("island.distance"));
+        islandProtectionRange = nullCheck(config.getInt("island.protectionRange"));
+        islandXOffset = nullCheck(config.getInt("island.xoffset"));
+        islandZOffset = nullCheck(config.getInt("island.zoffset"));
+        islandStartX = nullCheck(config.getInt("island.startx"));
+        islandStartZ = nullCheck(config.getInt("island.startz"));
+        islandHeight = nullCheck(config.getInt("island.islandlevel")) - 5;
+        seaHeight = nullCheck(config.getInt("island.sealevel"));
+        Settings s = gm.getSettings();
+        s.setIslandXOffset(islandXOffset);
+        s.setIslandZOffset(islandZOffset);
+        s.setIslandDistance(islandDistance / 2);
+        s.setIslandProtectionRange(islandProtectionRange / 2);
+        s.setIslandStartX(islandStartX);
+        s.setIslandStartZ(islandStartZ);
+        s.setSeaHeight(seaHeight != 0 ? seaHeight - 1 : 0);
+        s.setIslandHeight(islandHeight);
+        gm.saveWorldSettings();
 
     }
 
-    private void convertplayers() throws InvalidConfigurationException, FileNotFoundException, IOException {
+    private void convertplayers(User user) throws InvalidConfigurationException, FileNotFoundException, IOException {
         File playerFolder = new File(getPlugin().getDataFolder(), "../ASkyBlock/players");
         if (!playerFolder.exists()) {
             throw new InvalidConfigurationException("Expected ASkyBlock player folder not found!");
@@ -167,7 +182,10 @@ public class AdminConvertCommand extends CompositeCommand {
         };
         PlayersManager pm = getPlugin().getPlayers();
         YamlConfiguration player = new YamlConfiguration();
-        for (File file: playerFolder.listFiles(ymlFilter)) {
+        List<File> playerFiles = Arrays.asList(playerFolder.listFiles(ymlFilter));
+        user.sendRawMessage("There are " + playerFiles.size() + " player files to process");
+        int count = 1;
+        for (File file: playerFiles) {
             try {
                 player.load(file);
                 String uniqueId = file.getName().substring(0, file.getName().length() - 4);
@@ -184,16 +202,20 @@ public class AdminConvertCommand extends CompositeCommand {
                 p.getDeaths().putIfAbsent(this.getWorld().getName(), player.getInt("deaths"));
                 p.setLocale(player.getString("locale"));
                 handler.saveObject(p);
-
+                user.sendRawMessage("Saved " + (count++) + " players");
                 // Handle island
-                processIsland(uuid, player);
+                processIsland(user, uuid, player);
                 // Rename file
                 file.renameTo(new File(file.getParent(), file.getName() + ".done"));
             } catch (Exception e) {
                 getAddon().logError("Error trying to import player file " + file.getName() + ": " + e.getMessage());
             }
         }
+        user.sendRawMessage("Processing teams");
         processTeams();
+        user.sendRawMessage("Storing islands");
+        islands.values().forEach(i -> getIslands().getIslandCache().addIsland(i));
+        user.sendRawMessage("done");
     }
 
     private void processTeams() {
@@ -203,7 +225,8 @@ public class AdminConvertCommand extends CompositeCommand {
         });
     }
 
-    private void processIsland(UUID uuid, YamlConfiguration player) {
+    private void processIsland(User user, UUID uuid, YamlConfiguration player) {
+        user.sendRawMessage("Processing island");
         boolean hasIsland = player.getBoolean("hasIsland");
         if (!hasIsland) {
             // Unless the player has an island, ignore
@@ -230,13 +253,17 @@ public class AdminConvertCommand extends CompositeCommand {
         Island island = new Island();
         island.setUniqueId(getWorld().getName() + "_i_" + UUID.randomUUID().toString());
         island.setOwner(teamLeader.isEmpty() ? uuid : UUID.fromString(teamLeader));
-        island.setProtectionRange(protectionRange * 2);
+        island.setProtectionRange(protectionRange / 2);
         island.setSpawn(isSpawn);
         island.setCenter(Util.getLocationString(islandLocation));
         island.setSettingsFlag(Flags.LOCK, isLocked);
         members.stream().map(UUID::fromString).forEach(island::addMember);
+        island.setRank(island.getOwner(), RanksManager.OWNER_RANK);
         island.setCreatedDate(System.currentTimeMillis());
         island.setUpdatedDate(System.currentTimeMillis());
+        island.setGameMode(getAddon().getDescription().getName());
+        island.setRange(this.islandDistance / 2 );
+        island.setGameMode(gm.getDescription().getName());
         islands.put(uuid, island);
     }
 }
