@@ -1,5 +1,6 @@
 package world.bentobox.bskyblock;
 
+import org.bukkit.Chunk;
 import org.bukkit.World;
 import org.bukkit.World.Environment;
 import org.bukkit.WorldCreator;
@@ -130,4 +131,10 @@ public class BSkyBlock extends GameModeAddon {
         }
 
     }
+
+	@Override
+	public void regerateChunk(Chunk chunk) {
+		if (chunkGenerator != null) chunkGenerator.regenerateChunk(chunk);
+		
+	}
 }
