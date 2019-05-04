@@ -1,0 +1,6 @@
+name: BSkyBlock
+main: world.bentobox.bskyblock.CopyToBentoBox
+version: ${version}
+description: A SkyBlock Plugin
+author: tastybento
+depend: [BentoBox]
