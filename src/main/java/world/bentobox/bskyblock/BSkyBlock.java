@@ -34,9 +34,15 @@ public class BSkyBlock extends GameModeAddon {
         saveDefaultConfig();
         // Load settings from config.yml. This will check if there are any issues with it too.
         loadSettings();
+        // Chunk generator
+        chunkGenerator = settings.isUseOwnGenerator() ? null : new ChunkGeneratorWorld(this);
+        // Register commands
+        playerCommand = new IslandCommand(this);
+        adminCommand = new AdminCommand(this);
     }
 
     private void loadSettings() {
+        // Load settings again to get worlds
         settings = new Config<>(this, Settings.class).loadConfigObject();
         if (settings == null) {
             // Disable
@@ -50,9 +56,7 @@ public class BSkyBlock extends GameModeAddon {
 
     @Override
     public void onEnable(){
-        // Register commands
-        playerCommand = new IslandCommand(this);
-        adminCommand = new AdminCommand(this);
+        // Nothing to do here
     }
 
     @Override
@@ -78,7 +82,7 @@ public class BSkyBlock extends GameModeAddon {
         if (getServer().getWorld(worldName) == null) {
             log("Creating BSkyBlock world ...");
         }
-        chunkGenerator = settings.isUseOwnGenerator() ? null : new ChunkGeneratorWorld(this);
+
         // Create the world if it does not exist
         islandWorld = getWorld(worldName, World.Environment.NORMAL, chunkGenerator);
 
@@ -100,16 +104,16 @@ public class BSkyBlock extends GameModeAddon {
 
     /**
      * Gets a world or generates a new world if it does not exist
-     * @param worldName - the overworld name
+     * @param worldName2 - the overworld name
      * @param env - the environment
      * @param chunkGenerator2 - the chunk generator. If <tt>null</tt> then the generator will not be specified
      * @return world loaded or generated
      */
-    private World getWorld(String worldName, Environment env, ChunkGeneratorWorld chunkGenerator2) {
+    private World getWorld(String worldName2, Environment env, ChunkGeneratorWorld chunkGenerator2) {
         // Set world name
-        worldName = env.equals(World.Environment.NETHER) ? worldName + NETHER : worldName;
-        worldName = env.equals(World.Environment.THE_END) ? worldName + THE_END : worldName;
-        WorldCreator wc = WorldCreator.name(worldName).type(WorldType.FLAT).environment(env);
+        worldName2 = env.equals(World.Environment.NETHER) ? worldName2 + NETHER : worldName2;
+        worldName2 = env.equals(World.Environment.THE_END) ? worldName2 + THE_END : worldName2;
+        WorldCreator wc = WorldCreator.name(worldName2).type(WorldType.FLAT).environment(env);
         return settings.isUseOwnGenerator() ? wc.createWorld() : wc.generator(chunkGenerator2).createWorld();
     }
 
@@ -128,6 +132,5 @@ public class BSkyBlock extends GameModeAddon {
         if (settings != null) {
             new Config<>(this, Settings.class).saveConfigObject(settings);
         }
-
     }
 }
