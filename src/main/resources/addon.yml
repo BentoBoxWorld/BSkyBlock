@@ -23,7 +23,10 @@ permissions:
     default: true
   bskyblock.island.lock:
     description: Allows island locking
-    default: false
+    default: true
+  bskyblock.island.near:
+    description: Players can see nearby island names
+    default: true
   bskyblock.island.expel:
     description: Allows expelling of visitors
     default: true

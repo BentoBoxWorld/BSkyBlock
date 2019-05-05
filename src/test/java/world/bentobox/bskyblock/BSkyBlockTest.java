@@ -24,6 +24,7 @@ import java.util.logging.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.entity.Player;
+import org.eclipse.jdt.annotation.Nullable;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,6 +38,7 @@ import org.powermock.reflect.Whitebox;
 
 import world.bentobox.bentobox.BentoBox;
 import world.bentobox.bentobox.api.addons.AddonDescription;
+import world.bentobox.bentobox.api.configuration.Config;
 import world.bentobox.bentobox.api.user.User;
 import world.bentobox.bentobox.database.objects.Island;
 import world.bentobox.bentobox.managers.CommandsManager;
@@ -49,7 +51,7 @@ import world.bentobox.bskyblock.generators.ChunkGeneratorWorld;
  *
  */
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({Bukkit.class, BentoBox.class, User.class })
+@PrepareForTest({Bukkit.class, BentoBox.class, User.class, Config.class })
 public class BSkyBlockTest {
 
     private User user;
@@ -214,17 +216,6 @@ public class BSkyBlockTest {
         addon.createWorlds();
         assertNotNull(addon.getDefaultWorldGenerator("", ""));
         assertTrue(addon.getDefaultWorldGenerator("", "") instanceof ChunkGeneratorWorld);
-    }
-
-    /**
-     * Test method for {@link world.bentobox.bskyblock.BSkyBlock#getDefaultWorldGenerator(java.lang.String, java.lang.String)}.
-     */
-    @Test
-    public void testGetDefaultWorldGeneratorStringStringUseOwnGenerator() {
-        addon.onLoad();
-        addon.getSettings().setUseOwnGenerator(true);
-        addon.createWorlds();
-        assertNull(addon.getDefaultWorldGenerator("", ""));
     }
 
 }
