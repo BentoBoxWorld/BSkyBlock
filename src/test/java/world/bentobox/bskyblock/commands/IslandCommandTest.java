@@ -41,6 +41,7 @@ import world.bentobox.bskyblock.Settings;
 @PrepareForTest({Bukkit.class, BentoBox.class, User.class })
 public class IslandCommandTest {
 
+    private static final int NUMBER_OF_COMMANDS = 18;
     private User user;
     private IslandsManager im;
     private Island island;
@@ -114,7 +115,7 @@ public class IslandCommandTest {
         assertEquals("commands.island.parameters", cmd.getParameters());
         assertEquals("commands.island.help.description", cmd.getDescription());
         // Number of commands = sub commands + help
-        assertEquals("Number of sub commands registered", 17, cmd.getSubCommands().values().size());
+        assertEquals("Number of sub commands registered", NUMBER_OF_COMMANDS, cmd.getSubCommands().values().size());
 
     }
 
