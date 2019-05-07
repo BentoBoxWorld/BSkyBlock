@@ -66,9 +66,6 @@ permissions:
   bskyblock.mod.info:
     description: Let a moderator see info on a player
     default: op
-  bskyblock.mod.resethome:
-    description: Allows setting or reseting of a player's home position
-    default: op
   bskyblock.mod.clearreset:
     description: Allow clearing of island reset limit
     default: false
@@ -93,12 +90,6 @@ permissions:
   bskyblock.mod.team:
     description: Enables modification of teams via kick and add commands
     default: false
-  bskyblock.mod.name:
-    description: Enables naming of player's islands
-    default: false
-  bskyblock.mod.resetname:
-    description: Enables reset of player's island names
-    default: false
   bskyblock.admin.tp:
     description: Allows teleport to an island
     default: op    
@@ -111,17 +102,11 @@ permissions:
   bskyblock.admin.delete:
     description: Let a player completely remove a player (including island)
     default: op
-  bskyblock.admin.deleteisland:
-    description: Let a player completely remove the island the player is on
-    default: op
   bskyblock.admin.register:
     description: Let a player register the nearest island to another player.
     default: op
   bskyblock.admin.unregister:
     description: Removes a player from an island without deleting the island blocks.
-    default: op
-  bskyblock.admin.purge:
-    description: Let a player purge old islands.
     default: op
   bskyblock.admin.setspawn:
     description: Allows use of spawn tools
@@ -129,14 +114,14 @@ permissions:
   bskyblock.admin.setrange:
     description: Allows setting of island protection range
     default: op
-  bskyblock.admin.reserve:
-    description: Reserves an empty spot for a player's next island
-    default: op
   bskyblock.admin.settingsreset:
     description: Resets all the islands to default protection settings
     default: op
   bskyblock.admin.noban:
     description: Player cannot be banned from an island
+    default: op
+  bskyblock.admin.noexpel:
+    description: Player cannot be expelled from an island
     default: op
   bskyblock.admin.setlanguage:
     description: Resets all player languages and sets the default language
