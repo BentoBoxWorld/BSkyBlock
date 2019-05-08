@@ -17,7 +17,6 @@ import world.bentobox.bentobox.api.configuration.ConfigEntry;
 import world.bentobox.bentobox.api.configuration.StoreAt;
 import world.bentobox.bentobox.api.configuration.WorldSettings;
 import world.bentobox.bentobox.api.flags.Flag;
-import world.bentobox.bentobox.database.objects.DataObject;
 import world.bentobox.bentobox.database.objects.adapters.Adapter;
 import world.bentobox.bentobox.database.objects.adapters.FlagSerializer;
 import world.bentobox.bentobox.database.objects.adapters.FlagSerializer2;
@@ -28,7 +27,7 @@ import world.bentobox.bentobox.database.objects.adapters.FlagSerializer2;
  */
 @StoreAt(filename="config.yml", path="addons/BSkyBlock") // Explicitly call out what name this should have.
 @ConfigComment("BSkyBlock Configuration [version]")
-public class Settings implements DataObject, WorldSettings {
+public class Settings implements WorldSettings {
 
     /* Commands */
     @ConfigComment("Island Command. What command users will run to access their island.")
@@ -309,8 +308,6 @@ public class Settings implements DataObject, WorldSettings {
     @ConfigComment("These settings should not be edited")
     @ConfigEntry(path = "do-not-edit-these-settings.reset-epoch")
     private long resetEpoch = 0;
-
-    private String uniqueId = "config";
 
     /**
      * @return the friendlyName
@@ -709,14 +706,6 @@ public class Settings implements DataObject, WorldSettings {
     }
 
     /**
-     * @return the uniqueId
-     */
-    @Override
-    public String getUniqueId() {
-        return uniqueId;
-    }
-
-    /**
      * @param friendlyName the friendlyName to set
      */
     public void setFriendlyName(String friendlyName) {
@@ -1066,14 +1055,6 @@ public class Settings implements DataObject, WorldSettings {
     @Override
     public void setResetEpoch(long resetEpoch) {
         this.resetEpoch = resetEpoch;
-    }
-
-    /**
-     * @param uniqueId the uniqueId to set
-     */
-    @Override
-    public void setUniqueId(String uniqueId) {
-        this.uniqueId = uniqueId;
     }
 
     @Override
