@@ -11,7 +11,7 @@ BSkyBlock
 BSkyBlock is an addon for BentoBox, so to run BSkyBlock, you must have BentoBox installed. It is not a Bukkit plugin and trying to use it as one will not work.
 
 ## About
-BSkyBlock provides a skyblock-type Minceaft game for players that supports a default set of 3 islands (overworld, nether and end), protection of islands, team and coop play and other features. Please see the config.yml for all the settings.
+BSkyBlock provides a skyblock-type Minecraft game for players that supports a default set of 3 islands (overworld, nether and end), protection of islands, team and coop play and other features. Please see the config.yml for all the settings.
 
 ## Installation
 
