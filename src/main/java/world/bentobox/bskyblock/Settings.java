@@ -65,7 +65,7 @@ public class Settings implements WorldSettings {
     @ConfigComment("Default protection range radius in blocks. Cannot be larger than distance.")
     @ConfigComment("Admins can change protection sizes for players individually using /bsbadmin range set <player> <new range>")
     @ConfigComment("or set this permission: bskyblock.island.range.<number>")
-    @ConfigEntry(path = "world.protection-range")
+    @ConfigEntry(path = "world.protection-range", needsReset = true)
     private int islandProtectionRange = 100;
 
     @ConfigComment("Start islands at these coordinates. This is where new islands will start in the")
