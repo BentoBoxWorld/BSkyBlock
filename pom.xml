@@ -112,11 +112,12 @@
 				</includes>
 			</resource>
 			<resource>
-				<directory>src/main/resources/schems</directory>
-				<targetPath>./schems</targetPath>
+				<directory>src/main/resources/blueprints</directory>
+				<targetPath>./blueprints</targetPath>
 				<filtering>false</filtering>
 				<includes>
-					<include>*.schem</include>
+					<include>*.blu</include>
+					<include>*.json</include>
 				</includes>
 			</resource>
 		</resources>
@@ -132,7 +133,7 @@
 				<version>3.1.0</version>
 				<configuration>
 					<nonFilteredFileExtensions>
-						<nonFilteredFileExtension>schem</nonFilteredFileExtension>
+						<nonFilteredFileExtension>blu</nonFilteredFileExtension>
 					</nonFilteredFileExtensions>
 				</configuration>
 			</plugin>
