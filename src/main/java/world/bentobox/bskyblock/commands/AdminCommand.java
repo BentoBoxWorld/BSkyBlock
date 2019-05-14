@@ -18,10 +18,10 @@ import world.bentobox.bentobox.api.commands.admin.AdminTrashCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminUnregisterCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminVersionCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminWhyCommand;
+import world.bentobox.bentobox.api.commands.admin.blueprints.AdminBlueprintCommand;
 import world.bentobox.bentobox.api.commands.admin.deaths.AdminDeathsCommand;
 import world.bentobox.bentobox.api.commands.admin.range.AdminRangeCommand;
 import world.bentobox.bentobox.api.commands.admin.resets.AdminResetsResetCommand;
-import world.bentobox.bentobox.api.commands.admin.schem.AdminSchemCommand;
 import world.bentobox.bentobox.api.commands.admin.team.AdminTeamAddCommand;
 import world.bentobox.bentobox.api.commands.admin.team.AdminTeamDisbandCommand;
 import world.bentobox.bentobox.api.commands.admin.team.AdminTeamKickCommand;
@@ -57,7 +57,7 @@ public class AdminCommand extends CompositeCommand {
         new AdminTeamDisbandCommand(this);
         new AdminTeamSetownerCommand(this);
         // Schems
-        new AdminSchemCommand(this);
+        new AdminBlueprintCommand(this);
         // Register/unregister islands
         new AdminRegisterCommand(this);
         new AdminUnregisterCommand(this);
