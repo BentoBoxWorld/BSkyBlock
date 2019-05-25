@@ -1,0 +1,16 @@
+{
+  "uniqueId": "harder_island",
+  "icon": "SNOWBALL",
+  "displayName": "Harder Island",
+  "description": [
+    "This island is",
+    "much harder.",
+    "Beware the lava!"
+  ],
+  "requirePermission": false,
+  "blueprints": {
+    "NORMAL": "harder",
+    "NETHER": "nether-island",
+    "THE_END": "end-island"
+  }
+}

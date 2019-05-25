@@ -1,0 +1,16 @@
+{
+  "uniqueId": "double_island",
+  "icon": "FURNACE",
+  "displayName": "Double Island",
+  "description": [
+    "Two islands in one!",
+    "Can you reach the",
+    "desert?"
+  ],
+  "requirePermission": false,
+  "blueprints": {
+    "NORMAL": "double",
+    "NETHER": "nether-island",
+    "THE_END": "end-island"
+  }
+}
