@@ -80,6 +80,9 @@ permissions:
   bskyblock.mod.bypassexpel:
     description: Allow moderator to bypass island expulsion
     default: op
+  bskyblock.mod.switch:
+    description: Allows moderator to switch bypass protection on and off
+    default: op
   bskyblock.mod.lock:
     description: Locks or unlocks an island
     default: op

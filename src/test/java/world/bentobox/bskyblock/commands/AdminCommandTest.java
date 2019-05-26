@@ -38,6 +38,7 @@ import world.bentobox.bskyblock.Settings;
 @PrepareForTest({Bukkit.class, BentoBox.class, User.class })
 public class AdminCommandTest {
 
+    private static final int NUM_COMMANDS = 27;
     private User user;
     private BSkyBlock addon;
 
@@ -96,7 +97,7 @@ public class AdminCommandTest {
         assertEquals("commands.admin.help.parameters", cmd.getParameters());
         assertEquals("commands.admin.help.description", cmd.getDescription());
         // Number of commands = sub commands + help
-        assertEquals("Number of sub commands registered", 26, cmd.getSubCommands().values().size());
+        assertEquals("Number of sub commands registered", NUM_COMMANDS, cmd.getSubCommands().values().size());
     }
 
     /**
