@@ -17,10 +17,9 @@ world:
   # Other plugins may override this setting
   difficulty: NORMAL
   # Radius of island in blocks. (So distance between islands is twice this)
-  # Will be rounded up to the nearest 16 blocks.
   # It is the same for every dimension : Overworld, Nether and End.
   # This value cannot be changed mid-game and the plugin will not start if it is different.
-  distance-between-islands: 64
+  distance-between-islands: 400
   # Default protection range radius in blocks. Cannot be larger than distance.
   # Admins can change protection sizes for players individually using /bsbadmin range set <player> <new range>
   # or set this permission: bskyblock.island.range.<number>
@@ -56,7 +55,7 @@ world:
   # The default biome for the overworld
   default-biome: PLAINS
   # The maximum number of players a player can ban at any one time in this game mode.
-  # The permission acidisland.ban.maxlimit.X where X is a number can also be used per player
+  # The permission bskyblock.ban.maxlimit.X where X is a number can also be used per player
   # -1 = unlimited
   ban-limit: -1
   nether:

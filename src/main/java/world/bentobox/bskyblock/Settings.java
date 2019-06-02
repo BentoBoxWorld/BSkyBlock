@@ -56,17 +56,16 @@ public class Settings implements WorldSettings {
     private Difficulty difficulty = Difficulty.NORMAL;
 
     @ConfigComment("Radius of island in blocks. (So distance between islands is twice this)")
-    @ConfigComment("Will be rounded up to the nearest 16 blocks.")
     @ConfigComment("It is the same for every dimension : Overworld, Nether and End.")
     @ConfigComment("This value cannot be changed mid-game and the plugin will not start if it is different.")
     @ConfigEntry(path = "world.distance-between-islands", needsReset = true)
-    private int islandDistance = 192;
+    private int islandDistance = 400;
 
     @ConfigComment("Default protection range radius in blocks. Cannot be larger than distance.")
     @ConfigComment("Admins can change protection sizes for players individually using /bsbadmin range set <player> <new range>")
     @ConfigComment("or set this permission: bskyblock.island.range.<number>")
     @ConfigEntry(path = "world.protection-range", needsReset = true)
-    private int islandProtectionRange = 100;
+    private int islandProtectionRange = 50;
 
     @ConfigComment("Start islands at these coordinates. This is where new islands will start in the")
     @ConfigComment("world. These must be a factor of your island distance, but the plugin will auto")
@@ -87,7 +86,7 @@ public class Settings implements WorldSettings {
     @ConfigComment("Island height - Lowest is 5.")
     @ConfigComment("It is the y coordinate of the bedrock block in the schem.")
     @ConfigEntry(path = "world.island-height")
-    private int islandHeight = 100;
+    private int islandHeight = 120;
 
     @ConfigComment("Use your own world generator for this world.")
     @ConfigComment("In this case, the plugin will not generate anything.")
