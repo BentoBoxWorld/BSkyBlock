@@ -201,8 +201,7 @@ island:
     # Leave this true to avoid players exploiting free islands
     leavers-lose-reset: false
     # Allow kicked players to keep their inventory.
-    # If false, kicked player's inventory will be thrown at the island leader if the
-    # kicked player is online and in the island world.
+    # Overrides the on-leave inventory reset for kicked players.
     kicked-keep-inventory: false
     on-join:
       # What the plugin should reset when the player joins or creates an island
