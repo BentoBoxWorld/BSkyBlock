@@ -391,15 +391,6 @@ public class SettingsTest {
     }
 
     /**
-     * Test method for {@link world.bentobox.bskyblock.Settings#setDeathsSumTeam(boolean)}.
-     */
-    @Test
-    public void testSetDeathsSumTeam() {
-        s.setDeathsSumTeam(true);
-        assertTrue(s.isDeathsSumTeam());
-    }
-
-    /**
      * Test method for {@link world.bentobox.bskyblock.Settings#setTeamJoinDeathReset(boolean)}.
      */
     @Test
