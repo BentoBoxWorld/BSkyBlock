@@ -239,7 +239,6 @@ island:
     counted: true
     # Maximum number of deaths to count. The death count can be used by add-ons.
     max: 10
-    sum-team: false
     # When a player joins a team, reset their death count
     team-join-reset: true
 protection:
