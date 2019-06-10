@@ -12,5 +12,6 @@
     "NORMAL": "double",
     "NETHER": "nether-island",
     "THE_END": "end-island"
-  }
+  },
+  "slot": 1
 }
