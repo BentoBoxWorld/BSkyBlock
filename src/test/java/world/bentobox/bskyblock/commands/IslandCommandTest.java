@@ -6,10 +6,15 @@ package world.bentobox.bskyblock.commands;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
@@ -19,6 +24,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.mockito.stubbing.Answer;
+import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.powermock.reflect.Whitebox;
@@ -26,7 +32,9 @@ import org.powermock.reflect.Whitebox;
 import world.bentobox.bentobox.BentoBox;
 import world.bentobox.bentobox.api.localization.TextVariables;
 import world.bentobox.bentobox.api.user.User;
+import world.bentobox.bentobox.blueprints.dataobjects.BlueprintBundle;
 import world.bentobox.bentobox.database.objects.Island;
+import world.bentobox.bentobox.managers.BlueprintsManager;
 import world.bentobox.bentobox.managers.CommandsManager;
 import world.bentobox.bentobox.managers.IslandWorldManager;
 import world.bentobox.bentobox.managers.IslandsManager;
@@ -69,6 +77,7 @@ public class IslandCommandTest {
         when(user.getUniqueId()).thenReturn(uuid);
         when(user.getPlayer()).thenReturn(p);
         when(user.getName()).thenReturn("tastybento");
+        when(user.isPlayer()).thenReturn(true);
         User.setPlugin(plugin);
 
         // Island World Manager
@@ -90,6 +99,19 @@ public class IslandCommandTest {
         Settings settings = mock(Settings.class);
         when(settings.getIslandCommand()).thenReturn("island");
         when(addon.getSettings()).thenReturn(settings);
+
+        // Blueprints
+        BlueprintsManager bpm = mock(BlueprintsManager.class);
+        Map<String, BlueprintBundle> map = new HashMap<>();
+        BlueprintBundle bun = mock(BlueprintBundle.class);
+        when(bun.getDisplayName()).thenReturn("aaa", "bbb");
+        map.put("aaa", bun);
+        map.put("bbb", bun);
+        when(bun.getUniqueId()).thenReturn("unique1", "unique2");
+        when(bun.isRequirePermission()).thenReturn(true);
+        when(bpm.getBlueprintBundles(Mockito.any())).thenReturn(map);
+        when(plugin.getBlueprintsManager()).thenReturn(bpm);
+        PowerMockito.mockStatic(Bukkit.class);
 
     }
 
@@ -136,14 +158,25 @@ public class IslandCommandTest {
     public void testExecuteUserStringListOfStringUnknownCommand() {
         IslandCommand cmd = new IslandCommand(addon);
         assertFalse(cmd.execute(user, "island", Collections.singletonList("unknown")));
-        Mockito.verify(user).sendMessage("general.errors.unknown-command", TextVariables.LABEL, "island");
+        verify(user).sendMessage("general.errors.unknown-command", TextVariables.LABEL, "island");
     }
 
     /**
      * Test method for {@link world.bentobox.bskyblock.commands.IslandCommand#execute(world.bentobox.bentobox.api.user.User, java.lang.String, java.util.List)}.
      */
     @Test
-    public void testExecuteUserStringListOfStringNoArgs() {
+    public void testExecuteUserStringListOfStringNoArgsNoPermission() {
+        IslandCommand cmd = new IslandCommand(addon);
+        assertFalse(cmd.execute(user, "island", Collections.emptyList()));
+        verify(user).sendMessage("general.errors.no-permission", "[permission]", "island.home");
+    }
+
+    /**
+     * Test method for {@link world.bentobox.bskyblock.commands.IslandCommand#execute(world.bentobox.bentobox.api.user.User, java.lang.String, java.util.List)}.
+     */
+    @Test
+    public void testExecuteUserStringListOfStringNoArgsSuccess() {
+        when(user.hasPermission(anyString())).thenReturn(true);
         IslandCommand cmd = new IslandCommand(addon);
         assertTrue(cmd.execute(user, "island", Collections.emptyList()));
     }
@@ -152,10 +185,46 @@ public class IslandCommandTest {
      * Test method for {@link world.bentobox.bskyblock.commands.IslandCommand#execute(world.bentobox.bentobox.api.user.User, java.lang.String, java.util.List)}.
      */
     @Test
-    public void testExecuteUserStringListOfStringNoArgsNoIsland() {
-        island = null;
+    public void testExecuteUserStringListOfStringNoArgsConsole() {
+        when(user.isPlayer()).thenReturn(false);
+        IslandCommand cmd = new IslandCommand(addon);
+        assertFalse(cmd.execute(user, "island", Collections.emptyList()));
+        verify(user).sendMessage("general.errors.use-in-game");
+    }
+
+    /**
+     * Test method for {@link world.bentobox.bskyblock.commands.IslandCommand#execute(world.bentobox.bentobox.api.user.User, java.lang.String, java.util.List)}.
+     */
+    @Test
+    public void testExecuteUserStringListOfStringNoArgsNoIslandConsole() {
+        when(user.isPlayer()).thenReturn(false);
+        when(im.getIsland(any(), any(UUID.class))).thenReturn(null);
+        IslandCommand cmd = new IslandCommand(addon);
+        assertFalse(cmd.execute(user, "island", Collections.emptyList()));
+        verify(user).sendMessage("general.errors.use-in-game");
+    }
+
+    /**
+     * Test method for {@link world.bentobox.bskyblock.commands.IslandCommand#execute(world.bentobox.bentobox.api.user.User, java.lang.String, java.util.List)}.
+     */
+    @Test
+    public void testExecuteUserStringListOfStringNoArgsNoIslandNoPermission() {
+        when(im.getIsland(any(), any(UUID.class))).thenReturn(null);
+        IslandCommand cmd = new IslandCommand(addon);
+        assertFalse(cmd.execute(user, "island", Collections.emptyList()));
+        verify(user).sendMessage("general.errors.no-permission", "[permission]", "island.create");
+    }
+
+    /**
+     * Test method for {@link world.bentobox.bskyblock.commands.IslandCommand#execute(world.bentobox.bentobox.api.user.User, java.lang.String, java.util.List)}.
+     */
+    @Test
+    public void testExecuteUserStringListOfStringNoArgsNoIslandCreateSuccess() {
+        when(im.getIsland(any(), any(UUID.class))).thenReturn(null);
+        when(user.hasPermission(Mockito.eq("island.create"))).thenReturn(true);
         IslandCommand cmd = new IslandCommand(addon);
         assertTrue(cmd.execute(user, "island", Collections.emptyList()));
+        verify(user).getTranslation("commands.island.create.pick");
     }
 
 }

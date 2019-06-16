@@ -73,10 +73,10 @@ public class IslandCommand extends CompositeCommand {
         if (args.isEmpty()) {
             // If user has an island, go
             if (getPlugin().getIslands().getIsland(getWorld(), user.getUniqueId()) != null) {
-                return getSubCommand("go").map(goCmd -> goCmd.execute(user, goCmd.getLabel(), new ArrayList<>())).orElse(false);
+                return getSubCommand("go").map(goCmd -> goCmd.call(user, goCmd.getLabel(), new ArrayList<>())).orElse(false);
             }
             // No islands currently
-            return getSubCommand("create").map(createCmd -> createCmd.execute(user, createCmd.getLabel(), new ArrayList<>())).orElse(false);
+            return getSubCommand("create").map(createCmd -> createCmd.call(user, createCmd.getLabel(), new ArrayList<>())).orElse(false);
         }
         user.sendMessage("general.errors.unknown-command", TextVariables.LABEL, getTopLabel());
         return false;
