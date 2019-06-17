@@ -1,0 +1,12 @@
+###########################################################################################
+# To jest plik YML. Uważaj podczas edycji. Sprawdź swoje edycje na weryfikatorach YAML    #
+# takich jak http://yaml-online-parser.appspot.com                                        #
+###########################################################################################
+
+bskyblock:
+  sign:
+    line0: "&cBSkyBlock"
+    line1: "Witaj!"
+    line2: "[name]"
+    line3: "Nie spadnij! &c<3"
+    
