@@ -1,0 +1,16 @@
+###########################################################################################
+# Ceci est un fichier YAML. Soyez prudent lors de l'édition.Vérifiez vos changements dans #
+# le vérificateur YAML suivant: http://yaml-online-parser.appspot.com                     #
+###########################################################################################
+
+meta:
+  authors:
+  - x9nico
+
+bskyblock:
+  sign:
+    line0: "&cBSkyBlock"
+    line1: "Bienvenue!"
+    line2: "[name]"
+    line3: "Ne tombez pas ! &c<3"
+    
