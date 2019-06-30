@@ -3,6 +3,10 @@
 # le vérificateur YAML suivant: http://yaml-online-parser.appspot.com                     #
 ###########################################################################################
 
+meta:
+  authors:
+  - x9nico
+
 bskyblock:
   sign:
     line0: "&cBSkyBlock"
