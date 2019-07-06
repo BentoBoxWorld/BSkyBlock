@@ -285,6 +285,10 @@ public class Settings implements WorldSettings {
     @ConfigEntry(path = "island.deaths.team-join-reset")
     private boolean teamJoinDeathReset = true;
 
+    @ConfigComment("Reset player death count when they start a new island or reset and island")
+    @ConfigEntry(path = "island.deaths.reset-on-new")
+    private boolean deathsResetOnNew = true;
+
     // ---------------------------------------------
     /*      PROTECTION      */
 
@@ -1119,5 +1123,20 @@ public class Settings implements WorldSettings {
     public void setAdminCommand(String adminCommand)
     {
         this.adminCommand = adminCommand;
+    }
+
+    /**
+     * @return the deathsResetOnNew
+     */
+    @Override
+    public boolean isDeathsResetOnNew() {
+        return deathsResetOnNew;
+    }
+
+    /**
+     * @param deathsResetOnNew the deathsResetOnNew to set
+     */
+    public void setDeathsResetOnNew(boolean deathsResetOnNew) {
+        this.deathsResetOnNew = deathsResetOnNew;
     }
 }

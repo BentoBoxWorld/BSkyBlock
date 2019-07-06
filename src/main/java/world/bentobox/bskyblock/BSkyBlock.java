@@ -1,11 +1,12 @@
 package world.bentobox.bskyblock;
 
+import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.World.Environment;
 import org.bukkit.WorldCreator;
 import org.bukkit.WorldType;
 import org.bukkit.generator.ChunkGenerator;
-import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 
 import world.bentobox.bentobox.api.addons.GameModeAddon;
 import world.bentobox.bentobox.api.configuration.Config;
@@ -85,6 +86,15 @@ public class BSkyBlock extends GameModeAddon {
 
         // Create the world if it does not exist
         islandWorld = getWorld(worldName, World.Environment.NORMAL, chunkGenerator);
+        Bukkit.getLogger().info("World spawn limits ambient " + islandWorld.getAmbientSpawnLimit());
+        //islandWorld.setAnimalSpawnLimit(100);
+        //islandWorld.setAmbientSpawnLimit(100);
+        Bukkit.getLogger().info("World spawn limits animal " + islandWorld.getAnimalSpawnLimit());
+        Bukkit.getLogger().info("World spawn limits monster " + islandWorld.getMonsterSpawnLimit());
+        Bukkit.getLogger().info("World spawn limits water " + islandWorld.getWaterAnimalSpawnLimit());
+        //islandWorld.setTicksPerAnimalSpawns(1);
+        Bukkit.getLogger().info("World spawn limits ticks per animal " + islandWorld.getTicksPerAnimalSpawns());
+        Bukkit.getLogger().info("World spawn limits ticks per monster " + islandWorld.getTicksPerMonsterSpawns());
 
         // Make the nether if it does not exist
         if (settings.isNetherGenerate()) {
@@ -123,7 +133,7 @@ public class BSkyBlock extends GameModeAddon {
     }
 
     @Override
-    public @NonNull ChunkGenerator getDefaultWorldGenerator(String worldName, String id) {
+    public @Nullable ChunkGenerator getDefaultWorldGenerator(String worldName, String id) {
         return chunkGenerator;
     }
 
