@@ -239,7 +239,7 @@ island:
     # When a player joins a team, reset their death count
     team-join-reset: true
     # Reset player death count when they start a new island or reset and island
-    reset-on-new: false
+    reset-on-new-island: true
 protection:
   # Geo restrict mobs.
   # Mobs that exit the island space where they were spawned will be removed.
