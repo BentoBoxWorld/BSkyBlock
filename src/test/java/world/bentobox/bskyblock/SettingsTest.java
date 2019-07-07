@@ -180,15 +180,6 @@ public class SettingsTest {
     }
 
     /**
-     * Test method for {@link world.bentobox.bskyblock.Settings#setNetherTrees(boolean)}.
-     */
-    @Test
-    public void testSetNetherTrees() {
-        s.setNetherTrees(true);
-        assertTrue(s.isNetherTrees());
-    }
-
-    /**
      * Test method for {@link world.bentobox.bskyblock.Settings#setNetherRoof(boolean)}.
      */
     @Test

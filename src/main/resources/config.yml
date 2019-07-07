@@ -67,9 +67,6 @@ world:
     generate: true
     # Islands in Nether. Change to false for standard vanilla nether.
     islands: true
-    # Nether trees are made if a player grows a tree in the nether (gravel and glowstone)
-    # Applies to both vanilla and islands Nether
-    trees: true
     # Make the nether roof, if false, there is nothing up there
     # Change to false if lag is a problem from the generation
     # Only applies to islands Nether

@@ -135,11 +135,6 @@ public class Settings implements WorldSettings {
     @ConfigEntry(path = "world.nether.islands", needsReset = true)
     private boolean netherIslands = true;
 
-    @ConfigComment("Nether trees are made if a player grows a tree in the nether (gravel and glowstone)")
-    @ConfigComment("Applies to both vanilla and islands Nether")
-    @ConfigEntry(path = "world.nether.trees")
-    private boolean netherTrees = true;
-
     @ConfigComment("Make the nether roof, if false, there is nothing up there")
     @ConfigComment("Change to false if lag is a problem from the generation")
     @ConfigComment("Only applies to islands Nether")
@@ -286,8 +281,8 @@ public class Settings implements WorldSettings {
     private boolean teamJoinDeathReset = true;
 
     @ConfigComment("Reset player death count when they start a new island or reset and island")
-    @ConfigEntry(path = "island.deaths.reset-on-new")
-    private boolean deathsResetOnNew = true;
+    @ConfigEntry(path = "island.deaths.reset-on-new-island")
+    private boolean deathsResetOnNewIsland = true;
 
     // ---------------------------------------------
     /*      PROTECTION      */
@@ -434,14 +429,6 @@ public class Settings implements WorldSettings {
     @Override
     public boolean isNetherIslands() {
         return netherIslands;
-    }
-
-    /**
-     * @return the netherTrees
-     */
-    @Override
-    public boolean isNetherTrees() {
-        return netherTrees;
     }
 
     /**
@@ -813,13 +800,6 @@ public class Settings implements WorldSettings {
     }
 
     /**
-     * @param netherTrees the netherTrees to set
-     */
-    public void setNetherTrees(boolean netherTrees) {
-        this.netherTrees = netherTrees;
-    }
-
-    /**
      * @param netherRoof the netherRoof to set
      */
     public void setNetherRoof(boolean netherRoof) {
@@ -1129,14 +1109,14 @@ public class Settings implements WorldSettings {
      * @return the deathsResetOnNew
      */
     @Override
-    public boolean isDeathsResetOnNew() {
-        return deathsResetOnNew;
+    public boolean isDeathsResetOnNewIsland() {
+        return deathsResetOnNewIsland;
     }
 
     /**
      * @param deathsResetOnNew the deathsResetOnNew to set
      */
-    public void setDeathsResetOnNew(boolean deathsResetOnNew) {
-        this.deathsResetOnNew = deathsResetOnNew;
+    public void setDeathsResetOnNewIsland(boolean deathsResetOnNew) {
+        this.deathsResetOnNewIsland = deathsResetOnNew;
     }
 }
