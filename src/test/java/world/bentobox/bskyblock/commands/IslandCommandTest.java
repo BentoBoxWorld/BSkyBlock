@@ -19,6 +19,8 @@ import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.PluginManager;
+import org.bukkit.scheduler.BukkitScheduler;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -99,6 +101,7 @@ public class IslandCommandTest {
         Settings settings = mock(Settings.class);
         when(settings.getIslandCommand()).thenReturn("island");
         when(addon.getSettings()).thenReturn(settings);
+        when(plugin.getSettings()).thenReturn(mock(world.bentobox.bentobox.Settings.class));
 
         // Blueprints
         BlueprintsManager bpm = mock(BlueprintsManager.class);
@@ -112,7 +115,10 @@ public class IslandCommandTest {
         when(bpm.getBlueprintBundles(Mockito.any())).thenReturn(map);
         when(plugin.getBlueprintsManager()).thenReturn(bpm);
         PowerMockito.mockStatic(Bukkit.class);
-
+        PluginManager pim = mock(PluginManager.class);
+        when(Bukkit.getPluginManager()).thenReturn(pim);
+        BukkitScheduler sch = mock(BukkitScheduler.class);
+        when(Bukkit.getScheduler()).thenReturn(sch);
     }
 
 

@@ -24,6 +24,7 @@ import java.util.logging.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.PluginManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -103,6 +104,7 @@ public class BSkyBlockTest {
         Server server = mock(Server.class);
         when(Bukkit.getServer()).thenReturn(server);
         when(Bukkit.getLogger()).thenReturn(Logger.getAnonymousLogger());
+        when(Bukkit.getPluginManager()).thenReturn(mock(PluginManager.class));
 
         // Addon
         addon = new BSkyBlock();
