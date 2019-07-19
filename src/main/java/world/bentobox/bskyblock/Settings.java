@@ -280,7 +280,7 @@ public class Settings implements WorldSettings {
     @ConfigEntry(path = "island.deaths.team-join-reset")
     private boolean teamJoinDeathReset = true;
 
-    @ConfigComment("Reset player death count when they start a new island or reset and island")
+    @ConfigComment("Reset player death count when they start a new island or reset an island")
     @ConfigEntry(path = "island.deaths.reset-on-new-island")
     private boolean deathsResetOnNewIsland = true;
 
