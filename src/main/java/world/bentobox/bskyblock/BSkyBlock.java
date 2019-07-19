@@ -27,6 +27,7 @@ public class BSkyBlock extends GameModeAddon {
     // Settings
     private Settings settings;
     private ChunkGeneratorWorld chunkGenerator;
+    private Config<Settings> configObject = new Config<>(this, Settings.class);
 
     @Override
     public void onLoad() {
@@ -43,7 +44,7 @@ public class BSkyBlock extends GameModeAddon {
 
     private void loadSettings() {
         // Load settings again to get worlds
-        settings = new Config<>(this, Settings.class).loadConfigObject();
+        settings = configObject.loadConfigObject();
         if (settings == null) {
             // Disable
             logError("BSkyBlock settings could not load! Addon disabled.");
@@ -130,7 +131,7 @@ public class BSkyBlock extends GameModeAddon {
     @Override
     public void saveWorldSettings() {
         if (settings != null) {
-            new Config<>(this, Settings.class).saveConfigObject(settings);
+            configObject.saveConfigObject(settings);
         }
     }
 }
