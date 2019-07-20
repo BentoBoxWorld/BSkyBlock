@@ -38,7 +38,7 @@ import world.bentobox.bskyblock.Settings;
 @PrepareForTest({Bukkit.class, BentoBox.class, User.class })
 public class AdminCommandTest {
 
-    private static final int NUM_COMMANDS = 27;
+    private static final int NUM_COMMANDS = 28;
     private User user;
     private BSkyBlock addon;
 

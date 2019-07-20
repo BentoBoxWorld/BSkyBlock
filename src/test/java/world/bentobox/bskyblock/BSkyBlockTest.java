@@ -41,6 +41,7 @@ import world.bentobox.bentobox.api.addons.AddonDescription;
 import world.bentobox.bentobox.api.configuration.Config;
 import world.bentobox.bentobox.api.user.User;
 import world.bentobox.bentobox.database.objects.Island;
+import world.bentobox.bentobox.managers.AddonsManager;
 import world.bentobox.bentobox.managers.CommandsManager;
 import world.bentobox.bentobox.managers.IslandWorldManager;
 import world.bentobox.bentobox.managers.IslandsManager;
@@ -130,6 +131,9 @@ public class BSkyBlockTest {
         addon.setFile(jFile);
         AddonDescription desc = new AddonDescription.Builder("bentobox", "bskyblock", "1.3").description("test").authors("tasty").build();
         addon.setDescription(desc);
+        // Addons manager
+        AddonsManager am = mock(AddonsManager.class);
+        when(plugin.getAddonsManager()).thenReturn(am);
     }
 
     /**
