@@ -87,7 +87,8 @@ world:
     - PIG_ZOMBIE
     - ENDERMAN
     - ZOMBIE_VILLAGER
-  # World flags. These are boolean settings for various flags for this world
+  # World flags. These are boolean settings for various flags for this world. Placing protection flags
+  # here will set the default for when the player is outside their island.
   flags:
     CREEPER_DAMAGE: true
     OBSIDIAN_SCOOPING: true

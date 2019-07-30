@@ -12,6 +12,7 @@ import world.bentobox.bentobox.api.commands.admin.AdminReloadCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminResetFlagsCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminSetrankCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminSetspawnCommand;
+import world.bentobox.bentobox.api.commands.admin.AdminSettingsCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminSwitchCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminSwitchtoCommand;
 import world.bentobox.bentobox.api.commands.admin.AdminTeleportCommand;
@@ -87,6 +88,8 @@ public class AdminCommand extends CompositeCommand {
         new AdminSwitchCommand(this);
         // Purge
         new AdminPurgeCommand(this);
+        // Settings
+        new AdminSettingsCommand(this);
     }
 
     @Override

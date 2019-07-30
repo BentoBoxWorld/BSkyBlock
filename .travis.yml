@@ -10,6 +10,7 @@ addons:
             - master
 jdk:
     - openjdk8
+    - openjdk11
     
 script:
     #- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package -P sonar sonar:sonar -B
