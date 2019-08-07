@@ -98,7 +98,7 @@ public class BSkyBlockTest {
 
         // Locales
         // Return the reference (USE THIS IN THE FUTURE)
-        when(user.getTranslation(Mockito.anyString())).thenAnswer((Answer<String>) invocation -> invocation.getArgumentAt(0, String.class));
+        when(user.getTranslation(Mockito.anyString())).thenAnswer((Answer<String>) invocation -> invocation.getArgument(0, String.class));
 
         // Server
         PowerMockito.mockStatic(Bukkit.class);

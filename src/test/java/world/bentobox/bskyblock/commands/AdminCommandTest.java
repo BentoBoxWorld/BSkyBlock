@@ -68,7 +68,7 @@ public class AdminCommandTest {
 
         // Locales
         // Return the reference (USE THIS IN THE FUTURE)
-        when(user.getTranslation(Mockito.anyString())).thenAnswer((Answer<String>) invocation -> invocation.getArgumentAt(0, String.class));
+        when(user.getTranslation(Mockito.anyString())).thenAnswer((Answer<String>) invocation -> invocation.getArgument(0, String.class));
 
         addon = mock(BSkyBlock.class);
         Settings settings = mock(Settings.class);
