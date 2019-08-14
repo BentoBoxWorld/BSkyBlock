@@ -168,7 +168,13 @@ public class Settings implements WorldSettings {
 
     @ConfigComment("These are the default protection settings for new islands.")
     @ConfigComment("The value is the minimum island rank required allowed to do the action")
-    @ConfigComment("Ranks are: Visitor = 0, Member = 900, Owner = 1000")
+    @ConfigComment("Ranks are the following:")
+	@ConfigComment("  VISITOR   = 0")
+	@ConfigComment("  COOP      = 200")
+	@ConfigComment("  TRUSTED   = 400")
+	@ConfigComment("  MEMBER    = 500")
+	@ConfigComment("  SUB-OWNER = 900")
+	@ConfigComment("  OWNER     = 1000")
     @ConfigEntry(path = "world.default-island-flags")
     @Adapter(FlagSerializer.class)
     private Map<Flag, Integer> defaultIslandFlags = new HashMap<>();
@@ -281,7 +287,7 @@ public class Settings implements WorldSettings {
     private boolean teamJoinDeathReset = true;
 
     @ConfigComment("Reset player death count when they start a new island or reset an island")
-    @ConfigEntry(path = "island.deaths.reset-on-new-island")
+    @ConfigEntry(path = "island.deaths.reset-on-new-island", since = "1.6.0")
     private boolean deathsResetOnNewIsland = true;
 
     // ---------------------------------------------
