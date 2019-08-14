@@ -1,4 +1,4 @@
-# BSkyBlock Configuration ${version}
+# BSkyBlock Configuration 1.6.0
 bskyblock:
   command:
     # Island Command. What command users will run to access their island.
@@ -11,7 +11,7 @@ world:
   # Friendly name for this world. Used in admin commands. Must be a single word
   friendly-name: BSkyBlock
   # Name of the world - if it does not exist then it will be generated.
-  # It acts like a prefix for nether and end (e.g. bskyblock-world, bskyblock-world_nether, bskyblock-world_end)
+  # It acts like a prefix for nether and end (e.g. bskyblock_world, bskyblock_world_nether, bskyblock_world_end)
   world-name: bskyblock_world
   # World difficulty setting - PEACEFUL, EASY, NORMAL, HARD
   # Other plugins may override this setting
@@ -19,17 +19,21 @@ world:
   # Radius of island in blocks. (So distance between islands is twice this)
   # It is the same for every dimension : Overworld, Nether and End.
   # This value cannot be changed mid-game and the plugin will not start if it is different.
+  # /!\ BentoBox currently does not support changing this value mid-game. If you do need to change it, do a full reset of your databases and worlds.
   distance-between-islands: 400
   # Default protection range radius in blocks. Cannot be larger than distance.
   # Admins can change protection sizes for players individually using /bsbadmin range set <player> <new range>
   # or set this permission: bskyblock.island.range.<number>
+  # /!\ BentoBox currently does not support changing this value mid-game. If you do need to change it, do a full reset of your databases and worlds.
   protection-range: 50
   # Start islands at these coordinates. This is where new islands will start in the
   # world. These must be a factor of your island distance, but the plugin will auto
   # calculate the closest location on the grid. Islands develop around this location
   # both positively and negatively in a square grid.
   # If none of this makes sense, leave it at 0,0.
+  # /!\ BentoBox currently does not support changing this value mid-game. If you do need to change it, do a full reset of your databases and worlds.
   start-x: 0
+  # /!\ BentoBox currently does not support changing this value mid-game. If you do need to change it, do a full reset of your databases and worlds.
   start-z: 0
   offset-x: 0
   offset-z: 0
@@ -45,6 +49,7 @@ world:
   # Minimum is 0, which means you are playing Skyblock!
   # If sea height is less than about 10, then players will drop right through it
   # if it exists. Makes for an interesting variation on skyblock.
+  # /!\ BentoBox currently does not support changing this value mid-game. If you do need to change it, do a full reset of your databases and worlds.
   sea-height: 0
   # Maximum number of islands in the world. Set to -1 or 0 for unlimited.
   # If the number of islands is greater than this number, it will stop players from creating islands.
@@ -55,7 +60,7 @@ world:
   # The default biome for the overworld
   default-biome: PLAINS
   # The maximum number of players a player can ban at any one time in this game mode.
-  # The permission bskyblock.ban.maxlimit.X where X is a number can also be used per player
+  # The permission acidisland.ban.maxlimit.X where X is a number can also be used per player
   # -1 = unlimited
   ban-limit: -1
   nether:
@@ -66,6 +71,7 @@ world:
     # portal will return them back to their islands.
     generate: true
     # Islands in Nether. Change to false for standard vanilla nether.
+    # /!\ BentoBox currently does not support changing this value mid-game. If you do need to change it, do a full reset of your databases and worlds.
     islands: true
     # Make the nether roof, if false, there is nothing up there
     # Change to false if lag is a problem from the generation
@@ -78,14 +84,15 @@ world:
     spawn-radius: 25
   end:
     generate: true
+    # /!\ BentoBox currently does not support changing this value mid-game. If you do need to change it, do a full reset of your databases and worlds.
     islands: true
     # /!\ This feature is experimental and might not work as expected or might not work at all.
     dragon-spawn: false
   # Mob white list - these mobs will NOT be removed when logging in or doing /island
   remove-mobs-whitelist:
-    - WITHER
     - PIG_ZOMBIE
     - ENDERMAN
+    - WITHER
     - ZOMBIE_VILLAGER
   # World flags. These are boolean settings for various flags for this world
   flags:
@@ -106,7 +113,13 @@ world:
     ITEM_FRAME_DAMAGE: false
   # These are the default protection settings for new islands.
   # The value is the minimum island rank required allowed to do the action
-  # Ranks are: Visitor = 0, Member = 900, Owner = 1000
+  # Ranks are the following:
+  #   VISITOR   = 0
+  #   COOP      = 200
+  #   TRUSTED   = 400
+  #   MEMBER    = 500
+  #   SUB-OWNER = 900
+  #   OWNER     = 1000
   default-island-flags:
     HURT_ANIMALS: 500
     REDSTONE: 500
@@ -117,17 +130,15 @@ world:
     FURNACE: 500
     ANVIL: 500
     FISH_SCOOPING: 500
-    FIRE: 500
     END_PORTAL: 500
     BREEDING: 500
     HURT_VILLAGERS: 500
-    TNT: 500
-    FROST_WALKER: 500
     TURTLE_EGGS: 500
+    FROST_WALKER: 500
     COLLECT_LAVA: 500
     LEVER: 500
-    RIDING: 500
     HURT_MONSTERS: 0
+    RIDING: 500
     ARMOR_STAND: 500
     NAME_TAG: 500
     TRADING: 0
@@ -137,16 +148,16 @@ world:
     NETHER_PORTAL: 500
     CROP_TRAMPLE: 500
     ITEM_PICKUP: 0
-    DROPPER: 500
     BREWING: 500
+    DROPPER: 500
     COLLECT_WATER: 500
     BUTTON: 500
     FIRE_EXTINGUISH: 500
     BEACON: 500
     TRAPDOOR: 500
     PRESSURE_PLATE: 0
-    ITEM_FRAME: 500
     PLACE_BLOCKS: 500
+    ITEM_FRAME: 500
     CRAFTING: 0
     ENCHANTING: 0
     SHEARING: 500
@@ -158,8 +169,8 @@ world:
     EXPERIENCE_PICKUP: 500
     HOPPER: 500
     LEASH: 500
-    MOUNT_INVENTORY: 500
     BREAK_BLOCKS: 500
+    MOUNT_INVENTORY: 500
     CHORUS_FRUIT: 500
     CONTAINER: 500
     JUKEBOX: 500
@@ -239,6 +250,7 @@ island:
     # When a player joins a team, reset their death count
     team-join-reset: true
     # Reset player death count when they start a new island or reset an island
+    # Added since 1.6.0.
     reset-on-new-island: true
 protection:
   # Geo restrict mobs.
@@ -277,4 +289,3 @@ protection:
 do-not-edit-these-settings:
   # These settings should not be edited
   reset-epoch: 0
-uniqueId: config
