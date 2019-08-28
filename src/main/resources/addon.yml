@@ -131,3 +131,10 @@ permissions:
   bskyblock.admin.setlanguage:
     description: Resets all player languages and sets the default language
     default: op
+  bskyblock.admin.getrank:
+    description: Get a player's rank
+    default: op
+  bskyblock.admin.setrank:
+    description: Set a player's rank
+    default: op
+    
