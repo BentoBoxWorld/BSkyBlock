@@ -4,6 +4,7 @@ import org.bukkit.World;
 import org.bukkit.World.Environment;
 import org.bukkit.WorldCreator;
 import org.bukkit.WorldType;
+import org.bukkit.event.Listener;
 import org.bukkit.generator.ChunkGenerator;
 import org.eclipse.jdt.annotation.Nullable;
 
@@ -19,7 +20,7 @@ import world.bentobox.bskyblock.generators.ChunkGeneratorWorld;
  * @author tastybento
  * @author Poslovitch
  */
-public class BSkyBlock extends GameModeAddon {
+public class BSkyBlock extends GameModeAddon implements Listener {
 
     private static final String NETHER = "_nether";
     private static final String THE_END = "_the_end";
@@ -51,13 +52,12 @@ public class BSkyBlock extends GameModeAddon {
             setState(State.DISABLED);
             return;
         }
-        this.saveWorldSettings();
-
     }
 
     @Override
     public void onEnable(){
-        // Nothing to do here
+        // Register this
+        registerListener(this);
     }
 
     @Override
@@ -134,4 +134,15 @@ public class BSkyBlock extends GameModeAddon {
             configObject.saveConfigObject(settings);
         }
     }
+
+    /* (non-Javadoc)
+     * @see world.bentobox.bentobox.api.addons.Addon#allLoaded()
+     */
+    @Override
+    public void allLoaded() {
+        // Reload settings and save them. This will occur after all addons have loaded
+        this.loadSettings();
+        this.saveWorldSettings();
+    }
+
 }
