@@ -169,12 +169,12 @@ public class Settings implements WorldSettings {
     @ConfigComment("These are the default protection settings for new islands.")
     @ConfigComment("The value is the minimum island rank required allowed to do the action")
     @ConfigComment("Ranks are the following:")
-	@ConfigComment("  VISITOR   = 0")
-	@ConfigComment("  COOP      = 200")
-	@ConfigComment("  TRUSTED   = 400")
-	@ConfigComment("  MEMBER    = 500")
-	@ConfigComment("  SUB-OWNER = 900")
-	@ConfigComment("  OWNER     = 1000")
+    @ConfigComment("  VISITOR   = 0")
+    @ConfigComment("  COOP      = 200")
+    @ConfigComment("  TRUSTED   = 400")
+    @ConfigComment("  MEMBER    = 500")
+    @ConfigComment("  SUB-OWNER = 900")
+    @ConfigComment("  OWNER     = 1000")
     @ConfigEntry(path = "world.default-island-flags")
     @Adapter(FlagSerializer.class)
     private Map<Flag, Integer> defaultIslandFlags = new HashMap<>();
@@ -226,7 +226,7 @@ public class Settings implements WorldSettings {
     @ConfigEntry(path = "island.reset.kicked-keep-inventory")
     private boolean kickedKeepInventory = false;
 
-    @ConfigComment("What the plugin should reset when the player joins or creates an island")
+    @ConfigComment("What the addon should reset when the player joins or creates an island")
     @ConfigComment("Reset Money - if this is true, will reset the player's money to the starting money")
     @ConfigComment("Recommendation is that this is set to true, but if you run multi-worlds")
     @ConfigComment("make sure your economy handles multi-worlds too.")
@@ -259,6 +259,15 @@ public class Settings implements WorldSettings {
     @ConfigComment("Reset Ender Chest - if true, the player's Ender Chest will be cleared.")
     @ConfigEntry(path = "island.reset.on-leave.ender-chest")
     private boolean onLeaveResetEnderChest = false;
+
+    // Commands
+    @ConfigComment("List of commands to run when a player joins.")
+    @ConfigEntry(path = "island.commands.on-join")
+    private List<String> onJoinCommands = new ArrayList<>();
+
+    @ConfigComment("list of commands to run when a player leaves.")
+    @ConfigEntry(path = "island.commands.on-leave")
+    private List<String> onLeaveCommands = new ArrayList<>();
 
     // Sethome
     @ConfigEntry(path = "island.sethome.nether.allow")
@@ -1125,4 +1134,36 @@ public class Settings implements WorldSettings {
     public void setDeathsResetOnNewIsland(boolean deathsResetOnNew) {
         this.deathsResetOnNewIsland = deathsResetOnNew;
     }
+
+    /**
+     * @return the onJoinCommands
+     */
+    @Override
+    public List<String> getOnJoinCommands() {
+        return onJoinCommands;
+    }
+
+    /**
+     * @param onJoinCommands the onJoinCommands to set
+     */
+    public void setOnJoinCommands(List<String> onJoinCommands) {
+        this.onJoinCommands = onJoinCommands;
+    }
+
+    /**
+     * @return the onLeaveCommands
+     */
+    @Override
+    public List<String> getOnLeaveCommands() {
+        return onLeaveCommands;
+    }
+
+    /**
+     * @param onLeaveCommands the onLeaveCommands to set
+     */
+    public void setOnLeaveCommands(List<String> onLeaveCommands) {
+        this.onLeaveCommands = onLeaveCommands;
+    }
+
+
 }

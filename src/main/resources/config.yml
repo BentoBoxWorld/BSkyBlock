@@ -212,7 +212,7 @@ island:
     # Overrides the on-leave inventory reset for kicked players.
     kicked-keep-inventory: false
     on-join:
-      # What the plugin should reset when the player joins or creates an island
+      # What the addon should reset when the player joins or creates an island
       # Reset Money - if this is true, will reset the player's money to the starting money
       # Recommendation is that this is set to true, but if you run multi-worlds
       # make sure your economy handles multi-worlds too.
@@ -235,6 +235,11 @@ island:
       inventory: false
       # Reset Ender Chest - if true, the player's Ender Chest will be cleared.
       ender-chest: false
+  commands:
+    # List of commands to run when a player joins.
+    on-join: []
+    # List of commands to run when a player leaves.
+    on-leave: []
   sethome:
     nether:
       allow: true
