@@ -15,6 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 import java.util.jar.JarEntry;
@@ -29,6 +30,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.stubbing.Answer;
 import org.powermock.api.mockito.PowerMockito;
@@ -43,6 +45,7 @@ import world.bentobox.bentobox.api.user.User;
 import world.bentobox.bentobox.database.objects.Island;
 import world.bentobox.bentobox.managers.AddonsManager;
 import world.bentobox.bentobox.managers.CommandsManager;
+import world.bentobox.bentobox.managers.FlagsManager;
 import world.bentobox.bentobox.managers.IslandWorldManager;
 import world.bentobox.bentobox.managers.IslandsManager;
 import world.bentobox.bskyblock.generators.ChunkGeneratorWorld;
@@ -55,11 +58,18 @@ import world.bentobox.bskyblock.generators.ChunkGeneratorWorld;
 @PrepareForTest({Bukkit.class, BentoBox.class, User.class, Config.class })
 public class BSkyBlockTest {
 
+    @Mock
     private User user;
+    @Mock
     private IslandsManager im;
+    @Mock
     private Island island;
+
     private BSkyBlock addon;
+    @Mock
     private BentoBox plugin;
+    @Mock
+    private FlagsManager fm;
 
     /**
      * @throws java.lang.Exception
@@ -67,7 +77,6 @@ public class BSkyBlockTest {
     @Before
     public void setUp() throws Exception {
         // Set up plugin
-        plugin = mock(BentoBox.class);
         Whitebox.setInternalState(BentoBox.class, "instance", plugin);
         when(plugin.getLogger()).thenReturn(Logger.getAnonymousLogger());
         // Command manager
@@ -77,7 +86,6 @@ public class BSkyBlockTest {
         // Player
         Player p = mock(Player.class);
         // Sometimes use Mockito.withSettings().verboseLogging()
-        user = mock(User.class);
         when(user.isOp()).thenReturn(false);
         UUID uuid = UUID.randomUUID();
         when(user.getUniqueId()).thenReturn(uuid);
@@ -91,7 +99,6 @@ public class BSkyBlockTest {
 
 
         // Player has island to begin with
-        im = mock(IslandsManager.class);
         island = mock(Island.class);
         when(im.getIsland(Mockito.any(), Mockito.any(UUID.class))).thenReturn(island);
         when(plugin.getIslands()).thenReturn(im);
@@ -134,6 +141,11 @@ public class BSkyBlockTest {
         // Addons manager
         AddonsManager am = mock(AddonsManager.class);
         when(plugin.getAddonsManager()).thenReturn(am);
+        
+        // Flags manager
+        when(plugin.getFlagsManager()).thenReturn(fm);
+        when(fm.getFlags()).thenReturn(Collections.emptyList());
+
     }
 
     /**

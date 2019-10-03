@@ -17,6 +17,7 @@ import org.bukkit.entity.Player;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.stubbing.Answer;
 import org.powermock.core.classloader.annotations.PrepareForTest;
@@ -27,6 +28,7 @@ import world.bentobox.bentobox.BentoBox;
 import world.bentobox.bentobox.api.localization.TextVariables;
 import world.bentobox.bentobox.api.user.User;
 import world.bentobox.bentobox.managers.CommandsManager;
+import world.bentobox.bentobox.managers.FlagsManager;
 import world.bentobox.bskyblock.BSkyBlock;
 import world.bentobox.bskyblock.Settings;
 
@@ -39,8 +41,12 @@ import world.bentobox.bskyblock.Settings;
 public class AdminCommandTest {
 
     private static final int NUM_COMMANDS = 29;
+    @Mock
     private User user;
+    @Mock
     private BSkyBlock addon;
+    @Mock
+    private FlagsManager fm;
 
     /**
      * @throws java.lang.Exception
@@ -58,7 +64,6 @@ public class AdminCommandTest {
         // Player
         Player p = mock(Player.class);
         // Sometimes use Mockito.withSettings().verboseLogging()
-        user = mock(User.class);
         when(user.isOp()).thenReturn(false);
         UUID uuid = UUID.randomUUID();
         when(user.getUniqueId()).thenReturn(uuid);
@@ -70,10 +75,13 @@ public class AdminCommandTest {
         // Return the reference (USE THIS IN THE FUTURE)
         when(user.getTranslation(Mockito.anyString())).thenAnswer((Answer<String>) invocation -> invocation.getArgument(0, String.class));
 
-        addon = mock(BSkyBlock.class);
         Settings settings = mock(Settings.class);
         when(settings.getAdminCommand()).thenReturn("bsbadmin");
         when(addon.getSettings()).thenReturn(settings);
+        
+        // Flags manager
+        when(plugin.getFlagsManager()).thenReturn(fm);
+        when(fm.getFlags()).thenReturn(Collections.emptyList());
     }
 
     /**
