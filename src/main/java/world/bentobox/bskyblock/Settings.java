@@ -193,6 +193,11 @@ public class Settings implements WorldSettings {
     @ConfigEntry(path = "world.visitor-banned-commands")
     private List<String> visitorBannedCommands = new ArrayList<>();
 
+    @ConfigComment("Falling banned commands - players cannot use these commands when falling")
+    @ConfigComment("if the PREVENT_TELEPORT_WHEN_FALLING world setting flag is active")
+    @ConfigEntry(path = "world.falling-banned-commands")
+    private List<String> fallingBannedCommands = new ArrayList<>();
+
     // ---------------------------------------------
 
     /*      ISLAND      */
@@ -531,6 +536,14 @@ public class Settings implements WorldSettings {
     @Override
     public List<String> getVisitorBannedCommands() {
         return visitorBannedCommands;
+    }
+
+    /**
+     * @return the fallingBannedCommands
+     */
+    @Override
+    public List<String> getFallingBannedCommands() {
+        return fallingBannedCommands;
     }
 
     /**
@@ -889,6 +902,13 @@ public class Settings implements WorldSettings {
      */
     public void setVisitorBannedCommands(List<String> visitorBannedCommands) {
         this.visitorBannedCommands = visitorBannedCommands;
+    }
+
+    /**
+     * @param fallingBannedCommands the fallingBannedCommands to set
+     */
+    public void setFallingBannedCommands(List<String> fallingBannedCommands) {
+        this.fallingBannedCommands = fallingBannedCommands;
     }
 
     /**

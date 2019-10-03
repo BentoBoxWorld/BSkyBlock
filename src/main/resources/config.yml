@@ -190,6 +190,11 @@ world:
   visitor-banned-commands:
     - spawner
     - spawnmob
+  # Falling banned commands - players cannot use these commands when falling
+  # if the PREVENT_TELEPORT_WHEN_FALLING world setting flag is active
+  falling-banned-commands:
+    - warp
+    - spawn
 island:
   # Default max team size
   # Permission size cannot be less than the default below.
