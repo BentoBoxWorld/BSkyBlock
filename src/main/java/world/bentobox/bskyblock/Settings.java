@@ -244,6 +244,19 @@ public class Settings implements WorldSettings {
     @ConfigEntry(path = "island.reset.on-join.inventory")
     private boolean onJoinResetInventory = false;
 
+    @ConfigComment("Reset health - if true, the player's health will be reset.")
+    @ConfigEntry(path = "island.reset.on-join.health")
+    private boolean onJoinResetHealth = true;
+
+    @ConfigComment("Reset hunger - if true, the player's hunger will be reset.")
+    @ConfigEntry(path = "island.reset.on-join.hunger")
+    private boolean onJoinResetHunger = true;
+
+    @ConfigComment("Reset experience points - if true, the player's experience will be reset.")
+    @ConfigEntry(path = "island.reset.on-join.exp")
+    private boolean onJoinResetXP = false;
+
+
     @ConfigComment("Reset Ender Chest - if true, the player's Ender Chest will be cleared.")
     @ConfigEntry(path = "island.reset.on-join.ender-chest")
     private boolean onJoinResetEnderChest = false;
@@ -260,6 +273,18 @@ public class Settings implements WorldSettings {
     @ConfigComment("plugin may still reset the inventory when the world changes.")
     @ConfigEntry(path = "island.reset.on-leave.inventory")
     private boolean onLeaveResetInventory = false;
+
+    @ConfigComment("Reset health - if true, the player's health will be reset.")
+    @ConfigEntry(path = "island.reset.on-leave.health")
+    private boolean onLeaveResetHealth = false;
+
+    @ConfigComment("Reset hunger - if true, the player's hunger will be reset.")
+    @ConfigEntry(path = "island.reset.on-leave.hunger")
+    private boolean onLeaveResetHunger = false;
+
+    @ConfigComment("Reset experience - if true, the player's experience will be reset.")
+    @ConfigEntry(path = "island.reset.on-leave.exp")
+    private boolean onLeaveResetXP = false;
 
     @ConfigComment("Reset Ender Chest - if true, the player's Ender Chest will be cleared.")
     @ConfigEntry(path = "island.reset.on-leave.ender-chest")
@@ -1185,5 +1210,94 @@ public class Settings implements WorldSettings {
         this.onLeaveCommands = onLeaveCommands;
     }
 
+    /**
+     * @return the onJoinResetHealth
+     */
+    @Override
+    public boolean isOnJoinResetHealth() {
+        return onJoinResetHealth;
+    }
+
+    /**
+     * @param onJoinResetHealth the onJoinResetHealth to set
+     */
+    public void setOnJoinResetHealth(boolean onJoinResetHealth) {
+        this.onJoinResetHealth = onJoinResetHealth;
+    }
+
+    /**
+     * @return the onJoinResetHunger
+     */
+    @Override
+    public boolean isOnJoinResetHunger() {
+        return onJoinResetHunger;
+    }
+
+    /**
+     * @param onJoinResetHunger the onJoinResetHunger to set
+     */
+    public void setOnJoinResetHunger(boolean onJoinResetHunger) {
+        this.onJoinResetHunger = onJoinResetHunger;
+    }
+
+    /**
+     * @return the onJoinResetXP
+     */
+    @Override
+    public boolean isOnJoinResetXP() {
+        return onJoinResetXP;
+    }
+
+    /**
+     * @param onJoinResetXP the onJoinResetXP to set
+     */
+    public void setOnJoinResetXP(boolean onJoinResetXP) {
+        this.onJoinResetXP = onJoinResetXP;
+    }
+
+    /**
+     * @return the onLeaveResetHealth
+     */
+    @Override
+    public boolean isOnLeaveResetHealth() {
+        return onLeaveResetHealth;
+    }
+
+    /**
+     * @param onLeaveResetHealth the onLeaveResetHealth to set
+     */
+    public void setOnLeaveResetHealth(boolean onLeaveResetHealth) {
+        this.onLeaveResetHealth = onLeaveResetHealth;
+    }
+
+    /**
+     * @return the onLeaveResetHunger
+     */
+    @Override
+    public boolean isOnLeaveResetHunger() {
+        return onLeaveResetHunger;
+    }
+
+    /**
+     * @param onLeaveResetHunger the onLeaveResetHunger to set
+     */
+    public void setOnLeaveResetHunger(boolean onLeaveResetHunger) {
+        this.onLeaveResetHunger = onLeaveResetHunger;
+    }
+
+    /**
+     * @return the onLeaveResetXP
+     */
+    @Override
+    public boolean isOnLeaveResetXP() {
+        return onLeaveResetXP;
+    }
+
+    /**
+     * @param onLeaveResetXP the onLeaveResetXP to set
+     */
+    public void setOnLeaveResetXP(boolean onLeaveResetXP) {
+        this.onLeaveResetXP = onLeaveResetXP;
+    }
 
 }

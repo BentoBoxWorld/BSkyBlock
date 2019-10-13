@@ -226,6 +226,12 @@ island:
       # Note: if you have MultiInv running or a similar inventory control plugin, that
       # plugin may still reset the inventory when the world changes.
       inventory: false
+      # Reset health - if true, the player's health will be reset.
+      health: true
+      # Reset hunger - if true, the player's hunger will be reset.
+      hunger: true
+      # Reset experience points - if true, the player's experience will be reset.
+      exp: false
       # Reset Ender Chest - if true, the player's Ender Chest will be cleared.
       ender-chest: false
     on-leave:
@@ -238,6 +244,12 @@ island:
       # Note: if you have MultiInv running or a similar inventory control plugin, that
       # plugin may still reset the inventory when the world changes.
       inventory: false
+      # Reset health - if true, the player's health will be reset.
+      health: false
+      # Reset hunger - if true, the player's hunger will be reset.
+      hunger: false
+      # Reset experience - if true, the player's experience will be reset.
+      exp: false
       # Reset Ender Chest - if true, the player's Ender Chest will be cleared.
       ender-chest: false
   commands:
