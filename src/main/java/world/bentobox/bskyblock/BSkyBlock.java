@@ -50,7 +50,6 @@ public class BSkyBlock extends GameModeAddon implements Listener {
             // Disable
             logError("BSkyBlock settings could not load! Addon disabled.");
             setState(State.DISABLED);
-            return;
         }
     }
 
