@@ -290,6 +290,43 @@ public class Settings implements WorldSettings {
     @ConfigEntry(path = "island.reset.on-leave.ender-chest")
     private boolean onLeaveResetEnderChest = false;
 
+    @ConfigComment("Toggles the automatic island creation upon the player's first login on your server.")
+    @ConfigComment("If set to true,")
+    @ConfigComment("   * Upon connecting to your server for the first time, the player will be told that")
+    @ConfigComment("    an island will be created for him.")
+    @ConfigComment("  * Make sure you have a Blueprint Bundle called \"default\": this is the one that will")
+    @ConfigComment("    be used to create the island.")
+    @ConfigComment("  * An island will be created for the player without needing him to run the create command.")
+    @ConfigComment("If set to false, this will disable this feature entirely.")
+    @ConfigComment("Warning:")
+    @ConfigComment("  * If you are running multiple gamemodes on your server, and all of them have")
+    @ConfigComment("    this feature enabled, an island in all the gamemodes will be created simultaneously.")
+    @ConfigComment("    However, it is impossible to know on which island the player will be teleported to afterwards.")
+    @ConfigComment("  * Island creation can be resource-intensive, please consider the options below to help mitigate")
+    @ConfigComment("    the potential issues, especially if you expect a lot of players to connect to your server")
+    @ConfigComment("    in a limited period of time.")
+    @ConfigEntry(path = "island.create-island-on-first-login.enable")
+    private boolean createIslandOnFirstLoginEnabled;
+
+    @ConfigComment("Time in seconds after the player logged in, before his island gets created.")
+    @ConfigComment("If set to 0 or less, the island will be created directly upon the player's login.")
+    @ConfigComment("It is recommended to keep this value under a minute's time.")
+    @ConfigEntry(path = "island.create-island-on-first-login.delay")
+    private int createIslandOnFirstLoginDelay = 5;
+
+    @ConfigComment("Toggles whether the island creation should be aborted if the player logged off while the")
+    @ConfigComment("delay (see the option above) has not worn off yet.")
+    @ConfigComment("If set to true,")
+    @ConfigComment("  * If the player has logged off the server while the delay (see the option above) has not")
+    @ConfigComment("    worn off yet, this will cancel the island creation.")
+    @ConfigComment("  * If the player relogs afterward, since he will not be recognized as a new player, no island")
+    @ConfigComment("    would be created for him.")
+    @ConfigComment("  * If the island creation started before the player logged off, it will continue.")
+    @ConfigComment("If set to false, the player's island will be created even if he went offline in the meantime.")
+    @ConfigComment("Note this option has no effect if the delay (see the option above) is set to 0 or less.")
+    @ConfigEntry(path = "island.create-island-on-first-login.abort-on-logout")
+    private boolean createIslandOnFirstLoginAbortOnLogout = true;
+
     // Commands
     @ConfigComment("List of commands to run when a player joins.")
     @ConfigEntry(path = "island.commands.on-join")
@@ -610,6 +647,43 @@ public class Settings implements WorldSettings {
     public boolean isKickedKeepInventory() {
         return kickedKeepInventory;
     }
+
+
+    /**
+     * This method returns the createIslandOnFirstLoginEnabled boolean value.
+     * @return the createIslandOnFirstLoginEnabled value
+     * @since 1.9.0
+     */
+    @Override
+    public boolean isCreateIslandOnFirstLoginEnabled()
+    {
+        return createIslandOnFirstLoginEnabled;
+    }
+
+
+    /**
+     * This method returns the createIslandOnFirstLoginDelay int value.
+     * @return the createIslandOnFirstLoginDelay value
+     * @since 1.9.0
+     */
+    @Override
+    public int getCreateIslandOnFirstLoginDelay()
+    {
+        return createIslandOnFirstLoginDelay;
+    }
+
+
+    /**
+     * This method returns the createIslandOnFirstLoginAbortOnLogout boolean value.
+     * @return the createIslandOnFirstLoginAbortOnLogout value
+     * @since 1.9.0
+     */
+    @Override
+    public boolean isCreateIslandOnFirstLoginAbortOnLogout()
+    {
+        return createIslandOnFirstLoginAbortOnLogout;
+    }
+
 
     /**
      * @return the onJoinResetMoney
@@ -1011,6 +1085,30 @@ public class Settings implements WorldSettings {
      */
     public void setOnLeaveResetEnderChest(boolean onLeaveResetEnderChest) {
         this.onLeaveResetEnderChest = onLeaveResetEnderChest;
+    }
+
+    /**
+     * @param createIslandOnFirstLoginEnabled the createIslandOnFirstLoginEnabled to set
+     */
+    public void setCreateIslandOnFirstLoginEnabled(boolean createIslandOnFirstLoginEnabled)
+    {
+        this.createIslandOnFirstLoginEnabled = createIslandOnFirstLoginEnabled;
+    }
+
+    /**
+     * @param createIslandOnFirstLoginDelay the createIslandOnFirstLoginDelay to set
+     */
+    public void setCreateIslandOnFirstLoginDelay(int createIslandOnFirstLoginDelay)
+    {
+        this.createIslandOnFirstLoginDelay = createIslandOnFirstLoginDelay;
+    }
+
+    /**
+     * @param createIslandOnFirstLoginAbortOnLogout the createIslandOnFirstLoginAbortOnLogout to set
+     */
+    public void setCreateIslandOnFirstLoginAbortOnLogout(boolean createIslandOnFirstLoginAbortOnLogout)
+    {
+        this.createIslandOnFirstLoginAbortOnLogout = createIslandOnFirstLoginAbortOnLogout;
     }
 
     /**

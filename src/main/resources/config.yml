@@ -252,6 +252,38 @@ island:
       exp: false
       # Reset Ender Chest - if true, the player's Ender Chest will be cleared.
       ender-chest: false
+  create-island-on-first-login:
+    # Toggles the automatic island creation upon the player's first login on your server.
+    # If set to true,
+    #   * Upon connecting to your server for the first time, the player will be told that
+    #     an island will be created for him.
+    #   * Make sure you have a Blueprint Bundle called "default": this is the one that will
+    #     be used to create the island.
+    #   * An island will be created for the player without needing him to run the create command.
+    # If set to false, this will disable this feature entirely.
+    # Warning:
+    #   * If you are running multiple gamemodes on your server, and all of them have
+    #     this feature enabled, an island in all the gamemodes will be created simultaneously.
+    #     However, it is impossible to know on which island the player will be teleported to afterwards.
+    #   * Island creation can be resource-intensive, please consider the options below to help mitigate
+    #     the potential issues, especially if you expect a lot of players to connect to your server
+    #     in a limited period of time.
+    enable: false
+    # Time in seconds after the player logged in, before his island gets created.
+    # If set to 0 or less, the island will be created directly upon the player's login.
+    # It is recommended to keep this value under a minute's time.
+    delay: 5
+    # Toggles whether the island creation should be aborted if the player logged off while the
+    # delay (see the option above) has not worn off yet.
+    # If set to true,
+    #   * If the player has logged off the server while the delay (see the option above) has not
+    #     worn off yet, this will cancel the island creation.
+    #   * If the player relogs afterward, since he will not be recognized as a new player, no island
+    #     would be created for him.
+    #   * If the island creation started before the player logged off, it will continue.
+    # If set to false, the player's island will be created even if he went offline in the meantime.
+    # Note this option has no effect if the delay (see the option above) is set to 0 or less.
+    abort-on-logout: true
   commands:
     # List of commands to run when a player joins.
     on-join: []
