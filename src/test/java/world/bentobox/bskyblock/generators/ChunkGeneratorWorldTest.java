@@ -2,7 +2,14 @@ package world.bentobox.bskyblock.generators;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.Random;
@@ -18,7 +25,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
@@ -55,7 +61,7 @@ public class ChunkGeneratorWorldTest {
         // Bukkit
         PowerMockito.mockStatic(Bukkit.class);
         Server server = mock(Server.class);
-        when(server.createChunkData(Mockito.any())).thenReturn(data);
+        when(server.createChunkData(any())).thenReturn(data);
         when(Bukkit.getServer()).thenReturn(server);
 
         // Instance
@@ -84,12 +90,12 @@ public class ChunkGeneratorWorldTest {
         assertEquals(data, cd);
         // Verifications
         // Default biome
-        Mockito.verify(settings).getDefaultBiome();
-        Mockito.verify(biomeGrid, Mockito.times(16 * 16)).setBiome(Mockito.anyInt(), Mockito.anyInt(), Mockito.any());
+        verify(settings).getDefaultBiome();
+        verify(biomeGrid, times(16 * 16)).setBiome(anyInt(), anyInt(), any());
         // Sea height
-        Mockito.verify(settings).getSeaHeight();
+        verify(settings).getSeaHeight();
         // Void
-        Mockito.verify(cd, Mockito.never()).setBlock(Mockito.anyInt(), Mockito.anyInt(), Mockito.anyInt(), Mockito.any(Material.class));
+        verify(cd, never()).setRegion(anyInt(), anyInt(), anyInt(), anyInt(), anyInt(), anyInt(), any(Material.class));
     }
 
     /**
@@ -103,12 +109,12 @@ public class ChunkGeneratorWorldTest {
         assertEquals(data, cd);
         // Verifications
         // Default biome
-        Mockito.verify(settings).getDefaultBiome();
-        Mockito.verify(biomeGrid, Mockito.times(16 * 16)).setBiome(Mockito.anyInt(), Mockito.anyInt(), Mockito.any());
+        verify(settings).getDefaultBiome();
+        verify(biomeGrid, times(16 * 16)).setBiome(anyInt(), anyInt(), any());
         // Sea height
-        Mockito.verify(settings).getSeaHeight();
+        verify(settings, times(2)).getSeaHeight();
         // Water. Blocks = 16 x 16 x 11 because block 0
-        Mockito.verify(cd, Mockito.times(2816)).setBlock(Mockito.anyInt(), Mockito.anyInt(), Mockito.anyInt(), Mockito.eq(Material.WATER));
+        verify(cd).setRegion(0, 0, 0, 16, 11, 16, Material.WATER);
     }
 
     /**
@@ -121,13 +127,13 @@ public class ChunkGeneratorWorldTest {
         assertEquals(data, cd);
         // Verifications
         // Default biome
-        Mockito.verify(settings, Mockito.never()).getDefaultBiome();
+        verify(settings, never()).getDefaultBiome();
         // Never set biome in end
-        Mockito.verify(biomeGrid, Mockito.never()).setBiome(Mockito.anyInt(), Mockito.anyInt(), Mockito.any());
+        verify(biomeGrid, never()).setBiome(anyInt(), anyInt(), any());
         // Sea height
-        Mockito.verify(settings, Mockito.never()).getSeaHeight();
+        verify(settings, never()).getSeaHeight();
         // Void
-        Mockito.verify(cd, Mockito.never()).setBlock(Mockito.anyInt(), Mockito.anyInt(), Mockito.anyInt(), Mockito.any(Material.class));
+        verify(cd, never()).setRegion(anyInt(), anyInt(), anyInt(), anyInt(), anyInt(), anyInt(), any(Material.class));
     }
 
     /**
@@ -140,11 +146,11 @@ public class ChunkGeneratorWorldTest {
         assertEquals(data, cd);
         // Verifications
         // Nether roof check
-        Mockito.verify(settings).isNetherRoof();
+        verify(settings).isNetherRoof();
         // Never set biome in nether
-        Mockito.verify(biomeGrid, Mockito.never()).setBiome(Mockito.anyInt(), Mockito.anyInt(), Mockito.any());
+        verify(biomeGrid, never()).setBiome(anyInt(), anyInt(), any());
         // Nether roof - at least bedrock layer
-        Mockito.verify(cd, Mockito.atLeast(16 * 16)).setBlock(Mockito.anyInt(), Mockito.anyInt(), Mockito.anyInt(), Mockito.eq(Material.BEDROCK));
+        verify(cd, atLeast(16 * 16)).setBlock(anyInt(), anyInt(), anyInt(), eq(Material.BEDROCK));
     }
 
     /**
@@ -158,11 +164,11 @@ public class ChunkGeneratorWorldTest {
         assertEquals(data, cd);
         // Verifications
         // Nether roof check
-        Mockito.verify(settings).isNetherRoof();
+        verify(settings).isNetherRoof();
         // Never set biome in nether
-        Mockito.verify(biomeGrid, Mockito.never()).setBiome(Mockito.anyInt(), Mockito.anyInt(), Mockito.any());
+        verify(biomeGrid, never()).setBiome(anyInt(), anyInt(), any());
         // Nether roof - at least bedrock layer
-        Mockito.verify(cd, Mockito.never()).setBlock(Mockito.anyInt(), Mockito.anyInt(), Mockito.anyInt(), Mockito.any(Material.class));
+        verify(cd, never()).setBlock(anyInt(), anyInt(), anyInt(), any(Material.class));
     }
 
     /**
