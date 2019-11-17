@@ -212,7 +212,7 @@ public class Settings implements WorldSettings {
     private int maxHomes = 5;
 
     // Reset
-    @ConfigComment("How many resets a player is allowed (override with /bsbadmin clearresets <player>)")
+    @ConfigComment("How many resets a player is allowed (manage with /bsbadmin reset add/remove/reset/set command)")
     @ConfigComment("Value of -1 means unlimited, 0 means hardcore - no resets.")
     @ConfigComment("Example, 2 resets means they get 2 resets or 3 islands lifetime")
     @ConfigEntry(path = "island.reset.reset-limit")

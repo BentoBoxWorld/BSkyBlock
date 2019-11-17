@@ -1,4 +1,4 @@
-# BSkyBlock Configuration 1.6.0
+# BSkyBlock Configuration ${version}
 bskyblock:
   command:
     # Island Command. What command users will run to access their island.
@@ -203,7 +203,7 @@ island:
   # Accessed via /is sethome <number> or /is go <number>
   max-homes: 1
   reset:
-    # How many resets a player is allowed (override with /bsbadmin clearresets <player>)
+    # How many resets a player is allowed (manage with /bsbadmin reset add/remove/reset/set command)
     # Value of -1 means unlimited, 0 means hardcore - no resets.
     # Example, 2 resets means they get 2 resets or 3 islands lifetime
     reset-limit: -1
