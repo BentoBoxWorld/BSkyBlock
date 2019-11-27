@@ -1,1 +1,7 @@
-
+---
+'': false
+bskyblock:
+  sign:
+    line0: "&cBSkyBlock"
+    line2: "[name]"
+    line3: 'Jangan jatuh! '
