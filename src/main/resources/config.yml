@@ -90,10 +90,10 @@ world:
     dragon-spawn: false
   # Mob white list - these mobs will NOT be removed when logging in or doing /island
   remove-mobs-whitelist:
-    - PIG_ZOMBIE
-    - ENDERMAN
-    - WITHER
-    - ZOMBIE_VILLAGER
+  - PIG_ZOMBIE
+  - ZOMBIE_VILLAGER
+  - ENDERMAN
+  - WITHER
   # World flags. These are boolean settings for various flags for this world
   flags:
     CREEPER_DAMAGE: true
@@ -137,40 +137,40 @@ world:
     FROST_WALKER: 500
     COLLECT_LAVA: 500
     LEVER: 500
-    HURT_MONSTERS: 0
     RIDING: 500
-    ARMOR_STAND: 500
+    HURT_MONSTERS: 0
     NAME_TAG: 500
+    ARMOR_STAND: 500
     TRADING: 0
     EGGS: 500
     ITEM_DROP: 0
     NOTE_BLOCK: 0
     NETHER_PORTAL: 500
-    CROP_TRAMPLE: 500
     ITEM_PICKUP: 0
-    BREWING: 500
+    CROP_TRAMPLE: 500
     DROPPER: 500
+    BREWING: 500
     COLLECT_WATER: 500
     BUTTON: 500
     FIRE_EXTINGUISH: 500
     BEACON: 500
     TRAPDOOR: 500
     PRESSURE_PLATE: 0
-    PLACE_BLOCKS: 500
     ITEM_FRAME: 500
+    PLACE_BLOCKS: 500
     CRAFTING: 0
-    ENCHANTING: 0
     SHEARING: 500
-    BED: 500
+    ENCHANTING: 0
     SPAWN_EGGS: 500
+    BED: 500
     MILKING: 0
     DISPENSER: 500
     GATE: 0
     EXPERIENCE_PICKUP: 500
     HOPPER: 500
     LEASH: 500
-    BREAK_BLOCKS: 500
     MOUNT_INVENTORY: 500
+    BREAK_BLOCKS: 500
     CHORUS_FRUIT: 500
     CONTAINER: 500
     JUKEBOX: 500
@@ -178,8 +178,8 @@ world:
   # These are the default settings for new islands
   default-island-settings:
     PVP_END: false
-    ANIMAL_SPAWN: true
     PVP_NETHER: false
+    ANIMAL_SPAWN: true
     MONSTER_SPAWN: true
     FIRE_SPREAD: true
     PVP_OVERWORLD: false
@@ -188,16 +188,16 @@ world:
   hidden-flags: []
   # Visitor banned commands - Visitors to islands cannot use these commands in this world
   visitor-banned-commands:
-    - spawner
-    - spawnmob
+  - spawner
+  - spawnmob
   # Falling banned commands - players cannot use these commands when falling
   # if the PREVENT_TELEPORT_WHEN_FALLING world setting flag is active
   falling-banned-commands:
-    - warp
-    - spawn
+  - warp
+  - spawn
 island:
   # Default max team size
-  # Permission size cannot be less than the default below.
+  # Permission size cannot be less than the default below. 
   max-team-size: 4
   # Default maximum number of homes a player can have. Min = 1
   # Accessed via /is sethome <number> or /is go <number>
@@ -255,7 +255,7 @@ island:
   create-island-on-first-login:
     # Toggles the automatic island creation upon the player's first login on your server.
     # If set to true,
-    #   * Upon connecting to your server for the first time, the player will be told that
+    #    * Upon connecting to your server for the first time, the player will be told that
     #     an island will be created for him.
     #   * Make sure you have a Blueprint Bundle called "default": this is the one that will
     #     be used to create the island.
@@ -284,10 +284,15 @@ island:
     # If set to false, the player's island will be created even if he went offline in the meantime.
     # Note this option has no effect if the delay (see the option above) is set to 0 or less.
     abort-on-logout: true
+  # Create Nether or End islands if they are missing when a player goes through a portal.
+  # Nether and End islands are usually pasted when a player makes their island, but if they are
+  # missing for some reason, you can switch this on.
+  # Note that bedrock removal glitches can exploit this option.
+  create-missing-nether-end-islands: false
   commands:
     # List of commands to run when a player joins.
     on-join: []
-    # List of commands to run when a player leaves.
+    # list of commands to run when a player leaves.
     on-leave: []
   sethome:
     nether:
@@ -310,36 +315,36 @@ protection:
   # Geo restrict mobs.
   # Mobs that exit the island space where they were spawned will be removed.
   geo-limit-settings:
-    - GHAST
-    - BAT
-    - BLAZE
+  - GHAST
+  - BAT
+  - BLAZE
   # Invincible visitors. List of damages that will not affect visitors.
   # Make list blank if visitors should receive all damages
   invincible-visitors:
-    - BLOCK_EXPLOSION
-    - CONTACT
-    - CUSTOM
-    - DROWNING
-    - ENTITY_ATTACK
-    - ENTITY_EXPLOSION
-    - FALL
-    - FALLING_BLOCK
-    - FIRE
-    - FIRE_TICK
-    - LAVA
-    - LIGHTNING
-    - MAGIC
-    - POISON
-    - PROJECTILE
-    - STARVATION
-    - SUFFOCATION
-    - THORNS
-    - WITHER
-    - DRAGON_BREATH
-    - FLY_INTO_WALL
-    - HOT_FLOOR
-    - CRAMMING
-    - VOID
+  - BLOCK_EXPLOSION
+  - CONTACT
+  - CUSTOM
+  - DROWNING
+  - ENTITY_ATTACK
+  - ENTITY_EXPLOSION
+  - FALL
+  - FALLING_BLOCK
+  - FIRE
+  - FIRE_TICK
+  - LAVA
+  - LIGHTNING
+  - MAGIC
+  - POISON
+  - PROJECTILE
+  - STARVATION
+  - SUFFOCATION
+  - THORNS
+  - WITHER
+  - DRAGON_BREATH
+  - FLY_INTO_WALL
+  - HOT_FLOOR
+  - CRAMMING
+  - VOID
 do-not-edit-these-settings:
   # These settings should not be edited
   reset-epoch: 0
