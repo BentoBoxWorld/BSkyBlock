@@ -33,12 +33,12 @@ public class Settings implements WorldSettings {
     @ConfigComment("Island Command. What command users will run to access their island.")
     @ConfigComment("To define alias, just separate commands with white space.")
     @ConfigEntry(path = "bskyblock.command.island")
-    private String islandCommand = "island is";
+    private String islandCommand = "island is skyblock sb";
 
     @ConfigComment("The island admin command.")
     @ConfigComment("To define alias, just separate commands with white space.")
     @ConfigEntry(path = "bskyblock.command.admin")
-    private String adminCommand = "bsbadmin bsb";
+    private String adminCommand = "bsbadmin bsb skyblockadmin sbadmin sba";
 
     /*      WORLD       */
     @ConfigComment("Friendly name for this world. Used in admin commands. Must be a single word")

@@ -3,10 +3,10 @@ bskyblock:
   command:
     # Island Command. What command users will run to access their island.
     # To define alias, just separate commands with white space.
-    island: island is
+    island: island is skyblock sb
     # The island admin command.
     # To define alias, just separate commands with white space.
-    admin: bsbadmin bsb
+    admin: bsbadmin bsb skyblockadmin sbadmin sba
 world:
   # Friendly name for this world. Used in admin commands. Must be a single word
   friendly-name: BSkyBlock
