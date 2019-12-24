@@ -33,13 +33,7 @@ The config.yml is similar to ASkyBlock but *not the same*. Note that distance be
 
 BSkyBlock is an add-on that uses the BentoBox API. Here are some other ones that you may be interested in:
 
-* Level - provides island level calculation and a top ten
-* Welcome Warps - provides the warp sign feature
-* Challenges - challenges
-* AcidIsland - survival game in a sea of acid
-* Biomes - enables biomes
-
-You can find the projects on GitHub.
+* [**Addons**](https://github.com/BentoBoxWorld/BentoBox/blob/develop/ADDON.md)
 
 Bugs and Feature requests
 =========================
