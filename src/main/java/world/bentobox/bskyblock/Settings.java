@@ -327,6 +327,11 @@ public class Settings implements WorldSettings {
     @ConfigEntry(path = "island.create-island-on-first-login.abort-on-logout", since = "1.9.0")
     private boolean createIslandOnFirstLoginAbortOnLogout = true;
 
+    @ConfigComment("Toggles whether the player should be teleported automatically to his island when it is created.")
+	@ConfigComment("If set to false, the player will be told his island is ready but will have to teleport to his island using the command.")
+	@ConfigEntry(path = "island.teleport-player-to-island-when-created", since = "1.10.0")
+    private boolean teleportPlayerToIslandUponIslandCreation = true;
+
     @ConfigComment("Create Nether or End islands if they are missing when a player goes through a portal.")
     @ConfigComment("Nether and End islands are usually pasted when a player makes their island, but if they are")
     @ConfigComment("missing for some reason, you can switch this on.")
@@ -1420,4 +1425,22 @@ public class Settings implements WorldSettings {
         this.pasteMissingIslands = pasteMissingIslands;
     }
 
+	/**
+	 * Toggles whether the player should be teleported automatically to his island when it is created.
+	 * @return {@code true} if the player should be teleported automatically to his island when it is created,
+	 *         {@code false} otherwise.
+	 * @since 1.10.0
+	 */
+	@Override
+	public boolean isTeleportPlayerToIslandUponIslandCreation() {
+		return teleportPlayerToIslandUponIslandCreation;
+	}
+
+	/**
+	 * @param teleportPlayerToIslandUponIslandCreation the teleportPlayerToIslandUponIslandCreation to set
+	 * @since 1.10.0
+	 */
+	public void setTeleportPlayerToIslandUponIslandCreation(boolean teleportPlayerToIslandUponIslandCreation) {
+		this.teleportPlayerToIslandUponIslandCreation = teleportPlayerToIslandUponIslandCreation;
+	}
 }
