@@ -32,12 +32,12 @@ public class Settings implements WorldSettings {
     /* Commands */
     @ConfigComment("Island Command. What command users will run to access their island.")
     @ConfigComment("To define alias, just separate commands with white space.")
-    @ConfigEntry(path = "bskyblock.command.island")
+    @ConfigEntry(path = "bskyblock.command.island", since = "1.3.0")
     private String islandCommand = "island is skyblock sb";
 
     @ConfigComment("The island admin command.")
     @ConfigComment("To define alias, just separate commands with white space.")
-    @ConfigEntry(path = "bskyblock.command.admin")
+    @ConfigEntry(path = "bskyblock.command.admin", since = "1.3.0")
     private String adminCommand = "bsbadmin bsb skyblockadmin sbadmin sba";
 
     /*      WORLD       */
@@ -186,7 +186,7 @@ public class Settings implements WorldSettings {
 
     @ConfigComment("These settings/flags are hidden from users")
     @ConfigComment("Ops can toggle hiding in-game using SHIFT-LEFT-CLICK on flags in settings")
-    @ConfigEntry(path = "world.hidden-flags")
+    @ConfigEntry(path = "world.hidden-flags", since = "1.4.1")
     private List<String> hiddenFlags = new ArrayList<>();
 
     @ConfigComment("Visitor banned commands - Visitors to islands cannot use these commands in this world")
@@ -195,7 +195,7 @@ public class Settings implements WorldSettings {
 
     @ConfigComment("Falling banned commands - players cannot use these commands when falling")
     @ConfigComment("if the PREVENT_TELEPORT_WHEN_FALLING world setting flag is active")
-    @ConfigEntry(path = "world.falling-banned-commands")
+    @ConfigEntry(path = "world.falling-banned-commands", since = "1.8.0")
     private List<String> fallingBannedCommands = new ArrayList<>();
 
     // ---------------------------------------------
@@ -245,15 +245,15 @@ public class Settings implements WorldSettings {
     private boolean onJoinResetInventory = false;
 
     @ConfigComment("Reset health - if true, the player's health will be reset.")
-    @ConfigEntry(path = "island.reset.on-join.health")
+    @ConfigEntry(path = "island.reset.on-join.health", since = "1.8.0")
     private boolean onJoinResetHealth = true;
 
     @ConfigComment("Reset hunger - if true, the player's hunger will be reset.")
-    @ConfigEntry(path = "island.reset.on-join.hunger")
+    @ConfigEntry(path = "island.reset.on-join.hunger", since = "1.8.0")
     private boolean onJoinResetHunger = true;
 
     @ConfigComment("Reset experience points - if true, the player's experience will be reset.")
-    @ConfigEntry(path = "island.reset.on-join.exp")
+    @ConfigEntry(path = "island.reset.on-join.exp", since = "1.8.0")
     private boolean onJoinResetXP = false;
 
 
@@ -275,15 +275,15 @@ public class Settings implements WorldSettings {
     private boolean onLeaveResetInventory = false;
 
     @ConfigComment("Reset health - if true, the player's health will be reset.")
-    @ConfigEntry(path = "island.reset.on-leave.health")
+    @ConfigEntry(path = "island.reset.on-leave.health", since = "1.8.0")
     private boolean onLeaveResetHealth = false;
 
     @ConfigComment("Reset hunger - if true, the player's hunger will be reset.")
-    @ConfigEntry(path = "island.reset.on-leave.hunger")
+    @ConfigEntry(path = "island.reset.on-leave.hunger", since = "1.8.0")
     private boolean onLeaveResetHunger = false;
 
     @ConfigComment("Reset experience - if true, the player's experience will be reset.")
-    @ConfigEntry(path = "island.reset.on-leave.exp")
+    @ConfigEntry(path = "island.reset.on-leave.exp", since = "1.8.0")
     private boolean onLeaveResetXP = false;
 
     @ConfigComment("Reset Ender Chest - if true, the player's Ender Chest will be cleared.")
@@ -305,13 +305,13 @@ public class Settings implements WorldSettings {
     @ConfigComment("  * Island creation can be resource-intensive, please consider the options below to help mitigate")
     @ConfigComment("    the potential issues, especially if you expect a lot of players to connect to your server")
     @ConfigComment("    in a limited period of time.")
-    @ConfigEntry(path = "island.create-island-on-first-login.enable")
+    @ConfigEntry(path = "island.create-island-on-first-login.enable", since = "1.9.0")
     private boolean createIslandOnFirstLoginEnabled;
 
     @ConfigComment("Time in seconds after the player logged in, before his island gets created.")
     @ConfigComment("If set to 0 or less, the island will be created directly upon the player's login.")
     @ConfigComment("It is recommended to keep this value under a minute's time.")
-    @ConfigEntry(path = "island.create-island-on-first-login.delay")
+    @ConfigEntry(path = "island.create-island-on-first-login.delay", since = "1.9.0")
     private int createIslandOnFirstLoginDelay = 5;
 
     @ConfigComment("Toggles whether the island creation should be aborted if the player logged off while the")
@@ -324,23 +324,23 @@ public class Settings implements WorldSettings {
     @ConfigComment("  * If the island creation started before the player logged off, it will continue.")
     @ConfigComment("If set to false, the player's island will be created even if he went offline in the meantime.")
     @ConfigComment("Note this option has no effect if the delay (see the option above) is set to 0 or less.")
-    @ConfigEntry(path = "island.create-island-on-first-login.abort-on-logout")
+    @ConfigEntry(path = "island.create-island-on-first-login.abort-on-logout", since = "1.9.0")
     private boolean createIslandOnFirstLoginAbortOnLogout = true;
 
     @ConfigComment("Create Nether or End islands if they are missing when a player goes through a portal.")
     @ConfigComment("Nether and End islands are usually pasted when a player makes their island, but if they are")
     @ConfigComment("missing for some reason, you can switch this on.")
     @ConfigComment("Note that bedrock removal glitches can exploit this option.")
-    @ConfigEntry(path = "island.create-missing-nether-end-islands")
+    @ConfigEntry(path = "island.create-missing-nether-end-islands", since = "1.10.0")
     private boolean pasteMissingIslands = false;
 
     // Commands
     @ConfigComment("List of commands to run when a player joins.")
-    @ConfigEntry(path = "island.commands.on-join")
+    @ConfigEntry(path = "island.commands.on-join", since = "1.8.0")
     private List<String> onJoinCommands = new ArrayList<>();
 
     @ConfigComment("list of commands to run when a player leaves.")
-    @ConfigEntry(path = "island.commands.on-leave")
+    @ConfigEntry(path = "island.commands.on-leave", since = "1.8.0")
     private List<String> onLeaveCommands = new ArrayList<>();
 
     // Sethome
