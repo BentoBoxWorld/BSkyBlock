@@ -3,9 +3,11 @@ bskyblock:
   command:
     # Island Command. What command users will run to access their island.
     # To define alias, just separate commands with white space.
+    # Added since 1.3.0.
     island: island is skyblock sb
     # The island admin command.
     # To define alias, just separate commands with white space.
+    # Added since 1.3.0.
     admin: bsbadmin bsb skyblockadmin sbadmin sba
 world:
   # Friendly name for this world. Used in admin commands. Must be a single word
@@ -90,10 +92,10 @@ world:
     dragon-spawn: false
   # Mob white list - these mobs will NOT be removed when logging in or doing /island
   remove-mobs-whitelist:
-  - PIG_ZOMBIE
-  - ZOMBIE_VILLAGER
-  - ENDERMAN
-  - WITHER
+    - WITHER
+    - PIG_ZOMBIE
+    - ENDERMAN
+    - ZOMBIE_VILLAGER
   # World flags. These are boolean settings for various flags for this world
   flags:
     CREEPER_DAMAGE: true
@@ -156,8 +158,8 @@ world:
     BEACON: 500
     TRAPDOOR: 500
     PRESSURE_PLATE: 0
-    ITEM_FRAME: 500
     PLACE_BLOCKS: 500
+    ITEM_FRAME: 500
     CRAFTING: 0
     SHEARING: 500
     ENCHANTING: 0
@@ -169,35 +171,37 @@ world:
     EXPERIENCE_PICKUP: 500
     HOPPER: 500
     LEASH: 500
-    MOUNT_INVENTORY: 500
     BREAK_BLOCKS: 500
+    MOUNT_INVENTORY: 500
     CHORUS_FRUIT: 500
     CONTAINER: 500
-    JUKEBOX: 500
     POTION_THROWING: 500
+    JUKEBOX: 500
   # These are the default settings for new islands
   default-island-settings:
     PVP_END: false
-    PVP_NETHER: false
     ANIMAL_SPAWN: true
+    PVP_NETHER: false
     MONSTER_SPAWN: true
     FIRE_SPREAD: true
     PVP_OVERWORLD: false
   # These settings/flags are hidden from users
   # Ops can toggle hiding in-game using SHIFT-LEFT-CLICK on flags in settings
+  # Added since 1.4.1.
   hidden-flags: []
   # Visitor banned commands - Visitors to islands cannot use these commands in this world
   visitor-banned-commands:
-  - spawner
-  - spawnmob
+    - spawner
+    - spawnmob
   # Falling banned commands - players cannot use these commands when falling
   # if the PREVENT_TELEPORT_WHEN_FALLING world setting flag is active
+  # Added since 1.8.0.
   falling-banned-commands:
-  - warp
-  - spawn
+    - warp
+    - spawn
 island:
   # Default max team size
-  # Permission size cannot be less than the default below. 
+  # Permission size cannot be less than the default below.
   max-team-size: 4
   # Default maximum number of homes a player can have. Min = 1
   # Accessed via /is sethome <number> or /is go <number>
@@ -227,10 +231,13 @@ island:
       # plugin may still reset the inventory when the world changes.
       inventory: false
       # Reset health - if true, the player's health will be reset.
+      # Added since 1.8.0.
       health: true
       # Reset hunger - if true, the player's hunger will be reset.
+      # Added since 1.8.0.
       hunger: true
       # Reset experience points - if true, the player's experience will be reset.
+      # Added since 1.8.0.
       exp: false
       # Reset Ender Chest - if true, the player's Ender Chest will be cleared.
       ender-chest: false
@@ -245,10 +252,13 @@ island:
       # plugin may still reset the inventory when the world changes.
       inventory: false
       # Reset health - if true, the player's health will be reset.
+      # Added since 1.8.0.
       health: false
       # Reset hunger - if true, the player's hunger will be reset.
+      # Added since 1.8.0.
       hunger: false
       # Reset experience - if true, the player's experience will be reset.
+      # Added since 1.8.0.
       exp: false
       # Reset Ender Chest - if true, the player's Ender Chest will be cleared.
       ender-chest: false
@@ -268,10 +278,12 @@ island:
     #   * Island creation can be resource-intensive, please consider the options below to help mitigate
     #     the potential issues, especially if you expect a lot of players to connect to your server
     #     in a limited period of time.
+    # Added since 1.9.0.
     enable: false
     # Time in seconds after the player logged in, before his island gets created.
     # If set to 0 or less, the island will be created directly upon the player's login.
     # It is recommended to keep this value under a minute's time.
+    # Added since 1.9.0.
     delay: 5
     # Toggles whether the island creation should be aborted if the player logged off while the
     # delay (see the option above) has not worn off yet.
@@ -283,16 +295,24 @@ island:
     #   * If the island creation started before the player logged off, it will continue.
     # If set to false, the player's island will be created even if he went offline in the meantime.
     # Note this option has no effect if the delay (see the option above) is set to 0 or less.
+    # Added since 1.9.0.
     abort-on-logout: true
+  # Toggles whether the player should be teleported automatically to his island when it is created.
+  # If set to false, the player will be told his island is ready but will have to teleport to his island using the command.
+  # Added since 1.10.0.
+  teleport-player-to-island-when-created: true
   # Create Nether or End islands if they are missing when a player goes through a portal.
   # Nether and End islands are usually pasted when a player makes their island, but if they are
   # missing for some reason, you can switch this on.
   # Note that bedrock removal glitches can exploit this option.
+  # Added since 1.10.0.
   create-missing-nether-end-islands: false
   commands:
     # List of commands to run when a player joins.
+    # Added since 1.8.0.
     on-join: []
     # list of commands to run when a player leaves.
+    # Added since 1.8.0.
     on-leave: []
   sethome:
     nether:
@@ -315,36 +335,36 @@ protection:
   # Geo restrict mobs.
   # Mobs that exit the island space where they were spawned will be removed.
   geo-limit-settings:
-  - GHAST
-  - BAT
-  - BLAZE
+    - GHAST
+    - BAT
+    - BLAZE
   # Invincible visitors. List of damages that will not affect visitors.
   # Make list blank if visitors should receive all damages
   invincible-visitors:
-  - BLOCK_EXPLOSION
-  - CONTACT
-  - CUSTOM
-  - DROWNING
-  - ENTITY_ATTACK
-  - ENTITY_EXPLOSION
-  - FALL
-  - FALLING_BLOCK
-  - FIRE
-  - FIRE_TICK
-  - LAVA
-  - LIGHTNING
-  - MAGIC
-  - POISON
-  - PROJECTILE
-  - STARVATION
-  - SUFFOCATION
-  - THORNS
-  - WITHER
-  - DRAGON_BREATH
-  - FLY_INTO_WALL
-  - HOT_FLOOR
-  - CRAMMING
-  - VOID
+    - BLOCK_EXPLOSION
+    - CONTACT
+    - CUSTOM
+    - DROWNING
+    - ENTITY_ATTACK
+    - ENTITY_EXPLOSION
+    - FALL
+    - FALLING_BLOCK
+    - FIRE
+    - FIRE_TICK
+    - LAVA
+    - LIGHTNING
+    - MAGIC
+    - POISON
+    - PROJECTILE
+    - STARVATION
+    - SUFFOCATION
+    - THORNS
+    - WITHER
+    - DRAGON_BREATH
+    - FLY_INTO_WALL
+    - HOT_FLOOR
+    - CRAMMING
+    - VOID
 do-not-edit-these-settings:
   # These settings should not be edited
   reset-epoch: 0
