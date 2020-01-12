@@ -353,7 +353,7 @@ public class Settings implements WorldSettings {
     @ConfigEntry(path = "island.commands.on-join", since = "1.8.0")
     private List<String> onJoinCommands = new ArrayList<>();
 
-    @ConfigComment("List of commands to run when a player leaves an island or resets his island.")
+    @ConfigComment("List of commands to run when a player leaves an island, resets his island or gets kicked from it.")
     @ConfigComment("These commands are run by the console, unless otherwise stated using the [SUDO] prefix,")
     @ConfigComment("in which case they are executed by the player.")
     @ConfigComment("")
@@ -361,8 +361,10 @@ public class Settings implements WorldSettings {
     @ConfigComment("   * [name]: name of the player")
     @ConfigComment("")
     @ConfigComment("Here are some examples of valid commands to execute:")
-    @ConfigComment("   * \"[SUDO] bbox version\"")
-    @ConfigComment("   * \"bsbadmin deaths set [player] 0\"")
+    @ConfigComment("   * '[SUDO] bbox version'")
+    @ConfigComment("   * 'bsbadmin deaths set [player] 0'")
+    @ConfigComment("")
+    @ConfigComment("Note that player-executed commands might not work, as these commands can be run with said player being offline.")
     @ConfigEntry(path = "island.commands.on-leave", since = "1.8.0")
     private List<String> onLeaveCommands = new ArrayList<>();
 
