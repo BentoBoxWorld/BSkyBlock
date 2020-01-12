@@ -340,11 +340,29 @@ public class Settings implements WorldSettings {
     private boolean pasteMissingIslands = false;
 
     // Commands
-    @ConfigComment("List of commands to run when a player joins.")
+    @ConfigComment("List of commands to run when a player joins an island or creates one.")
+    @ConfigComment("These commands are run by the console, unless otherwise stated using the [SUDO] prefix,")
+    @ConfigComment("in which case they are executed by the player.")
+    @ConfigComment("")
+    @ConfigComment("Available placeholders for the commands are the following:")
+    @ConfigComment("   * [name]: name of the player")
+    @ConfigComment("")
+    @ConfigComment("Here are some examples of valid commands to execute:")
+    @ConfigComment("   * \"[SUDO] bbox version\"")
+    @ConfigComment("   * \"bsbadmin deaths set [player] 0\"")
     @ConfigEntry(path = "island.commands.on-join", since = "1.8.0")
     private List<String> onJoinCommands = new ArrayList<>();
 
-    @ConfigComment("list of commands to run when a player leaves.")
+    @ConfigComment("List of commands to run when a player leaves an island or resets his island.")
+    @ConfigComment("These commands are run by the console, unless otherwise stated using the [SUDO] prefix,")
+    @ConfigComment("in which case they are executed by the player.")
+    @ConfigComment("")
+    @ConfigComment("Available placeholders for the commands are the following:")
+    @ConfigComment("   * [name]: name of the player")
+    @ConfigComment("")
+    @ConfigComment("Here are some examples of valid commands to execute:")
+    @ConfigComment("   * \"[SUDO] bbox version\"")
+    @ConfigComment("   * \"bsbadmin deaths set [player] 0\"")
     @ConfigEntry(path = "island.commands.on-leave", since = "1.8.0")
     private List<String> onLeaveCommands = new ArrayList<>();
 
