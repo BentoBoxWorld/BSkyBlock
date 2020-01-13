@@ -43,14 +43,16 @@ public class BSkyBlock extends GameModeAddon implements Listener {
         adminCommand = new AdminCommand(this);
     }
 
-    private void loadSettings() {
+    private boolean loadSettings() {
         // Load settings again to get worlds
         settings = configObject.loadConfigObject();
         if (settings == null) {
             // Disable
             logError("BSkyBlock settings could not load! Addon disabled.");
             setState(State.DISABLED);
+            return false;
         }
+        return true;
     }
 
     @Override
@@ -66,7 +68,9 @@ public class BSkyBlock extends GameModeAddon implements Listener {
 
     @Override
     public void onReload() {
-        loadSettings();
+        if (loadSettings()) {
+            log("Reloaded BSkyBlock settings");
+        }
     }
 
     /**
