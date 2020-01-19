@@ -51,7 +51,25 @@ permissions:
     description: Player can use the island reset or restart command
     default: true  
   bskyblock.island.team:
-    description: Let a player use team commands
+    description: Let a player use team command
+    default: true
+  bskyblock.island.team.setowner:
+    description: Let a player change the team owner
+    default: true
+  bskyblock.island.team.invite:
+    description: Let a player invite others
+    default: true
+  bskyblock.island.team.reject:
+    description: Let a player reject invites
+    default: true
+  bskyblock.island.team.leave:
+    description: Let a player leave the team
+    default: true
+  bskyblock.island.team.kick:
+    description: Let a player kick team members
+    default: true
+  bskyblock.island.team.accept:
+    description: Let a player accept invitations
     default: true
   bskyblock.island.team.trust:
     description: Let a player use team trust commands
@@ -61,7 +79,7 @@ permissions:
     default: true
   bskyblock.island.team.promote:
     description: Let a player use promote commands
-    default: true  
+    default: true
   bskyblock.settings.*:
     description: Allow use of settings on island
     default: true
