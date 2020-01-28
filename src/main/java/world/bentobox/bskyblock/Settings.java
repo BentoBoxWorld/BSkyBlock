@@ -374,6 +374,11 @@ public class Settings implements WorldSettings {
     @ConfigEntry(path = "protection.geo-limit-settings")
     private List<String> geoLimitSettings = new ArrayList<>();
 
+    @ConfigComment("Restricted mobs.")
+    @ConfigComment("Mobs that should never be spawned in the game.")
+    @ConfigEntry(path = "protection.mob-limit-settings")
+    private List<String> mobLimitSettings = new ArrayList<>();
+
     // Invincible visitor settings
     @ConfigComment("Invincible visitors. List of damages that will not affect visitors.")
     @ConfigComment("Make list blank if visitors should receive all damages")
@@ -796,6 +801,14 @@ public class Settings implements WorldSettings {
     public List<String> getGeoLimitSettings() {
         return geoLimitSettings;
     }
+    
+    /**
+     * @return the geoLimitSettings
+     */
+    @Override
+    public List<String> getMobLimitSettings() {
+        return mobLimitSettings;
+    }
 
     /**
      * @return the ivSettings
@@ -1137,6 +1150,13 @@ public class Settings implements WorldSettings {
      */
     public void setGeoLimitSettings(List<String> geoLimitSettings) {
         this.geoLimitSettings = geoLimitSettings;
+    }
+    
+    /**
+     * @param mobLimitSettings the mobLimitSettings to set
+     */
+    public void setMobLimitSettings(List<String> mobLimitSettings) {
+        this.mobLimitSettings = mobLimitSettings;
     }
 
     /**
