@@ -39,6 +39,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
 import org.powermock.reflect.Whitebox;
 
 import world.bentobox.bentobox.BentoBox;
+import world.bentobox.bentobox.Settings;
 import world.bentobox.bentobox.api.addons.AddonDescription;
 import world.bentobox.bentobox.api.configuration.Config;
 import world.bentobox.bentobox.api.user.User;
@@ -70,6 +71,8 @@ public class BSkyBlockTest {
     private BentoBox plugin;
     @Mock
     private FlagsManager fm;
+    @Mock
+    private Settings settings;
 
     /**
      * @throws java.lang.Exception
@@ -141,10 +144,13 @@ public class BSkyBlockTest {
         // Addons manager
         AddonsManager am = mock(AddonsManager.class);
         when(plugin.getAddonsManager()).thenReturn(am);
-        
+
         // Flags manager
         when(plugin.getFlagsManager()).thenReturn(fm);
         when(fm.getFlags()).thenReturn(Collections.emptyList());
+
+        // Settings
+        when(plugin.getSettings()).thenReturn(settings);
 
     }
 
