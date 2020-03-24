@@ -89,7 +89,6 @@ public class BSkyBlock extends GameModeAddon implements Listener {
 
         // Create the world if it does not exist
         islandWorld = getWorld(worldName, World.Environment.NORMAL, chunkGenerator);
-
         // Make the nether if it does not exist
         if (settings.isNetherGenerate()) {
             if (getServer().getWorld(worldName + NETHER) == null) {
@@ -118,7 +117,18 @@ public class BSkyBlock extends GameModeAddon implements Listener {
         worldName2 = env.equals(World.Environment.NETHER) ? worldName2 + NETHER : worldName2;
         worldName2 = env.equals(World.Environment.THE_END) ? worldName2 + THE_END : worldName2;
         WorldCreator wc = WorldCreator.name(worldName2).type(WorldType.FLAT).environment(env);
-        return settings.isUseOwnGenerator() ? wc.createWorld() : wc.generator(chunkGenerator2).createWorld();
+        World w = settings.isUseOwnGenerator() ? wc.createWorld() : wc.generator(chunkGenerator2).createWorld();
+        // Set spawn rates
+        if (w != null) {
+            w.setMonsterSpawnLimit(getSettings().getSpawnLimitMonsters());
+            w.setAmbientSpawnLimit(getSettings().getSpawnLimitAmbient());
+            w.setAnimalSpawnLimit(getSettings().getSpawnLimitAnimals());
+            w.setWaterAnimalSpawnLimit(getSettings().getSpawnLimitWaterAnimals());
+            w.setTicksPerAnimalSpawns(getSettings().getTicksPerAnimalSpawns());
+            w.setTicksPerMonsterSpawns(getSettings().getTicksPerMonsterSpawns());
+        }
+        return w;
+
     }
 
     @Override
