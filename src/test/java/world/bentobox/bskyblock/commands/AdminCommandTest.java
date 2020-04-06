@@ -1,6 +1,3 @@
-/**
- *
- */
 package world.bentobox.bskyblock.commands;
 
 import static org.junit.Assert.assertEquals;
@@ -40,7 +37,7 @@ import world.bentobox.bskyblock.Settings;
 @PrepareForTest({Bukkit.class, BentoBox.class, User.class })
 public class AdminCommandTest {
 
-    private static final int NUM_COMMANDS = 25;
+    private static final int NUM_COMMANDS = 26;
     @Mock
     private User user;
     @Mock
