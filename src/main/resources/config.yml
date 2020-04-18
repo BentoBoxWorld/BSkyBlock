@@ -9,6 +9,8 @@ bskyblock:
     # To define alias, just separate commands with white space.
     # Added since 1.3.0.
     admin: bsbadmin bsb skyblockadmin sbadmin sba
+    # Use control panel if it exists (ControlPanel addon must be in addons)
+    use-control-panel: false
 world:
   # Friendly name for this world. Used in admin commands. Must be a single word
   friendly-name: BSkyBlock

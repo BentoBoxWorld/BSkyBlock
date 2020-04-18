@@ -73,7 +73,8 @@ public class IslandCommand extends CompositeCommand {
         if (args.isEmpty()) {
             // If user has an island, go
             if (getPlugin().getIslands().getIsland(getWorld(), user.getUniqueId()) != null) {
-                if (getSubCommand("controlpanel").isPresent()) {
+                if (((BSkyBlock)getAddon()).getSettings().isUseControlPanel()
+                        && getSubCommand("controlpanel").isPresent()) {
                     return getSubCommand("controlpanel").get().call(user, label, new ArrayList<>());
                 }
                 return getSubCommand("go").map(goCmd -> goCmd.call(user, goCmd.getLabel(), new ArrayList<>())).orElse(false);
