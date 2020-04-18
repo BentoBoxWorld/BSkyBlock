@@ -40,6 +40,10 @@ public class Settings implements WorldSettings {
     @ConfigEntry(path = "bskyblock.command.admin", since = "1.3.0")
     private String adminCommand = "bsbadmin bsb skyblockadmin sbadmin sba";
 
+    @ConfigComment("Use control panel if it exists (ControlPanel addon must be in addons)")
+    @ConfigEntry(path = "bskyblock.use-control-panel", since = "1.13.0")
+    private boolean useControlPanel = false;
+
     /*      WORLD       */
     @ConfigComment("Friendly name for this world. Used in admin commands. Must be a single word")
     @ConfigEntry(path = "world.friendly-name")
@@ -224,13 +228,13 @@ public class Settings implements WorldSettings {
     @ConfigComment("Permission size cannot be less than the default below. ")
     @ConfigEntry(path = "island.max-team-size")
     private int maxTeamSize = 4;
-    
+
     @ConfigComment("Default maximum number of coop rank members per island")
     @ConfigComment("Players can have the bskyblock.coop.maxsize.<number> permission to be bigger but")
     @ConfigComment("permission size cannot be less than the default below. ")
     @ConfigEntry(path = "island.max-coop-size", since = "1.13.0")
     private int maxCoopSize = 4;
-    
+
     @ConfigComment("Default maximum number of trusted rank members per island")
     @ConfigComment("Players can have the bskyblock.trust.maxsize.<number> permission to be bigger but")
     @ConfigComment("permission size cannot be less than the default below. ")
@@ -1607,5 +1611,19 @@ public class Settings implements WorldSettings {
      */
     public void setMaxTrustSize(int maxTrustSize) {
         this.maxTrustSize = maxTrustSize;
+    }
+
+    /**
+     * @return the useControlPanel
+     */
+    public boolean isUseControlPanel() {
+        return useControlPanel;
+    }
+
+    /**
+     * @param useControlPanel the useControlPanel to set
+     */
+    public void setUseControlPanel(boolean useControlPanel) {
+        this.useControlPanel = useControlPanel;
     }
 }
