@@ -18,6 +18,25 @@ world:
   # World difficulty setting - PEACEFUL, EASY, NORMAL, HARD
   # Other plugins may override this setting
   difficulty: NORMAL
+  spawn-limits:
+    # Spawn limits. These override the limits set in bukkit.yml
+    # If set to a negative number, the server defaults will be used
+    # Added since 1.11.2.
+    monsters: -1
+    # Added since 1.11.2.
+    animals: -1
+    # Added since 1.11.2.
+    water-animals: -1
+    # Added since 1.11.2.
+    ambient: -1
+    # Setting to 0 will disable animal spawns, but this is not recommended. Minecraft default is 400.
+    # A negative value uses the server default
+    # Added since 1.11.2.
+    ticks-per-animal-spawns: -1
+    # Setting to 0 will disable monster spawns, but this is not recommended. Minecraft default is 400.
+    # A negative value uses the server default
+    # Added since 1.11.2.
+    ticks-per-monster-spawns: -1
   # Radius of island in blocks. (So distance between islands is twice this)
   # It is the same for every dimension : Overworld, Nether and End.
   # This value cannot be changed mid-game and the plugin will not start if it is different.
@@ -92,10 +111,10 @@ world:
     dragon-spawn: false
   # Mob white list - these mobs will NOT be removed when logging in or doing /island
   remove-mobs-whitelist:
-    - WITHER
-    - PIG_ZOMBIE
-    - ENDERMAN
-    - ZOMBIE_VILLAGER
+  - WITHER
+  - PIG_ZOMBIE
+  - ZOMBIE_VILLAGER
+  - ENDERMAN
   # World flags. These are boolean settings for various flags for this world
   flags:
     CREEPER_DAMAGE: true
@@ -141,8 +160,8 @@ world:
     LEVER: 500
     RIDING: 500
     HURT_MONSTERS: 0
-    NAME_TAG: 500
     ARMOR_STAND: 500
+    NAME_TAG: 500
     TRADING: 0
     EGGS: 500
     ITEM_DROP: 0
@@ -150,19 +169,19 @@ world:
     NETHER_PORTAL: 500
     ITEM_PICKUP: 0
     CROP_TRAMPLE: 500
-    DROPPER: 500
     BREWING: 500
+    DROPPER: 500
     COLLECT_WATER: 500
     BUTTON: 500
     FIRE_EXTINGUISH: 500
     BEACON: 500
     TRAPDOOR: 500
     PRESSURE_PLATE: 0
-    PLACE_BLOCKS: 500
     ITEM_FRAME: 500
+    PLACE_BLOCKS: 500
     CRAFTING: 0
-    SHEARING: 500
     ENCHANTING: 0
+    SHEARING: 500
     SPAWN_EGGS: 500
     BED: 500
     MILKING: 0
@@ -171,8 +190,8 @@ world:
     EXPERIENCE_PICKUP: 500
     HOPPER: 500
     LEASH: 500
-    BREAK_BLOCKS: 500
     MOUNT_INVENTORY: 500
+    BREAK_BLOCKS: 500
     CHORUS_FRUIT: 500
     CONTAINER: 500
     POTION_THROWING: 500
@@ -180,8 +199,8 @@ world:
   # These are the default settings for new islands
   default-island-settings:
     PVP_END: false
-    ANIMAL_SPAWN: true
     PVP_NETHER: false
+    ANIMAL_SPAWN: true
     MONSTER_SPAWN: true
     FIRE_SPREAD: true
     PVP_OVERWORLD: false
@@ -191,18 +210,29 @@ world:
   hidden-flags: []
   # Visitor banned commands - Visitors to islands cannot use these commands in this world
   visitor-banned-commands:
-    - spawner
-    - spawnmob
+  - spawner
+  - spawnmob
   # Falling banned commands - players cannot use these commands when falling
   # if the PREVENT_TELEPORT_WHEN_FALLING world setting flag is active
   # Added since 1.8.0.
   falling-banned-commands:
-    - warp
-    - spawn
+  - warp
+  - spawn
 island:
   # Default max team size
-  # Permission size cannot be less than the default below.
+  # Permission size cannot be less than the default below. 
   max-team-size: 4
+  # Default maximum number of coop rank members per island
+  # Players can have the bskyblock.coop.maxsize.<number> permission to be bigger but
+  # permission size cannot be less than the default below.
+  # Added since 1.13.0.
+  max-coop-size: 4
+  # Default maximum number of trusted rank members per island
+  # Players can have the bskyblock.trust.maxsize.<number> permission to be bigger but
+  # permission size cannot be less than the default below.
+  # Added since 1.13.0.
+  max-trusted-size: 4
+
   # Default maximum number of homes a player can have. Min = 1
   # Accessed via /is sethome <number> or /is go <number>
   max-homes: 1
@@ -308,10 +338,30 @@ island:
   # Added since 1.10.0.
   create-missing-nether-end-islands: false
   commands:
-    # List of commands to run when a player joins.
+    # List of commands to run when a player joins an island or creates one.
+    # These commands are run by the console, unless otherwise stated using the [SUDO] prefix,
+    # in which case they are executed by the player.
+    # 
+    # Available placeholders for the commands are the following:
+    #    * [name]: name of the player
+    # 
+    # Here are some examples of valid commands to execute:
+    #    * "[SUDO] bbox version"
+    #    * "bsbadmin deaths set [player] 0"
     # Added since 1.8.0.
     on-join: []
-    # list of commands to run when a player leaves.
+    # List of commands to run when a player leaves an island, resets his island or gets kicked from it.
+    # These commands are run by the console, unless otherwise stated using the [SUDO] prefix,
+    # in which case they are executed by the player.
+    # 
+    # Available placeholders for the commands are the following:
+    #    * [name]: name of the player
+    # 
+    # Here are some examples of valid commands to execute:
+    #    * '[SUDO] bbox version'
+    #    * 'bsbadmin deaths set [player] 0'
+    # 
+    # Note that player-executed commands might not work, as these commands can be run with said player being offline.
     # Added since 1.8.0.
     on-leave: []
   sethome:
@@ -335,36 +385,37 @@ protection:
   # Geo restrict mobs.
   # Mobs that exit the island space where they were spawned will be removed.
   geo-limit-settings:
-    - GHAST
-    - BAT
-    - BLAZE
+  - GHAST
+  - BAT
+  - BLAZE
   # Invincible visitors. List of damages that will not affect visitors.
   # Make list blank if visitors should receive all damages
   invincible-visitors:
-    - BLOCK_EXPLOSION
-    - CONTACT
-    - CUSTOM
-    - DROWNING
-    - ENTITY_ATTACK
-    - ENTITY_EXPLOSION
-    - FALL
-    - FALLING_BLOCK
-    - FIRE
-    - FIRE_TICK
-    - LAVA
-    - LIGHTNING
-    - MAGIC
-    - POISON
-    - PROJECTILE
-    - STARVATION
-    - SUFFOCATION
-    - THORNS
-    - WITHER
-    - DRAGON_BREATH
-    - FLY_INTO_WALL
-    - HOT_FLOOR
-    - CRAMMING
-    - VOID
+  - BLOCK_EXPLOSION
+  - CONTACT
+  - CUSTOM
+  - DROWNING
+  - ENTITY_ATTACK
+  - ENTITY_EXPLOSION
+  - FALL
+  - FALLING_BLOCK
+  - FIRE
+  - FIRE_TICK
+  - LAVA
+  - LIGHTNING
+  - MAGIC
+  - POISON
+  - PROJECTILE
+  - STARVATION
+  - SUFFOCATION
+  - THORNS
+  - WITHER
+  - DRAGON_BREATH
+  - FLY_INTO_WALL
+  - HOT_FLOOR
+  - CRAMMING
+  - VOID
 do-not-edit-these-settings:
   # These settings should not be edited
   reset-epoch: 0
+

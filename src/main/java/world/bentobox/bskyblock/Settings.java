@@ -55,6 +55,25 @@ public class Settings implements WorldSettings {
     @ConfigEntry(path = "world.difficulty")
     private Difficulty difficulty = Difficulty.NORMAL;
 
+    @ConfigComment("Spawn limits. These override the limits set in bukkit.yml")
+    @ConfigComment("If set to a negative number, the server defaults will be used")
+    @ConfigEntry(path = "world.spawn-limits.monsters", since = "1.11.2")
+    private int spawnLimitMonsters = -1;
+    @ConfigEntry(path = "world.spawn-limits.animals", since = "1.11.2")
+    private int spawnLimitAnimals = -1;
+    @ConfigEntry(path = "world.spawn-limits.water-animals", since = "1.11.2")
+    private int spawnLimitWaterAnimals = -1;
+    @ConfigEntry(path = "world.spawn-limits.ambient", since = "1.11.2")
+    private int spawnLimitAmbient = -1;
+    @ConfigComment("Setting to 0 will disable animal spawns, but this is not recommended. Minecraft default is 400.")
+    @ConfigComment("A negative value uses the server default")
+    @ConfigEntry(path = "world.spawn-limits.ticks-per-animal-spawns", since = "1.11.2")
+    private int ticksPerAnimalSpawns = -1;
+    @ConfigComment("Setting to 0 will disable monster spawns, but this is not recommended. Minecraft default is 400.")
+    @ConfigComment("A negative value uses the server default")
+    @ConfigEntry(path = "world.spawn-limits.ticks-per-monster-spawns", since = "1.11.2")
+    private int ticksPerMonsterSpawns = -1;
+
     @ConfigComment("Radius of island in blocks. (So distance between islands is twice this)")
     @ConfigComment("It is the same for every dimension : Overworld, Nether and End.")
     @ConfigComment("This value cannot be changed mid-game and the plugin will not start if it is different.")
@@ -205,6 +224,18 @@ public class Settings implements WorldSettings {
     @ConfigComment("Permission size cannot be less than the default below. ")
     @ConfigEntry(path = "island.max-team-size")
     private int maxTeamSize = 4;
+    
+    @ConfigComment("Default maximum number of coop rank members per island")
+    @ConfigComment("Players can have the bskyblock.coop.maxsize.<number> permission to be bigger but")
+    @ConfigComment("permission size cannot be less than the default below. ")
+    @ConfigEntry(path = "island.max-coop-size", since = "1.13.0")
+    private int maxCoopSize = 4;
+    
+    @ConfigComment("Default maximum number of trusted rank members per island")
+    @ConfigComment("Players can have the bskyblock.trust.maxsize.<number> permission to be bigger but")
+    @ConfigComment("permission size cannot be less than the default below. ")
+    @ConfigEntry(path = "island.max-trusted-size", since = "1.13.0")
+    private int maxTrustSize = 4;
 
     @ConfigComment("Default maximum number of homes a player can have. Min = 1")
     @ConfigComment("Accessed via /is sethome <number> or /is go <number>")
@@ -328,8 +359,8 @@ public class Settings implements WorldSettings {
     private boolean createIslandOnFirstLoginAbortOnLogout = true;
 
     @ConfigComment("Toggles whether the player should be teleported automatically to his island when it is created.")
-	@ConfigComment("If set to false, the player will be told his island is ready but will have to teleport to his island using the command.")
-	@ConfigEntry(path = "island.teleport-player-to-island-when-created", since = "1.10.0")
+    @ConfigComment("If set to false, the player will be told his island is ready but will have to teleport to his island using the command.")
+    @ConfigEntry(path = "island.teleport-player-to-island-when-created", since = "1.10.0")
     private boolean teleportPlayerToIslandUponIslandCreation = true;
 
     @ConfigComment("Create Nether or End islands if they are missing when a player goes through a portal.")
@@ -1445,22 +1476,136 @@ public class Settings implements WorldSettings {
         this.pasteMissingIslands = pasteMissingIslands;
     }
 
-	/**
-	 * Toggles whether the player should be teleported automatically to his island when it is created.
-	 * @return {@code true} if the player should be teleported automatically to his island when it is created,
-	 *         {@code false} otherwise.
-	 * @since 1.10.0
-	 */
-	@Override
-	public boolean isTeleportPlayerToIslandUponIslandCreation() {
-		return teleportPlayerToIslandUponIslandCreation;
-	}
+    /**
+     * Toggles whether the player should be teleported automatically to his island when it is created.
+     * @return {@code true} if the player should be teleported automatically to his island when it is created,
+     *         {@code false} otherwise.
+     * @since 1.10.0
+     */
+    @Override
+    public boolean isTeleportPlayerToIslandUponIslandCreation() {
+        return teleportPlayerToIslandUponIslandCreation;
+    }
 
-	/**
-	 * @param teleportPlayerToIslandUponIslandCreation the teleportPlayerToIslandUponIslandCreation to set
-	 * @since 1.10.0
-	 */
-	public void setTeleportPlayerToIslandUponIslandCreation(boolean teleportPlayerToIslandUponIslandCreation) {
-		this.teleportPlayerToIslandUponIslandCreation = teleportPlayerToIslandUponIslandCreation;
-	}
+    /**
+     * @param teleportPlayerToIslandUponIslandCreation the teleportPlayerToIslandUponIslandCreation to set
+     * @since 1.10.0
+     */
+    public void setTeleportPlayerToIslandUponIslandCreation(boolean teleportPlayerToIslandUponIslandCreation) {
+        this.teleportPlayerToIslandUponIslandCreation = teleportPlayerToIslandUponIslandCreation;
+    }
+
+    /**
+     * @return the spawnLimitMonsters
+     */
+    public int getSpawnLimitMonsters() {
+        return spawnLimitMonsters;
+    }
+
+    /**
+     * @param spawnLimitMonsters the spawnLimitMonsters to set
+     */
+    public void setSpawnLimitMonsters(int spawnLimitMonsters) {
+        this.spawnLimitMonsters = spawnLimitMonsters;
+    }
+
+    /**
+     * @return the spawnLimitAnimals
+     */
+    public int getSpawnLimitAnimals() {
+        return spawnLimitAnimals;
+    }
+
+    /**
+     * @param spawnLimitAnimals the spawnLimitAnimals to set
+     */
+    public void setSpawnLimitAnimals(int spawnLimitAnimals) {
+        this.spawnLimitAnimals = spawnLimitAnimals;
+    }
+
+    /**
+     * @return the spawnLimitWaterAnimals
+     */
+    public int getSpawnLimitWaterAnimals() {
+        return spawnLimitWaterAnimals;
+    }
+
+    /**
+     * @param spawnLimitWaterAnimals the spawnLimitWaterAnimals to set
+     */
+    public void setSpawnLimitWaterAnimals(int spawnLimitWaterAnimals) {
+        this.spawnLimitWaterAnimals = spawnLimitWaterAnimals;
+    }
+
+    /**
+     * @return the spawnLimitAmbient
+     */
+    public int getSpawnLimitAmbient() {
+        return spawnLimitAmbient;
+    }
+
+    /**
+     * @param spawnLimitAmbient the spawnLimitAmbient to set
+     */
+    public void setSpawnLimitAmbient(int spawnLimitAmbient) {
+        this.spawnLimitAmbient = spawnLimitAmbient;
+    }
+
+    /**
+     * @return the ticksPerAnimalSpawns
+     */
+    public int getTicksPerAnimalSpawns() {
+        return ticksPerAnimalSpawns;
+    }
+
+    /**
+     * @param ticksPerAnimalSpawns the ticksPerAnimalSpawns to set
+     */
+    public void setTicksPerAnimalSpawns(int ticksPerAnimalSpawns) {
+        this.ticksPerAnimalSpawns = ticksPerAnimalSpawns;
+    }
+
+    /**
+     * @return the ticksPerMonsterSpawns
+     */
+    public int getTicksPerMonsterSpawns() {
+        return ticksPerMonsterSpawns;
+    }
+
+    /**
+     * @param ticksPerMonsterSpawns the ticksPerMonsterSpawns to set
+     */
+    public void setTicksPerMonsterSpawns(int ticksPerMonsterSpawns) {
+        this.ticksPerMonsterSpawns = ticksPerMonsterSpawns;
+    }
+
+    /**
+     * @return the maxCoopSize
+     */
+    @Override
+    public int getMaxCoopSize() {
+        return maxCoopSize;
+    }
+
+    /**
+     * @param maxCoopSize the maxCoopSize to set
+     */
+    public void setMaxCoopSize(int maxCoopSize) {
+        this.maxCoopSize = maxCoopSize;
+    }
+
+    /**
+     * @return the maxTrustSize
+     */
+    @Override
+    public int getMaxTrustSize() {
+        return maxTrustSize;
+    }
+
+    /**
+     * @param maxTrustSize the maxTrustSize to set
+     */
+    public void setMaxTrustSize(int maxTrustSize) {
+        this.maxTrustSize = maxTrustSize;
+    }
 }
