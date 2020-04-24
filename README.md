@@ -15,14 +15,14 @@ BSkyBlock provides a skyblock-type Minecraft game for players that supports a de
 
 ## Installation
 
-0. Install BentoBox and run it on the server at least once to create its data folders.
-1. Place this jar in the addons folder of the BentoBox plugin.
-2. Restart the server.
-3. The addon will create worlds and a data folder and inside the folder will be a config.yml.
-4. Stop the server .
-5. Edit the config.yml how you want.
-6. Delete any worlds that were created by default if you made changes that would affect them.
-7. Restart the server.
+1. Install BentoBox and run it on the server at least once to create its data folders.
+2. Place this jar in the addons folder of the BentoBox plugin.
+3. Restart the server.
+4. The addon will create worlds and a data folder and inside the folder will be a config.yml.
+5. Stop the server .
+6. Edit the config.yml how you want.
+7. Delete any worlds that were created by default if you made changes that would affect them.
+8. Restart the server.
 
 ## Config.yml
 
