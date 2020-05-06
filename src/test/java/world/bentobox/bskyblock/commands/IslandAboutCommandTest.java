@@ -33,7 +33,7 @@ public class IslandAboutCommandTest {
         User user = mock(User.class);
         c.execute(user, "", Collections.emptyList());
         // Verify
-        Mockito.verify(user).sendRawMessage(Mockito.eq("Copyright (c) 2017 - 2019 tastybento, Poslovitch"));
+        Mockito.verify(user).sendRawMessage(Mockito.eq("Copyright (c) 2017 - 2020 tastybento, Poslovitch"));
         Mockito.verify(user).sendRawMessage(Mockito.eq("About BSkyBlock 1.2.3:"));
     }
 
