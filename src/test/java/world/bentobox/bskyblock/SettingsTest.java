@@ -494,8 +494,8 @@ public class SettingsTest {
      */
     @Test
     public void testGetIslandCommand() {
-        s.setIslandCommand("island");
-        assertEquals("island", s.getIslandCommand());
+        s.setPlayerCommandAliases("island");
+        assertEquals("island", s.getPlayerCommandAliases());
     }
 
     /**
@@ -503,8 +503,8 @@ public class SettingsTest {
      */
     @Test
     public void testGetAdminCommand() {
-        s.setAdminCommand("admin");
-        assertEquals("admin", s.getAdminCommand());
+        s.setAdminCommandAliases("admin");
+        assertEquals("admin", s.getAdminCommandAliases());
     }
 
 }

@@ -33,16 +33,24 @@ public class Settings implements WorldSettings {
     @ConfigComment("Island Command. What command users will run to access their island.")
     @ConfigComment("To define alias, just separate commands with white space.")
     @ConfigEntry(path = "bskyblock.command.island", since = "1.3.0")
-    private String islandCommand = "island is skyblock sb";
+    private String playerCommandAliases = "island is skyblock sb";
 
     @ConfigComment("The island admin command.")
     @ConfigComment("To define alias, just separate commands with white space.")
     @ConfigEntry(path = "bskyblock.command.admin", since = "1.3.0")
-    private String adminCommand = "bsbadmin bsb skyblockadmin sbadmin sba";
+    private String adminCommandAliases = "bsbadmin bsb skyblockadmin sbadmin sba";
 
-    @ConfigComment("Use control panel if it exists (ControlPanel addon must be in addons)")
-    @ConfigEntry(path = "bskyblock.use-control-panel", since = "1.13.0")
-    private boolean useControlPanel = false;
+    @ConfigComment("The default action for new player command call.")
+    @ConfigComment("Sub-command of main player command that will be run on first player command call.")
+    @ConfigComment("By default it is sub-command 'create'.")
+    @ConfigEntry(path = "bskyblock.command.new-player-action", since = "1.13.1")
+    private String defaultNewPlayerAction = "create";
+
+    @ConfigComment("The default action for player command.")
+    @ConfigComment("Sub-command of main player command that will be run on each player command call.")
+    @ConfigComment("By default it is sub-command 'go'.")
+    @ConfigEntry(path = "bskyblock.command.default-action", since = "1.13.1")
+    private String defaultPlayerAction = "go";
 
     /*      WORLD       */
     @ConfigComment("Friendly name for this world. Used in admin commands. Must be a single word")
@@ -441,6 +449,11 @@ public class Settings implements WorldSettings {
     @ConfigEntry(path = "protection.geo-limit-settings")
     private List<String> geoLimitSettings = new ArrayList<>();
 
+    @ConfigComment("BSkyBlock blocked mobs.")
+    @ConfigComment("List of mobs that should not spawn in BSkyBlock.")
+    @ConfigEntry(path = "protection.block-mobs", since = "1.13.1")
+    private List<String> mobLimitSettings = new ArrayList<>();
+    
     // Invincible visitor settings
     @ConfigComment("Invincible visitors. List of damages that will not affect visitors.")
     @ConfigComment("Make list blank if visitors should receive all damages")
@@ -1288,46 +1301,34 @@ public class Settings implements WorldSettings {
         this.banLimit = banLimit;
     }
 
-
     /**
-     * This method returns the islandCommand value.
-     * @return the value of islandCommand.
+     * @return the playerCommandAliases
      */
-    public String getIslandCommand()
-    {
-        return islandCommand;
+    @Override
+    public String getPlayerCommandAliases() {
+        return playerCommandAliases;
     }
 
-
     /**
-     * This method sets the islandCommand value.
-     * @param islandCommand the islandCommand new value.
-     *
+     * @param playerCommandAliases the playerCommandAliases to set
      */
-    public void setIslandCommand(String islandCommand)
-    {
-        this.islandCommand = islandCommand;
+    public void setPlayerCommandAliases(String playerCommandAliases) {
+        this.playerCommandAliases = playerCommandAliases;
     }
 
-
     /**
-     * This method returns the adminCommand value.
-     * @return the value of adminCommand.
+     * @return the adminCommandAliases
      */
-    public String getAdminCommand()
-    {
-        return adminCommand;
+    @Override
+    public String getAdminCommandAliases() {
+        return adminCommandAliases;
     }
 
-
     /**
-     * This method sets the adminCommand value.
-     * @param adminCommand the adminCommand new value.
-     *
+     * @param adminCommandAliases the adminCommandAliases to set
      */
-    public void setAdminCommand(String adminCommand)
-    {
-        this.adminCommand = adminCommand;
+    public void setAdminCommandAliases(String adminCommandAliases) {
+        this.adminCommandAliases = adminCommandAliases;
     }
 
     /**
@@ -1612,18 +1613,49 @@ public class Settings implements WorldSettings {
     public void setMaxTrustSize(int maxTrustSize) {
         this.maxTrustSize = maxTrustSize;
     }
-
+    
     /**
-     * @return the useControlPanel
+     * @return the defaultNewPlayerAction
      */
-    public boolean isUseControlPanel() {
-        return useControlPanel;
+    @Override
+    public String getDefaultNewPlayerAction() {
+        return defaultNewPlayerAction;
     }
 
     /**
-     * @param useControlPanel the useControlPanel to set
+     * @param defaultNewPlayerAction the defaultNewPlayerAction to set
      */
-    public void setUseControlPanel(boolean useControlPanel) {
-        this.useControlPanel = useControlPanel;
+    public void setDefaultNewPlayerAction(String defaultNewPlayerAction) {
+        this.defaultNewPlayerAction = defaultNewPlayerAction;
+    }
+
+    /**
+     * @return the defaultPlayerAction
+     */
+    @Override
+    public String getDefaultPlayerAction() {
+        return defaultPlayerAction;
+    }
+
+    /**
+     * @param defaultPlayerAction the defaultPlayerAction to set
+     */
+    public void setDefaultPlayerAction(String defaultPlayerAction) {
+        this.defaultPlayerAction = defaultPlayerAction;
+    }
+
+    /**
+     * @return the mobLimitSettings
+     */
+    @Override
+    public List<String> getMobLimitSettings() {
+        return mobLimitSettings;
+    }
+
+    /**
+     * @param mobLimitSettings the mobLimitSettings to set
+     */
+    public void setMobLimitSettings(List<String> mobLimitSettings) {
+        this.mobLimitSettings = mobLimitSettings;
     }
 }

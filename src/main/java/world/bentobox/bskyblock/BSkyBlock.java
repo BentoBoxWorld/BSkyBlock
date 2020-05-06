@@ -9,10 +9,11 @@ import org.bukkit.generator.ChunkGenerator;
 import org.eclipse.jdt.annotation.Nullable;
 
 import world.bentobox.bentobox.api.addons.GameModeAddon;
+import world.bentobox.bentobox.api.commands.admin.DefaultAdminCommand;
+import world.bentobox.bentobox.api.commands.island.DefaultPlayerCommand;
 import world.bentobox.bentobox.api.configuration.Config;
 import world.bentobox.bentobox.api.configuration.WorldSettings;
-import world.bentobox.bskyblock.commands.AdminCommand;
-import world.bentobox.bskyblock.commands.IslandCommand;
+import world.bentobox.bskyblock.commands.IslandAboutCommand;
 import world.bentobox.bskyblock.generators.ChunkGeneratorWorld;
 
 /**
@@ -39,8 +40,17 @@ public class BSkyBlock extends GameModeAddon implements Listener {
         // Chunk generator
         chunkGenerator = settings.isUseOwnGenerator() ? null : new ChunkGeneratorWorld(this);
         // Register commands
-        playerCommand = new IslandCommand(this);
-        adminCommand = new AdminCommand(this);
+        playerCommand = new DefaultPlayerCommand(this)
+
+        {
+            @Override
+            public void setup()
+            {
+                super.setup();
+                new IslandAboutCommand(this);
+            }
+        };
+        adminCommand = new DefaultAdminCommand(this) {};
     }
 
     private boolean loadSettings() {

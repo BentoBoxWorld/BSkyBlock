@@ -1,4 +1,4 @@
-# BSkyBlock Configuration ${version}
+# BSkyBlock Configuration {$version}
 bskyblock:
   command:
     # Island Command. What command users will run to access their island.
@@ -9,8 +9,16 @@ bskyblock:
     # To define alias, just separate commands with white space.
     # Added since 1.3.0.
     admin: bsbadmin bsb skyblockadmin sbadmin sba
-    # Use control panel if it exists (ControlPanel addon must be in addons)
-    use-control-panel: false
+    # The default action for new player command call.
+    # Sub-command of main player command that will be run on first player command call.
+    # By default it is sub-command 'create'.
+    # Added since 1.13.1.
+    new-player-action: create
+    # The default action for player command.
+    # Sub-command of main player command that will be run on each player command call.
+    # By default it is sub-command 'go'.
+    # Added since 1.13.1.
+    default-action: go
 world:
   # Friendly name for this world. Used in admin commands. Must be a single word
   friendly-name: BSkyBlock
@@ -113,10 +121,10 @@ world:
     dragon-spawn: false
   # Mob white list - these mobs will NOT be removed when logging in or doing /island
   remove-mobs-whitelist:
-  - WITHER
-  - PIG_ZOMBIE
   - ZOMBIE_VILLAGER
   - ENDERMAN
+  - PIG_ZOMBIE
+  - WITHER
   # World flags. These are boolean settings for various flags for this world
   flags:
     CREEPER_DAMAGE: true
@@ -128,12 +136,15 @@ world:
     CLEAN_SUPER_FLAT: false
     CHEST_DAMAGE: false
     PREVENT_TELEPORT_WHEN_FALLING: false
+    NATURAL_SPAWNING_OUTSIDE_RANGE: true
     ENTER_EXIT_MESSAGES: true
     ENDERMAN_DEATH_DROP: true
     OFFLINE_REDSTONE: true
+    REMOVE_END_EXIT_ISLAND: true
     REMOVE_MOBS: true
     ENDER_CHEST: false
     ITEM_FRAME_DAMAGE: false
+    TREES_GROWING_OUTSIDE_RANGE: false
   # These are the default protection settings for new islands.
   # The value is the minimum island rank required allowed to do the action
   # Ranks are the following:
@@ -169,8 +180,8 @@ world:
     ITEM_DROP: 0
     NOTE_BLOCK: 0
     NETHER_PORTAL: 500
-    ITEM_PICKUP: 0
     CROP_TRAMPLE: 500
+    ITEM_PICKUP: 0
     BREWING: 500
     DROPPER: 500
     COLLECT_WATER: 500
@@ -182,8 +193,8 @@ world:
     ITEM_FRAME: 500
     PLACE_BLOCKS: 500
     CRAFTING: 0
-    ENCHANTING: 0
     SHEARING: 500
+    ENCHANTING: 0
     SPAWN_EGGS: 500
     BED: 500
     MILKING: 0
@@ -226,15 +237,14 @@ island:
   max-team-size: 4
   # Default maximum number of coop rank members per island
   # Players can have the bskyblock.coop.maxsize.<number> permission to be bigger but
-  # permission size cannot be less than the default below.
+  # permission size cannot be less than the default below. 
   # Added since 1.13.0.
   max-coop-size: 4
   # Default maximum number of trusted rank members per island
   # Players can have the bskyblock.trust.maxsize.<number> permission to be bigger but
-  # permission size cannot be less than the default below.
+  # permission size cannot be less than the default below. 
   # Added since 1.13.0.
   max-trusted-size: 4
-
   # Default maximum number of homes a player can have. Min = 1
   # Accessed via /is sethome <number> or /is go <number>
   max-homes: 1
@@ -390,6 +400,10 @@ protection:
   - GHAST
   - BAT
   - BLAZE
+  # BSkyBlock blocked mobs.
+  # List of mobs that should not spawn in BSkyBlock.
+  # Added since 1.13.1.
+  block-mobs: []
   # Invincible visitors. List of damages that will not affect visitors.
   # Make list blank if visitors should receive all damages
   invincible-visitors:
@@ -420,4 +434,3 @@ protection:
 do-not-edit-these-settings:
   # These settings should not be edited
   reset-epoch: 0
-
