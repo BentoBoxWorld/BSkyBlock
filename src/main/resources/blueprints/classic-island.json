@@ -1,0 +1,15 @@
+{
+  "uniqueId": "classic-island",
+  "icon": "GRASS_BLOCK",
+  "displayName": "Classic Island",
+  "description": [
+    "The Classic Skyblock Island!"
+  ],
+  "requirePermission": false,
+  "blueprints": {
+    "NORMAL": "classic-lshape",
+    "NETHER": "nether-island",
+    "THE_END": "end-island"
+  },
+  "slot": 3
+}
