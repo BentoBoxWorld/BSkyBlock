@@ -1,9 +1,11 @@
 {
   "uniqueId": "classic-island",
-  "icon": "GRASS_BLOCK",
-  "displayName": "Classic Island",
+  "icon": "GRASS_PATH",
+  "displayName": "&bClassic L Island",
   "description": [
-    "The Classic Skyblock Island!"
+    "&2The Classic &6L-Shaped",
+    "&2Skyblock Island!",
+    "&eVery hard!"
   ],
   "requirePermission": false,
   "blueprints": {

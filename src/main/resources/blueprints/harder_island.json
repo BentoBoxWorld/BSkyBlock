@@ -1,11 +1,11 @@
 {
   "uniqueId": "harder_island",
   "icon": "SNOWBALL",
-  "displayName": "Harder Island",
+  "displayName": "&7Harder Island",
   "description": [
-    "This island is",
-    "much harder.",
-    "Beware the lava!"
+    "&fThis island is",
+    "&fmuch harder and cold.",
+    "&fBeware the &6lava&f!"
   ],
   "requirePermission": false,
   "blueprints": {

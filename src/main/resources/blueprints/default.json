@@ -1,6 +1,6 @@
 {
   "uniqueId": "default",
-  "icon": "GRASS",
+  "icon": "GRASS_BLOCK",
   "displayName": "&eThe Original SkyBlock",
   "description": [
     "&bStandard island, with a cow - moo!",
@@ -13,5 +13,6 @@
     "NORMAL": "island",
     "NETHER": "nether-island",
     "THE_END": "end-island"
-  }
+  },
+  "slot": 0
 }
