@@ -121,10 +121,10 @@ world:
     dragon-spawn: false
   # Mob white list - these mobs will NOT be removed when logging in or doing /island
   remove-mobs-whitelist:
-  - ZOMBIE_VILLAGER
-  - ENDERMAN
-  - PIG_ZOMBIE
   - WITHER
+  - ENDERMAN
+  - ZOMBIE_VILLAGER
+  - PIG_ZOMBIE
   # World flags. These are boolean settings for various flags for this world
   flags:
     CREEPER_DAMAGE: true
@@ -139,8 +139,10 @@ world:
     NATURAL_SPAWNING_OUTSIDE_RANGE: true
     ENTER_EXIT_MESSAGES: true
     ENDERMAN_DEATH_DROP: true
+    LIQUIDS_FLOWING_OUT: false
     OFFLINE_REDSTONE: true
     REMOVE_END_EXIT_ISLAND: true
+    OFFLINE_GROWTH: true
     REMOVE_MOBS: true
     ENDER_CHEST: false
     ITEM_FRAME_DAMAGE: false
@@ -167,44 +169,44 @@ world:
     END_PORTAL: 500
     BREEDING: 500
     HURT_VILLAGERS: 500
-    TURTLE_EGGS: 500
     FROST_WALKER: 500
+    TURTLE_EGGS: 500
     COLLECT_LAVA: 500
     LEVER: 500
-    RIDING: 500
     HURT_MONSTERS: 0
-    ARMOR_STAND: 500
+    RIDING: 500
     NAME_TAG: 500
+    ARMOR_STAND: 500
     TRADING: 0
     EGGS: 500
     ITEM_DROP: 0
     NOTE_BLOCK: 0
     NETHER_PORTAL: 500
-    CROP_TRAMPLE: 500
     ITEM_PICKUP: 0
-    BREWING: 500
+    CROP_TRAMPLE: 500
     DROPPER: 500
+    BREWING: 500
     COLLECT_WATER: 500
     BUTTON: 500
     FIRE_EXTINGUISH: 500
     BEACON: 500
     TRAPDOOR: 500
     PRESSURE_PLATE: 0
-    ITEM_FRAME: 500
     PLACE_BLOCKS: 500
+    ITEM_FRAME: 500
     CRAFTING: 0
     SHEARING: 500
     ENCHANTING: 0
-    SPAWN_EGGS: 500
     BED: 500
+    SPAWN_EGGS: 500
     MILKING: 0
     DISPENSER: 500
     GATE: 0
     EXPERIENCE_PICKUP: 500
     HOPPER: 500
     LEASH: 500
-    MOUNT_INVENTORY: 500
     BREAK_BLOCKS: 500
+    MOUNT_INVENTORY: 500
     CHORUS_FRUIT: 500
     CONTAINER: 500
     POTION_THROWING: 500
@@ -234,7 +236,7 @@ world:
 island:
   # Default max team size
   # Permission size cannot be less than the default below. 
-  max-team-size: 4
+  max-team-size: 2
   # Default maximum number of coop rank members per island
   # Players can have the bskyblock.coop.maxsize.<number> permission to be bigger but
   # permission size cannot be less than the default below. 
@@ -376,6 +378,20 @@ island:
     # Note that player-executed commands might not work, as these commands can be run with said player being offline.
     # Added since 1.8.0.
     on-leave: []
+    # List of commands to run when a player respawns on their island after death.
+    # These commands are run by the console, unless otherwise stated using the [SUDO] prefix,
+    # in which case they are executed by the player.
+    # 
+    # Available placeholders for the commands are the following:
+    #    * [name]: name of the player
+    # 
+    # Here are some examples of valid commands to execute:
+    #    * '[SUDO] bbox version'
+    #    * 'bsbadmin deaths set [player] 0'
+    # 
+    # Note that player-executed commands might not work, as these commands can be run with said player being offline.
+    # Added since 1.14.0.
+    on-respawn: []
   sethome:
     nether:
       allow: true
@@ -434,3 +450,4 @@ protection:
 do-not-edit-these-settings:
   # These settings should not be edited
   reset-epoch: 0
+

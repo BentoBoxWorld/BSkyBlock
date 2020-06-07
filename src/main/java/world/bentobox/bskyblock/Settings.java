@@ -411,6 +411,22 @@ public class Settings implements WorldSettings {
     @ConfigEntry(path = "island.commands.on-leave", since = "1.8.0")
     private List<String> onLeaveCommands = new ArrayList<>();
 
+
+    @ConfigComment("List of commands to run when a player respawns on their island after death.")
+    @ConfigComment("These commands are run by the console, unless otherwise stated using the [SUDO] prefix,")
+    @ConfigComment("in which case they are executed by the player.")
+    @ConfigComment("")
+    @ConfigComment("Available placeholders for the commands are the following:")
+    @ConfigComment("   * [name]: name of the player")
+    @ConfigComment("")
+    @ConfigComment("Here are some examples of valid commands to execute:")
+    @ConfigComment("   * '[SUDO] bbox version'")
+    @ConfigComment("   * 'bsbadmin deaths set [player] 0'")
+    @ConfigComment("")
+    @ConfigComment("Note that player-executed commands might not work, as these commands can be run with said player being offline.")
+    @ConfigEntry(path = "island.commands.on-respawn", since = "1.14.0")
+    private List<String> onRespawnCommands = new ArrayList<>();
+
     // Sethome
     @ConfigEntry(path = "island.sethome.nether.allow")
     private boolean allowSetHomeInNether = true;
@@ -453,7 +469,7 @@ public class Settings implements WorldSettings {
     @ConfigComment("List of mobs that should not spawn in BSkyBlock.")
     @ConfigEntry(path = "protection.block-mobs", since = "1.13.1")
     private List<String> mobLimitSettings = new ArrayList<>();
-    
+
     // Invincible visitor settings
     @ConfigComment("Invincible visitors. List of damages that will not affect visitors.")
     @ConfigComment("Make list blank if visitors should receive all damages")
@@ -1613,7 +1629,7 @@ public class Settings implements WorldSettings {
     public void setMaxTrustSize(int maxTrustSize) {
         this.maxTrustSize = maxTrustSize;
     }
-    
+
     /**
      * @return the defaultNewPlayerAction
      */
@@ -1657,5 +1673,20 @@ public class Settings implements WorldSettings {
      */
     public void setMobLimitSettings(List<String> mobLimitSettings) {
         this.mobLimitSettings = mobLimitSettings;
+    }
+
+    /**
+     * @return the onRespawnCommands
+     */
+    @Override
+    public List<String> getOnRespawnCommands() {
+        return onRespawnCommands;
+    }
+
+    /**
+     * @param onRespawnCommands the onRespawnCommands to set
+     */
+    public void setOnRespawnCommands(List<String> onRespawnCommands) {
+        this.onRespawnCommands = onRespawnCommands;
     }
 }
