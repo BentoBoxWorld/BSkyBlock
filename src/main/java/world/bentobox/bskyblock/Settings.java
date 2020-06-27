@@ -146,6 +146,12 @@ public class Settings implements WorldSettings {
     @ConfigComment("The default biome for the overworld")
     @ConfigEntry(path = "world.default-biome")
     private Biome defaultBiome = Biome.PLAINS;
+    @ConfigComment("The default biome for the nether world (this may affect what mobs can spawn)")
+    @ConfigEntry(path = "world.default-nether-biome")
+    private Biome defaultNetherBiome = Biome.NETHER_WASTES;
+    @ConfigComment("The default biome for the end world (this may affect what mobs can spawn)")
+    @ConfigEntry(path = "world.default-end-biome")
+    private Biome defaultEndBiome = Biome.THE_END;
 
     @ConfigComment("The maximum number of players a player can ban at any one time in this game mode.")
     @ConfigComment("The permission acidisland.ban.maxlimit.X where X is a number can also be used per player")
@@ -453,7 +459,7 @@ public class Settings implements WorldSettings {
     @ConfigComment("List of mobs that should not spawn in BSkyBlock.")
     @ConfigEntry(path = "protection.block-mobs", since = "1.13.1")
     private List<String> mobLimitSettings = new ArrayList<>();
-    
+
     // Invincible visitor settings
     @ConfigComment("Invincible visitors. List of damages that will not affect visitors.")
     @ConfigComment("Make list blank if visitors should receive all damages")
@@ -1613,7 +1619,7 @@ public class Settings implements WorldSettings {
     public void setMaxTrustSize(int maxTrustSize) {
         this.maxTrustSize = maxTrustSize;
     }
-    
+
     /**
      * @return the defaultNewPlayerAction
      */
@@ -1657,5 +1663,33 @@ public class Settings implements WorldSettings {
      */
     public void setMobLimitSettings(List<String> mobLimitSettings) {
         this.mobLimitSettings = mobLimitSettings;
+    }
+
+    /**
+     * @return the defaultNetherBiome
+     */
+    public Biome getDefaultNetherBiome() {
+        return defaultNetherBiome;
+    }
+
+    /**
+     * @param defaultNetherBiome the defaultNetherBiome to set
+     */
+    public void setDefaultNetherBiome(Biome defaultNetherBiome) {
+        this.defaultNetherBiome = defaultNetherBiome;
+    }
+
+    /**
+     * @return the defaultEndBiome
+     */
+    public Biome getDefaultEndBiome() {
+        return defaultEndBiome;
+    }
+
+    /**
+     * @param defaultEndBiome the defaultEndBiome to set
+     */
+    public void setDefaultEndBiome(Biome defaultEndBiome) {
+        this.defaultEndBiome = defaultEndBiome;
     }
 }

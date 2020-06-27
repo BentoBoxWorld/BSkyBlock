@@ -90,6 +90,10 @@ world:
   default-game-mode: SURVIVAL
   # The default biome for the overworld
   default-biome: PLAINS
+  # The default biome for the nether world (this may affect what mobs can spawn)
+  default-nether-biome: NETHER_WASTES
+  # The default biome for the end world (this may affect what mobs can spawn)
+  default-end-biome: THE_END
   # The maximum number of players a player can ban at any one time in this game mode.
   # The permission acidisland.ban.maxlimit.X where X is a number can also be used per player
   # -1 = unlimited
@@ -123,7 +127,7 @@ world:
   remove-mobs-whitelist:
   - ZOMBIE_VILLAGER
   - ENDERMAN
-  - PIG_ZOMBIE
+  - ZOMBIFIED_PIGLIN
   - WITHER
   # World flags. These are boolean settings for various flags for this world
   flags:

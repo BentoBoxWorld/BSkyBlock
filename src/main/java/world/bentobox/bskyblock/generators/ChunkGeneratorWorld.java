@@ -49,18 +49,20 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
 
     @Override
     public ChunkData generateChunkData(World world, Random random, int chunkX, int chunkZ, BiomeGrid biomeGrid) {
-        if (world.getEnvironment().equals(Environment.NORMAL)) setBiome(biomeGrid);
+        setBiome(world, biomeGrid);
         return generateChunks(world);
     }
 
-    @SuppressWarnings("deprecation")
-    private void setBiome(BiomeGrid biomeGrid) {
-        Biome biome = addon.getSettings().getDefaultBiome();
-        for (int x = 0; x < 16; x++) {
-            for (int z = 0; z < 16; z++) {
-                biomeGrid.setBiome(x, z, biome);
+    private void setBiome(World world, BiomeGrid biomeGrid) {
+        Biome biome = world.getEnvironment() == Environment.NORMAL ? addon.getSettings().getDefaultBiome() :
+            world.getEnvironment() == Environment.NETHER ? addon.getSettings().getDefaultNetherBiome() : addon.getSettings().getDefaultEndBiome();
+            for (int x = 0; x < 16; x+=4) {
+                for (int z = 0; z < 16; z+=4) {
+                    for (int y = 0; y < world.getMaxHeight(); y+=4) {
+                        biomeGrid.setBiome(x, y, z, biome);
+                    }
+                }
             }
-        }
 
     }
 
