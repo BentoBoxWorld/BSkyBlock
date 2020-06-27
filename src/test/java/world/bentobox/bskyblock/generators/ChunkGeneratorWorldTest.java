@@ -18,6 +18,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Server;
 import org.bukkit.World;
+import org.bukkit.block.Biome;
 import org.bukkit.generator.ChunkGenerator.BiomeGrid;
 import org.bukkit.generator.ChunkGenerator.ChunkData;
 import org.junit.After;
@@ -68,10 +69,14 @@ public class ChunkGeneratorWorldTest {
         cg = new ChunkGeneratorWorld(addon);
         // World
         when(world.getEnvironment()).thenReturn(World.Environment.NORMAL);
+        when(world.getMaxHeight()).thenReturn(16);
         // Settings
         when(addon.getSettings()).thenReturn(settings);
         when(settings.getSeaHeight()).thenReturn(0);
         when(settings.isNetherRoof()).thenReturn(true);
+        when(settings.getDefaultBiome()).thenReturn(Biome.TAIGA);
+        when(settings.getDefaultNetherBiome()).thenReturn(Biome.CRIMSON_FOREST);
+        when(settings.getDefaultEndBiome()).thenReturn(Biome.END_MIDLANDS);
     }
 
     /**
@@ -91,7 +96,7 @@ public class ChunkGeneratorWorldTest {
         // Verifications
         // Default biome
         verify(settings).getDefaultBiome();
-        verify(biomeGrid, times(16 * 16)).setBiome(anyInt(), anyInt(), any());
+        verify(biomeGrid, times(64)).setBiome(anyInt(), anyInt(), anyInt(), any());
         // Sea height
         verify(settings).getSeaHeight();
         // Void
@@ -110,7 +115,7 @@ public class ChunkGeneratorWorldTest {
         // Verifications
         // Default biome
         verify(settings).getDefaultBiome();
-        verify(biomeGrid, times(16 * 16)).setBiome(anyInt(), anyInt(), any());
+        verify(biomeGrid, times(64)).setBiome(anyInt(), anyInt(), anyInt(), eq(Biome.TAIGA));
         // Sea height
         verify(settings, times(2)).getSeaHeight();
         // Water. Blocks = 16 x 16 x 11 because block 0
@@ -127,9 +132,9 @@ public class ChunkGeneratorWorldTest {
         assertEquals(data, cd);
         // Verifications
         // Default biome
-        verify(settings, never()).getDefaultBiome();
-        // Never set biome in end
-        verify(biomeGrid, never()).setBiome(anyInt(), anyInt(), any());
+        verify(settings).getDefaultEndBiome();
+        // Set biome in end
+        verify(biomeGrid, times(64)).setBiome(anyInt(), anyInt(), anyInt(), eq(Biome.END_MIDLANDS));
         // Sea height
         verify(settings, never()).getSeaHeight();
         // Void
@@ -147,10 +152,10 @@ public class ChunkGeneratorWorldTest {
         // Verifications
         // Nether roof check
         verify(settings).isNetherRoof();
-        // Never set biome in nether
-        verify(biomeGrid, never()).setBiome(anyInt(), anyInt(), any());
+        // Set biome in nether
+        verify(biomeGrid, times(64)).setBiome(anyInt(), anyInt(), anyInt(), eq(Biome.CRIMSON_FOREST));
         // Nether roof - at least bedrock layer
-        verify(cd, atLeast(16 * 16)).setBlock(anyInt(), anyInt(), anyInt(), eq(Material.BEDROCK));
+        verify(cd, atLeast(64)).setBlock(anyInt(), anyInt(), anyInt(), eq(Material.BEDROCK));
     }
 
     /**
@@ -163,10 +168,11 @@ public class ChunkGeneratorWorldTest {
         ChunkData cd = cg.generateChunkData(world, random, 0 , 0 , biomeGrid);
         assertEquals(data, cd);
         // Verifications
+        verify(settings).getDefaultNetherBiome();
         // Nether roof check
         verify(settings).isNetherRoof();
-        // Never set biome in nether
-        verify(biomeGrid, never()).setBiome(anyInt(), anyInt(), any());
+        // Set biome in nether
+        verify(biomeGrid, times(64)).setBiome(anyInt(), anyInt(), anyInt(), eq(Biome.CRIMSON_FOREST));
         // Nether roof - at least bedrock layer
         verify(cd, never()).setBlock(anyInt(), anyInt(), anyInt(), any(Material.class));
     }
