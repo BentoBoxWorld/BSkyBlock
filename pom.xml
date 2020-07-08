@@ -59,7 +59,7 @@
         <powermock.version>2.0.2</powermock.version>
         <!-- More visible way how to change dependency versions -->
         <spigot.version>1.16.1-R0.1-SNAPSHOT</spigot.version>
-        <bentobox.version>1.14.0-SNAPSHOT</bentobox.version>
+        <bentobox.version>1.14.0</bentobox.version>
         <!-- Revision variable removes warning about dynamic version -->
         <revision>${build.version}-SNAPSHOT</revision>
         <!-- Do not change unless you want different name for local builds. -->
