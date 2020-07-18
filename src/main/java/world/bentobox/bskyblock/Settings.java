@@ -420,12 +420,14 @@ public class Settings implements WorldSettings {
     private List<String> onLeaveCommands = new ArrayList<>();
 
     // Sethome
+    @ConfigComment("Allow setting home in the nether. Only available on nether islands, not vanilla nether.")
     @ConfigEntry(path = "island.sethome.nether.allow")
     private boolean allowSetHomeInNether = true;
 
     @ConfigEntry(path = "island.sethome.nether.require-confirmation")
     private boolean requireConfirmationToSetHomeInNether = true;
 
+    @ConfigComment("Allow setting home in the end. Only available on end islands, not vanilla end.")
     @ConfigEntry(path = "island.sethome.the-end.allow")
     private boolean allowSetHomeInTheEnd = true;
 

@@ -379,9 +379,11 @@ island:
     on-leave: []
   sethome:
     nether:
+      # Allow setting home in the nether. Only available on nether islands, not vanilla nether
       allow: true
       require-confirmation: true
     the-end:
+      # Allow setting home in the end. Only available on end islands, not vanilla end
       allow: true
       require-confirmation: true
   deaths:
