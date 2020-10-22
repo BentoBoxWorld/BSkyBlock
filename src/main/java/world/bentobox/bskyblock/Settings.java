@@ -188,9 +188,12 @@ public class Settings implements WorldSettings {
     private int netherSpawnRadius = 32;
 
     // End
+    @ConfigComment("End Nether - if this is false, the end world will not be made and access to")
+    @ConfigComment("the end will not occur. Other plugins may still enable portal usage.")
     @ConfigEntry(path = "world.end.generate")
     private boolean endGenerate = true;
 
+    @ConfigComment("Islands in The End. Change to false for standard vanilla end.")
     @ConfigEntry(path = "world.end.islands", needsReset = true)
     private boolean endIslands = true;
 
