@@ -22,7 +22,7 @@ permissions:
     description: Let the player use the sethome command
     default: true
   bskyblock.island.info:
-    description: Let the player check other players info
+    description: Let the player use the island info command
     default: true
   bskyblock.island.lock:
     description: Allows island locking
