@@ -130,12 +130,24 @@ public class BSkyBlock extends GameModeAddon implements Listener {
         World w = settings.isUseOwnGenerator() ? wc.createWorld() : wc.generator(chunkGenerator2).createWorld();
         // Set spawn rates
         if (w != null) {
-            w.setMonsterSpawnLimit(getSettings().getSpawnLimitMonsters());
-            w.setAmbientSpawnLimit(getSettings().getSpawnLimitAmbient());
-            w.setAnimalSpawnLimit(getSettings().getSpawnLimitAnimals());
-            w.setWaterAnimalSpawnLimit(getSettings().getSpawnLimitWaterAnimals());
-            w.setTicksPerAnimalSpawns(getSettings().getTicksPerAnimalSpawns());
-            w.setTicksPerMonsterSpawns(getSettings().getTicksPerMonsterSpawns());
+            if (getSettings().getSpawnLimitMonsters() > 0) {
+                w.setMonsterSpawnLimit(getSettings().getSpawnLimitMonsters());
+            }
+            if (getSettings().getSpawnLimitAmbient() > 0) {
+                w.setAmbientSpawnLimit(getSettings().getSpawnLimitAmbient());
+            }
+            if (getSettings().getSpawnLimitAnimals() > 0) {
+                w.setAnimalSpawnLimit(getSettings().getSpawnLimitAnimals());
+            }
+            if (getSettings().getSpawnLimitWaterAnimals() > 0) {
+                w.setWaterAnimalSpawnLimit(getSettings().getSpawnLimitWaterAnimals());
+            }
+            if (getSettings().getTicksPerAnimalSpawns() > 0) {
+                w.setTicksPerAnimalSpawns(getSettings().getTicksPerAnimalSpawns());
+            }
+            if (getSettings().getTicksPerMonsterSpawns() > 0) {
+                w.setTicksPerMonsterSpawns(getSettings().getTicksPerMonsterSpawns());
+            }
         }
         return w;
 

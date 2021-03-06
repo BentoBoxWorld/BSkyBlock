@@ -55,7 +55,6 @@ world:
   # Default protection range radius in blocks. Cannot be larger than distance.
   # Admins can change protection sizes for players individually using /bsbadmin range set <player> <new range>
   # or set this permission: bskyblock.island.range.<number>
-  # /!\ BentoBox currently does not support changing this value mid-game. If you do need to change it, do a full reset of your databases and worlds.
   protection-range: 50
   # Start islands at these coordinates. This is where new islands will start in the
   # world. These must be a factor of your island distance, but the plugin will auto
@@ -90,6 +89,8 @@ world:
   default-game-mode: SURVIVAL
   # The default biome for the overworld
   default-biome: PLAINS
+  # The default biome for the nether world (this may affect what mobs can spawn)
+  default-nether-biome: NETHER_WASTES
   # The default biome for the end world (this may affect what mobs can spawn)
   default-end-biome: THE_END
   # The maximum number of players a player can ban at any one time in this game mode.
@@ -116,7 +117,10 @@ world:
     # Only applies to vanilla nether
     spawn-radius: 25
   end:
+    # End Nether - if this is false, the end world will not be made and access to
+    # the end will not occur. Other plugins may still enable portal usage.
     generate: true
+    # Islands in The End. Change to false for standard vanilla end.
     # /!\ BentoBox currently does not support changing this value mid-game. If you do need to change it, do a full reset of your databases and worlds.
     islands: true
     # /!\ This feature is experimental and might not work as expected or might not work at all.
@@ -124,8 +128,8 @@ world:
   # Mob white list - these mobs will NOT be removed when logging in or doing /island
   remove-mobs-whitelist:
   - ZOMBIE_VILLAGER
-  - ENDERMAN
   - WITHER
+  - ENDERMAN
   # World flags. These are boolean settings for various flags for this world
   flags:
     CREEPER_DAMAGE: true
@@ -168,12 +172,12 @@ world:
     END_PORTAL: 500
     BREEDING: 500
     HURT_VILLAGERS: 500
-    TURTLE_EGGS: 500
     FROST_WALKER: 500
+    TURTLE_EGGS: 500
     COLLECT_LAVA: 500
     LEVER: 500
-    RIDING: 500
     HURT_MONSTERS: 0
+    RIDING: 500
     ARMOR_STAND: 500
     NAME_TAG: 500
     TRADING: 0
@@ -181,8 +185,8 @@ world:
     ITEM_DROP: 0
     NOTE_BLOCK: 0
     NETHER_PORTAL: 500
-    CROP_TRAMPLE: 500
     ITEM_PICKUP: 0
+    CROP_TRAMPLE: 500
     BREWING: 500
     DROPPER: 500
     COLLECT_WATER: 500
@@ -191,11 +195,11 @@ world:
     BEACON: 500
     TRAPDOOR: 500
     PRESSURE_PLATE: 0
-    ITEM_FRAME: 500
     PLACE_BLOCKS: 500
+    ITEM_FRAME: 500
     CRAFTING: 0
-    SHEARING: 500
     ENCHANTING: 0
+    SHEARING: 500
     SPAWN_EGGS: 500
     BED: 500
     MILKING: 0
@@ -204,8 +208,8 @@ world:
     EXPERIENCE_PICKUP: 500
     HOPPER: 500
     LEASH: 500
-    MOUNT_INVENTORY: 500
     BREAK_BLOCKS: 500
+    MOUNT_INVENTORY: 500
     CHORUS_FRUIT: 500
     CONTAINER: 500
     POTION_THROWING: 500
@@ -214,8 +218,6 @@ world:
   default-island-settings:
     PVP_END: false
     PVP_NETHER: false
-    ANIMAL_SPAWN: true
-    MONSTER_SPAWN: true
     FIRE_SPREAD: true
     PVP_OVERWORLD: false
   # These settings/flags are hidden from users
@@ -379,11 +381,11 @@ island:
     on-leave: []
   sethome:
     nether:
-      # Allow setting home in the nether. Only available on nether islands, not vanilla nether
+      # Allow setting home in the nether. Only available on nether islands, not vanilla nether.
       allow: true
       require-confirmation: true
     the-end:
-      # Allow setting home in the end. Only available on end islands, not vanilla end
+      # Allow setting home in the end. Only available on end islands, not vanilla end.
       allow: true
       require-confirmation: true
   deaths:
