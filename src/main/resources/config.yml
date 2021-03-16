@@ -379,6 +379,20 @@ island:
     # Note that player-executed commands might not work, as these commands can be run with said player being offline.
     # Added since 1.8.0.
     on-leave: []
+    # Returns a list of commands that should be executed when the player respawns after death if Flags.ISLAND_RESPAWN is true.
+    # These commands are run by the console, unless otherwise stated using the [SUDO] prefix,
+    # in which case they are executed by the player.
+    #
+    # Available placeholders for the commands are the following:
+    #    * [name]: name of the player
+    #
+    # Here are some examples of valid commands to execute:
+    #    * '[SUDO] bbox version'
+    #    * 'bsbadmin deaths set [player] 0'
+    #
+    # Note that player-executed commands might not work, as these commands can be run with said player being offline.
+    # Added since 1.14.0.
+    on-respawn: []
   sethome:
     nether:
       # Allow setting home in the nether. Only available on nether islands, not vanilla nether.
