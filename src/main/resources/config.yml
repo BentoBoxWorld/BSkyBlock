@@ -118,7 +118,7 @@ world:
     spawn-radius: 25
     # This option indicates if nether portals should be linked via dimensions.
     # Option will simulate vanilla portal mechanics that links portals together or creates a new portal, if there is not a portal in other dimension.
-    # Added since 1.16
+    # Added since 1.14.4
     create-and-link-portals: false
   end:
     # End Nether - if this is false, the end world will not be made and access to
@@ -128,7 +128,7 @@ world:
     # /!\ BentoBox currently does not support changing this value mid-game. If you do need to change it, do a full reset of your databases and worlds.
     islands: true
     # This option indicates if obsidian platform in the end should be generated when player enters the end world.
-    # Added since 1.16
+    # Added since 1.14.4
     create-obsidian-platform: false
     # /!\ This feature is experimental and might not work as expected or might not work at all.
     dragon-spawn: false
