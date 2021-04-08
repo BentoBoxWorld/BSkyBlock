@@ -1,7 +1,7 @@
 name: BSkyBlock
 main: world.bentobox.bskyblock.BSkyBlock
 version: ${version}${build.number}
-api-version: 1.14
+api-version: 1.16.2-SNAPSHOT
 metrics: true
 icon: "OAK_SAPLING"
 repository: "BentoBoxWorld/BSkyBlock"
@@ -17,6 +17,9 @@ permissions:
     default: true
   bskyblock.island.home:
     description: Allow teleporting to player island
+    default: true
+  bskyblock.island.homes:
+    description: Allow use of the homes command
     default: true
   bskyblock.island.sethome:
     description: Let the player use the sethome command
