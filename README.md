@@ -10,8 +10,12 @@ BSkyBlock
 # NOTE
 BSkyBlock requires BentoBox, so to run BSkyBlock, you must have BentoBox installed and place BSkyBlock in BentoBox's addon folder.
 
+# Documentation
+
+Go to [docs.bentobox.world](https://docs.bentobox.world).
+
 ## About
-BSkyBlock provides a skyblock-type Minecraft game for players that supports a default set of 3 islands (overworld, nether and end), protection of islands, team and coop play and other features. Please see the config.yml for all the settings.
+Play SkyBlock with your friends! Don't fall! See the config.yml for all the settings.
 
 ## Installation
 
@@ -23,17 +27,6 @@ BSkyBlock provides a skyblock-type Minecraft game for players that supports a de
 6. Edit the config.yml how you want.
 7. Delete any worlds that were created by default if you made changes that would affect them.
 8. Restart the server.
-
-## Config.yml
-
-The config.yml is similar to ASkyBlock but *not the same*. Note that distance between islands and protection range are **radius values** so the island size will be twice these values in blocks! Also, the distance between islands will be set automatically to a chunk boundary (a multiple of 16 blocks).
-
-
-### Other Add-ons
-
-BSkyBlock is an add-on that uses the BentoBox API. Here are some other ones that you may be interested in:
-
-* [**Addons**](https://github.com/BentoBoxWorld/BentoBox/blob/develop/ADDON.md)
 
 Bugs and Feature requests
 =========================
