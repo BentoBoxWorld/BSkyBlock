@@ -25,7 +25,7 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
 
     private final BSkyBlock addon;
     private final Random rand = new Random();
-    private Map<Vector, Material> roofChunk = new HashMap<>();
+    private final Map<Vector, Material> roofChunk = new HashMap<>();
 
     /**
      * @param addon - addon

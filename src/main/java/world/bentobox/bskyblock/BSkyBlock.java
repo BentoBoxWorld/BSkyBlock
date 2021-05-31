@@ -29,7 +29,7 @@ public class BSkyBlock extends GameModeAddon implements Listener {
     // Settings
     private Settings settings;
     private ChunkGeneratorWorld chunkGenerator;
-    private Config<Settings> configObject = new Config<>(this, Settings.class);
+    private final Config<Settings> configObject = new Config<>(this, Settings.class);
 
     @Override
     public void onLoad() {
