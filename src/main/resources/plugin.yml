@@ -1,5 +1,5 @@
 name: BSkyBlock
-main: world.bentobox.bskyblock.CopyToBentoBox
+main: world.bentobox.bskyblock.BSkyBlockPladdon
 version: ${version}
 api-version: 1.16
 description: A SkyBlock Plugin
