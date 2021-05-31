@@ -1,14 +1,12 @@
 package world.bentobox.bskyblock;
 
-import org.bukkit.plugin.java.JavaPlugin;
+import world.bentobox.bentobox.api.addons.Addon;
+import world.bentobox.bentobox.api.addons.Pladdon;
 
-import world.bentobox.bentobox.BentoBox;
-
-public class CopyToBentoBox extends JavaPlugin {
+public class CopyToBentoBox extends Pladdon {
 
     @Override
-    public void onEnable() {
-        BentoBox.getInstance().getAddonsManager().registerAddon(this, new BSkyBlock());
-
+    public Addon getAddon() {
+        return new BSkyBlock();
     }
 }
