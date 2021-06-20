@@ -1,7 +1,7 @@
 name: BSkyBlock
 main: world.bentobox.bskyblock.BSkyBlockPladdon
 version: ${version}
-api-version: 1.16
+api-version: 1.17
 description: A SkyBlock Plugin
 author: tastybento
 depend:
