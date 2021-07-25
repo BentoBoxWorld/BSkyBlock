@@ -1,7 +1,7 @@
 name: BSkyBlock
 main: world.bentobox.bskyblock.BSkyBlock
 version: ${version}${build.number}
-api-version: 1.16.2-SNAPSHOT
+api-version: 1.17
 metrics: true
 icon: "OAK_SAPLING"
 repository: "BentoBoxWorld/BSkyBlock"
