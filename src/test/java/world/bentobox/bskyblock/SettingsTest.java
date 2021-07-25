@@ -1,6 +1,3 @@
-/**
- *
- */
 package world.bentobox.bskyblock;
 
 import static org.junit.Assert.assertEquals;
