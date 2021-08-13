@@ -1,4 +1,4 @@
-name: BSkyBlock
+name: Pladdon
 main: world.bentobox.bskyblock.BSkyBlockPladdon
 version: ${version}
 api-version: 1.17
