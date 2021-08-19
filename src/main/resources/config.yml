@@ -119,6 +119,7 @@ world:
     # This option indicates if nether portals should be linked via dimensions.
     # Option will simulate vanilla portal mechanics that links portals together
     # or creates a new portal, if there is not a portal in that dimension.
+    # This option requires `allow-nether=true` in server.properties.
     # Added since 1.14.4.
     create-and-link-portals: false
   end:
@@ -130,6 +131,7 @@ world:
     islands: true
     # This option indicates if obsidian platform in the end should be generated
     # when player enters the end world.
+    # This option requires `allow-end=true` in bukkit.yml.
     # Added since 1.14.4.
     create-obsidian-platform: false
     # /!\ This feature is experimental and might not work as expected or might not work at all.
