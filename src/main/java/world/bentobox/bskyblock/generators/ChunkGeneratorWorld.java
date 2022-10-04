@@ -39,7 +39,7 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
     public ChunkData generateChunks(World world) {
         ChunkData result = createChunkData(world);
         if (world.getEnvironment().equals(Environment.NORMAL) && addon.getSettings().getSeaHeight() > 0) {
-            result.setRegion(0, 0, 0, 16, addon.getSettings().getSeaHeight() + 1, 16, Material.WATER);
+            result.setRegion(0, world.getMinHeight(), 0, 16, addon.getSettings().getSeaHeight() + 1, 16, Material.WATER);
         }
         if (world.getEnvironment().equals(Environment.NETHER) && addon.getSettings().isNetherRoof()) {
             roofChunk.forEach((k,v) -> result.setBlock(k.getBlockX(), world.getMaxHeight() + k.getBlockY(), k.getBlockZ(), v));
@@ -58,7 +58,7 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
             world.getEnvironment() == Environment.NETHER ? addon.getSettings().getDefaultNetherBiome() : addon.getSettings().getDefaultEndBiome();
             for (int x = 0; x < 16; x+=4) {
                 for (int z = 0; z < 16; z+=4) {
-                    for (int y = 0; y < world.getMaxHeight(); y+=4) {
+                    for (int y = world.getMinHeight(); y < world.getMaxHeight(); y+=4) {
                         biomeGrid.setBiome(x, y, z, biome);
                     }
                 }
