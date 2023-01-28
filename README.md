@@ -20,7 +20,7 @@ Play SkyBlock with your friends! Don't fall! See the config.yml for all the sett
 ## Installation
 
 1. Install BentoBox and run it on the server at least once to create its data folders.
-2. Place this jar in the addons folder of the BentoBox plugin.
+2. Place [this jar](https://github.com/BentoBoxWorld/BSkyBlock/releases) in the addons folder of the BentoBox plugin.
 3. Restart the server.
 4. The addon will create worlds and a data folder and inside the folder will be a config.yml.
 5. Stop the server .
