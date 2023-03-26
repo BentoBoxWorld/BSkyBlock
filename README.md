@@ -1,11 +1,11 @@
 BSkyBlock
 ==========
 [![Build Status](https://ci.codemc.org/buildStatus/icon?job=BentoBoxWorld/BSkyBlock)](https://ci.codemc.org/job/BentoBoxWorld/job/BSkyBlock/)
-[![Lines Of Code](https://sonarcloud.io/api/project_badges/measure?project=world.bentobox%3Abskyblock&metric=ncloc)](https://sonarcloud.io/component_measures?id=world.bentobox%3Abskyblock&metric=ncloc)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=world.bentobox%3Abskyblock&metric=sqale_rating)](https://sonarcloud.io/component_measures?id=world.bentobox%3Abskyblock&metric=Maintainability)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=world.bentobox%3Abskyblock&metric=reliability_rating)](https://sonarcloud.io/component_measures?id=world.bentobox%3Abskyblock&metric=Reliability)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=world.bentobox%3Abskyblock&metric=security_rating)](https://sonarcloud.io/component_measures?id=world.bentobox%3Abskyblock&metric=Security)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=world.bentobox%3Abskyblock&metric=bugs)](https://sonarcloud.io/project/issues?id=world.bentobox%3Abskyblock&resolved=false&types=BUG)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=BentoBoxWorld_BSkyBlock&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=BentoBoxWorld_BSkyBlock)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=BentoBoxWorld_BSkyBlock&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=BentoBoxWorld_BSkyBlock)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=BentoBoxWorld_BSkyBlock&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=BentoBoxWorld_BSkyBlock)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=BentoBoxWorld_BSkyBlock&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=BentoBoxWorld_BSkyBlock)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=BentoBoxWorld_BSkyBlock&metric=bugs)](https://sonarcloud.io/summary/new_code?id=BentoBoxWorld_BSkyBlock)
 
 # NOTE
 BSkyBlock requires BentoBox, so to run BSkyBlock, you must have BentoBox installed and place BSkyBlock in BentoBox's addon folder.
