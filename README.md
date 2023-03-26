@@ -1,5 +1,5 @@
-BSkyBlock
-==========
+# BSkyBlock
+
 [![Build Status](https://ci.codemc.org/buildStatus/icon?job=BentoBoxWorld/BSkyBlock)](https://ci.codemc.org/job/BentoBoxWorld/job/BSkyBlock/)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=BentoBoxWorld_BSkyBlock&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=BentoBoxWorld_BSkyBlock)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=BentoBoxWorld_BSkyBlock&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=BentoBoxWorld_BSkyBlock)
@@ -7,15 +7,14 @@ BSkyBlock
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=BentoBoxWorld_BSkyBlock&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=BentoBoxWorld_BSkyBlock)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=BentoBoxWorld_BSkyBlock&metric=bugs)](https://sonarcloud.io/summary/new_code?id=BentoBoxWorld_BSkyBlock)
 
-# NOTE
-BSkyBlock requires BentoBox, so to run BSkyBlock, you must have BentoBox installed and place BSkyBlock in BentoBox's addon folder.
-
-# Documentation
-
-Go to [docs.bentobox.world](https://docs.bentobox.world).
+<img width="509" alt="BSkyBlock" src="https://user-images.githubusercontent.com/4407265/227750292-5617537d-c99a-4a7e-864e-5de990b8c195.png">
 
 ## About
-Play SkyBlock with your friends! Don't fall! See the config.yml for all the settings.
+Play SkyBlock with your friends! Don't fall! See the config.yml for all the settings. This is an addon for BentoBox.
+
+## Documentation
+
+Go to [docs.bentobox.world](https://docs.bentobox.world).
 
 ## Installation
 
