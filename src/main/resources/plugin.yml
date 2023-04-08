@@ -1,0 +1,9 @@
+name: BentoBox-BSkyBlock
+main: world.bentobox.bskyblock.BSkyBlockPladdon
+version: ${project.version}${build.number}
+api-version: "1.19"
+
+authors: [tastybento]
+contributors: ["The BentoBoxWorld Community"]
+website: https://bentobox.world
+description: ${project.description}
