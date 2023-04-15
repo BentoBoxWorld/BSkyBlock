@@ -65,7 +65,7 @@
         <!-- Do not change unless you want different name for local builds. -->
         <build.number>-LOCAL</build.number>
         <!-- This allows to change between versions. -->
-        <build.version>1.17.0</build.version>
+        <build.version>1.16.1</build.version>
         <!-- Sonar Cloud -->
         <sonar.projectKey>BentoBoxWorld_BSkyBlock</sonar.projectKey>
         <sonar.organization>bentobox-world</sonar.organization>
