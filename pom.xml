@@ -58,8 +58,8 @@
         <!-- Non-minecraft related dependencies -->
         <powermock.version>2.0.9</powermock.version>
         <!-- More visible way how to change dependency versions -->
-        <spigot.version>1.19-R0.1-SNAPSHOT</spigot.version>
-        <bentobox.version>1.21.0</bentobox.version>
+        <spigot.version>1.19.4-R0.1-SNAPSHOT</spigot.version>
+        <bentobox.version>1.23.0</bentobox.version>
         <!-- Revision variable removes warning about dynamic version -->
         <revision>${build.version}-SNAPSHOT</revision>
         <!-- Do not change unless you want different name for local builds. -->
