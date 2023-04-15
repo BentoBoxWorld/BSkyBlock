@@ -1,8 +1,9 @@
-name: Pladdon
+name: BentoBox-BSkyBlock
 main: world.bentobox.bskyblock.BSkyBlockPladdon
-version: ${version}
-api-version: 1.19
-description: A SkyBlock Plugin
-author: tastybento
-depend:
-  - BentoBox
+version: ${project.version}${build.number}
+api-version: "1.19"
+
+authors: [tastybento]
+contributors: ["The BentoBoxWorld Community"]
+website: https://bentobox.world
+description: ${project.description}
