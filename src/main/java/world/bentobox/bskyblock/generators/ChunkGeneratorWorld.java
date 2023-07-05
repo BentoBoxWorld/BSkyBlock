@@ -122,7 +122,7 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
                         }
                         break;
                     case 2:
-                        // Stalatite
+                        // Stalactite
                         for (int i = 0; i < rand.nextInt(10); i++) {
                             setBlock(x, - 8 - i, z, Material.GLOWSTONE);
                         }
