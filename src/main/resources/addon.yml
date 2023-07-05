@@ -161,21 +161,6 @@ permissions:
   bskyblock.mod.team.setowner:
     description: Allow use of '/bsbadmin team setowner' command - transfers island ownership to the player
     default: OP
-  bskyblock.mod.team.add:
-    description: Allow use of '/bsbadmin add' command - add player to owner's team
-    default: OP
-  bskyblock.mod.team.kick:
-    description: Allow use of '/bsbadmin kick' command - kick a player from a team
-    default: OP
-  bskyblock.mod.team.disband:
-    description: Allow use of '/bsbadmin disband' command - disband owner's team
-    default: OP
-  bskyblock.mod.team.setowner:
-    description: Allow use of '/bsbadmin setowner' command - transfers island ownership to the player
-    default: OP
-  bskyblock.mod.team.fix:
-    description: Allow use of '/bsbadmin fix' command - scans and fixes cross island membership in database
-    default: OP
   bskyblock.admin.blueprint:
     description: Allow use of '/bsbadmin blueprint' command - manipulate blueprints
     default: OP
@@ -238,9 +223,6 @@ permissions:
     default: OP
   bskyblock.admin.resets.set:
     description: Allow use of '/bsbadmin resets set' command - sets how many times this player has reset his island
-    default: OP
-  bskyblock.admin.resets.remove:
-    description: Allow use of '/bsbadmin resets reset' command - sets the player's island reset count to 0
     default: OP
   bskyblock.admin.resets.add:
     description: Allow use of '/bsbadmin resets add' command - adds this player's island reset count
