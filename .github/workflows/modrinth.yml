@@ -4,8 +4,8 @@ on:
     types: [published]
 jobs:
   steps:
-      - uses: Kir-Antipov/mc-publish@v3.3
-        with:
-          # Publish on Modrinth.
-          modrinth-id: bskyblock
-          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+    - uses: Kir-Antipov/mc-publish@v3.3
+      with:
+        # Publish on Modrinth.
+        modrinth-id: bskyblock
+        modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
