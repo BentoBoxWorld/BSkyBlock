@@ -3,10 +3,13 @@ on:
   release:
     types: [published]
 jobs:
-  steps:
-    - name: mc-publish
-      uses: Kir-Antipov/mc-publish@v3.3
-      with:
-        # Publish on Modrinth.
-        modrinth-id: bskyblock
-        modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+  build:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: mc-publish
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          # Publish on Modrinth.
+          modrinth-id: bskyblock
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
