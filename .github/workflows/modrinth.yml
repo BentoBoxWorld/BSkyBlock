@@ -4,7 +4,8 @@ on:
     types: [published]
 jobs:
   steps:
-    - uses: Kir-Antipov/mc-publish@v3.3
+    - name: mc-publish
+      uses: Kir-Antipov/mc-publish@v3.3
       with:
         # Publish on Modrinth.
         modrinth-id: bskyblock
