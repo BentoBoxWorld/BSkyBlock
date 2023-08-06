@@ -2,7 +2,8 @@ name: Modrinth-Release
 on:
   release:
     types: [published]
-steps:
+jobs:
+  steps:
       - uses: Kir-Antipov/mc-publish@v3.3
         with:
           # Publish on Modrinth.
