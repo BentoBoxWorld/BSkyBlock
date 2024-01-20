@@ -8,88 +8,14 @@ repository: "BentoBoxWorld/BSkyBlock"
 
 authors: tastybento
 
-permissions:    
-  bskyblock.island:
-   description: Allow island command usage
-   default: true
-  bskyblock.island.create:
-    description: Allow island creation
-    default: true
-  bskyblock.island.home:
-    description: Allow teleporting to player island
-    default: true
-  bskyblock.island.homes:
-    description: Allow use of the homes command
-    default: true
-  bskyblock.island.sethome:
-    description: Let the player use the sethome command
-    default: true
-  bskyblock.island.info:
-    description: Let the player use the island info command
-    default: true
+permissions:
+# Non-command permissions
   bskyblock.island.lock:
-    description: Allows island locking
-    default: true
-  bskyblock.island.near:
-    description: Players can see nearby island names
-    default: true
-  bskyblock.island.expel:
-    description: Allows expelling of visitors
-    default: true
-  bskyblock.island.ban:
-    description: Allows banning of visitors
-    default: true
-  bskyblock.island.settings:
-    description: Player can see server settings
-    default: true
-  bskyblock.island.language:
-    description: Player can select a language
-    default: true
-  bskyblock.island.name:
-    description: Player can set the name of their island
-    default: true
-  bskyblock.island.spawn:
-    description: Player can use the island spawn command if spawn exists
-    default: true
-  bskyblock.island.reset:
-    description: Player can use the island reset or restart command
-    default: true  
-  bskyblock.island.team:
-    description: Let a player use team command
-    default: true
-  bskyblock.island.team.setowner:
-    description: Let a player change the team owner
-    default: true
-  bskyblock.island.team.invite:
-    description: Let a player invite others
-    default: true
-  bskyblock.island.team.reject:
-    description: Let a player reject invites
-    default: true
-  bskyblock.island.team.leave:
-    description: Let a player leave the team
-    default: true
-  bskyblock.island.team.kick:
-    description: Let a player kick team members
-    default: true
-  bskyblock.island.team.accept:
-    description: Let a player accept invitations
-    default: true
-  bskyblock.island.team.trust:
-    description: Let a player use team trust commands
-    default: true
-  bskyblock.island.team.coop:
-    description: Let a player use team coop commands
-    default: true
-  bskyblock.island.team.promote:
-    description: Let a player use promote commands
+    description: Allows island locking in settings
     default: true
   bskyblock.settings.*:
     description: Allow use of settings on island
     default: true
-  bskyblock.mod.info:
-    description: Let a moderator see info on a player
-    default: op
   bskyblock.mod.clearreset:
     description: Allow clearing of island reset limit
     default: false
@@ -105,47 +31,14 @@ permissions:
   bskyblock.mod.bypassexpel:
     description: Allow moderator to bypass island expulsion
     default: op
-  bskyblock.mod.switch:
-    description: Allows moderator to switch bypass protection on and off
-    default: op
   bskyblock.mod.lock:
-    description: Locks or unlocks an island
+    description: Allows lock or unlock of an island
     default: op
   bskyblock.mod.bypasslock:
     description: Bypasses an island lock
     default: op
   bskyblock.mod.bypassban:
     description: Bypasses island ban
-    default: op  
-  bskyblock.mod.team:
-    description: Enables modification of teams via kick and add commands
-    default: false
-  bskyblock.admin.tp:
-    description: Allows teleport to an island
-    default: op    
-  bskyblock.admin.clearresetall:
-    description: Allow clearing of island reset limit of all players
-    default: op
-  bskyblock.admin.reload:
-    description: Reload the config.yml
-    default: op
-  bskyblock.admin.delete:
-    description: Let a player completely remove a player (including island)
-    default: op
-  bskyblock.admin.register:
-    description: Let a player register the nearest island to another player.
-    default: op
-  bskyblock.admin.unregister:
-    description: Removes a player from an island without deleting the island blocks.
-    default: op
-  bskyblock.admin.setspawn:
-    description: Allows use of spawn tools
-    default: op
-  bskyblock.admin.setrange:
-    description: Allows setting of island protection range
-    default: op
-  bskyblock.admin.settingsreset:
-    description: Resets all the islands to default protection settings
     default: op
   bskyblock.admin.noban:
     description: Player cannot be banned from an island
@@ -153,13 +46,250 @@ permissions:
   bskyblock.admin.noexpel:
     description: Player cannot be expelled from an island
     default: op
-  bskyblock.admin.setlanguage:
-    description: Resets all player languages and sets the default language
-    default: op
+  # Command permissions
+  bskyblock.island:
+    description: Allow use of '/island' command - the main island command
+    default: TRUE
+  bskyblock.island.home:
+    description: Allow use of '/island go' command - teleport you to your island
+    default: TRUE
+  bskyblock.island.spawn:
+    description: Allow use of '/island spawn' command - teleport you to the spawn
+    default: TRUE
+  bskyblock.island.create:
+    description: Allow use of '/island create' command - create an island, using optional blueprint (requires permission)
+    default: TRUE
+  bskyblock.island.reset:
+    description: Allow use of '/island reset' command - restart your island and remove the old one
+    default: TRUE
+  bskyblock.island.info:
+    description: Allow use of '/island info' command - display info about your island or the player's island
+    default: TRUE
+  bskyblock.island.settings:
+    description: Allow use of '/island settings' command - display island settings
+    default: TRUE
+  bskyblock.island.name:
+    description: Allow use of '/island setname' or '/island resetname' command - your island name
+    default: TRUE
+  bskyblock.island.language:
+    description: Allow use of '/island language' command - select language
+    default: TRUE
+  bskyblock.island.ban:
+    description: Allow use of '/island ban' or '/island unban' or '/island banlist' command - banned players
+    default: TRUE
+  bskyblock.island.expel:
+    description: Allow use of '/island expel' command - expel a player from your island
+    default: TRUE
+  bskyblock.island.near:
+    description: Allow use of '/island near' command - show the name of neighboring islands around you
+    default: TRUE
+  bskyblock.island.team:
+    description: Allow use of '/island team' command - manage your team
+    default: TRUE
+  bskyblock.island.team.invite:
+    description: Allow use of '/island team invite' command - invite a player to join your island
+    default: TRUE
+  bskyblock.island.team.leave:
+    description: Allow use of '/island team leave' command - leave your island
+    default: TRUE
+  bskyblock.island.team.setowner:
+    description: Allow use of '/island team setowner' command - transfer your island ownership to a member
+    default: TRUE
+  bskyblock.island.team.kick:
+    description: Allow use of '/island team kick' command - remove a member from your island
+    default: TRUE
+  bskyblock.island.team.accept:
+    description: Allow use of '/island team accept' command - accept an invitation
+    default: TRUE
+  bskyblock.island.team.reject:
+    description: Allow use of '/island team reject' command - reject an invitation
+    default: TRUE
+  bskyblock.island.team.coop:
+    description: Allow use of '/island team coop' or '/island team uncoop' command - coop rank from player
+    default: TRUE
+  bskyblock.island.team.trust:
+    description: Allow use of '/island team trust' or '/island team untrust' command - trusted player rank for player
+    default: TRUE
+  bskyblock.island.team.promote:
+    description: Allow use of '/island team promote' or '/island team demote' command - move a player's rank on your island
+    default: TRUE
+  bskyblock.island.sethome:
+    description: Allow use of '/island sethome' command - set your home teleport point
+    default: TRUE
+  bskyblock.island.deletehome:
+    description: Allow use of '/island deletehome' command - delete a home location
+    default: OP
+  bskyblock.island.renamehome:
+    description: Allow use of '/island renamehome' command - rename a home location
+    default: OP
+  bskyblock.island.homes:
+    description: Allow use of '/island homes' command - list your homes
+    default: TRUE
+  bskyblock.admin:
+    description: Allow use of '/bsbadmin' command - admin command
+    default: OP
+  bskyblock.admin.version:
+    description: Allow use of '/bsbadmin version' command - display BentoBox and addons versions
+    default: OP
+  bskyblock.admin.tp:
+    description: Allow use of '/bsbadmin tp/tpnether/tpend' command - teleport to a player's island
+    default: OP
   bskyblock.admin.getrank:
-    description: Get a player's rank
-    default: op
+    description: Allow use of '/bsbadmin getrank' command - get a player's rank on their island or the island of the owner
+    default: OP
   bskyblock.admin.setrank:
-    description: Set a player's rank
-    default: op
-    
+    description: Allow use of '/bsbadmin setrank' command - set a player's rank on their island or the island of the owner
+    default: OP
+  bskyblock.mod.info:
+    description: Allow use of '/bsbadmin info' command - get info on where you are or player's island
+    default: OP
+  bskyblock.mod.team:
+    description: Allow use of '/bsbadmin team' command - manage teams
+    default: FALSE
+  bskyblock.mod.team.add:
+    description: Allow use of '/bsbadmin team add' command - add player to owner's team
+    default: OP
+  bskyblock.mod.team.disband:
+    description: Allow use of '/bsbadmin team disband' command - disband owner's team
+    default: OP
+  bskyblock.mod.team.fix:
+    description: Allow use of '/bsbadmin team fix' command - scans and fixes cross island membership in database
+    default: OP
+  bskyblock.mod.team.kick:
+    description: Allow use of '/bsbadmin team kick' command - kick a player from a team
+    default: OP
+  bskyblock.mod.team.setowner:
+    description: Allow use of '/bsbadmin team setowner' command - transfers island ownership to the player
+    default: OP
+  bskyblock.admin.blueprint:
+    description: Allow use of '/bsbadmin blueprint' command - manipulate blueprints
+    default: OP
+  bskyblock.admin.blueprint.load:
+    description: Allow use of '/bsbadmin blueprint load' command - load blueprint into the clipboard
+    default: OP
+  bskyblock.admin.blueprint.paste:
+    description: Allow use of '/bsbadmin blueprint paste' command - paste the clipboard to your location
+    default: OP
+  bskyblock.admin.blueprint.origin:
+    description: Allow use of '/bsbadmin blueprint origin' command - set the blueprint's origin to your position
+    default: OP
+  bskyblock.admin.blueprint.copy:
+    description: Allow use of '/bsbadmin blueprint copy' command - copy the clipboard set by pos1 and pos2 and optionally the air blocks
+    default: OP
+  bskyblock.admin.blueprint.save:
+    description: Allow use of '/bsbadmin blueprint save' command - save the copied clipboard
+    default: OP
+  bskyblock.admin.blueprint.rename:
+    description: Allow use of '/bsbadmin blueprint rename' command - rename a blueprint
+    default: OP
+  bskyblock.admin.blueprint.delete:
+    description: Allow use of '/bsbadmin blueprint delete' command - delete the blueprint
+    default: OP
+  bskyblock.admin.blueprint.pos1:
+    description: Allow use of '/bsbadmin blueprint pos1' command - set 1st corner of cuboid clipboard
+    default: OP
+  bskyblock.admin.blueprint.pos2:
+    description: Allow use of '/bsbadmin blueprint pos2' command - set 2nd corner of cuboid clipboard
+    default: OP
+  bskyblock.admin.blueprint.list:
+    description: Allow use of '/bsbadmin blueprint list' command - list available blueprints
+    default: OP
+  bskyblock.admin.register:
+    description: Allow use of '/bsbadmin register' command - register player to unowned island you are on
+    default: OP
+  bskyblock.admin.unregister:
+    description: Allow use of '/bsbadmin unregister' command - unregister owner from island, but keep island blocks
+    default: OP
+  bskyblock.admin.range:
+    description: Allow use of '/bsbadmin range' command - admin island range command
+    default: OP
+  bskyblock.admin.range.display:
+    description: Allow use of '/bsbadmin range display' command - show/hide island range indicators
+    default: OP
+  bskyblock.admin.range.set:
+    description: Allow use of '/bsbadmin range set' command - sets the island protected range
+    default: OP
+  bskyblock.admin.range.reset:
+    description: Allow use of '/bsbadmin range reset' command - resets the island protected range to the world default
+    default: OP
+  bskyblock.admin.range.add:
+    description: Allow use of '/bsbadmin range add' command - increases the island protected range
+    default: OP
+  bskyblock.admin.range.remove:
+    description: Allow use of '/bsbadmin range remove' command - decreases the island protected range
+    default: OP
+  bskyblock.admin.resets:
+    description: Allow use of '/bsbadmin resets' command - edit player reset values
+    default: OP
+  bskyblock.admin.resets.set:
+    description: Allow use of '/bsbadmin resets set' command - sets how many times this player has reset his island
+    default: OP
+  bskyblock.admin.resets.add:
+    description: Allow use of '/bsbadmin resets add' command - adds this player's island reset count
+    default: OP
+  bskyblock.admin.resets.remove:
+    description: Allow use of '/bsbadmin resets remove' command - reduces the player's island reset count
+    default: OP
+  bskyblock.admin.delete:
+    description: Allow use of '/bsbadmin delete' command - deletes a player's island
+    default: OP
+  bskyblock.admin.why:
+    description: Allow use of '/bsbadmin why' command - toggle console protection debug reporting
+    default: OP
+  bskyblock.admin.deaths:
+    description: Allow use of '/bsbadmin deaths' command - edit deaths of players
+    default: OP
+  bskyblock.admin.deaths.reset:
+    description: Allow use of '/bsbadmin deaths reset' command - resets deaths of the player
+    default: OP
+  bskyblock.admin.deaths.set:
+    description: Allow use of '/bsbadmin deaths set' command - sets deaths of the player
+    default: OP
+  bskyblock.admin.deaths.add:
+    description: Allow use of '/bsbadmin deaths add' command - adds deaths to the player
+    default: OP
+  bskyblock.admin.deaths.remove:
+    description: Allow use of '/bsbadmin deaths remove' command - removes deaths to the player
+    default: OP
+  bskyblock.admin.reload:
+    description: Allow use of '/bsbadmin reload' command - reload
+    default: OP
+  bskyblock.admin.setspawn:
+    description: Allow use of '/bsbadmin setspawn' command - set an island as spawn for this gamemode
+    default: OP
+  bskyblock.admin.setspawnpoint:
+    description: Allow use of '/bsbadmin setspawnpoint' command - set current location as spawn point for this island
+    default: OP
+  bskyblock.admin.resetflags:
+    description: Allow use of '/bsbadmin resetflags' command - Reset all islands to default flag settings in config.yml
+    default: OP
+  bskyblock.mod.switch:
+    description: Allow use of '/bsbadmin switch' command - switch on/off protection bypass
+    default: OP
+  bskyblock.admin.purge:
+    description: Allow use of '/bsbadmin purge' command - purge islands abandoned for more than [days]
+    default: OP
+  bskyblock.admin.purge.status:
+    description: Allow use of '/bsbadmin purge status' command - displays the status of the purge
+    default: OP
+  bskyblock.admin.purge.stop:
+    description: Allow use of '/bsbadmin purge stop' command - stop a purge in progress
+    default: OP
+  bskyblock.admin.purge.unowned:
+    description: Allow use of '/bsbadmin purge unowned' command - purge unowned islands
+    default: OP
+  bskyblock.admin.purge.protect:
+    description: Allow use of '/bsbadmin purge protect' command - toggle island purge protection
+    default: OP
+  bskyblock.admin.settings:
+    description: Allow use of '/bsbadmin settings' command - open settings GUI or set settings
+    default: OP
+  bskyblock.admin.setprotectionlocation:
+    description: Allow use of '/bsbadmin setprotectionlocation' command - set current location or [x y z] as center of island's protection area
+    default: OP
+  bskyblock.mod.deletehomes:
+    description: Allow use of '/bsbadmin deletehomes' command - deletes all named homes from an island
+    default: OP
+  bskyblock.mod.resetname:
+    description: Allow use of '/bsbadmin resetname' command - reset player island name
+    default: OP
