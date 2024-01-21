@@ -9,7 +9,7 @@
   ],
   "requirePermission": false,
   "blueprints": {
-    "NORMAL": "classic-lshape",
+    "NORMAL": "l-shaped",
     "NETHER": "nether-island",
     "THE_END": "end-island"
   },
