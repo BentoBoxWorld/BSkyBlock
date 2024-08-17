@@ -10,6 +10,7 @@ import org.eclipse.jdt.annotation.NonNull;
 
 import com.google.common.base.Enums;
 
+import world.bentobox.bentobox.BentoBox;
 import world.bentobox.bentobox.api.configuration.ConfigComment;
 import world.bentobox.bentobox.api.configuration.ConfigEntry;
 import world.bentobox.bentobox.api.configuration.StoreAt;
@@ -134,6 +135,15 @@ public class Settings implements WorldSettings {
     @ConfigComment("If the number of islands is greater than this number, it will stop players from creating islands.")
     @ConfigEntry(path = "world.max-islands")
     private int maxIslands = -1;
+
+    @ConfigComment("The number of concurrent islands a player can have in the world")
+    @ConfigComment("A value of 0 will use the BentoBox config.yml default")
+    @ConfigEntry(path = "world.concurrent-islands")
+    private int concurrentIslands = 0;
+
+    @ConfigComment("Disallow players to have other islands if they are in a team.")
+    @ConfigEntry(path = "world.disallow-team-member-islands")
+    boolean disallowTeamMemberIslands = true;
 
     @ConfigComment("The default game mode for this world. Players will be set to this mode when they create")
     @ConfigComment("a new island for example. Options are SURVIVAL, CREATIVE, ADVENTURE, SPECTATOR")
@@ -1815,6 +1825,39 @@ public class Settings implements WorldSettings {
      */
     public void setMakeEndPortals(boolean makeEndPortals) {
         this.makeEndPortals = makeEndPortals;
+    }
+
+    /**
+     * @return the concurrentIslands
+     */
+    @Override
+    public int getConcurrentIslands() {
+        if (concurrentIslands <= 0) {
+            return BentoBox.getInstance().getSettings().getIslandNumber();
+        }
+        return concurrentIslands;
+    }
+
+    /**
+     * @param concurrentIslands the concurrentIslands to set
+     */
+    public void setConcurrentIslands(int concurrentIslands) {
+        this.concurrentIslands = concurrentIslands;
+    }
+
+    /**
+     * @return the disallowTeamMemberIslands
+     */
+    @Override
+    public boolean isDisallowTeamMemberIslands() {
+        return disallowTeamMemberIslands;
+    }
+
+    /**
+     * @param disallowTeamMemberIslands the disallowTeamMemberIslands to set
+     */
+    public void setDisallowTeamMemberIslands(boolean disallowTeamMemberIslands) {
+        this.disallowTeamMemberIslands = disallowTeamMemberIslands;
     }
 
 }
