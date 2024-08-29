@@ -1,4 +1,4 @@
-package world.bentobox.bskyblock.generators;
+package dev.viaduct.factories.generators;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -15,7 +15,7 @@ import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.util.Vector;
 import org.bukkit.util.noise.PerlinOctaveGenerator;
 
-import world.bentobox.bskyblock.BSkyBlock;
+import dev.viaduct.factories.Factories;
 
 /**
  * @author tastybento
@@ -23,14 +23,14 @@ import world.bentobox.bskyblock.BSkyBlock;
  */
 public class ChunkGeneratorWorld extends ChunkGenerator {
 
-    private final BSkyBlock addon;
+    private final Factories addon;
     private final Random rand = new Random();
     private final Map<Vector, Material> roofChunk = new HashMap<>();
 
     /**
      * @param addon - addon
      */
-    public ChunkGeneratorWorld(BSkyBlock addon) {
+    public ChunkGeneratorWorld(Factories addon) {
         super();
         this.addon = addon;
         makeNetherRoof();

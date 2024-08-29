@@ -1,4 +1,4 @@
-package world.bentobox.bskyblock;
+package dev.viaduct.factories;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -58,7 +58,7 @@ import world.bentobox.bentobox.managers.CommandsManager;
 import world.bentobox.bentobox.managers.FlagsManager;
 import world.bentobox.bentobox.managers.IslandWorldManager;
 import world.bentobox.bentobox.managers.IslandsManager;
-import world.bentobox.bskyblock.generators.ChunkGeneratorWorld;
+import dev.viaduct.factories.generators.ChunkGeneratorWorld;
 
 /**
  * @author tastybento
@@ -66,7 +66,7 @@ import world.bentobox.bskyblock.generators.ChunkGeneratorWorld;
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ Bukkit.class, BentoBox.class, User.class, Config.class, DatabaseSetup.class })
-public class BSkyBlockTest {
+public class FactoriesTest {
 
 	@Mock
 	private User user;
@@ -75,7 +75,7 @@ public class BSkyBlockTest {
 	@Mock
 	private Island island;
 
-	private BSkyBlock addon;
+	private Factories addon;
 	@Mock
 	private BentoBox plugin;
 	@Mock
@@ -162,7 +162,7 @@ public class BSkyBlockTest {
 		when(Bukkit.getPluginManager()).thenReturn(mock(PluginManager.class));
 
 		// Addon
-		addon = new BSkyBlock();
+		addon = new Factories();
 		File jFile = new File("addon.jar");
 		List<String> lines = Arrays.asList("# BSkyBlock Configuration", "uniqueId: config");
 		Path path = Paths.get("config.yml");
@@ -200,7 +200,7 @@ public class BSkyBlockTest {
 	}
 
 	/**
-	 * Test method for {@link world.bentobox.bskyblock.BSkyBlock#onLoad()}.
+	 * Test method for {@link Factories#onLoad()}.
 	 */
 	@Test
 	public void testOnLoad() {
@@ -211,7 +211,7 @@ public class BSkyBlockTest {
 	}
 
 	/**
-	 * Test method for {@link world.bentobox.bskyblock.BSkyBlock#onEnable()}.
+	 * Test method for {@link Factories#onEnable()}.
 	 */
 	@Test
 	public void testOnEnable() {
@@ -222,18 +222,18 @@ public class BSkyBlockTest {
 	}
 
 	/**
-	 * Test method for {@link world.bentobox.bskyblock.BSkyBlock#onReload()}.
+	 * Test method for {@link Factories#onReload()}.
 	 */
 	@Test
 	public void testOnReload() {
 		addon.onReload();
 		// Check that config.yml file has been saved
-		File check = new File("addons/BSkyBlock", "config.yml");
+		File check = new File("addons/Factories", "config.yml");
 		assertTrue(check.exists());
 	}
 
 	/**
-	 * Test method for {@link world.bentobox.bskyblock.BSkyBlock#createWorlds()}.
+	 * Test method for {@link Factories#createWorlds()}.
 	 */
 	@Test
 	public void testCreateWorlds() {
@@ -245,7 +245,7 @@ public class BSkyBlockTest {
 	}
 
 	/**
-	 * Test method for {@link world.bentobox.bskyblock.BSkyBlock#getSettings()}.
+	 * Test method for {@link Factories#getSettings()}.
 	 */
 	@Test
 	public void testGetSettings() {
@@ -255,7 +255,7 @@ public class BSkyBlockTest {
 
 	/**
 	 * Test method for
-	 * {@link world.bentobox.bskyblock.BSkyBlock#getWorldSettings()}.
+	 * {@link Factories#getWorldSettings()}.
 	 */
 	@Test
 	public void testGetWorldSettings() {
@@ -265,7 +265,7 @@ public class BSkyBlockTest {
 
 	/**
 	 * Test method for
-	 * {@link world.bentobox.bskyblock.BSkyBlock#getDefaultWorldGenerator(java.lang.String, java.lang.String)}.
+	 * {@link Factories#getDefaultWorldGenerator(java.lang.String, java.lang.String)}.
 	 */
 	@Test
 	public void testGetDefaultWorldGeneratorStringString() {

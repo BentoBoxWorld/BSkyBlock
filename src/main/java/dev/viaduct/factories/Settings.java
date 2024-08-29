@@ -1,4 +1,4 @@
-package world.bentobox.bskyblock;
+package dev.viaduct.factories;
 
 import java.util.*;
 
@@ -23,42 +23,42 @@ import world.bentobox.bentobox.database.objects.adapters.FlagBooleanSerializer;
  * All the plugin settings are here
  * @author Tastybento
  */
-@StoreAt(filename="config.yml", path="addons/BSkyBlock") // Explicitly call out what name this should have.
-@ConfigComment("BSkyBlock Configuration [version]")
+@StoreAt(filename="config.yml", path="addons/factories") // Explicitly call out what name this should have.
+@ConfigComment("factories Configuration [version]")
 public class Settings implements WorldSettings {
 
     /* Commands */
     @ConfigComment("Island Command. What command users will run to access their island.")
     @ConfigComment("To define alias, just separate commands with white space.")
-    @ConfigEntry(path = "bskyblock.command.island", since = "1.3.0")
-    private String playerCommandAliases = "island is skyblock sb";
+    @ConfigEntry(path = "factories.command.island", since = "1.3.0")
+    private String playerCommandAliases = "plot p fac f";
 
     @ConfigComment("The island admin command.")
     @ConfigComment("To define alias, just separate commands with white space.")
-    @ConfigEntry(path = "bskyblock.command.admin", since = "1.3.0")
-    private String adminCommandAliases = "bsbadmin bsb skyblockadmin sbadmin sba";
+    @ConfigEntry(path = "factories.command.admin", since = "1.3.0")
+    private String adminCommandAliases = "plotadmin padmin pa faca fadmin fad";
 
     @ConfigComment("The default action for new player command call.")
     @ConfigComment("Sub-command of main player command that will be run on first player command call.")
     @ConfigComment("By default it is sub-command 'create'.")
-    @ConfigEntry(path = "bskyblock.command.new-player-action", since = "1.13.1")
+    @ConfigEntry(path = "factories.command.new-player-action", since = "1.13.1")
     private String defaultNewPlayerAction = "create";
 
     @ConfigComment("The default action for player command.")
     @ConfigComment("Sub-command of main player command that will be run on each player command call.")
     @ConfigComment("By default it is sub-command 'go'.")
-    @ConfigEntry(path = "bskyblock.command.default-action", since = "1.13.1")
+    @ConfigEntry(path = "factories.command.default-action", since = "1.13.1")
     private String defaultPlayerAction = "go";
 
     /*      WORLD       */
     @ConfigComment("Friendly name for this world. Used in admin commands. Must be a single word")
     @ConfigEntry(path = "world.friendly-name")
-    private String friendlyName = "BSkyBlock";
+    private String friendlyName = "factories";
 
     @ConfigComment("Name of the world - if it does not exist then it will be generated.")
-    @ConfigComment("It acts like a prefix for nether and end (e.g. bskyblock_world, bskyblock_world_nether, bskyblock_world_end)")
+    @ConfigComment("It acts like a prefix for nether and end (e.g. factories_world, factories_world_nether, factories_world_end)")
     @ConfigEntry(path = "world.world-name")
-    private String worldName = "bskyblock_world";
+    private String worldName = "factories_world";
 
     @ConfigComment("World difficulty setting - PEACEFUL, EASY, NORMAL, HARD")
     @ConfigComment("Other plugins may override this setting")
@@ -92,7 +92,7 @@ public class Settings implements WorldSettings {
 
     @ConfigComment("Default protection range radius in blocks. Cannot be larger than distance.")
     @ConfigComment("Admins can change protection sizes for players individually using /bsbadmin range set <player> <new range>")
-    @ConfigComment("or set this permission: bskyblock.island.range.<number>")
+    @ConfigComment("or set this permission: factories.island.range.<number>")
     @ConfigEntry(path = "world.protection-range")
     private int islandProtectionRange = 50;
 
@@ -266,13 +266,13 @@ public class Settings implements WorldSettings {
     private int maxTeamSize = 4;
 
     @ConfigComment("Default maximum number of coop rank members per island")
-    @ConfigComment("Players can have the bskyblock.coop.maxsize.<number> permission to be bigger but")
+    @ConfigComment("Players can have the factories.coop.maxsize.<number> permission to be bigger but")
     @ConfigComment("permission size cannot be less than the default below. ")
     @ConfigEntry(path = "island.max-coop-size", since = "1.13.0")
     private int maxCoopSize = 4;
 
     @ConfigComment("Default maximum number of trusted rank members per island")
-    @ConfigComment("Players can have the bskyblock.trust.maxsize.<number> permission to be bigger but")
+    @ConfigComment("Players can have the factories.trust.maxsize.<number> permission to be bigger but")
     @ConfigComment("permission size cannot be less than the default below. ")
     @ConfigEntry(path = "island.max-trusted-size", since = "1.13.0")
     private int maxTrustSize = 4;
@@ -494,8 +494,8 @@ public class Settings implements WorldSettings {
     @ConfigEntry(path = "protection.geo-limit-settings")
     private List<String> geoLimitSettings = new ArrayList<>();
 
-    @ConfigComment("BSkyBlock blocked mobs.")
-    @ConfigComment("List of mobs that should not spawn in BSkyBlock.")
+    @ConfigComment("factories blocked mobs.")
+    @ConfigComment("List of mobs that should not spawn in factories.")
     @ConfigEntry(path = "protection.block-mobs", since = "1.13.1")
     private List<String> mobLimitSettings = new ArrayList<>();
 
@@ -1353,7 +1353,7 @@ public class Settings implements WorldSettings {
 
     @Override
     public String getPermissionPrefix() {
-        return "bskyblock";
+        return "factories";
     }
 
     @Override

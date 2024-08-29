@@ -1,4 +1,4 @@
-package world.bentobox.bskyblock;
+package dev.viaduct.factories;
 
 import org.bukkit.World;
 import org.bukkit.World.Environment;
@@ -14,15 +14,16 @@ import world.bentobox.bentobox.api.commands.admin.DefaultAdminCommand;
 import world.bentobox.bentobox.api.commands.island.DefaultPlayerCommand;
 import world.bentobox.bentobox.api.configuration.Config;
 import world.bentobox.bentobox.api.configuration.WorldSettings;
-import world.bentobox.bskyblock.commands.IslandAboutCommand;
-import world.bentobox.bskyblock.generators.ChunkGeneratorWorld;
+import dev.viaduct.factories.generators.ChunkGeneratorWorld;
 
 /**
  * Main BSkyBlock class - provides an island minigame in the sky
  * @author tastybento
  * @author Poslovitch
+ * @author xxAli
+ * @author oshwab
  */
-public class BSkyBlock extends GameModeAddon implements Listener {
+public class Factories extends GameModeAddon implements Listener {
 
     private static final String NETHER = "_nether";
     private static final String THE_END = "_the_end";
@@ -41,16 +42,7 @@ public class BSkyBlock extends GameModeAddon implements Listener {
         // Chunk generator
         chunkGenerator = settings.isUseOwnGenerator() ? null : new ChunkGeneratorWorld(this);
         // Register commands
-        playerCommand = new DefaultPlayerCommand(this)
-
-        {
-            @Override
-            public void setup()
-            {
-                super.setup();
-                new IslandAboutCommand(this);
-            }
-        };
+        playerCommand = new DefaultPlayerCommand(this) {};
         adminCommand = new DefaultAdminCommand(this) {};
     }
 

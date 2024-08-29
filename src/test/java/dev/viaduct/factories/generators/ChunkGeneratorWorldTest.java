@@ -1,4 +1,4 @@
-package world.bentobox.bskyblock.generators;
+package dev.viaduct.factories.generators;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -30,8 +30,8 @@ import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
-import world.bentobox.bskyblock.BSkyBlock;
-import world.bentobox.bskyblock.Settings;
+import dev.viaduct.factories.Factories;
+import dev.viaduct.factories.Settings;
 
 /**
  * @author tastybento
@@ -42,7 +42,7 @@ import world.bentobox.bskyblock.Settings;
 public class ChunkGeneratorWorldTest {
 
     @Mock
-    private BSkyBlock addon;
+    private Factories addon;
     private ChunkGeneratorWorld cg;
     @Mock
     private World world;
@@ -87,7 +87,7 @@ public class ChunkGeneratorWorldTest {
     }
 
     /**
-     * Test method for {@link world.bentobox.bskyblock.generators.ChunkGeneratorWorld#generateChunkData(org.bukkit.World, java.util.Random, int, int, org.bukkit.generator.ChunkGenerator.BiomeGrid)}.
+     * Test method for {@link ChunkGeneratorWorld#generateChunkData(org.bukkit.World, java.util.Random, int, int, org.bukkit.generator.ChunkGenerator.BiomeGrid)}.
      */
     @Test
     public void testGenerateChunkDataWorldRandomIntIntBiomeGridOverworldVoid() {
@@ -104,7 +104,7 @@ public class ChunkGeneratorWorldTest {
     }
 
     /**
-     * Test method for {@link world.bentobox.bskyblock.generators.ChunkGeneratorWorld#generateChunkData(org.bukkit.World, java.util.Random, int, int, org.bukkit.generator.ChunkGenerator.BiomeGrid)}.
+     * Test method for {@link ChunkGeneratorWorld#generateChunkData(org.bukkit.World, java.util.Random, int, int, org.bukkit.generator.ChunkGenerator.BiomeGrid)}.
      */
     @Test
     public void testGenerateChunkDataWorldRandomIntIntBiomeGridOverworldSea() {
@@ -123,7 +123,7 @@ public class ChunkGeneratorWorldTest {
     }
 
     /**
-     * Test method for {@link world.bentobox.bskyblock.generators.ChunkGeneratorWorld#generateChunkData(org.bukkit.World, java.util.Random, int, int, org.bukkit.generator.ChunkGenerator.BiomeGrid)}.
+     * Test method for {@link ChunkGeneratorWorld#generateChunkData(org.bukkit.World, java.util.Random, int, int, org.bukkit.generator.ChunkGenerator.BiomeGrid)}.
      */
     @Test
     public void testGenerateChunkDataWorldRandomIntIntBiomeGridEnd() {
@@ -142,7 +142,7 @@ public class ChunkGeneratorWorldTest {
     }
 
     /**
-     * Test method for {@link world.bentobox.bskyblock.generators.ChunkGeneratorWorld#generateChunkData(org.bukkit.World, java.util.Random, int, int, org.bukkit.generator.ChunkGenerator.BiomeGrid)}.
+     * Test method for {@link ChunkGeneratorWorld#generateChunkData(org.bukkit.World, java.util.Random, int, int, org.bukkit.generator.ChunkGenerator.BiomeGrid)}.
      */
     @Test
     public void testGenerateChunkDataWorldRandomIntIntBiomeGridNetherWithRoof() {
@@ -159,7 +159,7 @@ public class ChunkGeneratorWorldTest {
     }
 
     /**
-     * Test method for {@link world.bentobox.bskyblock.generators.ChunkGeneratorWorld#generateChunkData(org.bukkit.World, java.util.Random, int, int, org.bukkit.generator.ChunkGenerator.BiomeGrid)}.
+     * Test method for {@link ChunkGeneratorWorld#generateChunkData(org.bukkit.World, java.util.Random, int, int, org.bukkit.generator.ChunkGenerator.BiomeGrid)}.
      */
     @Test
     public void testGenerateChunkDataWorldRandomIntIntBiomeGridNetherNoRoof() {
@@ -178,7 +178,7 @@ public class ChunkGeneratorWorldTest {
     }
 
     /**
-     * Test method for {@link world.bentobox.bskyblock.generators.ChunkGeneratorWorld#canSpawn(org.bukkit.World, int, int)}.
+     * Test method for {@link ChunkGeneratorWorld#canSpawn(org.bukkit.World, int, int)}.
      */
     @Test
     public void testCanSpawnWorldIntInt() {
@@ -186,7 +186,7 @@ public class ChunkGeneratorWorldTest {
     }
 
     /**
-     * Test method for {@link world.bentobox.bskyblock.generators.ChunkGeneratorWorld#getDefaultPopulators(org.bukkit.World)}.
+     * Test method for {@link ChunkGeneratorWorld#getDefaultPopulators(org.bukkit.World)}.
      */
     @Test
     public void testGetDefaultPopulatorsWorld() {

@@ -1,4 +1,4 @@
-package world.bentobox.bskyblock;
+package dev.viaduct.factories;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -60,7 +60,7 @@ public class SettingsTest {
     }
 
     /**
-     * Test method for {@link world.bentobox.bskyblock.Settings#setIslandDistance(int)}.
+     * Test method for {@link dev.viacduct.factories.Settings#setIslandDistance(int)}.
      */
     @Test
     public void testSetIslandDistance() {
@@ -457,7 +457,7 @@ public class SettingsTest {
      */
     @Test
     public void testGetPermissionPrefix() {
-        assertEquals("bskyblock", s.getPermissionPrefix());
+        assertEquals("factories", s.getPermissionPrefix());
     }
 
     /**

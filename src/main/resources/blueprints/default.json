@@ -1,13 +1,8 @@
 {
   "uniqueId": "default",
-  "icon": "GRASS_BLOCK",
-  "displayName": "&eThe Original SkyBlock",
-  "description": [
-    "&bStandard island, with a cow - moo!",
-    "&aIncludes an Overworld island",
-    "&cIncludes a Nether island",
-    "&6Includes an End island"
-  ],
+  "icon": "BEACON",
+  "displayName": "&eCreate your factory plot",
+  "description": [],
   "requirePermission": false,
   "blueprints": {
     "NORMAL": "island",
