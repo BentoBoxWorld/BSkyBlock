@@ -240,8 +240,6 @@ public class FactoriesTest {
 		addon.onLoad();
 		addon.createWorlds();
 		Mockito.verify(plugin).log("[bskyblock] Creating BSkyBlock world ...");
-		Mockito.verify(plugin).log("[bskyblock] Creating BSkyBlock's Nether...");
-		Mockito.verify(plugin).log("[bskyblock] Creating BSkyBlock's End World...");
 	}
 
 	/**

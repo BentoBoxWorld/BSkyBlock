@@ -1,12 +1,16 @@
 package dev.viaduct.factories.resources;
 
+import dev.viaduct.factories.resources.impl.Stone;
 import dev.viaduct.factories.resources.impl.Wood;
+import lombok.Getter;
 
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+@Getter
 public class ResourceManager {
+
     private final Set<Resource> resourceSet;
 
     public ResourceManager() {
@@ -25,6 +29,7 @@ public class ResourceManager {
 
     public void registerResources() {
         registerResource(new Wood());
+        registerResource(new Stone());
     }
 
 }

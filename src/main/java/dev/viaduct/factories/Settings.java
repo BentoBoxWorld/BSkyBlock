@@ -173,7 +173,7 @@ public class Settings implements WorldSettings {
     @ConfigComment("Note that with a standard nether all players arrive at the same portal and entering a")
     @ConfigComment("portal will return them back to their islands.")
     @ConfigEntry(path = "world.nether.generate")
-    private boolean netherGenerate = true;
+    private boolean netherGenerate = false;
 
     @ConfigComment("Islands in Nether. Change to false for standard vanilla nether.")
     @ConfigEntry(path = "world.nether.islands", needsReset = true)
@@ -203,7 +203,7 @@ public class Settings implements WorldSettings {
     @ConfigComment("End Nether - if this is false, the end world will not be made and access to")
     @ConfigComment("the end will not occur. Other plugins may still enable portal usage.")
     @ConfigEntry(path = "world.end.generate")
-    private boolean endGenerate = true;
+    private boolean endGenerate = false;
 
     @ConfigComment("Islands in The End. Change to false for standard vanilla end.")
     @ConfigEntry(path = "world.end.islands", needsReset = true)

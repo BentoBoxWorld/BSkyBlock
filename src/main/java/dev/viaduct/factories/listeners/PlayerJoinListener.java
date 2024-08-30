@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-public class PlayerJoinListener extends AutoListener {
+public class PlayerJoinListener implements Listener {
 
     public PlayerJoinListener() {
         super();

@@ -4,13 +4,11 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>world.bentobox</groupId>
-    <artifactId>bskyblock</artifactId>
+    <groupId>dev.viaduct</groupId>
+    <artifactId>factories</artifactId>
     <version>${revision}</version>
 
-    <name>BSkyBlock</name>
-    <description>BSkyBlock is an add-on for BentoBox, an expandable Minecraft Bukkit plugin for island-type games like SkyBlock or AcidIsland.</description>
-    <url>https://github.com/BentoBoxWorld/BSkyBlock</url>
+    <name>Factories</name>
     <inceptionYear>2017</inceptionYear>
 
     <developers>

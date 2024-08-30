@@ -11,4 +11,6 @@ public abstract class Resource {
         this.name = name;
     }
 
+    public abstract String getFormattedName();
+
 }

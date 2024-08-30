@@ -1,5 +1,6 @@
 package dev.viaduct.factories;
 
+import dev.viaduct.factories.listeners.PlayerJoinListener;
 import dev.viaduct.factories.registries.FactoryPlayerRegistry;
 import dev.viaduct.factories.registries.RegistryManager;
 import dev.viaduct.factories.resources.ResourceManager;
@@ -32,6 +33,8 @@ public class FactoriesPlugin extends Pladdon {
     public void onEnable() {
         instance = this;
         initRegistries();
+        getServer().getPluginManager()
+                .registerEvents(new PlayerJoinListener(), this);
     }
 
     private void initRegistries() {
