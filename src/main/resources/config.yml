@@ -1,14 +1,14 @@
-# BSkyBlock Configuration {$version}
-bskyblock:
+# Factories Configuration 0.0.1-beta${build.number}
+factories:
   command:
     # Island Command. What command users will run to access their island.
     # To define alias, just separate commands with white space.
     # Added since 1.3.0.
-    island: island is skyblock sb
+    island: plot p
     # The island admin command.
     # To define alias, just separate commands with white space.
     # Added since 1.3.0.
-    admin: bsbadmin bsb skyblockadmin sbadmin sba
+    admin: plota pa
     # The default action for new player command call.
     # Sub-command of main player command that will be run on first player command call.
     # By default it is sub-command 'create'.
@@ -83,7 +83,12 @@ world:
   sea-height: 0
   # Maximum number of islands in the world. Set to -1 or 0 for unlimited.
   # If the number of islands is greater than this number, it will stop players from creating islands.
-  max-islands: 0
+  max-islands: -1
+  # The number of concurrent islands a player can have in the world
+  # A value of 0 will use the BentoBox config.yml default
+  concurrent-islands: 0
+  # Disallow players to have other islands if they are in a team.
+  disallow-team-member-islands: true
   # The default game mode for this world. Players will be set to this mode when they create
   # a new island for example. Options are SURVIVAL, CREATIVE, ADVENTURE, SPECTATOR
   default-game-mode: SURVIVAL
@@ -103,10 +108,10 @@ world:
     # Note: Some default challenges will not be possible if there is no nether.
     # Note that with a standard nether all players arrive at the same portal and entering a
     # portal will return them back to their islands.
-    generate: true
+    generate: false
     # Islands in Nether. Change to false for standard vanilla nether.
     # /!\ BentoBox currently does not support changing this value mid-game. If you do need to change it, do a full reset of your databases and worlds.
-    islands: true
+    islands: false
     # Make the nether roof, if false, there is nothing up there
     # Change to false if lag is a problem from the generation
     # Only applies to islands Nether
@@ -125,7 +130,7 @@ world:
   end:
     # End Nether - if this is false, the end world will not be made and access to
     # the end will not occur. Other plugins may still enable portal usage.
-    generate: true
+    generate: false
     # Islands in The End. Change to false for standard vanilla end.
     # /!\ BentoBox currently does not support changing this value mid-game. If you do need to change it, do a full reset of your databases and worlds.
     islands: true
@@ -138,9 +143,9 @@ world:
     dragon-spawn: false
   # Mob white list - these mobs will NOT be removed when logging in or doing /island
   remove-mobs-whitelist:
-  - WITHER
-  - ZOMBIE_VILLAGER
-  - ENDERMAN
+    - ENDERMAN
+    - WITHER
+    - ZOMBIE_VILLAGER
   # World flags. These are boolean settings for various flags for this world
   flags:
     CREEPER_DAMAGE: true
@@ -181,20 +186,26 @@ world:
   #   OWNER     = 1000
   default-island-flags:
     HURT_ANIMALS: 500
+    LOOM: 500
     DRAGON_EGG: 500
     REDSTONE: 500
     BUCKET: 500
     LOCK: 0
     ENDER_PEARL: 500
+    BELL_RINGING: 500
     DOOR: 500
     BREAK_HOPPERS: 500
     FURNACE: 500
+    HURT_TAMED_ANIMALS: 500
     MINECART: 500
     ANVIL: 500
     FISH_SCOOPING: 500
+    TRAPPED_CHEST: 500
     END_PORTAL: 500
     BREEDING: 500
     HURT_VILLAGERS: 500
+    BOOKSHELF: 500
+    HARVEST: 500
     TURTLE_EGGS: 500
     FROST_WALKER: 500
     COLLECT_LAVA: 500
@@ -206,23 +217,33 @@ world:
     CAKE: 500
     NAME_TAG: 500
     ARMOR_STAND: 500
+    CHANGE_SETTINGS: 1000
+    SIGN_EDITING: 500
     TRADING: 0
     EGGS: 500
     ITEM_DROP: 0
+    CHEST: 500
     NOTE_BLOCK: 0
     FLINT_AND_STEEL: 500
     NETHER_PORTAL: 500
+    SCULK_SENSOR: 500
     LECTERN: 500
+    SHULKER_BOX: 500
+    GRINDSTONE: 500
     ITEM_PICKUP: 0
     CROP_TRAMPLE: 500
     DROPPER: 500
     BREWING: 500
     TNT_PRIMING: 500
     COLLECT_WATER: 500
+    AXOLOTL_SCOOPING: 500
     BUTTON: 500
+    COMPOSTER: 500
+    STONECUTTING: 500
     FIRE_EXTINGUISH: 500
     COMMAND_RANKS: 500
     BEACON: 500
+    ALLAY: 500
     TRAPDOOR: 500
     EXPERIENCE_BOTTLE_THROWING: 500
     PRESSURE_PLATE: 0
@@ -230,17 +251,22 @@ world:
     DYE: 500
     PLACE_BLOCKS: 500
     ITEM_FRAME: 500
+    CROP_PLANTING: 500
     CRAFTING: 0
     ENCHANTING: 0
     SHEARING: 500
+    FLOWER_POT: 500
     BOAT: 500
     BED: 500
     SPAWN_EGGS: 500
     MILKING: 0
     DISPENSER: 500
+    SCULK_SHRIEKER: 500
     GATE: 0
+    SMITHING: 500
     EXPERIENCE_PICKUP: 500
     HOPPER: 500
+    CANDLES: 500
     LEASH: 500
     MOUNT_INVENTORY: 500
     BREAK_BLOCKS: 500
@@ -248,70 +274,76 @@ world:
     CONTAINER: 500
     POTION_THROWING: 500
     JUKEBOX: 500
+    BARREL: 500
+    CARTOGRAPHY: 500
+    COLLECT_POWDERED_SNOW: 500
   # These are the default settings for new islands
   default-island-settings:
     PVP_END: false
     PVP_NETHER: false
     LEAF_DECAY: true
-    TNT_DAMAGE: true
-    MONSTER_SPAWNERS_SPAWN: true
+    ENDERMAN_TELEPORT: true
     ANIMAL_NATURAL_SPAWN: true
     MONSTER_NATURAL_SPAWN: true
-    FIRE_IGNITE: true
+    SHULKER_TELEPORT: true
     FIRE_SPREAD: true
-    ANIMAL_SPAWNERS_SPAWN: true
     FIRE_BURNING: true
     PVP_OVERWORLD: false
+    TNT_DAMAGE: true
+    MONSTER_SPAWNERS_SPAWN: true
+    FIRE_IGNITE: true
+    ANIMAL_SPAWNERS_SPAWN: true
+    BLOCK_EXPLODE_DAMAGE: true
   # These settings/flags are hidden from users
   # Ops can toggle hiding in-game using SHIFT-LEFT-CLICK on flags in settings
   # Added since 1.4.1.
   hidden-flags:
-  - CHEST_DAMAGE
-  - HURT_MONSTERS
-  - BREAK_SPAWNERS
-  - DISPENSER
-  - DRAGON_EGG
-  - DROPPER
-  - EXPERIENCE_BOTTLE_THROWING
-  - HURT_VILLAGERS
-  - MOUNT_INVENTORY
-  - NOTE_BLOCK
-  - TURTLE_EGGS
-  - PVP_END
-  - FIRE_BURNING
-  - FIRE_IGNITE
-  - FIRE_SPREAD
-  - PVP_NETHER
-  - PVP_OVERWORLD
-  - TNT_DAMAGE
-  - MONSTER_NATURAL_SPAWN
-  - MONSTER_SPAWNERS_SPAWN
-  - ANIMAL_SPAWNERS_SPAWN
-  - ANIMAL_NATURAL_SPAWN
-  - LEAF_DECAY
-  - BREAK_HOPPERS
+    - CHEST_DAMAGE
+    - HURT_MONSTERS
+    - BREAK_SPAWNERS
+    - DISPENSER
+    - DRAGON_EGG
+    - DROPPER
+    - EXPERIENCE_BOTTLE_THROWING
+    - HURT_VILLAGERS
+    - MOUNT_INVENTORY
+    - NOTE_BLOCK
+    - TURTLE_EGGS
+    - PVP_END
+    - FIRE_BURNING
+    - FIRE_IGNITE
+    - FIRE_SPREAD
+    - PVP_NETHER
+    - PVP_OVERWORLD
+    - TNT_DAMAGE
+    - MONSTER_NATURAL_SPAWN
+    - MONSTER_SPAWNERS_SPAWN
+    - ANIMAL_SPAWNERS_SPAWN
+    - ANIMAL_NATURAL_SPAWN
+    - LEAF_DECAY
+    - BREAK_HOPPERS
   # Visitor banned commands - Visitors to islands cannot use these commands in this world
   visitor-banned-commands:
-  - spawner
-  - spawnmob
+    - spawner
+    - spawnmob
   # Falling banned commands - players cannot use these commands when falling
   # if the PREVENT_TELEPORT_WHEN_FALLING world setting flag is active
   # Added since 1.8.0.
   falling-banned-commands:
-  - warp
-  - spawn
+    - warp
+    - spawn
 island:
   # Default max team size
-  # Permission size cannot be less than the default below. 
+  # Permission size cannot be less than the default below.
   max-team-size: 4
   # Default maximum number of coop rank members per island
   # Players can have the bskyblock.coop.maxsize.<number> permission to be bigger but
-  # permission size cannot be less than the default below. 
+  # permission size cannot be less than the default below.
   # Added since 1.13.0.
   max-coop-size: 4
   # Default maximum number of trusted rank members per island
   # Players can have the bskyblock.trust.maxsize.<number> permission to be bigger but
-  # permission size cannot be less than the default below. 
+  # permission size cannot be less than the default below.
   # Added since 1.13.0.
   max-trusted-size: 4
   # Default maximum number of homes a player can have. Min = 1
@@ -422,10 +454,10 @@ island:
     # List of commands to run when a player joins an island or creates one.
     # These commands are run by the console, unless otherwise stated using the [SUDO] prefix,
     # in which case they are executed by the player.
-    # 
+    #
     # Available placeholders for the commands are the following:
     #    * [name]: name of the player
-    # 
+    #
     # Here are some examples of valid commands to execute:
     #    * "[SUDO] bbox version"
     #    * "bsbadmin deaths set [player] 0"
@@ -434,28 +466,28 @@ island:
     # List of commands to run when a player leaves an island, resets his island or gets kicked from it.
     # These commands are run by the console, unless otherwise stated using the [SUDO] prefix,
     # in which case they are executed by the player.
-    # 
+    #
     # Available placeholders for the commands are the following:
     #    * [name]: name of the player
-    # 
+    #
     # Here are some examples of valid commands to execute:
     #    * '[SUDO] bbox version'
     #    * 'bsbadmin deaths set [player] 0'
-    # 
+    #
     # Note that player-executed commands might not work, as these commands can be run with said player being offline.
     # Added since 1.8.0.
     on-leave: []
     # List of commands that should be executed when the player respawns after death if Flags.ISLAND_RESPAWN is true.
     # These commands are run by the console, unless otherwise stated using the [SUDO] prefix,
     # in which case they are executed by the player.
-    # 
+    #
     # Available placeholders for the commands are the following:
     #    * [name]: name of the player
-    # 
+    #
     # Here are some examples of valid commands to execute:
     #    * '[SUDO] bbox version'
     #    * 'bsbadmin deaths set [player] 0'
-    # 
+    #
     # Note that player-executed commands might not work, as these commands can be run with said player being offline.
     # Added since 1.14.0.
     on-respawn: []
@@ -482,9 +514,9 @@ protection:
   # Geo restrict mobs.
   # Mobs that exit the island space where they were spawned will be removed.
   geo-limit-settings:
-  - GHAST
-  - BAT
-  - BLAZE
+    - GHAST
+    - BAT
+    - BLAZE
   # BSkyBlock blocked mobs.
   # List of mobs that should not spawn in BSkyBlock.
   # Added since 1.13.1.
@@ -492,30 +524,30 @@ protection:
   # Invincible visitors. List of damages that will not affect visitors.
   # Make list blank if visitors should receive all damages
   invincible-visitors:
-  - BLOCK_EXPLOSION
-  - CONTACT
-  - CUSTOM
-  - DROWNING
-  - ENTITY_ATTACK
-  - ENTITY_EXPLOSION
-  - FALL
-  - FALLING_BLOCK
-  - FIRE
-  - FIRE_TICK
-  - LAVA
-  - LIGHTNING
-  - MAGIC
-  - POISON
-  - PROJECTILE
-  - STARVATION
-  - SUFFOCATION
-  - THORNS
-  - WITHER
-  - DRAGON_BREATH
-  - FLY_INTO_WALL
-  - HOT_FLOOR
-  - CRAMMING
-  - VOID
+    - BLOCK_EXPLOSION
+    - CONTACT
+    - CUSTOM
+    - DROWNING
+    - ENTITY_ATTACK
+    - ENTITY_EXPLOSION
+    - FALL
+    - FALLING_BLOCK
+    - FIRE
+    - FIRE_TICK
+    - LAVA
+    - LIGHTNING
+    - MAGIC
+    - POISON
+    - PROJECTILE
+    - STARVATION
+    - SUFFOCATION
+    - THORNS
+    - WITHER
+    - DRAGON_BREATH
+    - FLY_INTO_WALL
+    - HOT_FLOOR
+    - CRAMMING
+    - VOID
 do-not-edit-these-settings:
   # These settings should not be edited
   reset-epoch: 0

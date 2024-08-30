@@ -1,5 +1,5 @@
 name: BentoBox-Factories
-main: dev.viaduct.factories.FactoriesPladdon
+main: dev.viaduct.factories.FactoriesPlugin
 version: ${project.version}${build.number}
 api-version: "1.19"
 
