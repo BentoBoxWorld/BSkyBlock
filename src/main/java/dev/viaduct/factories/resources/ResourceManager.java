@@ -3,10 +3,12 @@ package dev.viaduct.factories.resources;
 import dev.viaduct.factories.resources.impl.Stone;
 import dev.viaduct.factories.resources.impl.Wood;
 import lombok.Getter;
+import org.bukkit.Material;
 
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 @Getter
 public class ResourceManager {
@@ -30,6 +32,15 @@ public class ResourceManager {
     public void registerResources() {
         registerResource(new Wood());
         registerResource(new Stone());
+    }
+
+    public boolean isResourceMaterial(Material material) {
+        //  get stream of resources in set.
+        return resourceSet.stream()
+                //    for every valid material of each resource...
+                .map(Resource::getValidMaterialsList)
+                //    check if it contains parameter material.
+                .anyMatch(materialsList -> materialsList.contains(material));
     }
 
 }
