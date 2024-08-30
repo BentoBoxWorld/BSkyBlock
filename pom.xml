@@ -171,16 +171,22 @@
             <version>1.18.34</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.retrooper</groupId>
+            <artifactId>packetevents-spigot</artifactId>
+            <version>2.4.0</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
         <!-- By default ${revision} is ${build.version}-SNAPSHOT -->
-        <!-- If GIT_BRANCH variable is set to origin/master, then it will 
+        <!-- If GIT_BRANCH variable is set to origin/master, then it will
             be only ${build.version}. -->
 
         <!-- By default ${build.number} is -LOCAL. -->
         <!-- If the BUILD_NUMBER variable is set, then it will be -b[number]. -->
-        <!-- If GIT_BRANCH variable is set to origin/master, then it will 
+        <!-- If GIT_BRANCH variable is set to origin/master, then it will
             be the empty string. -->
         <finalName>${project.name}-${revision}${build.number}</finalName>
 
@@ -326,7 +332,7 @@
                 <configuration>
                     <append>true</append>
                     <excludes>
-                        <!-- This is required to prevent Jacoco from adding 
+                        <!-- This is required to prevent Jacoco from adding
                             synthetic fields to a JavaBean class (causes errors in testing) -->
                         <exclude>**/*Names*</exclude>
                         <!-- Prevents the Material is too large to mock error -->

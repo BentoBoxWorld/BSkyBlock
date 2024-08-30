@@ -30,7 +30,7 @@ public class PlayerGetResourceListener implements Listener {
                 .ifPresent(factoryPlayer -> {
                     Bank factoryPlayerBank = factoryPlayer.getBank();
                     factoryPlayerBank.getResourceByMaterial(material)
-                            .ifPresent(resource -> factoryPlayerBank.addToResource(resource, 1));
+                            .ifPresent(resource -> factoryPlayerBank.addToResource(resource, factoryPlayer.getScoreboard(), 1));
                 });
 
         //  TODO: Update Factory Player Scoreboard

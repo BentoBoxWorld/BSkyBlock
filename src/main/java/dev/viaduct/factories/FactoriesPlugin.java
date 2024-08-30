@@ -1,10 +1,14 @@
 package dev.viaduct.factories;
 
+import com.github.retrooper.packetevents.PacketEvents;
+import com.github.retrooper.packetevents.event.PacketListenerPriority;
 import dev.viaduct.factories.listeners.PlayerGetResourceListener;
 import dev.viaduct.factories.listeners.PlayerJoinListener;
+import dev.viaduct.factories.packets.listeners.ScoreboardPacketListener;
 import dev.viaduct.factories.registries.FactoryPlayerRegistry;
 import dev.viaduct.factories.registries.RegistryManager;
 import dev.viaduct.factories.resources.ResourceManager;
+import io.github.retrooper.packetevents.factory.spigot.SpigotPacketEventsBuilder;
 import lombok.Getter;
 import world.bentobox.bentobox.api.addons.Addon;
 import world.bentobox.bentobox.api.addons.GameModeAddon;
@@ -31,6 +35,14 @@ public class FactoriesPlugin extends Pladdon {
     }
 
     @Override
+    public void onLoad() {
+        super.onLoad();
+
+        PacketEvents.setAPI(SpigotPacketEventsBuilder.build(this));
+        PacketEvents.getAPI().load();
+    }
+
+    @Override
     public void onEnable() {
         instance = this;
         initRegistries();
@@ -38,6 +50,17 @@ public class FactoriesPlugin extends Pladdon {
                 .registerEvents(new PlayerJoinListener(), this);
         getServer().getPluginManager().registerEvents(
                 new PlayerGetResourceListener(registryManager.getRegistry(FactoryPlayerRegistry.class)), this);
+
+        PacketEvents.getAPI().getEventManager().registerListener(new ScoreboardPacketListener(),
+                PacketListenerPriority.LOW);
+
+        PacketEvents.getAPI().init();
+    }
+
+    @Override
+    public void onDisable() {
+        super.onDisable();
+        PacketEvents.getAPI().terminate();
     }
 
     private void initRegistries() {

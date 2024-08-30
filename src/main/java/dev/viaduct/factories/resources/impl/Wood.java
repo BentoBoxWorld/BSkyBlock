@@ -7,11 +7,11 @@ import org.bukkit.Material;
 public class Wood extends Resource {
 
     public Wood() {
-        super("Wood", Material.OAK_WOOD);
+        super("Wood", 1.0, Material.OAK_WOOD);
     }
 
-    public Wood(String name, Material... materials) {
-        super(name, materials);
+    public Wood(String name, double incrementAmount, Material... materials) {
+        super(name, incrementAmount, materials);
     }
 
     @Override

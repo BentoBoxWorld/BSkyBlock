@@ -1,11 +1,11 @@
-name: BSkyBlock
-main: dev.viaduct.factories
+name: Factories
+main: dev.viaduct.factories.Factories
 version: ${version}${build.number}
 api-version: 2.3.0
 metrics: true
-icon: "OAK_SAPLING"
+icon: "BEACON"
 
-authors: tastybento
+authors: tastybento,
 
 permissions:
 # Non-command permissions

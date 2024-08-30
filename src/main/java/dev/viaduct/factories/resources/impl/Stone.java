@@ -6,9 +6,13 @@ import org.bukkit.Material;
 
 public class Stone extends Resource {
 
-    public Stone() { super("Stone", Material.STONE); }
+    public Stone() {
+        super("Stone", 1.0, Material.STONE);
+    }
 
-    public Stone(String name, Material... materials) { super(name, materials); }
+    public Stone(String name, double incrementAmount, Material... materials) {
+        super(name, incrementAmount, materials);
+    }
 
     @Override
     public String getFormattedName() {

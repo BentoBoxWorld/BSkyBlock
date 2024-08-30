@@ -1,7 +1,7 @@
 package dev.viaduct.factories.banks;
 
 import dev.viaduct.factories.FactoriesPlugin;
-import dev.viaduct.factories.registries.FactoryPlayerRegistry;
+import dev.viaduct.factories.guis.scoreboards.FactoryScoreboard;
 import dev.viaduct.factories.resources.Resource;
 import lombok.Getter;
 import org.bukkit.Material;
@@ -23,8 +23,9 @@ public class Bank {
                 .forEach(resource -> resourceMap.put(resource, 0.0));
     }
 
-    public void addToResource(Resource resource, double amount) {
+    public void addToResource(Resource resource, FactoryScoreboard factoryScoreboard, double amount) {
         resourceMap.put(resource, resourceMap.getOrDefault(resource, 0.0) + amount);
+        factoryScoreboard.updateResourceLine(resource);
     }
 
     public void removeFromResource(Resource resource, double amount) {

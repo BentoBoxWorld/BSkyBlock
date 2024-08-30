@@ -11,15 +11,18 @@ import java.util.List;
 public abstract class Resource {
 
     private final String name;
+    private final double incrementAmount;
     private final List<Material> validMaterialsList;
 
-    protected Resource(String name) {
+    protected Resource(String name, double incrementAmount) {
         this.name = name;
+        this.incrementAmount = incrementAmount;
         this.validMaterialsList = new ArrayList<>();
     }
 
-    protected Resource(String name, Material... materials) {
+    protected Resource(String name, double incrementAmount, Material... materials) {
         this.name = name;
+        this.incrementAmount = incrementAmount;
         this.validMaterialsList = Arrays.stream(materials).toList();
     }
 
