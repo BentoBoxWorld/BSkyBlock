@@ -5,9 +5,10 @@
   "description": [],
   "requirePermission": false,
   "blueprints": {
-    "NORMAL": "island",
     "NETHER": "nether-island",
-    "THE_END": "end-island"
+    "THE_END": "end-island",
+    "NORMAL": "starter-plot-45x45"
   },
-  "slot": 0
+  "slot": 0,
+  "times": 0
 }
