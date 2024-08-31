@@ -1,9 +1,7 @@
 package dev.viaduct.factories.listeners;
 
-import dev.viaduct.factories.banks.Bank;
-import dev.viaduct.factories.players.FactoryPlayer;
+import dev.viaduct.factories.domain.banks.Bank;
 import dev.viaduct.factories.registries.FactoryPlayerRegistry;
-import dev.viaduct.factories.resources.ResourceManager;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
@@ -32,8 +30,5 @@ public class PlayerGetResourceListener implements Listener {
                     factoryPlayerBank.getResourceByMaterial(material)
                             .ifPresent(resource -> factoryPlayerBank.addToResource(resource, factoryPlayer.getScoreboard(), 1));
                 });
-
-        //  TODO: Update Factory Player Scoreboard
-
     }
 }

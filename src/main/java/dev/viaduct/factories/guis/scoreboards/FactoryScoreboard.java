@@ -1,7 +1,7 @@
 package dev.viaduct.factories.guis.scoreboards;
 
-import dev.viaduct.factories.banks.Bank;
-import dev.viaduct.factories.players.FactoryPlayer;
+import dev.viaduct.factories.domain.banks.Bank;
+import dev.viaduct.factories.domain.players.FactoryPlayer;
 import dev.viaduct.factories.resources.Resource;
 import dev.viaduct.factories.utils.Chat;
 import org.bukkit.Bukkit;

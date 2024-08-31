@@ -1,4 +1,4 @@
-package dev.viaduct.factories.banks;
+package dev.viaduct.factories.domain.banks;
 
 import dev.viaduct.factories.FactoriesPlugin;
 import dev.viaduct.factories.guis.scoreboards.FactoryScoreboard;

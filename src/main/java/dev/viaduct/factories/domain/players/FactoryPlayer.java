@@ -1,12 +1,13 @@
-package dev.viaduct.factories.players;
+package dev.viaduct.factories.domain.players;
 
 import dev.viaduct.factories.FactoriesPlugin;
-import dev.viaduct.factories.banks.Bank;
+import dev.viaduct.factories.domain.banks.Bank;
 import dev.viaduct.factories.guis.scoreboards.FactoryScoreboard;
 import dev.viaduct.factories.registries.FactoryPlayerRegistry;
 import lombok.Getter;
 import org.bukkit.entity.Player;
 
+// Todo: create accessible land system
 @Getter
 public class FactoryPlayer {
 
