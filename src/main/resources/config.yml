@@ -21,10 +21,10 @@ factories:
     default-action: go
 world:
   # Friendly name for this world. Used in admin commands. Must be a single word
-  friendly-name: BSkyBlock
+  friendly-name: Factories
   # Name of the world - if it does not exist then it will be generated.
   # It acts like a prefix for nether and end (e.g. bskyblock_world, bskyblock_world_nether, bskyblock_world_end)
-  world-name: bskyblock_world
+  world-name: factories_world
   # World difficulty setting - PEACEFUL, EASY, NORMAL, HARD
   # Other plugins may override this setting
   difficulty: NORMAL

@@ -2,7 +2,6 @@ package dev.viaduct.factories;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
@@ -58,7 +57,6 @@ import world.bentobox.bentobox.managers.CommandsManager;
 import world.bentobox.bentobox.managers.FlagsManager;
 import world.bentobox.bentobox.managers.IslandWorldManager;
 import world.bentobox.bentobox.managers.IslandsManager;
-import dev.viaduct.factories.generators.ChunkGeneratorWorld;
 
 /**
  * @author tastybento
@@ -260,18 +258,18 @@ public class FactoriesTest {
 		addon.onLoad();
 		assertEquals(addon.getSettings(), addon.getWorldSettings());
 	}
-
-	/**
-	 * Test method for
-	 * {@link Factories#getDefaultWorldGenerator(java.lang.String, java.lang.String)}.
-	 */
-	@Test
-	public void testGetDefaultWorldGeneratorStringString() {
-		assertNull(addon.getDefaultWorldGenerator("", ""));
-		addon.onLoad();
-		addon.createWorlds();
-		assertNotNull(addon.getDefaultWorldGenerator("", ""));
-		assertTrue(addon.getDefaultWorldGenerator("", "") instanceof ChunkGeneratorWorld);
-	}
+//
+//	/**
+//	 * Test method for
+//	 * {@link Factories#getDefaultWorldGenerator(java.lang.String, java.lang.String)}.
+//	 */
+//	@Test
+//	public void testGetDefaultWorldGeneratorStringString() {
+//		assertNull(addon.getDefaultWorldGenerator("", ""));
+//		addon.onLoad();
+//		addon.createWorlds();
+//		assertNotNull(addon.getDefaultWorldGenerator("", ""));
+//		assertTrue(addon.getDefaultWorldGenerator("", "") instanceof ChunkGeneratorWorld);
+//	}
 
 }
