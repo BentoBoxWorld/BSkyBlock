@@ -8,17 +8,22 @@ import dev.viaduct.factories.utils.Chat;
 import lombok.Getter;
 import org.bukkit.Material;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LevelledUpgrade implements Upgrade {
 
     private final Material icon;
     private final String displayName;
+    private final List<String> description;
 
     @Getter
     private final ConditionHolder conditionHolder;
 
-    public LevelledUpgrade(Material icon, String displayName, AbstractCondition... abstractConditions) {
+    public LevelledUpgrade(Material icon, String displayName, List<String> description, AbstractCondition... abstractConditions) {
         this.icon = icon;
         this.displayName = displayName;
+        this.description = new ArrayList<>(description);
         this.conditionHolder = new ConditionHolder(abstractConditions);
     }
 
@@ -36,6 +41,11 @@ public class LevelledUpgrade implements Upgrade {
     @Override
     public String getDisplayName() {
         return Chat.colorize(displayName);
+    }
+
+    @Override
+    public List<String> getDescription() {
+        return description;
     }
 
 }

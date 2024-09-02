@@ -8,6 +8,7 @@ import lombok.Getter;
 import org.bukkit.Material;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Getter
@@ -31,6 +32,9 @@ public class UpgradeManager {
         upgradeMap.put(UpgradeName.LAND_SIZE_UPGRADE_1, new LevelledUpgrade(
                 Material.ITEM_FRAME,
                 "&a&lLand Size Upgrade: 1",
+                List.of("&7Add 10 blocks to your land size!",
+                        "",
+                        "&7Cost: &f10x Wood"),
                 new ResourceCondition("wood",
                         10,
                         new LandSizeUpgradeAction(1),
@@ -38,6 +42,9 @@ public class UpgradeManager {
         upgradeMap.put(UpgradeName.LAND_SIZE_UPGRADE_2, new LevelledUpgrade(
                 Material.ITEM_FRAME,
                 "&a&lLand Size Upgrade: 2",
+                List.of("&7Add 10 blocks to your land size!",
+                        "",
+                        "&7Cost: &f10x Wood, 10x Stone"),
                 new ResourceCondition("wood",
                         10,
                         new LandSizeUpgradeAction(2),

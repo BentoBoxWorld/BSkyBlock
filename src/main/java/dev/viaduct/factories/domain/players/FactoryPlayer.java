@@ -8,7 +8,6 @@ import dev.viaduct.factories.settings.SettingHolder;
 import lombok.Getter;
 import org.bukkit.entity.Player;
 
-// Todo: create accessible land system
 @Getter
 public class FactoryPlayer {
 

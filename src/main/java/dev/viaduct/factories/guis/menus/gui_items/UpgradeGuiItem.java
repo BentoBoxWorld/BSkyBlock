@@ -10,6 +10,7 @@ public class UpgradeGuiItem extends GuiItem {
     public UpgradeGuiItem(FactoryPlayer factoryPlayer, Upgrade upgrade) {
         super(new ItemBuilder(upgrade.getIcon())
                 .setName(upgrade.getDisplayName())
+                .setLore(upgrade.getDescription())
                 .addLoreLines("", "&e&oClick to upgrade")
                 .build(), click -> upgrade.tryUpgrade(factoryPlayer));
     }
