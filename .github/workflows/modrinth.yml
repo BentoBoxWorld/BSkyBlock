@@ -1,7 +1,7 @@
 name: Modrinth-Release
 on:
   release:
-    types: [published]
+    types: [ published ]
 jobs:
   build:
     name: Deploy

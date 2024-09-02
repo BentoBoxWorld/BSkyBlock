@@ -2,11 +2,9 @@ package dev.viaduct.factories.domain.players;
 
 import dev.viaduct.factories.FactoriesPlugin;
 import dev.viaduct.factories.domain.banks.Bank;
-import dev.viaduct.factories.domain.lands.Land;
 import dev.viaduct.factories.guis.scoreboards.FactoryScoreboard;
 import dev.viaduct.factories.registries.FactoryPlayerRegistry;
 import dev.viaduct.factories.settings.SettingHolder;
-import dev.viaduct.factories.settings.SettingType;
 import lombok.Getter;
 import org.bukkit.entity.Player;
 
@@ -30,10 +28,7 @@ public class FactoryPlayer {
         FactoriesPlugin.getRegistryManager()
                 .getRegistry(FactoryPlayerRegistry.class)
                 .register(player.getUniqueId(), this);
-        settingHolder.initializeDefaultPlayerSettings();
-        Land newLand = new Land(this);
-        newLand.setAccessibleLand();
-        settingHolder.modifySetting(SettingType.PLAYER_LAND, land -> newLand);
+        settingHolder.initializeDefaultPlayerSettings(this);
     }
 
 }

@@ -1,19 +1,7 @@
 package dev.viaduct.factories.generators;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.atLeast;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
-import java.util.Random;
-
+import dev.viaduct.factories.Factories;
+import dev.viaduct.factories.Settings;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Server;
@@ -30,12 +18,15 @@ import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
-import dev.viaduct.factories.Factories;
-import dev.viaduct.factories.Settings;
+import java.util.Random;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.*;
 
 /**
  * @author tastybento
- *
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({Bukkit.class})
@@ -91,7 +82,7 @@ public class ChunkGeneratorWorldTest {
      */
     @Test
     public void testGenerateChunkDataWorldRandomIntIntBiomeGridOverworldVoid() {
-        ChunkData cd = cg.generateChunkData(world, random, 0 , 0 , biomeGrid);
+        ChunkData cd = cg.generateChunkData(world, random, 0, 0, biomeGrid);
         assertEquals(data, cd);
         // Verifications
         // Default biome
@@ -110,7 +101,7 @@ public class ChunkGeneratorWorldTest {
     public void testGenerateChunkDataWorldRandomIntIntBiomeGridOverworldSea() {
         // Set sea height
         when(settings.getSeaHeight()).thenReturn(10);
-        ChunkData cd = cg.generateChunkData(world, random, 0 , 0 , biomeGrid);
+        ChunkData cd = cg.generateChunkData(world, random, 0, 0, biomeGrid);
         assertEquals(data, cd);
         // Verifications
         // Default biome
@@ -128,7 +119,7 @@ public class ChunkGeneratorWorldTest {
     @Test
     public void testGenerateChunkDataWorldRandomIntIntBiomeGridEnd() {
         when(world.getEnvironment()).thenReturn(World.Environment.THE_END);
-        ChunkData cd = cg.generateChunkData(world, random, 0 , 0 , biomeGrid);
+        ChunkData cd = cg.generateChunkData(world, random, 0, 0, biomeGrid);
         assertEquals(data, cd);
         // Verifications
         // Default biome
@@ -147,7 +138,7 @@ public class ChunkGeneratorWorldTest {
     @Test
     public void testGenerateChunkDataWorldRandomIntIntBiomeGridNetherWithRoof() {
         when(world.getEnvironment()).thenReturn(World.Environment.NETHER);
-        ChunkData cd = cg.generateChunkData(world, random, 0 , 0 , biomeGrid);
+        ChunkData cd = cg.generateChunkData(world, random, 0, 0, biomeGrid);
         assertEquals(data, cd);
         // Verifications
         // Nether roof check
@@ -165,7 +156,7 @@ public class ChunkGeneratorWorldTest {
     public void testGenerateChunkDataWorldRandomIntIntBiomeGridNetherNoRoof() {
         when(settings.isNetherRoof()).thenReturn(false);
         when(world.getEnvironment()).thenReturn(World.Environment.NETHER);
-        ChunkData cd = cg.generateChunkData(world, random, 0 , 0 , biomeGrid);
+        ChunkData cd = cg.generateChunkData(world, random, 0, 0, biomeGrid);
         assertEquals(data, cd);
         // Verifications
         verify(settings).getDefaultNetherBiome();

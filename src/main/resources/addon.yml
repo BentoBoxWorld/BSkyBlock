@@ -8,7 +8,7 @@ icon: "BEACON"
 authors: tastybento,
 
 permissions:
-# Non-command permissions
+  # Non-command permissions
   bskyblock.island.lock:
     description: Allows island locking in settings
     default: true

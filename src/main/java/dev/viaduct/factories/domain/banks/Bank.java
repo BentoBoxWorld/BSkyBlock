@@ -28,8 +28,9 @@ public class Bank {
         factoryScoreboard.updateResourceLine(resource);
     }
 
-    public void removeFromResource(Resource resource, double amount) {
+    public void removeFromResource(Resource resource, FactoryScoreboard factoryScoreboard, double amount) {
         resourceMap.put(resource, resourceMap.getOrDefault(resource, 0.0) - amount);
+        factoryScoreboard.updateResourceLine(resource);
     }
 
     public double getResourceAmt(Resource resource) {

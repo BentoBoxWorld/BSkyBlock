@@ -1,15 +1,11 @@
 package dev.viaduct.factories;
 
-import java.util.*;
-
+import com.google.common.base.Enums;
 import org.bukkit.Difficulty;
 import org.bukkit.GameMode;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.EntityType;
 import org.eclipse.jdt.annotation.NonNull;
-
-import com.google.common.base.Enums;
-
 import world.bentobox.bentobox.BentoBox;
 import world.bentobox.bentobox.api.configuration.ConfigComment;
 import world.bentobox.bentobox.api.configuration.ConfigEntry;
@@ -19,11 +15,14 @@ import world.bentobox.bentobox.api.flags.Flag;
 import world.bentobox.bentobox.database.objects.adapters.Adapter;
 import world.bentobox.bentobox.database.objects.adapters.FlagBooleanSerializer;
 
+import java.util.*;
+
 /**
  * All the plugin settings are here
+ *
  * @author Tastybento
  */
-@StoreAt(filename="config.yml", path="addons/factories") // Explicitly call out what name this should have.
+@StoreAt(filename = "config.yml", path = "addons/factories") // Explicitly call out what name this should have.
 @ConfigComment("factories Configuration [version]")
 public class Settings implements WorldSettings {
 
@@ -699,8 +698,7 @@ public class Settings implements WorldSettings {
      * @deprecated since 1.21
      */
     @Override
-    public Map<Flag, Integer> getDefaultIslandFlags()
-    {
+    public Map<Flag, Integer> getDefaultIslandFlags() {
         return Collections.emptyMap();
     }
 
@@ -710,8 +708,7 @@ public class Settings implements WorldSettings {
      * @deprecated since 1.21
      */
     @Override
-    public Map<Flag, Integer> getDefaultIslandSettings()
-    {
+    public Map<Flag, Integer> getDefaultIslandSettings() {
         return Collections.emptyMap();
     }
 
@@ -720,12 +717,12 @@ public class Settings implements WorldSettings {
      * Return map of flags ID's linked to default rank for new island.
      * This is necessary so users could specify any flag names in settings file from other plugins and addons.
      * Otherwise, Flag reader would mark flag as invalid and remove it.
-     * @since 1.21
+     *
      * @return default rank settings for new islands.
+     * @since 1.21
      */
     @Override
-    public Map<String, Integer> getDefaultIslandFlagNames()
-    {
+    public Map<String, Integer> getDefaultIslandFlagNames() {
         return this.defaultIslandFlagNames;
     }
 
@@ -734,12 +731,12 @@ public class Settings implements WorldSettings {
      * Return map of flags ID's linked to default settings for new island.
      * This is necessary so users could specify any flag names in settings file from other plugins and addons.
      * Otherwise, Flag reader would mark flag as invalid and remove it.
-     * @since 1.21
+     *
      * @return default settings for new islands.
+     * @since 1.21
      */
     @Override
-    public Map<String, Integer> getDefaultIslandSettingNames()
-    {
+    public Map<String, Integer> getDefaultIslandSettingNames() {
         return this.defaultIslandSettingNames;
     }
 
@@ -811,36 +808,36 @@ public class Settings implements WorldSettings {
 
     /**
      * This method returns the createIslandOnFirstLoginEnabled boolean value.
+     *
      * @return the createIslandOnFirstLoginEnabled value
      * @since 1.9.0
      */
     @Override
-    public boolean isCreateIslandOnFirstLoginEnabled()
-    {
+    public boolean isCreateIslandOnFirstLoginEnabled() {
         return createIslandOnFirstLoginEnabled;
     }
 
 
     /**
      * This method returns the createIslandOnFirstLoginDelay int value.
+     *
      * @return the createIslandOnFirstLoginDelay value
      * @since 1.9.0
      */
     @Override
-    public int getCreateIslandOnFirstLoginDelay()
-    {
+    public int getCreateIslandOnFirstLoginDelay() {
         return createIslandOnFirstLoginDelay;
     }
 
 
     /**
      * This method returns the createIslandOnFirstLoginAbortOnLogout boolean value.
+     *
      * @return the createIslandOnFirstLoginAbortOnLogout value
      * @since 1.9.0
      */
     @Override
-    public boolean isCreateIslandOnFirstLoginAbortOnLogout()
-    {
+    public boolean isCreateIslandOnFirstLoginAbortOnLogout() {
         return createIslandOnFirstLoginAbortOnLogout;
     }
 
@@ -1141,8 +1138,7 @@ public class Settings implements WorldSettings {
      *
      * @param defaultIslandFlagNames the default island flag names
      */
-    public void setDefaultIslandFlagNames(Map<String, Integer> defaultIslandFlagNames)
-    {
+    public void setDefaultIslandFlagNames(Map<String, Integer> defaultIslandFlagNames) {
         this.defaultIslandFlagNames = defaultIslandFlagNames;
     }
 
@@ -1152,8 +1148,7 @@ public class Settings implements WorldSettings {
      *
      * @param defaultIslandSettingNames the default island setting names
      */
-    public void setDefaultIslandSettingNames(Map<String, Integer> defaultIslandSettingNames)
-    {
+    public void setDefaultIslandSettingNames(Map<String, Integer> defaultIslandSettingNames) {
         this.defaultIslandSettingNames = defaultIslandSettingNames;
     }
 
@@ -1259,24 +1254,21 @@ public class Settings implements WorldSettings {
     /**
      * @param createIslandOnFirstLoginEnabled the createIslandOnFirstLoginEnabled to set
      */
-    public void setCreateIslandOnFirstLoginEnabled(boolean createIslandOnFirstLoginEnabled)
-    {
+    public void setCreateIslandOnFirstLoginEnabled(boolean createIslandOnFirstLoginEnabled) {
         this.createIslandOnFirstLoginEnabled = createIslandOnFirstLoginEnabled;
     }
 
     /**
      * @param createIslandOnFirstLoginDelay the createIslandOnFirstLoginDelay to set
      */
-    public void setCreateIslandOnFirstLoginDelay(int createIslandOnFirstLoginDelay)
-    {
+    public void setCreateIslandOnFirstLoginDelay(int createIslandOnFirstLoginDelay) {
         this.createIslandOnFirstLoginDelay = createIslandOnFirstLoginDelay;
     }
 
     /**
      * @param createIslandOnFirstLoginAbortOnLogout the createIslandOnFirstLoginAbortOnLogout to set
      */
-    public void setCreateIslandOnFirstLoginAbortOnLogout(boolean createIslandOnFirstLoginAbortOnLogout)
-    {
+    public void setCreateIslandOnFirstLoginAbortOnLogout(boolean createIslandOnFirstLoginAbortOnLogout) {
         this.createIslandOnFirstLoginAbortOnLogout = createIslandOnFirstLoginAbortOnLogout;
     }
 
@@ -1591,8 +1583,9 @@ public class Settings implements WorldSettings {
 
     /**
      * Toggles whether the player should be teleported automatically to his island when it is created.
+     *
      * @return {@code true} if the player should be teleported automatically to his island when it is created,
-     *         {@code false} otherwise.
+     * {@code false} otherwise.
      * @since 1.10.0
      */
     @Override
@@ -1813,6 +1806,7 @@ public class Settings implements WorldSettings {
 
     /**
      * Sets make nether portals.
+     *
      * @param makeNetherPortals the make nether portals
      */
     public void setMakeNetherPortals(boolean makeNetherPortals) {
@@ -1821,6 +1815,7 @@ public class Settings implements WorldSettings {
 
     /**
      * Sets make end portals.
+     *
      * @param makeEndPortals the make end portals
      */
     public void setMakeEndPortals(boolean makeEndPortals) {

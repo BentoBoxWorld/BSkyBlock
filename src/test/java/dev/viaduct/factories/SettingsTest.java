@@ -1,14 +1,5 @@
 package dev.viaduct.factories;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import org.bukkit.Difficulty;
 import org.bukkit.GameMode;
 import org.bukkit.block.Biome;
@@ -16,9 +7,15 @@ import org.bukkit.entity.EntityType;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import static org.junit.Assert.*;
+
 /**
  * @author tastybento
- *
  */
 public class SettingsTest {
 

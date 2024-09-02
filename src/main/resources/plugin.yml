@@ -3,4 +3,4 @@ main: dev.viaduct.factories.FactoriesPlugin
 version: ${project.version}${build.number}
 api-version: "1.19"
 
-authors: [tastybento, xxAli, oschwab]
+authors: [ tastybento, xxAli, oschwab ]

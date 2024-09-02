@@ -1,23 +1,23 @@
 package dev.viaduct.factories;
 
+import dev.viaduct.factories.generators.ChunkGeneratorWorld;
 import org.bukkit.World;
 import org.bukkit.World.Environment;
-import org.bukkit.entity.SpawnCategory;
 import org.bukkit.WorldCreator;
 import org.bukkit.WorldType;
+import org.bukkit.entity.SpawnCategory;
 import org.bukkit.event.Listener;
 import org.bukkit.generator.ChunkGenerator;
 import org.eclipse.jdt.annotation.Nullable;
-
 import world.bentobox.bentobox.api.addons.GameModeAddon;
 import world.bentobox.bentobox.api.commands.admin.DefaultAdminCommand;
 import world.bentobox.bentobox.api.commands.island.DefaultPlayerCommand;
 import world.bentobox.bentobox.api.configuration.Config;
 import world.bentobox.bentobox.api.configuration.WorldSettings;
-import dev.viaduct.factories.generators.ChunkGeneratorWorld;
 
 /**
  * Main BSkyBlock class - provides an island minigame in the sky
+ *
  * @author tastybento
  * @author Poslovitch
  * @author xxAli
@@ -42,8 +42,10 @@ public class Factories extends GameModeAddon implements Listener {
         // Chunk generator
         chunkGenerator = settings.isUseOwnGenerator() ? null : new ChunkGeneratorWorld(this);
         // Register commands
-        playerCommand = new DefaultPlayerCommand(this) {};
-        adminCommand = new DefaultAdminCommand(this) {};
+        playerCommand = new DefaultPlayerCommand(this) {
+        };
+        adminCommand = new DefaultAdminCommand(this) {
+        };
     }
 
     private boolean loadSettings() {
@@ -59,7 +61,7 @@ public class Factories extends GameModeAddon implements Listener {
     }
 
     @Override
-    public void onEnable(){
+    public void onEnable() {
         // Register this
         registerListener(this);
     }
@@ -110,8 +112,9 @@ public class Factories extends GameModeAddon implements Listener {
 
     /**
      * Gets a world or generates a new world if it does not exist
-     * @param worldName2 - the overworld name
-     * @param env - the environment
+     *
+     * @param worldName2      - the overworld name
+     * @param env             - the environment
      * @param chunkGenerator2 - the chunk generator. If <tt>null</tt> then the generator will not be specified
      * @return world loaded or generated
      */

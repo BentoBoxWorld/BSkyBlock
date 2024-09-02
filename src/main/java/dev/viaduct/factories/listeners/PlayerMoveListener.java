@@ -2,6 +2,7 @@ package dev.viaduct.factories.listeners;
 
 import dev.viaduct.factories.FactoriesPlugin;
 import dev.viaduct.factories.domain.lands.Land;
+import dev.viaduct.factories.guis.menus.PlayerUpgradeMenu;
 import dev.viaduct.factories.registries.FactoryPlayerRegistry;
 import dev.viaduct.factories.settings.SettingHolder;
 import dev.viaduct.factories.settings.SettingType;
@@ -63,6 +64,7 @@ public class PlayerMoveListener implements Listener {
 
             if (playerInAccessibleLand) return;
             event.setCancelled(true);
+            new PlayerUpgradeMenu().showToPlayer(factoryPlayer);
         });
     }
 

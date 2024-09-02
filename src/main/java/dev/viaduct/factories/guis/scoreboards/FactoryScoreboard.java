@@ -29,7 +29,7 @@ public class FactoryScoreboard {
         Objective objective = scoreboard.registerNewObjective("Resources", Criteria.DUMMY, "dummy");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
         objective.setDisplayName(Chat.colorizeHex("#FFD700&lFactories"));
-        
+
         Score divider = objective.getScore("               ");
         divider.setScore(15); // index 15
 

@@ -10,6 +10,7 @@
 <img width="509" alt="BSkyBlock" src="https://user-images.githubusercontent.com/4407265/227750292-5617537d-c99a-4a7e-864e-5de990b8c195.png">
 
 ## About
+
 Play SkyBlock with your friends! Don't fall! See the config.yml for all the settings. This is an addon for BentoBox.
 
 ## Documentation

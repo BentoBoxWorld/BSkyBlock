@@ -462,7 +462,7 @@ island:
     #    * "[SUDO] bbox version"
     #    * "bsbadmin deaths set [player] 0"
     # Added since 1.8.0.
-    on-join: []
+    on-join: [ ]
     # List of commands to run when a player leaves an island, resets his island or gets kicked from it.
     # These commands are run by the console, unless otherwise stated using the [SUDO] prefix,
     # in which case they are executed by the player.
@@ -476,7 +476,7 @@ island:
     #
     # Note that player-executed commands might not work, as these commands can be run with said player being offline.
     # Added since 1.8.0.
-    on-leave: []
+    on-leave: [ ]
     # List of commands that should be executed when the player respawns after death if Flags.ISLAND_RESPAWN is true.
     # These commands are run by the console, unless otherwise stated using the [SUDO] prefix,
     # in which case they are executed by the player.
@@ -490,7 +490,7 @@ island:
     #
     # Note that player-executed commands might not work, as these commands can be run with said player being offline.
     # Added since 1.14.0.
-    on-respawn: []
+    on-respawn: [ ]
   sethome:
     nether:
       # Allow setting home in the nether. Only available on nether islands, not vanilla nether.
@@ -520,7 +520,7 @@ protection:
   # BSkyBlock blocked mobs.
   # List of mobs that should not spawn in BSkyBlock.
   # Added since 1.13.1.
-  block-mobs: []
+  block-mobs: [ ]
   # Invincible visitors. List of damages that will not affect visitors.
   # Make list blank if visitors should receive all damages
   invincible-visitors:

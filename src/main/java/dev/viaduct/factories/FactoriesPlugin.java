@@ -9,6 +9,7 @@ import dev.viaduct.factories.packets.listeners.ScoreboardPacketListener;
 import dev.viaduct.factories.registries.FactoryPlayerRegistry;
 import dev.viaduct.factories.registries.RegistryManager;
 import dev.viaduct.factories.resources.ResourceManager;
+import dev.viaduct.factories.upgrades.UpgradeManager;
 import io.github.retrooper.packetevents.factory.spigot.SpigotPacketEventsBuilder;
 import lombok.Getter;
 import world.bentobox.bentobox.api.addons.Addon;
@@ -26,6 +27,7 @@ public class FactoriesPlugin extends Pladdon {
     public static RegistryManager registryManager;
 
     public ResourceManager resourceManager;
+    public UpgradeManager upgradeManager;
 
     @Override
     public Addon getAddon() {
@@ -46,7 +48,7 @@ public class FactoriesPlugin extends Pladdon {
     @Override
     public void onEnable() {
         instance = this;
-        initRegistries();
+        initManagers();
         getServer().getPluginManager()
                 .registerEvents(new PlayerJoinListener(), this);
         getServer().getPluginManager().registerEvents(
@@ -66,13 +68,16 @@ public class FactoriesPlugin extends Pladdon {
         PacketEvents.getAPI().terminate();
     }
 
-    private void initRegistries() {
+    private void initManagers() {
         registryManager = new RegistryManager();
 
         registryManager.registerRegistry(FactoryPlayerRegistry.class, new FactoryPlayerRegistry());
 
         resourceManager = new ResourceManager();
         resourceManager.registerResources();
+
+        upgradeManager = new UpgradeManager();
+        upgradeManager.init();
     }
 
 }

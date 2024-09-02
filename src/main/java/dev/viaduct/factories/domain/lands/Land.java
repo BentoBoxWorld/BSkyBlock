@@ -2,7 +2,6 @@ package dev.viaduct.factories.domain.lands;
 
 import dev.viaduct.factories.FactoriesPlugin;
 import dev.viaduct.factories.domain.players.FactoryPlayer;
-import dev.viaduct.factories.settings.SettingType;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -20,6 +19,8 @@ public class Land {
     private Location playerAccessLocationLowestCorner;
     private Location playerAccessLocationHighestCorner;
 
+    private int level = 0;
+
     public Land(FactoryPlayer factoryPlayer) {
         // Redo this
         this.island = BentoBox.getInstance()
@@ -30,6 +31,7 @@ public class Land {
                         factoryPlayer.getPlayer().getUniqueId());
         this.locOfCenterOfIsland = island.getCenter();
         this.factoryPlayer = factoryPlayer;
+        setAccessibleLand();
     }
 
     public void setAccessibleLand() {
@@ -37,16 +39,15 @@ public class Land {
         int blockY = locOfCenterOfIsland.getBlockY();
         int blockZ = locOfCenterOfIsland.getBlockZ();
 
-        double accessibleLand = factoryPlayer.getSettingHolder()
-                .getSetting(SettingType.ACCESSIBLE_LAND_BLOCKS);
+        int accessibleLand = getSizeInBlocksForLevel(level);
 
-        int lowestLeftX = (int) (blockX - accessibleLand);
-        int lowestLeftY = (int) (blockY - accessibleLand);
-        int lowestLeftZ = (int) (blockZ - accessibleLand);
+        int lowestLeftX = blockX - accessibleLand;
+        int lowestLeftY = blockY - accessibleLand;
+        int lowestLeftZ = blockZ - accessibleLand;
 
-        int highestRightX = (int) (blockX + accessibleLand);
-        int highestRightY = (int) (blockY + accessibleLand);
-        int highestRightZ = (int) (blockZ + accessibleLand);
+        int highestRightX = blockX + accessibleLand;
+        int highestRightY = blockY + accessibleLand;
+        int highestRightZ = blockZ + accessibleLand;
 
         this.playerAccessLocationLowestCorner = new Location(island.getWorld(), lowestLeftX, lowestLeftY, lowestLeftZ);
         this.playerAccessLocationHighestCorner = new Location(island.getWorld(), highestRightX, highestRightY, highestRightZ);
@@ -60,8 +61,24 @@ public class Land {
         double z = location.getZ();
 
         return x >= playerAccessLocationLowestCorner.getX() && x <= playerAccessLocationHighestCorner.getX() &&
-                        y >= playerAccessLocationLowestCorner.getY() && y <= playerAccessLocationHighestCorner.getY() &&
-                        z >= playerAccessLocationLowestCorner.getZ() && z <= playerAccessLocationHighestCorner.getZ();
+                y >= playerAccessLocationLowestCorner.getY() && y <= playerAccessLocationHighestCorner.getY() &&
+                z >= playerAccessLocationLowestCorner.getZ() && z <= playerAccessLocationHighestCorner.getZ();
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+        setAccessibleLand();
+    }
+
+    private int getSizeInBlocksForLevel(int level) {
+        return switch (level) {
+            case 1 -> 20;
+            case 2 -> 30;
+            case 3 -> 40;
+            case 4 -> 50;
+            case 5 -> 60;
+            default -> 10;
+        };
     }
 
 }

@@ -1,11 +1,6 @@
 package dev.viaduct.factories.generators;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-
+import dev.viaduct.factories.Factories;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.World.Environment;
@@ -15,11 +10,11 @@ import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.util.Vector;
 import org.bukkit.util.noise.PerlinOctaveGenerator;
 
-import dev.viaduct.factories.Factories;
+import java.util.*;
 
 /**
  * @author tastybento
- *         Creates the world
+ * Creates the world
  */
 public class ChunkGeneratorWorld extends ChunkGenerator {
 
@@ -42,7 +37,7 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
             result.setRegion(0, world.getMinHeight(), 0, 16, addon.getSettings().getSeaHeight() + 1, 16, Material.WATER);
         }
         if (world.getEnvironment().equals(Environment.NETHER) && addon.getSettings().isNetherRoof()) {
-            roofChunk.forEach((k,v) -> result.setBlock(k.getBlockX(), world.getMaxHeight() + k.getBlockY(), k.getBlockZ(), v));
+            roofChunk.forEach((k, v) -> result.setBlock(k.getBlockX(), world.getMaxHeight() + k.getBlockY(), k.getBlockZ(), v));
         }
         return result;
     }
@@ -55,14 +50,14 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
 
     private void setBiome(World world, BiomeGrid biomeGrid) {
         Biome biome = world.getEnvironment() == Environment.NORMAL ? addon.getSettings().getDefaultBiome() :
-            world.getEnvironment() == Environment.NETHER ? addon.getSettings().getDefaultNetherBiome() : addon.getSettings().getDefaultEndBiome();
-            for (int x = 0; x < 16; x+=4) {
-                for (int z = 0; z < 16; z+=4) {
-                    for (int y = world.getMinHeight(); y < world.getMaxHeight(); y+=4) {
-                        biomeGrid.setBiome(x, y, z, biome);
-                    }
+                world.getEnvironment() == Environment.NETHER ? addon.getSettings().getDefaultNetherBiome() : addon.getSettings().getDefaultEndBiome();
+        for (int x = 0; x < 16; x += 4) {
+            for (int z = 0; z < 16; z += 4) {
+                for (int y = world.getMinHeight(); y < world.getMaxHeight(); y += 4) {
+                    biomeGrid.setBiome(x, y, z, biome);
                 }
             }
+        }
 
     }
 
@@ -92,14 +87,14 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
                 setBlock(x, -1, z, Material.BEDROCK);
                 // Next three layers are a mix of bedrock and netherrack
                 for (int y = 2; y < 5; y++) {
-                    double r = gen.noise(x, - y, z, 0.5, 0.5);
+                    double r = gen.noise(x, -y, z, 0.5, 0.5);
                     if (r > 0D) {
-                        setBlock(x, - y, z, Material.BEDROCK);
+                        setBlock(x, -y, z, Material.BEDROCK);
                     }
                 }
                 // Next three layers are a mix of netherrack and air
                 for (int y = 5; y < 8; y++) {
-                    double r = gen.noise(x, - y, z, 0.5, 0.5);
+                    double r = gen.noise(x, -y, z, 0.5, 0.5);
                     if (r > 0D) {
                         setBlock(x, -y, z, Material.NETHERRACK);
                     } else {
@@ -107,38 +102,38 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
                     }
                 }
                 // Layer 8 may be glowstone
-                double r = gen.noise(x, - 8, z, rand.nextFloat(), rand.nextFloat());
+                double r = gen.noise(x, -8, z, rand.nextFloat(), rand.nextFloat());
                 if (r > 0.5D) {
                     // Have blobs of glowstone
                     switch (rand.nextInt(4)) {
-                    case 1:
-                        // Single block
-                        setBlock(x, -8, z, Material.GLOWSTONE);
-                        if (x < 14 && z < 14) {
-                            setBlock(x + 1, -8, z + 1, Material.GLOWSTONE);
-                            setBlock(x + 2, -8, z + 2, Material.GLOWSTONE);
-                            setBlock(x + 1, -8, z + 2, Material.GLOWSTONE);
-                            setBlock(x + 1, -8, z + 2, Material.GLOWSTONE);
-                        }
-                        break;
-                    case 2:
-                        // Stalactite
-                        for (int i = 0; i < rand.nextInt(10); i++) {
-                            setBlock(x, - 8 - i, z, Material.GLOWSTONE);
-                        }
-                        break;
-                    case 3:
-                        setBlock(x, -8, z, Material.GLOWSTONE);
-                        if (x > 3 && z > 3) {
-                            for (int xx = 0; xx < 3; xx++) {
-                                for (int zz = 0; zz < 3; zz++) {
-                                    setBlock(x - xx, - 8 - rand.nextInt(2), z - xx, Material.GLOWSTONE);
+                        case 1:
+                            // Single block
+                            setBlock(x, -8, z, Material.GLOWSTONE);
+                            if (x < 14 && z < 14) {
+                                setBlock(x + 1, -8, z + 1, Material.GLOWSTONE);
+                                setBlock(x + 2, -8, z + 2, Material.GLOWSTONE);
+                                setBlock(x + 1, -8, z + 2, Material.GLOWSTONE);
+                                setBlock(x + 1, -8, z + 2, Material.GLOWSTONE);
+                            }
+                            break;
+                        case 2:
+                            // Stalactite
+                            for (int i = 0; i < rand.nextInt(10); i++) {
+                                setBlock(x, -8 - i, z, Material.GLOWSTONE);
+                            }
+                            break;
+                        case 3:
+                            setBlock(x, -8, z, Material.GLOWSTONE);
+                            if (x > 3 && z > 3) {
+                                for (int xx = 0; xx < 3; xx++) {
+                                    for (int zz = 0; zz < 3; zz++) {
+                                        setBlock(x - xx, -8 - rand.nextInt(2), z - xx, Material.GLOWSTONE);
+                                    }
                                 }
                             }
-                        }
-                        break;
-                    default:
-                        setBlock(x, -8, z, Material.GLOWSTONE);
+                            break;
+                        default:
+                            setBlock(x, -8, z, Material.GLOWSTONE);
                     }
                     setBlock(x, -8, z, Material.GLOWSTONE);
                 } else {

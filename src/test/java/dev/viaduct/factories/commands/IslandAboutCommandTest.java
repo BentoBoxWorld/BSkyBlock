@@ -4,7 +4,6 @@ import org.junit.Test;
 
 /**
  * @author tastybento
- *
  */
 public class IslandAboutCommandTest {
 
