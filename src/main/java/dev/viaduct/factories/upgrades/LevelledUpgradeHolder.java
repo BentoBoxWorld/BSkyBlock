@@ -1,23 +1,31 @@
 package dev.viaduct.factories.upgrades;
 
-import dev.viaduct.factories.upgrades.impl.LevelledUpgrade;
+import lombok.Getter;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
+@Getter
 public class LevelledUpgradeHolder {
 
-    private final List<LevelledUpgrade> upgradeList;
-    private int level = 0;
+    private final Map<UpgradeManager.UpgradeName, Integer> upgradeLevelMap;
 
-    public LevelledUpgradeHolder(LevelledUpgrade... upgrades) {
-        upgradeList = new ArrayList<>(Arrays.asList(upgrades));
+    public LevelledUpgradeHolder() {
+        this.upgradeLevelMap = new HashMap<>();
     }
 
-    public LevelledUpgrade getUpgrade() {
-        return upgradeList.get(level);
+    public Integer getUpgradeLevel(UpgradeManager.UpgradeName upgradeName) {
+        return upgradeLevelMap.get(upgradeName);
     }
 
+    public void setUpgradeLevel(UpgradeManager.UpgradeName upgradeName, int level) {
+        upgradeLevelMap.put(upgradeName, level);
+    }
+
+    public void initializeDefaultUpgrades() {
+        Arrays.stream(UpgradeManager.UpgradeName.values())
+                .forEach(upgradeName -> upgradeLevelMap.put(upgradeName, 0));
+    }
 
 }

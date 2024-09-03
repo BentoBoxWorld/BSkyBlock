@@ -28,6 +28,16 @@ public class Bank {
         factoryScoreboard.updateResourceLine(resource);
     }
 
+    public void addToResource(String resourceName, FactoryScoreboard factoryScoreboard, double amount) {
+        resourceMap.keySet().stream()
+                .filter(resource -> resource.getName().equalsIgnoreCase(resourceName))
+                .findAny()
+                .ifPresent(resource -> {
+                    addToResource(resource, factoryScoreboard, amount);
+                    factoryScoreboard.updateResourceLine(resource);
+                });
+    }
+
     public void removeFromResource(Resource resource, FactoryScoreboard factoryScoreboard, double amount) {
         resourceMap.put(resource, resourceMap.getOrDefault(resource, 0.0) - amount);
         factoryScoreboard.updateResourceLine(resource);

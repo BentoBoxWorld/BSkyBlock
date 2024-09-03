@@ -1,51 +1,26 @@
 package dev.viaduct.factories.upgrades.impl;
 
-import dev.viaduct.factories.conditions.AbstractCondition;
-import dev.viaduct.factories.conditions.ConditionHolder;
-import dev.viaduct.factories.domain.players.FactoryPlayer;
+import dev.viaduct.factories.exceptions.MaxLevelReachedException;
 import dev.viaduct.factories.upgrades.Upgrade;
-import dev.viaduct.factories.utils.Chat;
+import dev.viaduct.factories.upgrades.mappers.LevelData;
+import dev.viaduct.factories.upgrades.mappers.LevelDataMapper;
 import lombok.Getter;
-import org.bukkit.Material;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class LevelledUpgrade implements Upgrade {
+@Getter
+public abstract class LevelledUpgrade<T> implements Upgrade {
 
-    private final Material icon;
-    private final String displayName;
-    private final List<String> description;
+    protected final LevelDataMapper<T> levelDataMapper;
 
-    @Getter
-    private final ConditionHolder conditionHolder;
-
-    public LevelledUpgrade(Material icon, String displayName, List<String> description, AbstractCondition... abstractConditions) {
-        this.icon = icon;
-        this.displayName = displayName;
-        this.description = new ArrayList<>(description);
-        this.conditionHolder = new ConditionHolder(abstractConditions);
+    public LevelledUpgrade(LevelDataMapper<T> levelDataMapper) {
+        this.levelDataMapper = levelDataMapper;
     }
 
-    @Override
-    public void tryUpgrade(FactoryPlayer factoryPlayer) {
-        if (!conditionHolder.allConditionsMet(factoryPlayer)) return;
-        conditionHolder.executeActions(factoryPlayer);
+    public LevelData<T> getDataForLevel(int level) throws MaxLevelReachedException {
+        return levelDataMapper.getDataForLevel(level);
     }
 
-    @Override
-    public Material getIcon() {
-        return icon;
-    }
-
-    @Override
-    public String getDisplayName() {
-        return Chat.colorize(displayName);
-    }
-
-    @Override
-    public List<String> getDescription() {
-        return description;
-    }
+    public abstract List<String> getLevelDataInfo(int level);
 
 }

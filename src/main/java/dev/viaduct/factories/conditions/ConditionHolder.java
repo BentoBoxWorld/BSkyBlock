@@ -1,6 +1,5 @@
 package dev.viaduct.factories.conditions;
 
-import dev.viaduct.factories.actions.Action;
 import dev.viaduct.factories.domain.players.FactoryPlayer;
 
 import java.util.ArrayList;
@@ -15,23 +14,18 @@ public class ConditionHolder {
         this.conditions = new ArrayList<>(Arrays.asList(conditions));
     }
 
-    public void addCondition(AbstractCondition condition) {
-        conditions.add(condition);
-    }
-
     public boolean allConditionsMet(FactoryPlayer factoryPlayer) {
         return conditions.stream().allMatch(condition -> condition.isMet(factoryPlayer));
     }
 
     public void executeActions(FactoryPlayer factoryPlayer) {
-        conditions.forEach(condition -> condition.getActions()
-                .forEach(action -> action.execute(factoryPlayer)));
+        conditions.forEach(condition -> condition.executeActions(factoryPlayer));
     }
 
-    public List<Action> getActions() {
-        List<Action> actions = new ArrayList<>();
-        conditions.forEach(condition -> actions.addAll(condition.getActions()));
-        return actions;
+    public List<String> getConditionStrings() {
+        List<String> conditionStrings = new ArrayList<>();
+        conditions.forEach(condition -> conditionStrings.add(condition.toString()));
+        return conditionStrings;
     }
 
 }

@@ -1,24 +1,21 @@
 package dev.viaduct.factories.actions.impl;
 
-import dev.viaduct.factories.actions.Action;
 import dev.viaduct.factories.domain.players.FactoryPlayer;
 import dev.viaduct.factories.settings.SettingType;
-import lombok.Getter;
+import dev.viaduct.factories.upgrades.UpgradeManager;
 
-@Getter
-public class LandSizeUpgradeAction implements Action {
+public class LandUpgradeAction extends UpgradeLevelAction {
 
-    private final int level;
-
-    public LandSizeUpgradeAction(int level) {
-        this.level = level;
+    public LandUpgradeAction(int newLevel) {
+        super(UpgradeManager.UpgradeName.LAND_SIZE_UPGRADE, newLevel);
     }
 
     @Override
     public void execute(FactoryPlayer factoryPlayer) {
+        super.execute(factoryPlayer);
         factoryPlayer.getSettingHolder()
                 .getSetting(SettingType.PLAYER_LAND)
-                .setLevel(level);
+                .setAccessibleLand();
     }
 
 }

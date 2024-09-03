@@ -68,6 +68,14 @@ public class ItemBuilder {
         return this;
     }
 
+    public ItemBuilder addLoreLines(List<String> lines) {
+        lines.forEach(line -> {
+            line = "&7" + line;
+            lore.add(Chat.colorize(line));
+        });
+        return this;
+    }
+
     public ItemBuilder setLore(List<String> lore) {
         this.lore = Chat.colorizeList(lore);
         return this;

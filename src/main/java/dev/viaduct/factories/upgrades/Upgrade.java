@@ -9,6 +9,10 @@ public interface Upgrade {
 
     void tryUpgrade(FactoryPlayer factoryPlayer);
 
+    int getBaseValue();
+
+    int getMaxLevel();
+
     Material getIcon();
 
     String getDisplayName();

@@ -1,6 +1,7 @@
 package dev.viaduct.factories.conditions;
 
 import dev.viaduct.factories.actions.Action;
+import dev.viaduct.factories.domain.players.FactoryPlayer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,8 +16,8 @@ public abstract class AbstractCondition implements Condition {
     }
 
     @Override
-    public List<Action> getActions() {
-        return actions;
+    public void executeActions(FactoryPlayer factoryPlayer) {
+        actions.forEach(action -> action.execute(factoryPlayer));
     }
 
 }
