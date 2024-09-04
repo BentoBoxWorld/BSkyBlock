@@ -2,16 +2,20 @@ package dev.viaduct.factories;
 
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.event.PacketListenerPriority;
+import dev.viaduct.factories.listeners.GeneratorListener;
 import dev.viaduct.factories.listeners.PlayerGetResourceListener;
 import dev.viaduct.factories.listeners.PlayerJoinListener;
 import dev.viaduct.factories.listeners.AccessibleLandListeners;
 import dev.viaduct.factories.packets.listeners.ScoreboardPacketListener;
-import dev.viaduct.factories.registries.FactoryPlayerRegistry;
+import dev.viaduct.factories.registries.impl.FactoryPlayerRegistry;
 import dev.viaduct.factories.registries.RegistryManager;
+import dev.viaduct.factories.registries.impl.GeneratorRegistry;
 import dev.viaduct.factories.resources.ResourceManager;
 import dev.viaduct.factories.upgrades.UpgradeManager;
 import io.github.retrooper.packetevents.factory.spigot.SpigotPacketEventsBuilder;
 import lombok.Getter;
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.PluginManager;
 import world.bentobox.bentobox.api.addons.Addon;
 import world.bentobox.bentobox.api.addons.GameModeAddon;
 import world.bentobox.bentobox.api.addons.Pladdon;
@@ -48,13 +52,8 @@ public class FactoriesPlugin extends Pladdon {
     @Override
     public void onEnable() {
         instance = this;
-        initManagers();
-        getServer().getPluginManager()
-                .registerEvents(new PlayerJoinListener(), this);
-        getServer().getPluginManager().registerEvents(
-                new PlayerGetResourceListener(registryManager.getRegistry(FactoryPlayerRegistry.class)), this);
-        getServer().getPluginManager()
-                .registerEvents(new AccessibleLandListeners(registryManager.getRegistry(FactoryPlayerRegistry.class)), this);
+        initRegistries();
+        registerListeners();
 
         PacketEvents.getAPI().getEventManager().registerListener(new ScoreboardPacketListener(),
                 PacketListenerPriority.LOW);
@@ -68,10 +67,27 @@ public class FactoriesPlugin extends Pladdon {
         PacketEvents.getAPI().terminate();
     }
 
-    private void initManagers() {
+    private void registerListeners() {
+        PluginManager pluginManager = getServer().getPluginManager();
+
+        pluginManager.registerEvents(new PlayerJoinListener(), this);
+        pluginManager.registerEvents(new PlayerGetResourceListener(registryManager
+                .getRegistry(FactoryPlayerRegistry.class)), this);
+        pluginManager.registerEvents(new AccessibleLandListeners(registryManager
+                .getRegistry(FactoryPlayerRegistry.class)), this);
+        pluginManager.registerEvents(new GeneratorListener(registryManager
+                .getRegistry(FactoryPlayerRegistry.class), registryManager
+                .getRegistry(GeneratorRegistry.class)), this);
+    }
+
+    private void initRegistries() {
         registryManager = new RegistryManager();
 
         registryManager.registerRegistry(FactoryPlayerRegistry.class, new FactoryPlayerRegistry());
+        GeneratorRegistry registry = new GeneratorRegistry();
+        registryManager.registerRegistry(GeneratorRegistry.class, registry);
+
+        Bukkit.getScheduler().runTaskLater(this, registry::initialize, 20L);
 
         resourceManager = new ResourceManager();
         resourceManager.registerResources();

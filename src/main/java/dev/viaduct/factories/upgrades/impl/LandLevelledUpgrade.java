@@ -111,9 +111,10 @@ public class LandLevelledUpgrade extends LevelledUpgrade<Integer> {
         return List.of("&7Upgrade your land level to", "&7increase the amount of", "&7land you can access.");
     }
 
+    // TODO: Refactor out the level data info into a separate method
     @Override
     public List<String> getLevelDataInfo(int nextLevel) {
-        LevelData<Integer> levelData;
+        final LevelData<Integer> levelData;
 
         try {
             levelData = levelDataMapper.getDataForLevel(nextLevel);

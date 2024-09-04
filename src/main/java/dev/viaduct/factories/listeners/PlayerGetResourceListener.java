@@ -1,7 +1,7 @@
 package dev.viaduct.factories.listeners;
 
 import dev.viaduct.factories.domain.banks.Bank;
-import dev.viaduct.factories.registries.FactoryPlayerRegistry;
+import dev.viaduct.factories.registries.impl.FactoryPlayerRegistry;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;

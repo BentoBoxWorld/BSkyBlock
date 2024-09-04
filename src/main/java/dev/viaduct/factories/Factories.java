@@ -1,6 +1,6 @@
 package dev.viaduct.factories;
 
-import dev.viaduct.factories.generators.ChunkGeneratorWorld;
+import dev.viaduct.factories.world.generators.ChunkGeneratorWorld;
 import org.bukkit.World;
 import org.bukkit.World.Environment;
 import org.bukkit.WorldCreator;

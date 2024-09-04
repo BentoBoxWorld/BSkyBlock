@@ -51,7 +51,7 @@ public class ItemBuilder {
     }
 
     public ItemBuilder setName(String name) {
-        meta.setDisplayName(Chat.colorize(name));
+        meta.setDisplayName(Chat.colorizeHex(name));
         return this;
     }
 

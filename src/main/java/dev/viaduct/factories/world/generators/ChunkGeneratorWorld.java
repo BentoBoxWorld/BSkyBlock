@@ -1,4 +1,4 @@
-package dev.viaduct.factories.generators;
+package dev.viaduct.factories.world.generators;
 
 import dev.viaduct.factories.Factories;
 import org.bukkit.Material;

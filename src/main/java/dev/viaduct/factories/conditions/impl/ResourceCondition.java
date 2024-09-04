@@ -28,6 +28,7 @@ public class ResourceCondition extends AbstractCondition {
         return playerResourceAmount >= amount;
     }
 
+    @Override
     public String toString() {
         return resource.getFormattedName() + amount + "x";
     }

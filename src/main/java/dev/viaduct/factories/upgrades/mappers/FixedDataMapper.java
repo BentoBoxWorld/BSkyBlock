@@ -5,6 +5,7 @@ import dev.viaduct.factories.exceptions.MaxLevelReachedException;
 import java.util.HashMap;
 import java.util.Map;
 
+// TODO: Refactor out levelDataMap to a separate class
 public class FixedDataMapper<T> implements LevelDataMapper<T> {
 
     private final Map<Integer, LevelData<T>> levelDataMap;

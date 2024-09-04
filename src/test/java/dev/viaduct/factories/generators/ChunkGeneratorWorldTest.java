@@ -2,6 +2,7 @@ package dev.viaduct.factories.generators;
 
 import dev.viaduct.factories.Factories;
 import dev.viaduct.factories.Settings;
+import dev.viaduct.factories.world.generators.ChunkGeneratorWorld;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Server;
