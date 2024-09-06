@@ -2,11 +2,13 @@ package dev.viaduct.factories.conditions;
 
 import dev.viaduct.factories.actions.Action;
 import dev.viaduct.factories.domain.players.FactoryPlayer;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Getter
 public abstract class AbstractCondition implements Condition {
 
     private final List<Action> actions;
