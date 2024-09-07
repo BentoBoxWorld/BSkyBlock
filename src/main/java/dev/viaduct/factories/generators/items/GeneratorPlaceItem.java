@@ -1,6 +1,6 @@
 package dev.viaduct.factories.generators.items;
 
-import dev.viaduct.factories.generators.manual_generators.block_generators.BlockManualGenerator;
+import dev.viaduct.factories.generators.manual_generators.block_generators.impl.BlockManualGenerator;
 import dev.viaduct.factories.registries.impl.GeneratorRegistry;
 import dev.viaduct.factories.utils.ItemBuilder;
 import org.bukkit.inventory.ItemStack;

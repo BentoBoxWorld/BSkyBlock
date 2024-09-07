@@ -1,6 +1,7 @@
 package dev.viaduct.factories.domain.players;
 
 import dev.viaduct.factories.FactoriesPlugin;
+import dev.viaduct.factories.displays.ProgressDisplay;
 import dev.viaduct.factories.domain.banks.Bank;
 import dev.viaduct.factories.generators.Generator;
 import dev.viaduct.factories.generators.GeneratorHolder;
@@ -47,8 +48,8 @@ public class FactoryPlayer {
 
         FactoriesPlugin.getRegistryManager()
                 .getRegistry(GeneratorRegistry.class)
-                .get("oak_wood_generator")
-                .ifPresent(generator -> player.getInventory().setItem(0, generator.getGeneratorPlaceItem()));
+                .getAllValues()
+                .forEach(generator -> player.getInventory().addItem(generator.getGeneratorPlaceItem()));
     }
 
 }

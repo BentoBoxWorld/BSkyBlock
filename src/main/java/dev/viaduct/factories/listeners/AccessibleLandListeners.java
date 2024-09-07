@@ -1,6 +1,7 @@
 package dev.viaduct.factories.listeners;
 
 import dev.viaduct.factories.FactoriesPlugin;
+import dev.viaduct.factories.displays.ProgressDisplay;
 import dev.viaduct.factories.domain.lands.Land;
 import dev.viaduct.factories.guis.menus.PlayerUpgradeMenu;
 import dev.viaduct.factories.registries.impl.FactoryPlayerRegistry;
@@ -45,7 +46,7 @@ public class AccessibleLandListeners implements Listener {
     }
 
     @EventHandler
-    public void onBlockPlace(BlockBreakEvent event) {
+    public void onBlockBreak(BlockBreakEvent event) {
         factoryPlayerRegistry.get(event.getPlayer().getUniqueId()).ifPresent(factoryPlayer -> {
             Player player = factoryPlayer.getPlayer();
 
@@ -88,6 +89,7 @@ public class AccessibleLandListeners implements Listener {
 
             if (playerInAccessibleLand) return;
             event.setCancelled(true);
+
         });
     }
 
