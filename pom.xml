@@ -74,7 +74,7 @@
     <profiles>
         <profile>
             <!-- ci profile is activated if exist environment variable BUILD_NUMBER. -->
-            <!-- It replaces ${build.number} that is currently '-LOCAL' with 
+            <!-- It replaces ${build.number} that is currently '-LOCAL' with
                 correct build number from JENKINS machine. -->
             <id>ci</id>
             <activation>
@@ -88,13 +88,13 @@
             </properties>
         </profile>
         <profile>
-            <!-- Master profile is activated if exist environment variable 
+            <!-- Master profile is activated if exist environment variable
                 GIT_BRANCH and its value is origin/master. -->
-            <!-- It will replace 'revision' with '${build.version}' so it 
+            <!-- It will replace 'revision' with '${build.version}' so it
                 removes '-SNAPSHOT' string at the end. -->
-            <!-- Also, as this is release build, build number can be set 
+            <!-- Also, as this is release build, build number can be set
                 to empty string. -->
-            <!-- This profile will be used only if exist environment variable 
+            <!-- This profile will be used only if exist environment variable
                 GIT_BRANCH with value origin/master. -->
             <id>master</id>
             <activation>
@@ -180,7 +180,7 @@
         <dependency>
             <groupId>com.github.stefvanschie.inventoryframework</groupId>
             <artifactId>IF</artifactId>
-            <version>0.10.16</version>
+            <version>0.10.17</version>
         </dependency>
         <dependency>
             <groupId>me.ogali.customdrops</groupId>

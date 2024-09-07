@@ -1,10 +1,13 @@
 package dev.viaduct.factories.upgrades.impl;
 
+import dev.viaduct.factories.actions.impl.ChatMessageAction;
+import dev.viaduct.factories.actions.impl.PlaySoundAction;
 import dev.viaduct.factories.exceptions.MaxLevelReachedException;
 import dev.viaduct.factories.upgrades.Upgrade;
 import dev.viaduct.factories.upgrades.mappers.LevelData;
 import dev.viaduct.factories.upgrades.mappers.LevelDataMapper;
 import lombok.Getter;
+import org.bukkit.Sound;
 
 import java.util.List;
 
