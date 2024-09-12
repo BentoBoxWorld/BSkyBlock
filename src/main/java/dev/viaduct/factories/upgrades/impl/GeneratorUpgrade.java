@@ -8,10 +8,9 @@ import org.bukkit.Material;
 import java.util.List;
 import java.util.Map;
 
-public class GeneratorUpgrade extends LevelledUpgrade<Integer> {
+public abstract class GeneratorUpgrade extends LevelledUpgrade<Integer> {
 
     public GeneratorUpgrade() {
-        //TODO: Implement LevelData objects for Generator level mapping.
         super(new FixedDataMapper<>(Map.of()));
     }
 
