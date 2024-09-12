@@ -2,6 +2,7 @@ package dev.viaduct.factories.upgrades;
 
 import dev.viaduct.factories.actions.impl.ChatMessageAction;
 import dev.viaduct.factories.actions.impl.PlaySoundAction;
+import dev.viaduct.factories.upgrades.impl.GeneratorUpgrade;
 import dev.viaduct.factories.upgrades.impl.LandLevelledUpgrade;
 import lombok.Getter;
 import org.bukkit.Sound;
@@ -16,7 +17,8 @@ public class UpgradeManager {
     public static final ChatMessageAction UPGRADE_MSG = new ChatMessageAction("Upgrade successful!");
 
     public enum UpgradeName {
-        LAND_SIZE_UPGRADE
+        LAND_SIZE_UPGRADE,
+        GENERATOR_UPGRADE
     }
 
     private final Map<UpgradeName, Upgrade> upgradeMap;
@@ -32,6 +34,8 @@ public class UpgradeManager {
     public void init() {
         upgradeMap.put(UpgradeName.LAND_SIZE_UPGRADE,
                 new LandLevelledUpgrade());
+        upgradeMap.put(UpgradeName.GENERATOR_UPGRADE,
+                new GeneratorUpgrade());
     }
 
 }

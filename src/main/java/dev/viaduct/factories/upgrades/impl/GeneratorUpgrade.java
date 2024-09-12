@@ -2,7 +2,6 @@ package dev.viaduct.factories.upgrades.impl;
 
 import dev.viaduct.factories.domain.players.FactoryPlayer;
 import dev.viaduct.factories.upgrades.mappers.FixedDataMapper;
-import dev.viaduct.factories.upgrades.mappers.LevelDataMapper;
 import dev.viaduct.factories.utils.Chat;
 import org.bukkit.Material;
 
