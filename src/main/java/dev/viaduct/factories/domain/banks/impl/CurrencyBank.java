@@ -2,9 +2,9 @@ package dev.viaduct.factories.domain.banks.impl;
 
 import dev.viaduct.factories.domain.banks.Bank;
 
-public class CreditBank extends Bank {
+public class CurrencyBank extends Bank {
 
-    public CreditBank() {
+    public CurrencyBank() {
         super();
     }
 }

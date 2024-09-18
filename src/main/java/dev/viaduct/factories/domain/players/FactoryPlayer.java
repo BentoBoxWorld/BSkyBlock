@@ -1,7 +1,7 @@
 package dev.viaduct.factories.domain.players;
 
 import dev.viaduct.factories.FactoriesPlugin;
-import dev.viaduct.factories.domain.banks.impl.CreditBank;
+import dev.viaduct.factories.domain.banks.impl.CurrencyBank;
 import dev.viaduct.factories.domain.banks.impl.ResourceBank;
 import dev.viaduct.factories.generators.Generator;
 import dev.viaduct.factories.generators.GeneratorHolder;
@@ -19,7 +19,7 @@ public class FactoryPlayer {
 
     private final Player player;
     private final ResourceBank resourceBank;
-    private final CreditBank creditBank;
+    private final CurrencyBank creditBank;
     private final FactoryScoreboard scoreboard;
     private final SettingHolder settingHolder;
     private final LevelledUpgradeHolder levelledUpgradeHolder;
@@ -28,7 +28,7 @@ public class FactoryPlayer {
     public FactoryPlayer(Player player) {
         this.player = player;
         this.resourceBank = new ResourceBank();
-        this.creditBank = new CreditBank();
+        this.creditBank = new CurrencyBank();
         this.scoreboard = new FactoryScoreboard(this);
         this.settingHolder = new SettingHolder();
         this.levelledUpgradeHolder = new LevelledUpgradeHolder();
