@@ -1,6 +1,5 @@
 package dev.viaduct.factories.guis.scoreboards;
 
-import dev.viaduct.factories.domain.banks.Bank;
 import dev.viaduct.factories.domain.banks.impl.ResourceBank;
 import dev.viaduct.factories.domain.players.FactoryPlayer;
 import dev.viaduct.factories.resources.Resource;

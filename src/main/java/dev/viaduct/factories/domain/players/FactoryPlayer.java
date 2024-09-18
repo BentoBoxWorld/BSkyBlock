@@ -1,7 +1,6 @@
 package dev.viaduct.factories.domain.players;
 
 import dev.viaduct.factories.FactoriesPlugin;
-import dev.viaduct.factories.domain.banks.Bank;
 import dev.viaduct.factories.domain.banks.impl.CreditBank;
 import dev.viaduct.factories.domain.banks.impl.ResourceBank;
 import dev.viaduct.factories.generators.Generator;
@@ -9,7 +8,6 @@ import dev.viaduct.factories.generators.GeneratorHolder;
 import dev.viaduct.factories.guis.scoreboards.FactoryScoreboard;
 import dev.viaduct.factories.registries.impl.FactoryPlayerRegistry;
 import dev.viaduct.factories.registries.impl.GeneratorRegistry;
-import dev.viaduct.factories.resources.currency.impl.Credit;
 import dev.viaduct.factories.settings.SettingHolder;
 import dev.viaduct.factories.upgrades.LevelledUpgradeHolder;
 import lombok.Getter;
