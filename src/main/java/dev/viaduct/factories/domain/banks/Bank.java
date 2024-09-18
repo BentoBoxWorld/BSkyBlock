@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @Getter
-public class Bank {
+public abstract class Bank {
 
     private final Map<Resource, Double> resourceMap;
 

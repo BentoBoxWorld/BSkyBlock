@@ -26,7 +26,7 @@ public class PlayerGetResourceListener implements Listener {
         //  amount of the resource material. If so, increment the amount.
         factoryPlayerRegistry.get(event.getPlayer().getUniqueId())
                 .ifPresent(factoryPlayer -> {
-                    Bank factoryPlayerBank = factoryPlayer.getBank();
+                    Bank factoryPlayerBank = factoryPlayer.getResourceBank();
                     factoryPlayerBank.getResourceByMaterial(material)
                             .ifPresent(resource -> factoryPlayerBank.addToResource(resource, factoryPlayer.getScoreboard(), 1));
                 });

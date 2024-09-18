@@ -1,6 +1,7 @@
 package dev.viaduct.factories.guis.scoreboards;
 
 import dev.viaduct.factories.domain.banks.Bank;
+import dev.viaduct.factories.domain.banks.impl.ResourceBank;
 import dev.viaduct.factories.domain.players.FactoryPlayer;
 import dev.viaduct.factories.resources.Resource;
 import dev.viaduct.factories.utils.Chat;
@@ -14,12 +15,12 @@ public class FactoryScoreboard {
 
     private final Scoreboard scoreboard;
     private final FactoryPlayer factoryPlayer;
-    private final Bank bank;
+    private final ResourceBank resourceBank;
 
     public FactoryScoreboard(FactoryPlayer factoryPlayer) {
         this.scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
         this.factoryPlayer = factoryPlayer;
-        this.bank = factoryPlayer.getBank();
+        this.resourceBank = factoryPlayer.getResourceBank();
 
         addScoreboardLine();
         factoryPlayer.getPlayer().setScoreboard(scoreboard);
@@ -37,7 +38,7 @@ public class FactoryScoreboard {
         resourceTitle.setScore(14); // index 14
 
         // get all resources
-        Set<Resource> resources = bank.getResourceMap().keySet();
+        Set<Resource> resources = resourceBank.getResourceMap().keySet();
 
         int index = 13;
 
@@ -45,7 +46,7 @@ public class FactoryScoreboard {
         for (Resource resource : resources) {
             Team team = scoreboard.registerNewTeam(resource.getName());
             team.addEntry(ChatColor.values()[index] + "");
-            team.setPrefix(Chat.colorize("  &f• ") + resource.getFormattedName() + bank.getResourceAmt(resource));
+            team.setPrefix(Chat.colorize("  &f• ") + resource.getFormattedName() + resourceBank.getResourceAmt(resource));
             Score score = objective.getScore(ChatColor.values()[index] + "");
             score.setScore(index);
             index--;
@@ -54,7 +55,7 @@ public class FactoryScoreboard {
 
     public void updateResourceLine(Resource resource) {
         scoreboard.getTeam(resource.getName())
-                .setPrefix(Chat.colorize("  &f• ") + resource.getFormattedName() + bank.getResourceAmt(resource));
+                .setPrefix(Chat.colorize("  &f• ") + resource.getFormattedName() + resourceBank.getResourceAmt(resource));
     }
 
 }

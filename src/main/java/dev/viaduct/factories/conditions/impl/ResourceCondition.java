@@ -22,7 +22,7 @@ public class ResourceCondition extends AbstractCondition {
 
     @Override
     public boolean isMet(FactoryPlayer factoryPlayer) {
-        double playerResourceAmount = factoryPlayer.getBank()
+        double playerResourceAmount = factoryPlayer.getResourceBank()
                 .getResourceAmt(resource);
 
         return playerResourceAmount >= amount;

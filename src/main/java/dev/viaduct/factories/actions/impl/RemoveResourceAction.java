@@ -22,7 +22,7 @@ public class RemoveResourceAction implements Action {
         Optional<Resource> resourceOptional = FactoriesPlugin.getInstance().getResourceManager()
                 .getResource(resourceName);
 
-        resourceOptional.ifPresent(resource -> factoryPlayer.getBank()
+        resourceOptional.ifPresent(resource -> factoryPlayer.getResourceBank()
                 .removeFromResource(resource, factoryPlayer.getScoreboard(), amount));
     }
 
