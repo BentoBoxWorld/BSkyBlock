@@ -1,4 +1,4 @@
-package dev.viaduct.factories.resources.impl;
+package dev.viaduct.factories.resources.mineable.impl;
 
 import dev.viaduct.factories.resources.Resource;
 import dev.viaduct.factories.utils.Chat;

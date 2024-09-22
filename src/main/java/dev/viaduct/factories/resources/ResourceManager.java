@@ -1,8 +1,9 @@
 package dev.viaduct.factories.resources;
 
 import dev.viaduct.factories.resources.currency.impl.Credit;
-import dev.viaduct.factories.resources.impl.Stone;
-import dev.viaduct.factories.resources.impl.Wood;
+import dev.viaduct.factories.resources.mineable.MineableResource;
+import dev.viaduct.factories.resources.mineable.impl.Stone;
+import dev.viaduct.factories.resources.mineable.impl.Wood;
 import lombok.Getter;
 import org.bukkit.Material;
 
@@ -33,13 +34,15 @@ public class ResourceManager {
         registerResource(new Wood());
         registerResource(new Stone());
         registerResource(new Credit());
+
     }
 
     public boolean isResourceMaterial(Material material) {
         //  get stream of resources in set.
-        return resourceSet.stream()
+        return resourceSet.stream().filter(resource -> resource instanceof MineableResource)
+                .map(resource -> (MineableResource)resource)
                 //    for every valid material of each resource...
-                .map(Resource::getValidMaterialsList)
+                .map(MineableResource::getValidMaterialsList)
                 //    check if it contains parameter material.
                 .anyMatch(materialsList -> materialsList.contains(material));
     }

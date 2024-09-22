@@ -1,6 +1,7 @@
 package dev.viaduct.factories.listeners;
 
 import dev.viaduct.factories.domain.banks.Bank;
+import dev.viaduct.factories.domain.banks.impl.MineableResourceBank;
 import dev.viaduct.factories.registries.impl.FactoryPlayerRegistry;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -26,7 +27,7 @@ public class PlayerGetResourceListener implements Listener {
         //  amount of the resource material. If so, increment the amount.
         factoryPlayerRegistry.get(event.getPlayer().getUniqueId())
                 .ifPresent(factoryPlayer -> {
-                    Bank factoryPlayerBank = factoryPlayer.getResourceBank();
+                    MineableResourceBank factoryPlayerBank = factoryPlayer.getMineableResourceBank();
                     factoryPlayerBank.getResourceByMaterial(material)
                             .ifPresent(resource -> factoryPlayerBank.addToResource(resource, factoryPlayer.getScoreboard(), 1));
                 });

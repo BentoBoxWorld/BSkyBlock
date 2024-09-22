@@ -2,7 +2,7 @@ package dev.viaduct.factories.domain.players;
 
 import dev.viaduct.factories.FactoriesPlugin;
 import dev.viaduct.factories.domain.banks.impl.CurrencyBank;
-import dev.viaduct.factories.domain.banks.impl.ResourceBank;
+import dev.viaduct.factories.domain.banks.impl.MineableResourceBank;
 import dev.viaduct.factories.generators.Generator;
 import dev.viaduct.factories.generators.GeneratorHolder;
 import dev.viaduct.factories.guis.scoreboards.FactoryScoreboard;
@@ -18,8 +18,8 @@ import org.bukkit.entity.Player;
 public class FactoryPlayer {
 
     private final Player player;
-    private final ResourceBank resourceBank;
-    private final CurrencyBank creditBank;
+    private final MineableResourceBank mineableResourceBank;
+    private final CurrencyBank currencyBank;
     private final FactoryScoreboard scoreboard;
     private final SettingHolder settingHolder;
     private final LevelledUpgradeHolder levelledUpgradeHolder;
@@ -27,15 +27,15 @@ public class FactoryPlayer {
 
     public FactoryPlayer(Player player) {
         this.player = player;
-        this.resourceBank = new ResourceBank();
-        this.creditBank = new CurrencyBank();
+        this.mineableResourceBank = new MineableResourceBank();
+        this.currencyBank = new CurrencyBank();
         this.scoreboard = new FactoryScoreboard(this);
         this.settingHolder = new SettingHolder();
         this.levelledUpgradeHolder = new LevelledUpgradeHolder();
         this.generatorHolder = new GeneratorHolder();
-        resourceBank.addToResource("wood", scoreboard, 1000);
-        resourceBank.addToResource("stone", scoreboard, 1000);
-        creditBank.addToResource("credits", scoreboard, 100);
+        mineableResourceBank.addToResource("wood", scoreboard, 1000);
+        mineableResourceBank.addToResource("stone", scoreboard, 1000);
+        currencyBank.addToResource("credits", scoreboard, 100);
     }
 
     public void addGenerator(Location location, Generator generator) {

@@ -5,6 +5,8 @@ import dev.viaduct.factories.guis.scoreboards.FactoryScoreboard;
 import dev.viaduct.factories.resources.Resource;
 import lombok.Getter;
 import org.bukkit.Material;
+import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.Scoreboard;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +15,7 @@ import java.util.Optional;
 @Getter
 public abstract class Bank {
 
-    private final Map<Resource, Double> resourceMap;
+    protected final Map<Resource, Double> resourceMap;
 
     public Bank() {
         resourceMap = new HashMap<>();
@@ -54,16 +56,4 @@ public abstract class Bank {
         if (resourceOptional.isEmpty()) return 0;
         return resourceMap.get(resourceOptional.get());
     }
-
-    public boolean isResourceMaterial(Material material) {
-        return resourceMap.keySet().stream()
-                .anyMatch(resource -> resource.isValidMaterial(material));
-    }
-
-    public Optional<Resource> getResourceByMaterial(Material material) {
-        return resourceMap.keySet().stream()
-                .filter(resource -> resource.isValidMaterial(material))
-                .findAny();
-    }
-
 }

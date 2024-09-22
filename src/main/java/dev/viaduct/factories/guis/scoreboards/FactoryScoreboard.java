@@ -1,6 +1,6 @@
 package dev.viaduct.factories.guis.scoreboards;
 
-import dev.viaduct.factories.domain.banks.impl.ResourceBank;
+import dev.viaduct.factories.domain.banks.impl.MineableResourceBank;
 import dev.viaduct.factories.domain.players.FactoryPlayer;
 import dev.viaduct.factories.resources.Resource;
 import dev.viaduct.factories.utils.Chat;
@@ -14,12 +14,12 @@ public class FactoryScoreboard {
 
     private final Scoreboard scoreboard;
     private final FactoryPlayer factoryPlayer;
-    private final ResourceBank resourceBank;
+    private final MineableResourceBank mineableResourceBank;
 
     public FactoryScoreboard(FactoryPlayer factoryPlayer) {
         this.scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
         this.factoryPlayer = factoryPlayer;
-        this.resourceBank = factoryPlayer.getResourceBank();
+        this.mineableResourceBank = factoryPlayer.getMineableResourceBank();
 
         addScoreboardLine();
         factoryPlayer.getPlayer().setScoreboard(scoreboard);
@@ -37,7 +37,7 @@ public class FactoryScoreboard {
         resourceTitle.setScore(14); // index 14
 
         // get all resources
-        Set<Resource> resources = resourceBank.getResourceMap().keySet();
+        Set<Resource> resources = mineableResourceBank.getResourceMap().keySet();
 
         int index = 13;
 
@@ -45,7 +45,7 @@ public class FactoryScoreboard {
         for (Resource resource : resources) {
             Team team = scoreboard.registerNewTeam(resource.getName());
             team.addEntry(ChatColor.values()[index] + "");
-            team.setPrefix(Chat.colorize("  &f• ") + resource.getFormattedName() + resourceBank.getResourceAmt(resource));
+            team.setPrefix(Chat.colorize("  &f• ") + resource.getFormattedName() + mineableResourceBank.getResourceAmt(resource));
             Score score = objective.getScore(ChatColor.values()[index] + "");
             score.setScore(index);
             index--;
@@ -54,7 +54,7 @@ public class FactoryScoreboard {
 
     public void updateResourceLine(Resource resource) {
         scoreboard.getTeam(resource.getName())
-                .setPrefix(Chat.colorize("  &f• ") + resource.getFormattedName() + resourceBank.getResourceAmt(resource));
+                .setPrefix(Chat.colorize("  &f• ") + resource.getFormattedName() + mineableResourceBank.getResourceAmt(resource));
     }
 
 }

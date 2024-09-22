@@ -6,6 +6,7 @@ import dev.viaduct.factories.conditions.AbstractCondition;
 import dev.viaduct.factories.domain.players.FactoryPlayer;
 import dev.viaduct.factories.resources.Resource;
 
+//  TODO: Make Resource Conditions suitable for Currency and MineableResource logic respectively.
 public class ResourceCondition extends AbstractCondition {
 
     private final Resource resource;
@@ -22,7 +23,7 @@ public class ResourceCondition extends AbstractCondition {
 
     @Override
     public boolean isMet(FactoryPlayer factoryPlayer) {
-        double playerResourceAmount = factoryPlayer.getResourceBank()
+        double playerResourceAmount = factoryPlayer.getMineableResourceBank()
                 .getResourceAmt(resource);
 
         return playerResourceAmount >= amount;
