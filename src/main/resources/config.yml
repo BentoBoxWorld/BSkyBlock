@@ -84,6 +84,11 @@ world:
   # Maximum number of islands in the world. Set to -1 or 0 for unlimited.
   # If the number of islands is greater than this number, it will stop players from creating islands.
   max-islands: 0
+  # The number of concurrent islands a player can have in the world
+  # A value of 0 will use the BentoBox config.yml default
+  concurrent-islands: 1
+  # Disallow players to have other islands if they are in a team.
+  disallow-team-member-islands: true
   # The default game mode for this world. Players will be set to this mode when they create
   # a new island for example. Options are SURVIVAL, CREATIVE, ADVENTURE, SPECTATOR
   default-game-mode: SURVIVAL
@@ -147,9 +152,12 @@ world:
     OBSIDIAN_SCOOPING: true
     ISLAND_RESPAWN: true
     CREEPER_GRIEFING: false
+    WORLD_BLOCK_EXPLODE_DAMAGE: false
+    VISITOR_KEEP_INVENTORY: false
     PETS_STAY_AT_HOME: true
     NATURAL_SPAWNING_OUTSIDE_RANGE: true
     LIQUIDS_FLOWING_OUT: false
+    VISITOR_TRIGGER_RAID: true
     REMOVE_MOBS: false
     ENDER_CHEST: false
     TREES_GROWING_OUTSIDE_RANGE: false
@@ -164,11 +172,13 @@ world:
     PREVENT_TELEPORT_WHEN_FALLING: false
     WORLD_TNT_DAMAGE: false
     ENTER_EXIT_MESSAGES: true
+    ALLOW_MOVE_BOX: true
     ENDERMAN_DEATH_DROP: true
     OFFLINE_REDSTONE: true
     REMOVE_END_EXIT_ISLAND: true
     OFFLINE_GROWTH: true
     ITEM_FRAME_DAMAGE: false
+    ENTITY_PORTAL_TELEPORT: false
     SPAWNER_SPAWN_EGGS: true
   # These are the default protection settings for new islands.
   # The value is the minimum island rank required allowed to do the action
@@ -181,20 +191,26 @@ world:
   #   OWNER     = 1000
   default-island-flags:
     HURT_ANIMALS: 500
+    LOOM: 500
     DRAGON_EGG: 500
     REDSTONE: 500
     BUCKET: 500
     LOCK: 0
     ENDER_PEARL: 500
+    BELL_RINGING: 500
     DOOR: 500
     BREAK_HOPPERS: 500
     FURNACE: 500
+    HURT_TAMED_ANIMALS: 500
     MINECART: 500
     ANVIL: 500
     FISH_SCOOPING: 500
+    TRAPPED_CHEST: 500
     END_PORTAL: 500
     BREEDING: 500
     HURT_VILLAGERS: 500
+    BOOKSHELF: 500
+    HARVEST: 500
     TURTLE_EGGS: 500
     FROST_WALKER: 500
     COLLECT_LAVA: 500
@@ -206,23 +222,35 @@ world:
     CAKE: 500
     NAME_TAG: 500
     ARMOR_STAND: 500
+    CHANGE_SETTINGS: 1000
+    SIGN_EDITING: 500
     TRADING: 0
     EGGS: 500
     ITEM_DROP: 0
+    CHEST: 500
     NOTE_BLOCK: 0
     FLINT_AND_STEEL: 500
     NETHER_PORTAL: 500
+    SCULK_SENSOR: 500
     LECTERN: 500
+    GRINDSTONE: 500
+    SHULKER_BOX: 500
     ITEM_PICKUP: 0
     CROP_TRAMPLE: 500
     DROPPER: 500
     BREWING: 500
+    MOVE_BOX: 1000
     TNT_PRIMING: 500
+    PARKOUR_CREATIVE: 500
     COLLECT_WATER: 500
+    AXOLOTL_SCOOPING: 500
     BUTTON: 500
+    COMPOSTER: 500
+    STONECUTTING: 500
     FIRE_EXTINGUISH: 500
     COMMAND_RANKS: 500
     BEACON: 500
+    ALLAY: 500
     TRAPDOOR: 500
     EXPERIENCE_BOTTLE_THROWING: 500
     PRESSURE_PLATE: 0
@@ -230,17 +258,22 @@ world:
     DYE: 500
     PLACE_BLOCKS: 500
     ITEM_FRAME: 500
+    CROP_PLANTING: 500
     CRAFTING: 0
     ENCHANTING: 0
     SHEARING: 500
+    FLOWER_POT: 500
     BOAT: 500
     BED: 500
     SPAWN_EGGS: 500
     MILKING: 0
     DISPENSER: 500
+    SCULK_SHRIEKER: 500
     GATE: 0
+    SMITHING: 500
     EXPERIENCE_PICKUP: 500
     HOPPER: 500
+    CANDLES: 500
     LEASH: 500
     MOUNT_INVENTORY: 500
     BREAK_BLOCKS: 500
@@ -248,20 +281,26 @@ world:
     CONTAINER: 500
     POTION_THROWING: 500
     JUKEBOX: 500
+    BARREL: 500
+    CARTOGRAPHY: 500
+    COLLECT_POWDERED_SNOW: 500
   # These are the default settings for new islands
   default-island-settings:
     PVP_END: false
     PVP_NETHER: false
     LEAF_DECAY: true
-    TNT_DAMAGE: true
-    MONSTER_SPAWNERS_SPAWN: true
+    ENDERMAN_TELEPORT: true
     ANIMAL_NATURAL_SPAWN: true
     MONSTER_NATURAL_SPAWN: true
-    FIRE_IGNITE: true
+    SHULKER_TELEPORT: true
     FIRE_SPREAD: true
-    ANIMAL_SPAWNERS_SPAWN: true
     FIRE_BURNING: true
     PVP_OVERWORLD: false
+    TNT_DAMAGE: true
+    MONSTER_SPAWNERS_SPAWN: true
+    FIRE_IGNITE: true
+    ANIMAL_SPAWNERS_SPAWN: true
+    BLOCK_EXPLODE_DAMAGE: true
   # These settings/flags are hidden from users
   # Ops can toggle hiding in-game using SHIFT-LEFT-CLICK on flags in settings
   # Added since 1.4.1.
