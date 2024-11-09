@@ -31,9 +31,9 @@ import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
-import world.bentobox.bskyblock.mocks.ServerMocks;
 import world.bentobox.bskyblock.BSkyBlock;
 import world.bentobox.bskyblock.Settings;
+import world.bentobox.bskyblock.mocks.ServerMocks;
 
 /**
  * @author tastybento
