@@ -1,14 +1,18 @@
 package world.bentobox.bskyblock;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.bukkit.Difficulty;
 import org.bukkit.GameMode;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.EntityType;
 import org.eclipse.jdt.annotation.NonNull;
-
-import com.google.common.base.Enums;
 
 import world.bentobox.bentobox.BentoBox;
 import world.bentobox.bentobox.api.configuration.ConfigComment;
@@ -155,7 +159,7 @@ public class Settings implements WorldSettings {
     private Biome defaultBiome = Biome.PLAINS;
     @ConfigComment("The default biome for the nether world (this may affect what mobs can spawn)")
     @ConfigEntry(path = "world.default-nether-biome")
-    private Biome defaultNetherBiome = Enums.getIfPresent(Biome.class, "NETHER").or(Enums.getIfPresent(Biome.class, "NETHER_WASTES").or(Biome.BADLANDS));
+    private Biome defaultNetherBiome = Biome.NETHER_WASTES;
     @ConfigComment("The default biome for the end world (this may affect what mobs can spawn)")
     @ConfigEntry(path = "world.default-end-biome")
     private Biome defaultEndBiome = Biome.THE_END;

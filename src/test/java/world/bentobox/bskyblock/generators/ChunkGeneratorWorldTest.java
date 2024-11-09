@@ -17,6 +17,7 @@ import java.util.Random;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Server;
+import org.bukkit.UnsafeValues;
 import org.bukkit.World;
 import org.bukkit.block.Biome;
 import org.bukkit.generator.ChunkGenerator.BiomeGrid;
@@ -32,6 +33,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 import world.bentobox.bskyblock.BSkyBlock;
 import world.bentobox.bskyblock.Settings;
+import world.bentobox.bskyblock.mocks.ServerMocks;
 
 /**
  * @author tastybento
@@ -47,9 +49,9 @@ public class ChunkGeneratorWorldTest {
     @Mock
     private World world;
     private final Random random = new Random();
+    @SuppressWarnings("deprecation")
     @Mock
     private BiomeGrid biomeGrid;
-    @Mock
     private Settings settings;
     @Mock
     private ChunkData data;
@@ -57,13 +59,18 @@ public class ChunkGeneratorWorldTest {
     /**
      * @throws java.lang.Exception
      */
+    @SuppressWarnings("deprecation")
     @Before
     public void setUp() throws Exception {
+        ServerMocks.newServer();
         // Bukkit
+
         PowerMockito.mockStatic(Bukkit.class);
         Server server = mock(Server.class);
         when(server.createChunkData(any())).thenReturn(data);
         when(Bukkit.getServer()).thenReturn(server);
+        UnsafeValues unsafe = mock(UnsafeValues.class);
+        when(Bukkit.getUnsafe()).thenReturn(unsafe);
 
         // Instance
         cg = new ChunkGeneratorWorld(addon);
@@ -71,34 +78,28 @@ public class ChunkGeneratorWorldTest {
         when(world.getEnvironment()).thenReturn(World.Environment.NORMAL);
         when(world.getMaxHeight()).thenReturn(16);
         // Settings
+        settings = new Settings();
         when(addon.getSettings()).thenReturn(settings);
-        when(settings.getSeaHeight()).thenReturn(0);
-        when(settings.isNetherRoof()).thenReturn(true);
-        when(settings.getDefaultBiome()).thenReturn(Biome.TAIGA);
-        when(settings.getDefaultNetherBiome()).thenReturn(Biome.CRIMSON_FOREST);
-        when(settings.getDefaultEndBiome()).thenReturn(Biome.END_MIDLANDS);
     }
 
     /**
      * @throws java.lang.Exception
      */
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
+        ServerMocks.unsetBukkitServer();
     }
 
     /**
      * Test method for {@link world.bentobox.bskyblock.generators.ChunkGeneratorWorld#generateChunkData(org.bukkit.World, java.util.Random, int, int, org.bukkit.generator.ChunkGenerator.BiomeGrid)}.
      */
+    @SuppressWarnings("deprecation")
     @Test
     public void testGenerateChunkDataWorldRandomIntIntBiomeGridOverworldVoid() {
         ChunkData cd = cg.generateChunkData(world, random, 0 , 0 , biomeGrid);
         assertEquals(data, cd);
         // Verifications
-        // Default biome
-        verify(settings).getDefaultBiome();
         verify(biomeGrid, times(64)).setBiome(anyInt(), anyInt(), anyInt(), any());
-        // Sea height
-        verify(settings).getSeaHeight();
         // Void
         verify(cd, never()).setRegion(anyInt(), anyInt(), anyInt(), anyInt(), anyInt(), anyInt(), any(Material.class));
     }
@@ -106,18 +107,15 @@ public class ChunkGeneratorWorldTest {
     /**
      * Test method for {@link world.bentobox.bskyblock.generators.ChunkGeneratorWorld#generateChunkData(org.bukkit.World, java.util.Random, int, int, org.bukkit.generator.ChunkGenerator.BiomeGrid)}.
      */
+    @SuppressWarnings("deprecation")
     @Test
     public void testGenerateChunkDataWorldRandomIntIntBiomeGridOverworldSea() {
         // Set sea height
-        when(settings.getSeaHeight()).thenReturn(10);
-        ChunkData cd = cg.generateChunkData(world, random, 0 , 0 , biomeGrid);
+        settings.setSeaHeight(10);
+        ChunkData cd = cg.generateChunkData(world, random, 0, 0, biomeGrid);
         assertEquals(data, cd);
         // Verifications
-        // Default biome
-        verify(settings).getDefaultBiome();
         verify(biomeGrid, times(64)).setBiome(anyInt(), anyInt(), anyInt(), eq(Biome.TAIGA));
-        // Sea height
-        verify(settings, times(2)).getSeaHeight();
         // Water. Blocks = 16 x 16 x 11 because block 0
         verify(cd).setRegion(0, 0, 0, 16, 11, 16, Material.WATER);
     }
@@ -125,18 +123,15 @@ public class ChunkGeneratorWorldTest {
     /**
      * Test method for {@link world.bentobox.bskyblock.generators.ChunkGeneratorWorld#generateChunkData(org.bukkit.World, java.util.Random, int, int, org.bukkit.generator.ChunkGenerator.BiomeGrid)}.
      */
+    @SuppressWarnings("deprecation")
     @Test
     public void testGenerateChunkDataWorldRandomIntIntBiomeGridEnd() {
         when(world.getEnvironment()).thenReturn(World.Environment.THE_END);
         ChunkData cd = cg.generateChunkData(world, random, 0 , 0 , biomeGrid);
         assertEquals(data, cd);
         // Verifications
-        // Default biome
-        verify(settings).getDefaultEndBiome();
         // Set biome in end
         verify(biomeGrid, times(64)).setBiome(anyInt(), anyInt(), anyInt(), eq(Biome.END_MIDLANDS));
-        // Sea height
-        verify(settings, never()).getSeaHeight();
         // Void
         verify(cd, never()).setRegion(anyInt(), anyInt(), anyInt(), anyInt(), anyInt(), anyInt(), any(Material.class));
     }
@@ -144,14 +139,13 @@ public class ChunkGeneratorWorldTest {
     /**
      * Test method for {@link world.bentobox.bskyblock.generators.ChunkGeneratorWorld#generateChunkData(org.bukkit.World, java.util.Random, int, int, org.bukkit.generator.ChunkGenerator.BiomeGrid)}.
      */
+    @SuppressWarnings("deprecation")
     @Test
     public void testGenerateChunkDataWorldRandomIntIntBiomeGridNetherWithRoof() {
         when(world.getEnvironment()).thenReturn(World.Environment.NETHER);
         ChunkData cd = cg.generateChunkData(world, random, 0 , 0 , biomeGrid);
         assertEquals(data, cd);
         // Verifications
-        // Nether roof check
-        verify(settings).isNetherRoof();
         // Set biome in nether
         verify(biomeGrid, times(64)).setBiome(anyInt(), anyInt(), anyInt(), eq(Biome.CRIMSON_FOREST));
         // Nether roof - at least bedrock layer
@@ -161,16 +155,14 @@ public class ChunkGeneratorWorldTest {
     /**
      * Test method for {@link world.bentobox.bskyblock.generators.ChunkGeneratorWorld#generateChunkData(org.bukkit.World, java.util.Random, int, int, org.bukkit.generator.ChunkGenerator.BiomeGrid)}.
      */
+    @SuppressWarnings("deprecation")
     @Test
     public void testGenerateChunkDataWorldRandomIntIntBiomeGridNetherNoRoof() {
-        when(settings.isNetherRoof()).thenReturn(false);
+        settings.setNetherRoof(false);
         when(world.getEnvironment()).thenReturn(World.Environment.NETHER);
         ChunkData cd = cg.generateChunkData(world, random, 0 , 0 , biomeGrid);
         assertEquals(data, cd);
         // Verifications
-        verify(settings).getDefaultNetherBiome();
-        // Nether roof check
-        verify(settings).isNetherRoof();
         // Set biome in nether
         verify(biomeGrid, times(64)).setBiome(anyInt(), anyInt(), anyInt(), eq(Biome.CRIMSON_FOREST));
         // Nether roof - at least bedrock layer
