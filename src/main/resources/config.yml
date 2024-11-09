@@ -304,31 +304,7 @@ world:
   # These settings/flags are hidden from users
   # Ops can toggle hiding in-game using SHIFT-LEFT-CLICK on flags in settings
   # Added since 1.4.1.
-  hidden-flags:
-  - CHEST_DAMAGE
-  - HURT_MONSTERS
-  - BREAK_SPAWNERS
-  - DISPENSER
-  - DRAGON_EGG
-  - DROPPER
-  - EXPERIENCE_BOTTLE_THROWING
-  - HURT_VILLAGERS
-  - MOUNT_INVENTORY
-  - NOTE_BLOCK
-  - TURTLE_EGGS
-  - PVP_END
-  - FIRE_BURNING
-  - FIRE_IGNITE
-  - FIRE_SPREAD
-  - PVP_NETHER
-  - PVP_OVERWORLD
-  - TNT_DAMAGE
-  - MONSTER_NATURAL_SPAWN
-  - MONSTER_SPAWNERS_SPAWN
-  - ANIMAL_SPAWNERS_SPAWN
-  - ANIMAL_NATURAL_SPAWN
-  - LEAF_DECAY
-  - BREAK_HOPPERS
+  hidden-flags: []
   # Visitor banned commands - Visitors to islands cannot use these commands in this world
   visitor-banned-commands:
   - spawner

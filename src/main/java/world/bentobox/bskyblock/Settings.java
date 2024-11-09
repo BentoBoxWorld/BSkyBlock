@@ -155,7 +155,7 @@ public class Settings implements WorldSettings {
     private Biome defaultBiome = Biome.PLAINS;
     @ConfigComment("The default biome for the nether world (this may affect what mobs can spawn)")
     @ConfigEntry(path = "world.default-nether-biome")
-    private Biome defaultNetherBiome = Enums.getIfPresent(Biome.class, "NETHER").or(Enums.getIfPresent(Biome.class, "NETHER_WASTES").or(Biome.BADLANDS));
+    private Biome defaultNetherBiome = Biome.NETHER_WASTES;
     @ConfigComment("The default biome for the end world (this may affect what mobs can spawn)")
     @ConfigEntry(path = "world.default-end-biome")
     private Biome defaultEndBiome = Biome.THE_END;
