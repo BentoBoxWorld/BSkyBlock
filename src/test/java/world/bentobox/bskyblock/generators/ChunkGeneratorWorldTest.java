@@ -49,6 +49,7 @@ public class ChunkGeneratorWorldTest {
     @Mock
     private World world;
     private final Random random = new Random();
+    @SuppressWarnings("deprecation")
     @Mock
     private BiomeGrid biomeGrid;
     private Settings settings;
@@ -58,6 +59,7 @@ public class ChunkGeneratorWorldTest {
     /**
      * @throws java.lang.Exception
      */
+    @SuppressWarnings("deprecation")
     @Before
     public void setUp() throws Exception {
         ServerMocks.newServer();
@@ -67,7 +69,6 @@ public class ChunkGeneratorWorldTest {
         Server server = mock(Server.class);
         when(server.createChunkData(any())).thenReturn(data);
         when(Bukkit.getServer()).thenReturn(server);
-        @SuppressWarnings("deprecation")
         UnsafeValues unsafe = mock(UnsafeValues.class);
         when(Bukkit.getUnsafe()).thenReturn(unsafe);
 
@@ -85,13 +86,14 @@ public class ChunkGeneratorWorldTest {
      * @throws java.lang.Exception
      */
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         ServerMocks.unsetBukkitServer();
     }
 
     /**
      * Test method for {@link world.bentobox.bskyblock.generators.ChunkGeneratorWorld#generateChunkData(org.bukkit.World, java.util.Random, int, int, org.bukkit.generator.ChunkGenerator.BiomeGrid)}.
      */
+    @SuppressWarnings("deprecation")
     @Test
     public void testGenerateChunkDataWorldRandomIntIntBiomeGridOverworldVoid() {
         ChunkData cd = cg.generateChunkData(world, random, 0 , 0 , biomeGrid);
@@ -105,6 +107,7 @@ public class ChunkGeneratorWorldTest {
     /**
      * Test method for {@link world.bentobox.bskyblock.generators.ChunkGeneratorWorld#generateChunkData(org.bukkit.World, java.util.Random, int, int, org.bukkit.generator.ChunkGenerator.BiomeGrid)}.
      */
+    @SuppressWarnings("deprecation")
     @Test
     public void testGenerateChunkDataWorldRandomIntIntBiomeGridOverworldSea() {
         // Set sea height
@@ -120,6 +123,7 @@ public class ChunkGeneratorWorldTest {
     /**
      * Test method for {@link world.bentobox.bskyblock.generators.ChunkGeneratorWorld#generateChunkData(org.bukkit.World, java.util.Random, int, int, org.bukkit.generator.ChunkGenerator.BiomeGrid)}.
      */
+    @SuppressWarnings("deprecation")
     @Test
     public void testGenerateChunkDataWorldRandomIntIntBiomeGridEnd() {
         when(world.getEnvironment()).thenReturn(World.Environment.THE_END);
@@ -135,6 +139,7 @@ public class ChunkGeneratorWorldTest {
     /**
      * Test method for {@link world.bentobox.bskyblock.generators.ChunkGeneratorWorld#generateChunkData(org.bukkit.World, java.util.Random, int, int, org.bukkit.generator.ChunkGenerator.BiomeGrid)}.
      */
+    @SuppressWarnings("deprecation")
     @Test
     public void testGenerateChunkDataWorldRandomIntIntBiomeGridNetherWithRoof() {
         when(world.getEnvironment()).thenReturn(World.Environment.NETHER);
@@ -150,6 +155,7 @@ public class ChunkGeneratorWorldTest {
     /**
      * Test method for {@link world.bentobox.bskyblock.generators.ChunkGeneratorWorld#generateChunkData(org.bukkit.World, java.util.Random, int, int, org.bukkit.generator.ChunkGenerator.BiomeGrid)}.
      */
+    @SuppressWarnings("deprecation")
     @Test
     public void testGenerateChunkDataWorldRandomIntIntBiomeGridNetherNoRoof() {
         settings.setNetherRoof(false);
