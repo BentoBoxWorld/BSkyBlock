@@ -42,7 +42,7 @@
 
     <distributionManagement>
         <snapshotRepository>
-            <id>codemc</id>
+            <id>bentoboxworld</id>
             <url>https://repo.codemc.org/repository/bentoboxworld/</url>
         </snapshotRepository>
     </distributionManagement>
