@@ -30,6 +30,7 @@ import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
+import org.bukkit.UnsafeValues;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.junit.After;
@@ -59,6 +60,7 @@ import world.bentobox.bentobox.managers.FlagsManager;
 import world.bentobox.bentobox.managers.IslandWorldManager;
 import world.bentobox.bentobox.managers.IslandsManager;
 import world.bentobox.bskyblock.generators.ChunkGeneratorWorld;
+import world.bentobox.bskyblock.mocks.ServerMocks;
 
 /**
  * @author tastybento
@@ -101,6 +103,7 @@ public class BSkyBlockTest {
 
 	@After
 	public void tearDown() throws IOException {
+        ServerMocks.unsetBukkitServer();
 		User.clearUsers();
 		Mockito.framework().clearInlineMocks();
 		deleteAll(new File("database"));
@@ -123,6 +126,7 @@ public class BSkyBlockTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
+        ServerMocks.newServer();
 		// Set up plugin
 		Whitebox.setInternalState(BentoBox.class, "instance", plugin);
 		when(plugin.getLogger()).thenReturn(Logger.getAnonymousLogger());
@@ -160,6 +164,9 @@ public class BSkyBlockTest {
 		when(Bukkit.getServer()).thenReturn(server);
 		when(Bukkit.getLogger()).thenReturn(Logger.getAnonymousLogger());
 		when(Bukkit.getPluginManager()).thenReturn(mock(PluginManager.class));
+        @SuppressWarnings("deprecation")
+        UnsafeValues unsafe = mock(UnsafeValues.class);
+        when(Bukkit.getUnsafe()).thenReturn(unsafe);
 
 		// Addon
 		addon = new BSkyBlock();

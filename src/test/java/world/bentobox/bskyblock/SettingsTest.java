@@ -13,8 +13,11 @@ import org.bukkit.Difficulty;
 import org.bukkit.GameMode;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.EntityType;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import world.bentobox.bskyblock.mocks.ServerMocks;
 
 /**
  * @author tastybento
@@ -29,7 +32,13 @@ public class SettingsTest {
      */
     @Before
     public void setUp() throws Exception {
+        ServerMocks.newServer();
         s = new Settings();
+    }
+
+    @After
+    public void tearDown() {
+        ServerMocks.unsetBukkitServer();
     }
 
     /**
