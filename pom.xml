@@ -41,10 +41,10 @@
     </issueManagement>
 
     <distributionManagement>
-        <snapshotRepository>
+        <repository>
             <id>bentoboxworld</id>
             <url>https://repo.codemc.org/repository/bentoboxworld/</url>
-        </snapshotRepository>
+        </repository>
     </distributionManagement>
 
     <properties>
