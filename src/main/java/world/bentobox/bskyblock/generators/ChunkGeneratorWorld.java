@@ -12,6 +12,7 @@ import org.bukkit.World.Environment;
 import org.bukkit.block.Biome;
 import org.bukkit.generator.BlockPopulator;
 import org.bukkit.generator.ChunkGenerator;
+import org.bukkit.generator.WorldInfo;
 import org.bukkit.util.Vector;
 import org.bukkit.util.noise.PerlinOctaveGenerator;
 
@@ -34,6 +35,12 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
         super();
         this.addon = addon;
         makeNetherRoof();
+    }
+
+    @Override
+    public boolean shouldGenerateStructures() {
+        return false;
+
     }
 
     public ChunkData generateChunks(World world) {
@@ -70,6 +77,11 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
     // behavior
     @Override
     public boolean canSpawn(World world, int x, int z) {
+        return true;
+    }
+
+    @Override
+    public boolean shouldGenerateMobs(WorldInfo worldInfo, Random random, int chunkX, int chunkZ){
         return true;
     }
 
