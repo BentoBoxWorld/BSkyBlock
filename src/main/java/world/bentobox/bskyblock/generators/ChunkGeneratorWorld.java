@@ -36,6 +36,12 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
         makeNetherRoof();
     }
 
+    @Override
+    public boolean shouldGenerateStructures() {
+        return false;
+
+    }
+
     public ChunkData generateChunks(World world) {
         ChunkData result = createChunkData(world);
         if (world.getEnvironment().equals(Environment.NORMAL) && addon.getSettings().getSeaHeight() > 0) {
