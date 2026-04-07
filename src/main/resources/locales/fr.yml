@@ -4,7 +4,7 @@ bskyblock:
     line0: "<red>BSkyBlock</red>"
     line1: Bienvenue!
     line2: "[name]"
-    line3: Ne tombez pas ! &c<3
+    line3: Ne tombez pas ! <red><3</red>
 meta:
   authors:
   - x9nico
