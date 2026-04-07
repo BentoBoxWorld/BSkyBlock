@@ -127,6 +127,13 @@
             <releases><enabled>true</enabled></releases>
             <snapshots><enabled>false</enabled></snapshots>
         </repository>
+        <!-- BentoBox snapshots (Gradle publishes here, note .io vs .org) -->
+        <repository>
+            <id>bentoboxworld-snapshots</id>
+            <url>https://repo.codemc.io/repository/bentoboxworld/</url>
+            <releases><enabled>false</enabled></releases>
+            <snapshots><enabled>true</enabled></snapshots>
+        </repository>
         <!-- Paper API snapshots -->
         <repository>
             <id>papermc</id>
@@ -140,13 +147,6 @@
             <url>https://repo.codemc.org/repository/maven-public/</url>
             <releases><enabled>true</enabled></releases>
             <snapshots><enabled>false</enabled></snapshots>
-        </repository>
-        <!-- CodeMC snapshots (BentoBox CI builds) -->
-        <repository>
-            <id>codemc</id>
-            <url>https://repo.codemc.org/repository/maven-snapshots/</url>
-            <releases><enabled>false</enabled></releases>
-            <snapshots><enabled>true</enabled></snapshots>
         </repository>
     </repositories>
 
