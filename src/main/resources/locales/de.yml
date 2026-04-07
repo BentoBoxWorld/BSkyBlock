@@ -1,7 +1,7 @@
 ---
 bskyblock:
   sign:
-    line0: "&cBSkyBlock"
+    line0: "<red>BSkyBlock</red>"
     line1: Herzlich Willkommen!
     line2: "[name]"
     line3: Fall nicht runter! &c<3
