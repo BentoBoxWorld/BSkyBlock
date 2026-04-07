@@ -1,8 +1,8 @@
 package world.bentobox.bskyblock;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Collections;
 import java.util.List;
@@ -13,32 +13,32 @@ import org.bukkit.Difficulty;
 import org.bukkit.GameMode;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.EntityType;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import world.bentobox.bskyblock.mocks.ServerMocks;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author tastybento
  *
  */
-public class SettingsTest {
+public class SettingsTest extends CommonTestSetup {
 
     Settings s;
 
     /**
      * @throws java.lang.Exception
      */
-    @Before
+    @Override
+    @BeforeEach
     public void setUp() throws Exception {
-        ServerMocks.newServer();
+        super.setUp();
         s = new Settings();
     }
 
-    @After
-    public void tearDown() {
-        ServerMocks.unsetBukkitServer();
+    @Override
+    @AfterEach
+    public void tearDown() throws Exception {
+        super.tearDown();
     }
 
     /**
