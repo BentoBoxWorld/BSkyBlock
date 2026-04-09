@@ -10,12 +10,14 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.World.Environment;
 import org.bukkit.block.Biome;
+import org.bukkit.generator.BiomeProvider;
 import org.bukkit.generator.BlockPopulator;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.generator.WorldInfo;
 import org.bukkit.util.Vector;
 import org.bukkit.util.noise.PerlinOctaveGenerator;
 
+import org.jspecify.annotations.NonNull;
 import world.bentobox.bskyblock.BSkyBlock;
 
 /**
@@ -38,55 +40,52 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
     }
 
     @Override
-    public boolean shouldGenerateStructures() {
+    public boolean shouldGenerateStructures(@NonNull WorldInfo worldInfo, @NonNull Random random, int chunkX, int chunkZ) {
         return false;
-
-    }
-
-    public ChunkData generateChunks(World world) {
-        ChunkData result = createChunkData(world);
-        if (world.getEnvironment().equals(Environment.NORMAL) && addon.getSettings().getSeaHeight() > 0) {
-            result.setRegion(0, world.getMinHeight(), 0, 16, addon.getSettings().getSeaHeight() + 1, 16, Material.WATER);
-        }
-        if (world.getEnvironment().equals(Environment.NETHER) && addon.getSettings().isNetherRoof()) {
-            roofChunk.forEach((k,v) -> result.setBlock(k.getBlockX(), world.getMaxHeight() + k.getBlockY(), k.getBlockZ(), v));
-        }
-        return result;
     }
 
     @Override
-    public ChunkData generateChunkData(World world, Random random, int chunkX, int chunkZ, BiomeGrid biomeGrid) {
-        setBiome(world, biomeGrid);
-        return generateChunks(world);
+    public void generateNoise(@NonNull WorldInfo worldInfo, @NonNull Random random, int chunkX, int chunkZ, @NonNull ChunkData chunkData) {
+        if (worldInfo.getEnvironment() == Environment.NORMAL && addon.getSettings().getSeaHeight() > 0) {
+            chunkData.setRegion(0, worldInfo.getMinHeight(), 0, 16, addon.getSettings().getSeaHeight() + 1, 16, Material.WATER);
+        }
+        if (worldInfo.getEnvironment() == Environment.NETHER && addon.getSettings().isNetherRoof()) {
+            roofChunk.forEach((k, v) -> chunkData.setBlock(k.getBlockX(), worldInfo.getMaxHeight() + k.getBlockY(), k.getBlockZ(), v));
+        }
     }
 
-    private void setBiome(World world, BiomeGrid biomeGrid) {
-        Biome biome = world.getEnvironment() == Environment.NORMAL ? addon.getSettings().getDefaultBiome() :
-            world.getEnvironment() == Environment.NETHER ? addon.getSettings().getDefaultNetherBiome() : addon.getSettings().getDefaultEndBiome();
-            for (int x = 0; x < 16; x+=4) {
-                for (int z = 0; z < 16; z+=4) {
-                    for (int y = world.getMinHeight(); y < world.getMaxHeight(); y+=4) {
-                        biomeGrid.setBiome(x, y, z, biome);
-                    }
-                }
+    @Override
+    public BiomeProvider getDefaultBiomeProvider(@NonNull WorldInfo worldInfo) {
+        return new BiomeProvider() {
+            @Override
+            public @NonNull Biome getBiome(@NonNull WorldInfo worldInfo, int x, int y, int z) {
+                return worldInfo.getEnvironment() == Environment.NORMAL ? addon.getSettings().getDefaultBiome()
+                        : worldInfo.getEnvironment() == Environment.NETHER ? addon.getSettings().getDefaultNetherBiome()
+                        : addon.getSettings().getDefaultEndBiome();
             }
 
+            @Override
+            public @NonNull List<Biome> getBiomes(@NonNull WorldInfo worldInfo) {
+                return List.of(worldInfo.getEnvironment() == Environment.NORMAL ? addon.getSettings().getDefaultBiome()
+                        : worldInfo.getEnvironment() == Environment.NETHER ? addon.getSettings().getDefaultNetherBiome()
+                        : addon.getSettings().getDefaultEndBiome());
+            }
+        };
     }
 
-    // This needs to be set to return true to override minecraft's default
-    // behavior
+    // This needs to be set to return true to override minecraft's default behavior
     @Override
-    public boolean canSpawn(World world, int x, int z) {
+    public boolean canSpawn(@NonNull World world, int x, int z) {
         return true;
     }
 
     @Override
-    public boolean shouldGenerateMobs(WorldInfo worldInfo, Random random, int chunkX, int chunkZ){
+    public boolean shouldGenerateMobs(@NonNull WorldInfo worldInfo, @NonNull Random random, int chunkX, int chunkZ) {
         return true;
     }
 
     @Override
-    public List<BlockPopulator> getDefaultPopulators(final World world) {
+    public @NonNull List<BlockPopulator> getDefaultPopulators(final @NonNull World world) {
         return Collections.emptyList();
     }
 
