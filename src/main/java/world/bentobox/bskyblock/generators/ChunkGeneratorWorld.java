@@ -59,17 +59,21 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
         return new BiomeProvider() {
             @Override
             public @NonNull Biome getBiome(@NonNull WorldInfo worldInfo, int x, int y, int z) {
-                return worldInfo.getEnvironment() == Environment.NORMAL ? addon.getSettings().getDefaultBiome()
-                        : worldInfo.getEnvironment() == Environment.NETHER ? addon.getSettings().getDefaultNetherBiome()
-                        : addon.getSettings().getDefaultEndBiome();
+                return defaultBiomeFor(worldInfo.getEnvironment());
             }
 
             @Override
             public @NonNull List<Biome> getBiomes(@NonNull WorldInfo worldInfo) {
-                return List.of(worldInfo.getEnvironment() == Environment.NORMAL ? addon.getSettings().getDefaultBiome()
-                        : worldInfo.getEnvironment() == Environment.NETHER ? addon.getSettings().getDefaultNetherBiome()
-                        : addon.getSettings().getDefaultEndBiome());
+                return List.of(defaultBiomeFor(worldInfo.getEnvironment()));
             }
+        };
+    }
+
+    private Biome defaultBiomeFor(Environment env) {
+        return switch (env) {
+            case NORMAL -> addon.getSettings().getDefaultBiome();
+            case NETHER -> addon.getSettings().getDefaultNetherBiome();
+            default -> addon.getSettings().getDefaultEndBiome();
         };
     }
 
@@ -99,64 +103,66 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
         // Make the roof - common across the world
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
-                // Do the ceiling
-                setBlock(x, -1, z, Material.BEDROCK);
-                // Next three layers are a mix of bedrock and netherrack
-                for (int y = 2; y < 5; y++) {
-                    double r = gen.noise(x, - y, z, 0.5, 0.5);
-                    if (r > 0D) {
-                        setBlock(x, - y, z, Material.BEDROCK);
-                    }
-                }
-                // Next three layers are a mix of netherrack and air
-                for (int y = 5; y < 8; y++) {
-                    double r = gen.noise(x, - y, z, 0.5, 0.5);
-                    if (r > 0D) {
-                        setBlock(x, -y, z, Material.NETHERRACK);
-                    } else {
-                        setBlock(x, -y, z, Material.AIR);
-                    }
-                }
-                // Layer 8 may be glowstone
-                double r = gen.noise(x, - 8, z, rand.nextFloat(), rand.nextFloat());
-                if (r > 0.5D) {
-                    // Have blobs of glowstone
-                    switch (rand.nextInt(4)) {
-                    case 1:
-                        // Single block
-                        setBlock(x, -8, z, Material.GLOWSTONE);
-                        if (x < 14 && z < 14) {
-                            setBlock(x + 1, -8, z + 1, Material.GLOWSTONE);
-                            setBlock(x + 2, -8, z + 2, Material.GLOWSTONE);
-                            setBlock(x + 1, -8, z + 2, Material.GLOWSTONE);
-                            setBlock(x + 1, -8, z + 2, Material.GLOWSTONE);
-                        }
-                        break;
-                    case 2:
-                        // Stalactite
-                        for (int i = 0; i < rand.nextInt(10); i++) {
-                            setBlock(x, - 8 - i, z, Material.GLOWSTONE);
-                        }
-                        break;
-                    case 3:
-                        setBlock(x, -8, z, Material.GLOWSTONE);
-                        if (x > 3 && z > 3) {
-                            for (int xx = 0; xx < 3; xx++) {
-                                for (int zz = 0; zz < 3; zz++) {
-                                    setBlock(x - xx, - 8 - rand.nextInt(2), z - xx, Material.GLOWSTONE);
-                                }
-                            }
-                        }
-                        break;
-                    default:
-                        setBlock(x, -8, z, Material.GLOWSTONE);
-                    }
-                    setBlock(x, -8, z, Material.GLOWSTONE);
-                } else {
-                    setBlock(x, -8, z, Material.AIR);
+                fillRoofColumn(gen, x, z);
+            }
+        }
+    }
+
+    private void fillRoofColumn(PerlinOctaveGenerator gen, int x, int z) {
+        // Ceiling
+        setBlock(x, -1, z, Material.BEDROCK);
+        // Bedrock/netherrack mix
+        for (int y = 2; y < 5; y++) {
+            if (gen.noise(x, -y, z, 0.5, 0.5) > 0D) {
+                setBlock(x, -y, z, Material.BEDROCK);
+            }
+        }
+        // Netherrack/air mix
+        for (int y = 5; y < 8; y++) {
+            Material m = gen.noise(x, -y, z, 0.5, 0.5) > 0D ? Material.NETHERRACK : Material.AIR;
+            setBlock(x, -y, z, m);
+        }
+        // Layer 8 may be glowstone
+        if (gen.noise(x, -8, z, rand.nextFloat(), rand.nextFloat()) > 0.5D) {
+            placeGlowstoneBlob(x, z);
+        } else {
+            setBlock(x, -8, z, Material.AIR);
+        }
+    }
+
+    private void placeGlowstoneBlob(int x, int z) {
+        switch (rand.nextInt(4)) {
+        case 1 -> placeGlowstoneCluster(x, z);
+        case 2 -> placeGlowstoneStalactite(x, z);
+        case 3 -> placeGlowstonePatch(x, z);
+        default -> setBlock(x, -8, z, Material.GLOWSTONE);
+        }
+        setBlock(x, -8, z, Material.GLOWSTONE);
+    }
+
+    private void placeGlowstoneCluster(int x, int z) {
+        setBlock(x, -8, z, Material.GLOWSTONE);
+        if (x < 14 && z < 14) {
+            setBlock(x + 1, -8, z + 1, Material.GLOWSTONE);
+            setBlock(x + 2, -8, z + 2, Material.GLOWSTONE);
+            setBlock(x + 1, -8, z + 2, Material.GLOWSTONE);
+        }
+    }
+
+    private void placeGlowstoneStalactite(int x, int z) {
+        for (int i = 0; i < rand.nextInt(10); i++) {
+            setBlock(x, -8 - i, z, Material.GLOWSTONE);
+        }
+    }
+
+    private void placeGlowstonePatch(int x, int z) {
+        setBlock(x, -8, z, Material.GLOWSTONE);
+        if (x > 3 && z > 3) {
+            for (int xx = 0; xx < 3; xx++) {
+                for (int zz = 0; zz < 3; zz++) {
+                    setBlock(x - xx, -8 - rand.nextInt(2), z - xx, Material.GLOWSTONE);
                 }
             }
-
         }
     }
 

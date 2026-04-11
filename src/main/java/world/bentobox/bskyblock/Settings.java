@@ -700,8 +700,10 @@ public class Settings implements WorldSettings {
 
     /**
      * @return the defaultIslandFlags
-     * @deprecated since 1.21
+     * @deprecated since 1.21, kept for BentoBox API compatibility; use {@link #getDefaultIslandFlagNames()}.
      */
+    @SuppressWarnings("java:S1133")
+    @Deprecated(since = "1.21", forRemoval = true)
     @Override
     public Map<Flag, Integer> getDefaultIslandFlags()
     {
@@ -711,8 +713,10 @@ public class Settings implements WorldSettings {
 
     /**
      * @return the defaultIslandSettings
-     * @deprecated since 1.21
+     * @deprecated since 1.21, kept for BentoBox API compatibility; use {@link #getDefaultIslandSettingNames()}.
      */
+    @SuppressWarnings("java:S1133")
+    @Deprecated(since = "1.21", forRemoval = true)
     @Override
     public Map<Flag, Integer> getDefaultIslandSettings()
     {

@@ -21,7 +21,7 @@ import org.junit.jupiter.api.Test;
  * @author tastybento
  *
  */
-public class SettingsTest extends CommonTestSetup {
+class SettingsTest extends CommonTestSetup {
 
     Settings s;
 
@@ -45,7 +45,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setFriendlyName(java.lang.String)}.
      */
     @Test
-    public void testSetFriendlyName() {
+    void testSetFriendlyName() {
         s.setFriendlyName("name");
         assertEquals("name", s.getFriendlyName());
     }
@@ -54,7 +54,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setWorldName(java.lang.String)}.
      */
     @Test
-    public void testSetWorldName() {
+    void testSetWorldName() {
         s.setWorldName("name");
         assertEquals("name", s.getWorldName());
     }
@@ -63,7 +63,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setDifficulty(org.bukkit.Difficulty)}.
      */
     @Test
-    public void testSetDifficulty() {
+    void testSetDifficulty() {
         s.setDifficulty(Difficulty.PEACEFUL);
         assertEquals(Difficulty.PEACEFUL, s.getDifficulty());
     }
@@ -72,7 +72,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setIslandDistance(int)}.
      */
     @Test
-    public void testSetIslandDistance() {
+    void testSetIslandDistance() {
         s.setIslandDistance(123);
         assertEquals(123, s.getIslandDistance());
     }
@@ -81,7 +81,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setIslandProtectionRange(int)}.
      */
     @Test
-    public void testSetIslandProtectionRange() {
+    void testSetIslandProtectionRange() {
         s.setIslandProtectionRange(123);
         assertEquals(123, s.getIslandProtectionRange());
     }
@@ -90,7 +90,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setIslandStartX(int)}.
      */
     @Test
-    public void testSetIslandStartX() {
+    void testSetIslandStartX() {
         s.setIslandStartX(123);
         assertEquals(123, s.getIslandStartX());
     }
@@ -99,7 +99,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setIslandStartZ(int)}.
      */
     @Test
-    public void testSetIslandStartZ() {
+    void testSetIslandStartZ() {
         s.setIslandStartZ(123);
         assertEquals(123, s.getIslandStartZ());
     }
@@ -108,7 +108,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setIslandXOffset(int)}.
      */
     @Test
-    public void testSetIslandXOffset() {
+    void testSetIslandXOffset() {
         s.setIslandXOffset(123);
         assertEquals(123, s.getIslandXOffset());
     }
@@ -117,7 +117,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setIslandZOffset(int)}.
      */
     @Test
-    public void testSetIslandZOffset() {
+    void testSetIslandZOffset() {
         s.setIslandZOffset(123);
         assertEquals(123, s.getIslandZOffset());
     }
@@ -126,7 +126,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setIslandHeight(int)}.
      */
     @Test
-    public void testSetIslandHeight() {
+    void testSetIslandHeight() {
         s.setIslandHeight(123);
         assertEquals(123, s.getIslandHeight());
     }
@@ -135,7 +135,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setUseOwnGenerator(boolean)}.
      */
     @Test
-    public void testSetUseOwnGenerator() {
+    void testSetUseOwnGenerator() {
         s.setUseOwnGenerator(true);
         assertTrue(s.isUseOwnGenerator());
     }
@@ -144,7 +144,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setSeaHeight(int)}.
      */
     @Test
-    public void testSetSeaHeight() {
+    void testSetSeaHeight() {
         s.setSeaHeight(123);
         assertEquals(123, s.getSeaHeight());
     }
@@ -153,7 +153,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setMaxIslands(int)}.
      */
     @Test
-    public void testSetMaxIslands() {
+    void testSetMaxIslands() {
         s.setMaxIslands(123);
         assertEquals(123, s.getMaxIslands());
     }
@@ -162,7 +162,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setDefaultGameMode(org.bukkit.GameMode)}.
      */
     @Test
-    public void testSetDefaultGameMode() {
+    void testSetDefaultGameMode() {
         s.setDefaultGameMode(GameMode.CREATIVE);
         assertEquals(GameMode.CREATIVE, s.getDefaultGameMode());
     }
@@ -171,7 +171,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setNetherGenerate(boolean)}.
      */
     @Test
-    public void testSetNetherGenerate() {
+    void testSetNetherGenerate() {
         s.setNetherGenerate(true);
         assertTrue(s.isNetherGenerate());
     }
@@ -180,7 +180,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setNetherIslands(boolean)}.
      */
     @Test
-    public void testSetNetherIslands() {
+    void testSetNetherIslands() {
         s.setNetherIslands(true);
         assertTrue(s.isNetherIslands());
     }
@@ -189,7 +189,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setNetherRoof(boolean)}.
      */
     @Test
-    public void testSetNetherRoof() {
+    void testSetNetherRoof() {
         s.setNetherRoof(true);
         assertTrue(s.isNetherRoof());
     }
@@ -198,7 +198,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setNetherSpawnRadius(int)}.
      */
     @Test
-    public void testSetNetherSpawnRadius() {
+    void testSetNetherSpawnRadius() {
         s.setNetherSpawnRadius(123);
         assertEquals(123, s.getNetherSpawnRadius());
     }
@@ -207,7 +207,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setEndGenerate(boolean)}.
      */
     @Test
-    public void testSetEndGenerate() {
+    void testSetEndGenerate() {
         s.setEndGenerate(true);
         assertTrue(s.isEndGenerate());
     }
@@ -216,7 +216,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setEndIslands(boolean)}.
      */
     @Test
-    public void testSetEndIslands() {
+    void testSetEndIslands() {
         s.setEndIslands(true);
         assertTrue(s.isEndIslands());
     }
@@ -225,7 +225,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setDragonSpawn(boolean)}.
      */
     @Test
-    public void testSetDragonSpawn() {
+    void testSetDragonSpawn() {
         s.setDragonSpawn(true);
         assertTrue(s.isDragonSpawn());
     }
@@ -234,7 +234,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setRemoveMobsWhitelist(java.util.Set)}.
      */
     @Test
-    public void testSetRemoveMobsWhitelist() {
+    void testSetRemoveMobsWhitelist() {
         Set<EntityType> wl = Collections.emptySet();
         s.setRemoveMobsWhitelist(wl);
         assertEquals(wl, s.getRemoveMobsWhitelist());
@@ -244,7 +244,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setWorldFlags(java.util.Map)}.
      */
     @Test
-    public void testSetWorldFlags() {
+    void testSetWorldFlags() {
         Map<String, Boolean> worldFlags = Collections.emptyMap();
         s.setWorldFlags(worldFlags);
         assertEquals(worldFlags, s.getWorldFlags());
@@ -254,7 +254,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setHiddenFlags(java.util.List)}.
      */
     @Test
-    public void testSetVisibleSettings() {
+    void testSetVisibleSettings() {
         List<String> visibleSettings = Collections.emptyList();
         s.setHiddenFlags(visibleSettings);
         assertEquals(visibleSettings, s.getHiddenFlags());
@@ -264,7 +264,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setVisitorBannedCommands(java.util.List)}.
      */
     @Test
-    public void testSetVisitorBannedCommands() {
+    void testSetVisitorBannedCommands() {
         List<String> visitorBannedCommands = Collections.emptyList();
         s.setVisitorBannedCommands(visitorBannedCommands);
         assertEquals(visitorBannedCommands, s.getVisitorBannedCommands());
@@ -274,7 +274,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setMaxTeamSize(int)}.
      */
     @Test
-    public void testSetMaxTeamSize() {
+    void testSetMaxTeamSize() {
         s.setMaxTeamSize(123);
         assertEquals(123, s.getMaxTeamSize());
     }
@@ -283,7 +283,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setMaxHomes(int)}.
      */
     @Test
-    public void testSetMaxHomes() {
+    void testSetMaxHomes() {
         s.setMaxHomes(123);
         assertEquals(123, s.getMaxHomes());
     }
@@ -292,7 +292,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setResetLimit(int)}.
      */
     @Test
-    public void testSetResetLimit() {
+    void testSetResetLimit() {
         s.setResetLimit(123);
         assertEquals(123, s.getResetLimit());
     }
@@ -301,7 +301,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setLeaversLoseReset(boolean)}.
      */
     @Test
-    public void testSetLeaversLoseReset() {
+    void testSetLeaversLoseReset() {
         s.setLeaversLoseReset(true);
         assertTrue(s.isLeaversLoseReset());
     }
@@ -310,7 +310,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setKickedKeepInventory(boolean)}.
      */
     @Test
-    public void testSetKickedKeepInventory() {
+    void testSetKickedKeepInventory() {
         s.setKickedKeepInventory(true);
         assertTrue(s.isKickedKeepInventory());
     }
@@ -319,7 +319,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setOnJoinResetMoney(boolean)}.
      */
     @Test
-    public void testSetOnJoinResetMoney() {
+    void testSetOnJoinResetMoney() {
         s.setOnJoinResetMoney(true);
         assertTrue(s.isOnJoinResetMoney());
     }
@@ -328,7 +328,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setOnJoinResetInventory(boolean)}.
      */
     @Test
-    public void testSetOnJoinResetInventory() {
+    void testSetOnJoinResetInventory() {
         s.setOnJoinResetInventory(true);
         assertTrue(s.isOnJoinResetInventory());
     }
@@ -337,7 +337,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setOnJoinResetEnderChest(boolean)}.
      */
     @Test
-    public void testSetOnJoinResetEnderChest() {
+    void testSetOnJoinResetEnderChest() {
         s.setOnJoinResetEnderChest(true);
         assertTrue(s.isOnJoinResetEnderChest());
     }
@@ -346,7 +346,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setOnLeaveResetMoney(boolean)}.
      */
     @Test
-    public void testSetOnLeaveResetMoney() {
+    void testSetOnLeaveResetMoney() {
         s.setOnLeaveResetMoney(true);
         assertTrue(s.isOnLeaveResetMoney());
     }
@@ -355,7 +355,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setOnLeaveResetInventory(boolean)}.
      */
     @Test
-    public void testSetOnLeaveResetInventory() {
+    void testSetOnLeaveResetInventory() {
         s.setOnLeaveResetInventory(true);
         assertTrue(s.isOnLeaveResetInventory());
     }
@@ -364,7 +364,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setOnLeaveResetEnderChest(boolean)}.
      */
     @Test
-    public void testSetOnLeaveResetEnderChest() {
+    void testSetOnLeaveResetEnderChest() {
         s.setOnLeaveResetEnderChest(true);
         assertTrue(s.isOnLeaveResetEnderChest());
     }
@@ -373,7 +373,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setDeathsCounted(boolean)}.
      */
     @Test
-    public void testSetDeathsCounted() {
+    void testSetDeathsCounted() {
         s.setDeathsCounted(true);
         assertTrue(s.isDeathsCounted());
     }
@@ -382,7 +382,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setDeathsMax(int)}.
      */
     @Test
-    public void testSetDeathsMax() {
+    void testSetDeathsMax() {
         s.setDeathsMax(123);
         assertEquals(123, s.getDeathsMax());
     }
@@ -391,7 +391,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setTeamJoinDeathReset(boolean)}.
      */
     @Test
-    public void testSetTeamJoinDeathReset() {
+    void testSetTeamJoinDeathReset() {
         s.setTeamJoinDeathReset(true);
         assertTrue(s.isTeamJoinDeathReset());
     }
@@ -400,7 +400,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setGeoLimitSettings(java.util.List)}.
      */
     @Test
-    public void testSetGeoLimitSettings() {
+    void testSetGeoLimitSettings() {
         List<String> geoLimitSettings = Collections.emptyList();
         s.setGeoLimitSettings(geoLimitSettings);
         assertEquals(geoLimitSettings, s.getGeoLimitSettings());
@@ -410,7 +410,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setIvSettings(java.util.List)}.
      */
     @Test
-    public void testSetIvSettings() {
+    void testSetIvSettings() {
         List<String> ivSettings = Collections.emptyList();
         s.setIvSettings(ivSettings);
         assertEquals(ivSettings, s.getIvSettings());
@@ -420,7 +420,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setAllowSetHomeInNether(boolean)}.
      */
     @Test
-    public void testSetAllowSetHomeInNether() {
+    void testSetAllowSetHomeInNether() {
         s.setAllowSetHomeInNether(true);
         assertTrue(s.isAllowSetHomeInNether());
     }
@@ -429,7 +429,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setAllowSetHomeInTheEnd(boolean)}.
      */
     @Test
-    public void testSetAllowSetHomeInTheEnd() {
+    void testSetAllowSetHomeInTheEnd() {
         s.setAllowSetHomeInTheEnd(true);
         assertTrue(s.isAllowSetHomeInTheEnd());
     }
@@ -438,7 +438,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setRequireConfirmationToSetHomeInNether(boolean)}.
      */
     @Test
-    public void testSetRequireConfirmationToSetHomeInNether() {
+    void testSetRequireConfirmationToSetHomeInNether() {
         s.setRequireConfirmationToSetHomeInNether(true);
         assertTrue(s.isRequireConfirmationToSetHomeInNether());
     }
@@ -447,7 +447,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setRequireConfirmationToSetHomeInTheEnd(boolean)}.
      */
     @Test
-    public void testSetRequireConfirmationToSetHomeInTheEnd() {
+    void testSetRequireConfirmationToSetHomeInTheEnd() {
         s.setRequireConfirmationToSetHomeInTheEnd(true);
         assertTrue(s.isRequireConfirmationToSetHomeInTheEnd());
     }
@@ -456,7 +456,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setResetEpoch(long)}.
      */
     @Test
-    public void testSetResetEpoch() {
+    void testSetResetEpoch() {
         s.setResetEpoch(123);
         assertEquals(123, s.getResetEpoch());
     }
@@ -465,7 +465,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#getPermissionPrefix()}.
      */
     @Test
-    public void testGetPermissionPrefix() {
+    void testGetPermissionPrefix() {
         assertEquals("bskyblock", s.getPermissionPrefix());
     }
 
@@ -473,7 +473,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#isWaterUnsafe()}.
      */
     @Test
-    public void testIsWaterUnsafe() {
+    void testIsWaterUnsafe() {
         assertFalse(s.isWaterUnsafe());
     }
 
@@ -481,7 +481,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setDefaultBiome(org.bukkit.block.Biome)}.
      */
     @Test
-    public void testSetDefaultBiome() {
+    void testSetDefaultBiome() {
         s.setDefaultBiome(Biome.BADLANDS);
         assertEquals(Biome.BADLANDS, s.getDefaultBiome());
     }
@@ -490,7 +490,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setBanLimit(int)}.
      */
     @Test
-    public void testSetBanLimit() {
+    void testSetBanLimit() {
         s.setBanLimit(123);
         assertEquals(123, s.getBanLimit());
     }
@@ -499,7 +499,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#getIslandCommand()}.
      */
     @Test
-    public void testGetIslandCommand() {
+    void testGetIslandCommand() {
         s.setPlayerCommandAliases("island");
         assertEquals("island", s.getPlayerCommandAliases());
     }
@@ -508,7 +508,7 @@ public class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#getAdminCommand()}.
      */
     @Test
-    public void testGetAdminCommand() {
+    void testGetAdminCommand() {
         s.setAdminCommandAliases("admin");
         assertEquals("admin", s.getAdminCommandAliases());
     }

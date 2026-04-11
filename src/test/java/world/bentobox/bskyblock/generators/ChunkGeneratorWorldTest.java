@@ -32,7 +32,7 @@ import world.bentobox.bskyblock.Settings;
  * @author tastybento
  *
  */
-public class ChunkGeneratorWorldTest extends CommonTestSetup {
+class ChunkGeneratorWorldTest extends CommonTestSetup {
 
     @Mock
     private BSkyBlock addon;
