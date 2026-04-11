@@ -43,7 +43,7 @@ import world.bentobox.bskyblock.generators.ChunkGeneratorWorld;
  * @author tastybento
  *
  */
-public class BSkyBlockTest extends CommonTestSetup {
+class BSkyBlockTest extends CommonTestSetup {
 
     @Mock
     private User user;
