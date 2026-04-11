@@ -1,6 +1,7 @@
 package world.bentobox.bskyblock.generators;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -169,5 +170,50 @@ public class ChunkGeneratorWorldTest extends CommonTestSetup {
     @Test
     void testGetDefaultPopulatorsWorld() {
         assertTrue(cg.getDefaultPopulators(mock(World.class)).isEmpty());
+    }
+
+    /**
+     * Test method for {@link ChunkGeneratorWorld#shouldGenerateStructures}.
+     */
+    @Test
+    void testShouldGenerateStructures() {
+        assertFalse(cg.shouldGenerateStructures(cgWorld, random, 0, 0));
+    }
+
+    /**
+     * Test method for {@link ChunkGeneratorWorld#shouldGenerateMobs}.
+     */
+    @Test
+    void testShouldGenerateMobs() {
+        assertTrue(cg.shouldGenerateMobs(cgWorld, random, 0, 0));
+    }
+
+    /**
+     * Test method for the BiomeProvider's {@code getBiomes} list in each environment.
+     */
+    @Test
+    void testGetBiomesOverworld() {
+        BiomeProvider provider = cg.getDefaultBiomeProvider(cgWorld);
+        var biomes = provider.getBiomes(cgWorld);
+        assertEquals(1, biomes.size());
+        assertEquals("plains", biomes.get(0).getKey().getKey());
+    }
+
+    @Test
+    void testGetBiomesNether() {
+        when(cgWorld.getEnvironment()).thenReturn(World.Environment.NETHER);
+        BiomeProvider provider = cg.getDefaultBiomeProvider(cgWorld);
+        var biomes = provider.getBiomes(cgWorld);
+        assertEquals(1, biomes.size());
+        assertEquals("nether_wastes", biomes.get(0).getKey().getKey());
+    }
+
+    @Test
+    void testGetBiomesEnd() {
+        when(cgWorld.getEnvironment()).thenReturn(World.Environment.THE_END);
+        BiomeProvider provider = cg.getDefaultBiomeProvider(cgWorld);
+        var biomes = provider.getBiomes(cgWorld);
+        assertEquals(1, biomes.size());
+        assertEquals("the_end", biomes.get(0).getKey().getKey());
     }
 }

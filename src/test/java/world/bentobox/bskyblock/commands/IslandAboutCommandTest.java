@@ -1,5 +1,6 @@
 package world.bentobox.bskyblock.commands;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -31,10 +32,13 @@ public class IslandAboutCommandTest {
         when(ic.getAddon()).thenReturn(addon);
         IslandAboutCommand c = new IslandAboutCommand(ic);
         User user = mock(User.class);
-        c.execute(user, "", Collections.emptyList());
-        // Verify
-        Mockito.verify(user).sendRawMessage(Mockito.eq("Copyright (c) 2017 - 2026 tastybento, others"));
+        boolean result = c.execute(user, "", Collections.emptyList());
+        assertTrue(result);
+        // Verify all four lines
         Mockito.verify(user).sendRawMessage(Mockito.eq("About BSkyBlock 1.2.3:"));
+        Mockito.verify(user).sendRawMessage(Mockito.eq("Copyright (c) 2017 - 2026 tastybento, others"));
+        Mockito.verify(user).sendRawMessage(Mockito.eq("See https://www.eclipse.org/legal/epl-2.0/"));
+        Mockito.verify(user).sendRawMessage(Mockito.eq("for license information."));
     }
 
 }
