@@ -160,7 +160,7 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
         if (x > 3 && z > 3) {
             for (int xx = 0; xx < 3; xx++) {
                 for (int zz = 0; zz < 3; zz++) {
-                    setBlock(x - xx, -8 - rand.nextInt(2), z - xx, Material.GLOWSTONE);
+                    setBlock(x - xx, -8 - rand.nextInt(2), z - zz, Material.GLOWSTONE);
                 }
             }
         }
