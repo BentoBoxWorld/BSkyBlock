@@ -1,5 +1,6 @@
 package world.bentobox.bskyblock.commands;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -17,13 +18,13 @@ import world.bentobox.bentobox.api.user.User;
  * @author tastybento
  *
  */
-public class IslandAboutCommandTest {
+class IslandAboutCommandTest {
 
     /**
      * Test method for {@link world.bentobox.bskyblock.commands.IslandAboutCommand#execute(world.bentobox.bentobox.api.user.User, java.lang.String, java.util.List)}.
      */
     @Test
-    public void testExecuteUserStringListOfString() {
+    void testExecuteUserStringListOfString() {
         CompositeCommand ic= mock(CompositeCommand.class);
         Addon addon = mock(Addon.class);
         AddonDescription desc = new AddonDescription.Builder("","BSkyBlock","1.2.3").build();
@@ -31,10 +32,13 @@ public class IslandAboutCommandTest {
         when(ic.getAddon()).thenReturn(addon);
         IslandAboutCommand c = new IslandAboutCommand(ic);
         User user = mock(User.class);
-        c.execute(user, "", Collections.emptyList());
-        // Verify
-        Mockito.verify(user).sendRawMessage(Mockito.eq("Copyright (c) 2017 - 2022 tastybento, Poslovitch"));
-        Mockito.verify(user).sendRawMessage(Mockito.eq("About BSkyBlock 1.2.3:"));
+        boolean result = c.execute(user, "", Collections.emptyList());
+        assertTrue(result);
+        // Verify all four lines
+        Mockito.verify(user).sendRawMessage("About BSkyBlock 1.2.3:");
+        Mockito.verify(user).sendRawMessage("Copyright (c) 2017 - 2026 tastybento, others");
+        Mockito.verify(user).sendRawMessage("See https://www.eclipse.org/legal/epl-2.0/");
+        Mockito.verify(user).sendRawMessage("for license information.");
     }
 
 }

@@ -5,8 +5,8 @@
 
 bskyblock:
   sign:
-    line0: "&cBSkyBlock"
+    line0: "<red>BSkyBlock</red>"
     line1: "Witaj!"
     line2: "[name]"
-    line3: "Nie spadnij! &c<3"
+    line3: "Nie spadnij! <red><3</red>"
     

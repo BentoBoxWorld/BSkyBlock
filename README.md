@@ -7,7 +7,7 @@
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=BentoBoxWorld_BSkyBlock&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=BentoBoxWorld_BSkyBlock)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=BentoBoxWorld_BSkyBlock&metric=bugs)](https://sonarcloud.io/summary/new_code?id=BentoBoxWorld_BSkyBlock)
 
-<img width="509" alt="BSkyBlock" src="https://user-images.githubusercontent.com/4407265/227750292-5617537d-c99a-4a7e-864e-5de990b8c195.png">
+<img width="509" alt="BSkyBlock" src="https://github.com/user-attachments/assets/3b814893-e0cf-41b5-b16b-89993402271e">
 
 ## About
 Play SkyBlock with your friends! Don't fall! See the config.yml for all the settings. This is an addon for BentoBox.

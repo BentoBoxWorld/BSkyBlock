@@ -1,6 +1,6 @@
 bskyblock:
   sign:
-    line0: "&cBSkyBlock"
+    line0: "<red>BSkyBlock</red>"
     line1: "Benvenuto/a!"
     line2: "[name]"
-    line3: "Non cadere! &c<3"
+    line3: "Non cadere! <red><3</red>"

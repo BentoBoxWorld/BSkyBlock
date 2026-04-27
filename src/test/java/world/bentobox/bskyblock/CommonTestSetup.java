@@ -31,7 +31,6 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemFactory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
-import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.scheduler.BukkitScheduler;
@@ -131,6 +130,7 @@ public abstract class CommonTestSetup {
 
 
     @BeforeEach
+    @SuppressWarnings("java:S1130") // subclasses override and need to throw checked exceptions
     public void setUp() throws Exception {
         // Processes the @Mock annotations and initializes the field
         closeable = MockitoAnnotations.openMocks(this);
@@ -206,7 +206,8 @@ public abstract class CommonTestSetup {
         when(island.getMemberSet()).thenReturn(ImmutableSet.of(uuid));
 
         // Enable reporting from Flags class
-        MetadataValue mdv = new FixedMetadataValue(plugin, "_why_debug");
+        MetadataValue mdv = mock(MetadataValue.class);
+        when(mdv.asString()).thenReturn("_why_debug");
         when(mockPlayer.getMetadata(anyString())).thenReturn(Collections.singletonList(mdv));
 
         // Locales & Placeholders
@@ -228,9 +229,7 @@ public abstract class CommonTestSetup {
 
         // Util
         mockedUtil.when(() -> Util.findFirstMatchingEnum(any(), any())).thenCallRealMethod();
-        // Util translate color codes (used in user translate methods)
-        //mockedUtil.when(() -> translateColorCodes(anyString())).thenAnswer((Answer<String>) invocation -> invocation.getArgument(0, String.class));
-        
+
         // Server & Scheduler
         mockedBukkit.when(Bukkit::getScheduler).thenReturn(sch);
 
@@ -285,7 +284,7 @@ public abstract class CommonTestSetup {
         List<TextComponent> capturedMessages = captor.getAllValues();
 
         // Count the number of occurrences of the expectedMessage in the captured messages
-        long actualOccurrences = capturedMessages.stream().map(component -> component.toLegacyText()) // Convert each TextComponent to plain text
+        long actualOccurrences = capturedMessages.stream().map(component -> component.toLegacyText()) // NOSONAR Convert each TextComponent to plain text
                 .filter(messageText -> messageText.contains(expectedMessage)) // Check if the message contains the expected text
                 .count(); // Count how many times the expected message appears
 
@@ -302,10 +301,10 @@ public abstract class CommonTestSetup {
      * @return
      */
     public EntityExplodeEvent getExplodeEvent(Entity entity, Location l, List<Block> list) {
-        //return new EntityExplodeEvent(entity, l, list, 0, null);
         return new EntityExplodeEvent(entity, l, list, 0, null);
     }
 
+    @SuppressWarnings({"deprecation", "removal"})
     public PlayerDeathEvent getPlayerDeathEvent(Player player, List<ItemStack> drops, int droppedExp, int newExp,
             int newTotalExp, int newLevel, @Nullable String deathMessage) {
         //Technically this null is not allowed, but it works right now
