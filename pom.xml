@@ -54,7 +54,7 @@
         <!-- Non-minecraft related dependencies -->
         <junit.version>5.10.2</junit.version>
         <mockito.version>5.11.0</mockito.version>
-        <mock-bukkit.version>v1.21-SNAPSHOT</mock-bukkit.version>
+        <mock-bukkit.version>4.110.0</mock-bukkit.version>
         <!-- More visible way how to change dependency versions -->
         <paper.version>1.21.11-R0.1-SNAPSHOT</paper.version>
         <bentobox.version>3.14.0-SNAPSHOT</bentobox.version>
@@ -167,8 +167,8 @@
         </dependency>
         <!-- MockBukkit -->
         <dependency>
-            <groupId>com.github.MockBukkit</groupId>
-            <artifactId>MockBukkit</artifactId>
+            <groupId>org.mockbukkit.mockbukkit</groupId>
+            <artifactId>mockbukkit-v1.21</artifactId>
             <version>${mock-bukkit.version}</version>
             <scope>test</scope>
         </dependency>
