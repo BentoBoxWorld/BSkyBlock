@@ -89,6 +89,7 @@ jobs:
             1.21.11
             26.1
             26.1.1
+            26.1.2
 
           # Path to the built JAR — Maven produces BSkyBlock-<version>.jar in target/
           # Note: glob patterns are not supported; use the release tag directly.
