@@ -1,19 +1,30 @@
 # BSkyBlock — .github/workflows/publish.yml
-# CurseForge-first rollout. Hangar left blank; add its slug later to enable Hangar.
+# Publishes the jar attached to a GitHub release to CurseForge (and Hangar once a
+# slug is set) via the shared BentoBoxWorld/.github reusable workflow. It downloads
+# the release asset rather than rebuilding from source, so a dependency-repo outage
+# can't block publishing. Includes workflow_dispatch to (re)publish a given version.
 
-name: Publish release
+name: Publish release to CurseForge
 
 on:
   release:
     types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to publish (e.g. 1.2.3)"
+        required: true
+        type: string
 
 jobs:
   publish:
-    uses: bentoboxworld/.github/.github/workflows/publish-platforms.yml@main
+    uses: bentoboxworld/.github/.github/workflows/publish-platforms.yml@master
     with:
-      hangar_slug: ""
+      use_release_asset: "true"          # publish the jar attached to the release; do not rebuild
+      hangar_slug: ""                    # set the Hangar project slug to enable Hangar publishing
       curseforge_id: "1514804"
-      game_versions: "26.1.2,26.1.1,26.1,1.21.11,1.21.10,1.21.9,1.21.8,1.21.7,1.21.6"
+      game_versions: "26.2,26.1.2,26.1.1,26.1,1.21.11,1.21.10,1.21.9,1.21.8,1.21.7,1.21.6,1.21.5"
+      version: ${{ inputs.version }}     # empty on release events -> falls back to the release tag
     secrets:
       HANGAR_API_KEY: ${{ secrets.HANGAR_API_KEY }}
       CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
