@@ -18,7 +18,7 @@ on:
 
 jobs:
   publish:
-    uses: bentoboxworld/.github/.github/workflows/publish-platforms.yml@fe4b1f03c19f4fd4212020a06a07a7097923adec # master
+    uses: bentoboxworld/.github/.github/workflows/publish-platforms.yml@ca2dcd167e8db4e0f671a976080744dda43801a6 # master
     with:
       use_release_asset: "true"          # publish the jar attached to the release; do not rebuild
       hangar_slug: "SkyBlock-BSkyBlock"           # blank = skip Hangar
