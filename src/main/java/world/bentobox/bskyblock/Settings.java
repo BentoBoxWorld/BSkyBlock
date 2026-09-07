@@ -475,18 +475,24 @@ public class Settings implements WorldSettings {
 
     // Deaths
     @ConfigComment("Whether deaths are counted or not.")
+    @ConfigComment("If false, BentoBox does not count deaths and the Level addon does not record deaths against islands.")
     @ConfigEntry(path = "island.deaths.counted")
     private boolean deathsCounted = true;
 
     @ConfigComment("Maximum number of deaths to count. The death count can be used by add-ons.")
+    @ConfigComment("Since Level 2.29.0 this also caps how many deaths each member can contribute to an island's death penalty.")
     @ConfigEntry(path = "island.deaths.max")
     private int deathsMax = 10;
 
-    @ConfigComment("When a player joins a team, reset their death count")
+    @ConfigComment("When a player joins a team, reset their death count.")
+    @ConfigComment("This only affects BentoBox's own per-player death count, used by the %bskyblock_deaths% placeholder.")
+    @ConfigComment("Since Level 2.29.0, island levels use per-island death tracking and are not affected by this setting.")
     @ConfigEntry(path = "island.deaths.team-join-reset")
     private boolean teamJoinDeathReset = true;
 
-    @ConfigComment("Reset player death count when they start a new island or reset an island")
+    @ConfigComment("Reset player death count when they start a new island or reset an island.")
+    @ConfigComment("This only affects BentoBox's own per-player death count.")
+    @ConfigComment("Since Level 2.29.0 the Level addon clears an island's own death record automatically when it is reset or deleted.")
     @ConfigEntry(path = "island.deaths.reset-on-new-island", since = "1.6.0")
     private boolean deathsResetOnNewIsland = true;
 
