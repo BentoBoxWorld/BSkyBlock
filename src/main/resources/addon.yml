@@ -118,10 +118,10 @@ permissions:
     default: TRUE
   bskyblock.island.deletehome:
     description: Allow use of '/island deletehome' command - delete a home location
-    default: OP
+    default: TRUE
   bskyblock.island.renamehome:
     description: Allow use of '/island renamehome' command - rename a home location
-    default: OP
+    default: TRUE
   bskyblock.island.homes:
     description: Allow use of '/island homes' command - list your homes
     default: TRUE
