@@ -50,20 +50,20 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>21</java.version>
+        <java.version>25</java.version>
         <!-- Non-minecraft related dependencies -->
         <junit.version>5.10.2</junit.version>
-        <mockito.version>5.11.0</mockito.version>
-        <mock-bukkit.version>4.110.0</mock-bukkit.version>
+        <mockito.version>5.20.0</mockito.version>
+        <mock-bukkit.version>4.119.0</mock-bukkit.version>
         <!-- More visible way how to change dependency versions -->
-        <paper.version>1.21.11-R0.1-SNAPSHOT</paper.version>
-        <bentobox.version>3.14.0-SNAPSHOT</bentobox.version>
+        <paper.version>26.3.build.231-stable</paper.version>
+        <bentobox.version>3.23.7</bentobox.version>
         <!-- Revision variable removes warning about dynamic version -->
         <revision>${build.version}-SNAPSHOT</revision>
         <!-- Do not change unless you want different name for local builds. -->
         <build.number>-LOCAL</build.number>
         <!-- This allows to change between versions. -->
-        <build.version>1.20.0</build.version>
+        <build.version>1.21.0</build.version>
         <!-- Sonar Cloud -->
         <sonar.projectKey>BentoBoxWorld_BSkyBlock</sonar.projectKey>
         <sonar.organization>bentobox-world</sonar.organization>
@@ -168,7 +168,7 @@
         <!-- MockBukkit -->
         <dependency>
             <groupId>org.mockbukkit.mockbukkit</groupId>
-            <artifactId>mockbukkit-v1.21</artifactId>
+            <artifactId>mockbukkit-v26.3</artifactId>
             <version>${mock-bukkit.version}</version>
             <scope>test</scope>
         </dependency>

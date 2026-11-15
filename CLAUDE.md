@@ -14,7 +14,7 @@ mvn test                   # Run all tests
 mvn clean verify           # Run tests with JaCoCo coverage reports
 ```
 
-Maven profiles control versioning: CI sets `-b${BUILD_NUMBER}`, master branch removes `-SNAPSHOT`. Java 21 required.
+Maven profiles control versioning: CI sets `-b${BUILD_NUMBER}`, master branch removes `-SNAPSHOT`. Java 25 required (BentoBox 3.23+ and Paper 26.x are Java 25 artifacts).
 
 ## Architecture
 
@@ -33,7 +33,7 @@ Maven profiles control versioning: CI sets `-b${BUILD_NUMBER}`, master branch re
 
 Uses JUnit 5 (Jupiter) + Mockito + MockBukkit. Test classes mirror main structure under `src/test/java/`. The `CommonTestSetup` base class boots MockBukkit, opens Mockito annotations, installs `MockedStatic<Bukkit>` / `MockedStatic<Util>`, and wires up the BentoBox plugin, IWM, IslandsManager, Player, World, etc. `WhiteBox` is a small reflection helper that replaces PowerMock's `Whitebox`.
 
-Surefire is configured with `--add-opens` JVM args for Java 21 module access (needed by Mockito inline mock maker and JaCoCo).
+Surefire is configured with `--add-opens` JVM args for Java 25 module access (needed by Mockito inline mock maker and JaCoCo).
 
 ### Test patterns and gotchas
 
@@ -45,13 +45,13 @@ Surefire is configured with `--add-opens` JVM args for Java 21 module access (ne
 
 ### Build gotcha: maven-compiler-plugin on JDK 25
 
-`maven-compiler-plugin` 3.13.0 / 3.14.0 in non-forked mode crashes on JDK 25 with `Fatal error compiling: Cannot load from object array because "this.hashes" is null` while *formatting* a deprecation diagnostic. The actual compile is fine — only the in-process plexus diagnostic formatter throws. The POM works around this by setting `<fork>true</fork>` on the compiler plugin. CI on JDK 21 is not affected, but the fork is harmless there. If you ever see that NPE, do not assume there is a real compile error — try forking first, or run `javac` directly to surface the truth.
+`maven-compiler-plugin` 3.13.0 / 3.14.0 in non-forked mode crashes on JDK 25 with `Fatal error compiling: Cannot load from object array because "this.hashes" is null` while *formatting* a deprecation diagnostic. The actual compile is fine — only the in-process plexus diagnostic formatter throws. The POM works around this by setting `<fork>true</fork>` on the compiler plugin. CI also builds on JDK 25, so keep the fork. If you ever see that NPE, do not assume there is a real compile error — try forking first, or run `javac` directly to surface the truth.
 
 ## Key Dependencies
 
-- **Paper API 1.21.11** — Minecraft server API (`provided` scope)
-- **BentoBox 3.14.0-SNAPSHOT** — Core framework (`provided` scope, addon API version in `addon.yml`)
-- **MockBukkit v1.21-SNAPSHOT** — server mock used in tests (via JitPack)
+- **Paper API 26.3** (`26.3.build.231-stable`) — Minecraft server API (`provided` scope)
+- **BentoBox 3.23.7** — Core framework (`provided` scope, addon API version in `addon.yml`)
+- **MockBukkit `mockbukkit-v26.3` 4.119.0** — server mock used in tests (its MC line must match the paper-api version or registry validation fails)
 
 ## Resources
 

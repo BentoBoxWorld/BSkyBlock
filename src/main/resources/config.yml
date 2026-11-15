@@ -315,7 +315,29 @@ world:
   falling-banned-commands:
   - warp
   - spawn
+  # Per-world override for vanilla structure generation and structure searches
+  # (/locate, Eyes of Ender, explorer/treasure maps, dolphins, cartographer trades).
+  # BSkyBlock's own void generator places no structures, so this only matters if
+  # use-own-generator is true and another generator creates the worlds.
+  # Key is the vanilla structure id (e.g. trial_chambers, ancient-city), value is:
+  #   false - disable the structure in BSkyBlock worlds
+  #   true  - force it on even if BentoBox's global world.disabled-structures disables it
+  # Structures not listed inherit BentoBox's global world.disabled-structures setting.
+  # Example:
+  #   structure-settings:
+  #     monument: false
+  #     trial_chambers: false
+  # Requires BentoBox 3.19.1 or later.
+  # Added since 1.21.0.
+  structure-settings: {}
 island:
+  # Disable the team system in BSkyBlock worlds.
+  # When true, players cannot invite, accept team invites, kick, leave, promote, demote
+  # or change island owner. Trust and coop still work and are the alternative to teams.
+  # After turning this on, run /bsbadmin team disbandall once to remove existing team members.
+  # Requires BentoBox 3.16.0 or later.
+  # Added since 1.21.0.
+  teams-disabled: false
   # Default max team size
   # Permission size cannot be less than the default below. 
   max-team-size: 4

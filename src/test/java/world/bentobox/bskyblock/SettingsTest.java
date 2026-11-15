@@ -45,6 +45,21 @@ class SettingsTest extends CommonTestSetup {
      * Test method for {@link world.bentobox.bskyblock.Settings#setFriendlyName(java.lang.String)}.
      */
     @Test
+    void testStructureSettings() {
+        assertTrue(s.getStructureSettings().isEmpty());
+        s.setStructureSettings(Map.of("trial_chambers", false, "monument", true));
+        assertFalse(s.getStructureSettings().get("trial_chambers"));
+        assertTrue(s.getStructureSettings().get("monument"));
+    }
+
+    @Test
+    void testTeamsDisabled() {
+        assertFalse(s.isTeamsDisabled());
+        s.setTeamsDisabled(true);
+        assertTrue(s.isTeamsDisabled());
+    }
+
+    @Test
     void testSetFriendlyName() {
         s.setFriendlyName("name");
         assertEquals("name", s.getFriendlyName());
