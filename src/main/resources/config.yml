@@ -158,7 +158,7 @@ world:
     NATURAL_SPAWNING_OUTSIDE_RANGE: true
     LIQUIDS_FLOWING_OUT: false
     VISITOR_TRIGGER_RAID: true
-    REMOVE_MOBS: false
+    REMOVE_MOBS: true
     ENDER_CHEST: false
     TREES_GROWING_OUTSIDE_RANGE: false
     WITHER_DAMAGE: false
@@ -180,6 +180,16 @@ world:
     ITEM_FRAME_DAMAGE: false
     ENTITY_PORTAL_TELEPORT: false
     SPAWNER_SPAWN_EGGS: true
+    ITEM_DROP: true
+    ITEM_PICKUP: true
+    EXPERIENCE_PICKUP: true
+    HURT_MONSTERS: true
+    FISHING: true
+    BOAT: true
+    RIDING: true
+    ELYTRA: true
+    ENDER_PEARL: true
+    EXPERIENCE_BOTTLE_THROWING: true
   # These are the default protection settings for new islands.
   # The value is the minimum island rank required allowed to do the action
   # Ranks are the following:
@@ -271,7 +281,7 @@ world:
     SCULK_SHRIEKER: 500
     GATE: 0
     SMITHING: 500
-    EXPERIENCE_PICKUP: 500
+    EXPERIENCE_PICKUP: 0
     HOPPER: 500
     CANDLES: 500
     LEASH: 500
@@ -284,6 +294,9 @@ world:
     BARREL: 500
     CARTOGRAPHY: 500
     COLLECT_POWDERED_SNOW: 500
+    FISHING: 0
+    RAID_TRIGGER: 500
+    CRAFTER: 500
   # These are the default settings for new islands
   default-island-settings:
     PVP_END: false
@@ -304,7 +317,15 @@ world:
   # These settings/flags are hidden from users
   # Ops can toggle hiding in-game using SHIFT-LEFT-CLICK on flags in settings
   # Added since 1.4.1.
-  hidden-flags: []
+  hidden-flags:
+  - TNT_DAMAGE
+  - BLOCK_EXPLODE_DAMAGE
+  - FIRE_BURNING
+  - FIRE_IGNITE
+  - FIRE_SPREAD
+  - LEAF_DECAY
+  - ENDERMAN_TELEPORT
+  - SHULKER_TELEPORT
   # Visitor banned commands - Visitors to islands cannot use these commands in this world
   visitor-banned-commands:
   - spawner
