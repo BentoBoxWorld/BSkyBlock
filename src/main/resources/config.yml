@@ -163,7 +163,7 @@ world:
     TREES_GROWING_OUTSIDE_RANGE: false
     WITHER_DAMAGE: false
     BIOMES_WORLD_PROTECTION: true
-    PISTON_PUSH: false
+    PISTON_PUSH: true
     COARSE_DIRT_TILLING: true
     ENDERMAN_GRIEFING: true
     CLEAN_SUPER_FLAT: false
