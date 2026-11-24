@@ -7,3 +7,7 @@ authors: [tastybento]
 contributors: ["The BentoBoxWorld Community"]
 website: https://bentobox.world
 description: ${project.description}
+
+# BentoBox must be installed: this jar is an addon and belongs in plugins/BentoBox/addons.
+# Declaring it makes Paper explain a missing BentoBox, and load it before this jar.
+depend: [BentoBox]
