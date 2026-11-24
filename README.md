@@ -1,5 +1,8 @@
 # BSkyBlock
 
+<!-- BentoBox stats badges: https://download.bentobox.world/admin (Badges tab) -->
+[![Servers](https://download.bentobox.world/badge/BSkyBlock/servers.svg)](https://download.bentobox.world/) [![Popularity](https://download.bentobox.world/badge/BSkyBlock/rank.svg)](https://download.bentobox.world/) [![Downloads](https://download.bentobox.world/badge/BSkyBlock/downloads.svg)](https://download.bentobox.world/) [![Minecraft](https://download.bentobox.world/badge/BSkyBlock/mc.svg)](https://download.bentobox.world/)
+
 [![Build Status](https://ci.codemc.org/buildStatus/icon?job=BentoBoxWorld/BSkyBlock)](https://ci.codemc.org/job/BentoBoxWorld/job/BSkyBlock/)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=BentoBoxWorld_BSkyBlock&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=BentoBoxWorld_BSkyBlock)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=BentoBoxWorld_BSkyBlock&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=BentoBoxWorld_BSkyBlock)
